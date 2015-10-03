@@ -6,7 +6,10 @@
      box-sizing: border-box;
      z-index: 1;
 }
-
+#cow{
+	width: 200px;
+	
+}
 #title{
 	position: absolute;
 	left: 50%;
