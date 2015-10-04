@@ -14,7 +14,7 @@ import controllers.indexController as indexController
 # set up paths
 mappings = [
     ('/', indexController.index),
-    # ('/gallery', galleryController.index),
+    ('/gallery', galleryController.index),
     # ('/catagory', catagoryController.index),
     # ('/profile', profileController.index)
 ]

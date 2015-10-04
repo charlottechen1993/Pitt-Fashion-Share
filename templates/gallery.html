@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block bodycontent %}
+<h1> Welcome to the gallery!</h1>
+Here is a picture of this page's master: 
+<img src = "/static/images/{{photo_name}}" height = 300px width = 300px id = "neiman">
+Here is a picture of the master of this page's master:
+<img src = "/static/images/{{cow}}" id = "cow" height = 300pc width = 300px>
+{% endblock %}
