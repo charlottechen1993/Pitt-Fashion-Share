@@ -9,7 +9,7 @@ import sys
 import os.path
 
 import controllers.indexController as indexController
-    
+import controllers.galleryController as galleryController
 
 # set up paths
 mappings = [

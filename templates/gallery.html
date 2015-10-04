@@ -1,8 +1,36 @@
 {% extends "base.html" %}
-{% block bodycontent %}
-<h1> Welcome to the gallery!</h1>
-Here is a picture of this page's master: 
-<img src = "/static/images/{{photo_name}}" height = 300px width = 300px id = "neiman">
-Here is a picture of the master of this page's master:
-<img src = "/static/images/{{cow}}" id = "cow" height = 300pc width = 300px>
+{% block css %}
+	<link rel="stylesheet" href="/static/style/index.css">
 {% endblock %}
+
+{% block content %}
+
+	<div class = "row">
+		<div class='col-md-12' text-align:center>
+			<h1>Welcome to the gallery!</h1>
+		</div>
+	</div>
+	
+	<div class = "row">
+		<div class='col-md-6' text-align:center>
+			<b>Here is a picture of this page's master:</b>
+		</div>
+		<div class='col-md-6' text-align:center>
+			<b>Here is a picture of the master of this page's master:</b>
+		</div>
+	</div>
+	<div class = "row">
+		<div class='col-md-6'>
+			<img src = "/static/images/{{photo_name}}" id = "neiman" width = 480px height = 360px>
+		</div>
+		<div class='col-md-6'>
+		<img src = "/static/images/{{cow}}" id = "cow">
+		</div>
+	</div>
+	
+	<br> <br>
+	
+	
+
+{% endblock %}
+
