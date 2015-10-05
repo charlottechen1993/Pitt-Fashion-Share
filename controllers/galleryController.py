@@ -6,7 +6,7 @@ sys.path.insert(0, '/models')
 
 import app_global
 import main
-
+    
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
 class index(webapp2.RequestHandler):
     #respond to HTTP GET requests
@@ -14,6 +14,4 @@ class index(webapp2.RequestHandler):
         # images = imagesModels.getImages()
         app_global.render_template(self,'gallery.html',{'name': 'neiman', 'photo_name':'neiman_turtle.jpg', 'cow': 'cow2.jpg'})
 		
-		
-
-
+	
