@@ -15,6 +15,11 @@ class index(webapp2.RequestHandler):
     #respond to HTTP GET requests
     def get(self):
         # images = imagesModels.getImages()
-        app_global.render_template(self,'index.html',{'page_name':'Thrifty Clothes', 'photo_name':'cow2.jpg'})
+        app_global.render_template(self,'index.html',{'page_name':'Thrifty Clothes', 
+                                                      'photo_name':'test.jpg', 
+                                                      'cow1':'Baby-Cow.jpg', 
+                                                      'cow2':'Double-Cow.jpg', 
+                                                      'cow3':'Fluffy-Cow.jpg', 
+                                                      'cow4':'Orange-Cow.jpg'})
 		
 		
