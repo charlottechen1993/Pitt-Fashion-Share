@@ -1,23 +1,4 @@
-* {
-   /*fixed width and height of divs despite paddings*/
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-     box-sizing: border-box;
-     z-index: 1;
-}
-#title{
-	position: absolute;
-	left: 50%;
-	top: 10%;
-	transform: translate(-50%,-10%);
-    -webkit-transform: translate(-50%,-10%);
-    -moz-transform: translate(-50%,-10%);
-    -o-transform: translate(-50%,-10%);
-    -ms-transform: translate(-50%,-10%);
-	font-size: 50px;
-	font-family: 'Qwigley', cursive;
-	color: #3E869E;
-}
+
 
 @media screen and (min-width: 100px) {
     .carousel_img{
@@ -34,6 +15,7 @@
     font-size: small;   
 }
 
+<<<<<<< Updated upstream
 ul#menu {
     position: absolute;
     left: 50%;
@@ -62,3 +44,5 @@ ul#menu li a {
 ul#menu li a:hover {
     color: black;
 }
+=======
+>>>>>>> Stashed changes
