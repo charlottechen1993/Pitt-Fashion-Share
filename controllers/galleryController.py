@@ -13,5 +13,3 @@ class index(webapp2.RequestHandler):
     def get(self):
         # images = imagesModels.getImages()
         app_global.render_template(self,'gallery.html',{'name': 'neiman', 'photo_name':'neiman_turtle.jpg', 'cow': 'cow2.jpg'})
-		
-	
