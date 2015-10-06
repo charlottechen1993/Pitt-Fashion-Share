@@ -4,9 +4,14 @@
 {% extends "base.html" %}
 
 {% block css %}
+<<<<<<< Updated upstream
 	<link rel="stylesheet" href="/static/style/gallery.css">
 
    
+=======
+	<link rel="stylesheet" href="/static/style/index.css">
+	
+>>>>>>> Stashed changes
 {% endblock %}
 
 
@@ -17,6 +22,7 @@
 
 {% block content %}
 
+<<<<<<< Updated upstream
 
     <div class="row image-panel">
         <div class="col-sm-8 left-panel">
@@ -117,6 +123,76 @@
     </div>
 
 
+=======
+	<div class = "row">
+		<div class='col-md-12'>
+			<h1>Welcome to the gallery!</h1>
+		</div>
+	</div>
+	<br>
+	
+	<div class = "row">
+		<div class='col-md-6' text-align:center>
+			<h4>This page's master:</h3>
+		</div>
+		<div class='col-md-6' text-align:center>s
+			<h4>The master of this page's master:</h3>
+		</div>
+	</div>
+	
+	
+	<div class = "row">
+		<div class='col-md-6'>
+			<img src = "/static/images/{{photo_name}}" id = "turtle" width = 480px height = 360px>
+		</div>
+		<div class='col-md-6'>
+		<img src = "/static/images/{{cow}}" width = 480px height = 360px>
+		</div>
+	</div>
+	<div class = "row">
+		<div class='col-md-6' class = "hashtag">
+		<button>Like</button> #turtle #beach
+		</div>
+		<div class='col-md-6' class = "hashtag">
+		<button>Like</button> #cow #moo #beef 
+		</div>
+	</div>
+	
+	<br><br>
+	
+	<div class = "row">
+		<div class='col-md-6' text-align:center>
+			<h4>Friendly Cats:</h3>
+		</div>
+		<div class='col-md-6' text-align:center>
+			<h4>Sibling Cats:</h3>
+		</div>
+	</div>
+	
+	
+
+	<div class = "row">
+		<div class='col-md-6'>
+			<img src = "/static/images/twoCats.jpg" id = "duck" width = 480px height = 360px>
+		</div>
+		<div class='col-md-6'>
+		<img src = "/static/images/blackCats.jpg" width = 480px height = 360px>
+		</div>
+	</div>
+	<div class = "row">
+		<div class='col-md-6' class = "hashtag">
+		<button>Like</button> #cats #friends #asleep
+		</div>
+		<div class='col-md-6' class = "hashtag">
+		<button>Like</button> #cats #siblings
+		</div>
+	</div>
+	
+	<br> 
+	<br>
+	
+	
+>>>>>>> Stashed changes
 
 {% endblock %}
 
