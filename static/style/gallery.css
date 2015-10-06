@@ -19,19 +19,10 @@ textarea{
     background-color: none;
     cursor: pointer;
 }
-.adore{
-    color: #F26F78;
-    border: 1px solid #F26F78;
+
+.see-image{
     color: #EBB0CF;
     border: 1px solid #EBB0CF;
-}
-.see-image{
-    color: #82B6FF;
-    border: 1px solid #82B6FF;
-}
-.adore:hover{
-    color: #D9454F;
-    border: 1px solid #D9454F;
 }
 .see-image:hover{
     color: #6F9DDE;

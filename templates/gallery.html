@@ -1,81 +1,122 @@
+
+
+
 {% extends "base.html" %}
+
 {% block css %}
-	<link rel="stylesheet" href="/static/style/index.css">
+	<link rel="stylesheet" href="/static/style/gallery.css">
+
+   
 {% endblock %}
+
+
 {% block js %}
-	<script src="/static/js/gallery.js"></script>
+	<script src="/static/js/index.js"></script>
 {% endblock %}
+
 
 {% block content %}
 
-	<div class = "row">
-		<div class='col-md-12'>
-			<h1>Welcome to the gallery!</h1>
-		</div>
-	</div>
-	<br>
-	
-	<div class = "row">
-		<div class='col-md-6' text-align:center>
-			<h4>This page's master:</h3>
-		</div>
-		<div class='col-md-6' text-align:center>
-			<h4>The master of this page's master:</h3>
-		</div>
-	</div>
-	
-	
-	<div class = "row">
-		<div class='col-md-6'>
-			<img src = "/static/images/{{photo_name}}" id = "turtle" width = 480px height = 360px>
-		</div>
-		<div class='col-md-6'>
-		<img src = "/static/images/{{cow}}" width = 480px height = 360px>
-		</div>
-	</div>
-	<div class = "row">
-		<div class='col-md-6'>
-		<button>Like</button> #turtle #beach
-		</div>
-		<div class='col-md-6'>
-		<button>Like</button> #cow #moo #beef 
-		</div>
-	</div>
-	
-	<br><br>
-	
-	<div class = "row">
-		<div class='col-md-6' text-align:center>
-			<h4>Friendly Cats:</h3>
-		</div>
-		<div class='col-md-6' text-align:center>
-			<h4>Sibling Cats:</h3>
-		</div>
-	</div>
-	
-	
 
-	<div class = "row">
-		<div class='col-md-6'>
-			<img src = "/static/images/twoCats.jpg" id = "duck" width = 480px height = 360px>
-		</div>
-		<div class='col-md-6'>
-		<img src = "/static/images/blackCats.jpg" width = 480px height = 360px>
-		</div>
-	</div>
-	<div class = "row">
-		<div class='col-md-6'>
-		<button>Like</button> #cats #friends #asleep
-		</div>
-		<div class='col-md-6'>
-		<button>Like</button> #cats #siblings
-		</div>
-	</div>
-	
-	<br> 
-	<br>
-	
-	
+    <div class="row image-panel">
+        <div class="col-sm-8 left-panel">
+            <div class="row">
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl1.jpg">
+                    <span class="text-content">
+                        <span>
+                            <ul class="center-list">
+<!--                              <li><span class="img-button adore">Adore</span></li>-->
+<!--                              <li><img src="/images/icons/heart.png" class="heart"><span>Adore</span></li>-->
+                                    <li><span class="glyphicon glyphicon-heart"><p>Adore </p></span></li>
+                              <li><span class="img-button see-image">See Image</span></li>
+                            </ul>
+                        </span>
+                    </span>
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl2.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl3.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl4.jpg">
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl5.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl6.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl7.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl8.jpg">
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl9.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl10.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl11.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl12.jpg">
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl13.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl14.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl15.jpg">
+                </div>
+                <div class="col-sm-2 img-block">
+                    <img src="/images/girl16.jpg">
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3 right-panel">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>The Wine Girl Look</h3>
+                    <small>Katie Chung</small>
+                </div>
+            </div>
+            <br> 
+            <div class="row border-bottom">
+                <div class="col-sm-12">
+                   <span class="info">
+                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam congue ex ut lectus convallis gravida. Sed in egestas urna, a consequat nunc. Vestibulum a mollis urna, et consectetur turpis. Cras dolor augue, porttitor non aliquam sit amet, tempor eu eros. Quisque turpis neque, congue et viverra vel, faucibus in orci. Nam mattis massa vitae maximus finibus. Maecenas vitae iaculis purus, sed ultricies felis. Maecenas aliquet ut libero et lacinia. Sed ut pretium lorem. Nunc pellentesque magna massa, eu hendrerit turpis pharetra nec. 
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <br>
+                    <form class="form-inline">
+                        <textarea class="form-control" rows="3" placeholder="Comment here"></textarea><br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 {% endblock %}
 
