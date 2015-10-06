@@ -12,4 +12,7 @@ class index(webapp2.RequestHandler):
     #respond to HTTP GET requests
     def get(self):
         # images = imagesModels.getImages()
-        app_global.render_template(self,'gallery.html',{'name': 'neiman', 'photo_name':'neiman_turtle.jpg', 'cow': 'cow2.jpg'})
+        photo_list = []
+        for i in range(1,17):
+            photo_list.append('girl'+ str(i) + '.jpg')
+        app_global.render_template(self,'gallery.html',{'photos':photo_list})

@@ -71,13 +71,14 @@ textarea{
     padding: 0px 20px 0px 20px;
     z-index: 1;
     margin-bottom: 100px;
+    overflow: hidden;
 }
 .left-panel{
     background-color: rgba(255,255,255,.2);
     min-height: 300px;
 }
 
-.image-panel{ min-height: 300px;}
+.image-panel{ min-height: 300px; overflow: hidden;}
 
 .img-block{
     border: 1px solid #DAE1E3;
@@ -109,6 +110,16 @@ textarea{
     border-bottom-right-radius: 10px !important;
 */
     border: 1px solid #52525C;
+/*
+    position: fixed;
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%,-50%);
+    -webkit-transform: translate(-100%,-50%);
+    -moz-transform: translate(-100%,-50%);
+    -o-transform: translate(-100%,-50%);
+    -ms-transform: translate(-100%,-50%);
+*/
 }
 
 
