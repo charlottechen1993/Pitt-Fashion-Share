@@ -14,30 +14,51 @@
 
 {% block content %}
 	<div class = "row">
-		<div class='col-sm-3 col-sm-offset-3'>
-			<h1>{{username}}</h1>
+		<h1 class="text-center">{{username}}</h1>
+		<div class='col-md-3 col-md-offset-3'>
 			<img src="/images/{{profilePic}}">
 		</div>
 		<div class='col-sm-3'>
-			<br><br><br><br>
+			<br>
 
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam congue ex ut lectus convallis gravida. Sed in egestas urna, a consequat nunc. Vestibulum a mollis urna, et consectetur turpis. Cras dolor augue, porttitor non aliquam sit amet, tempor eu eros. Quisque turpis neque, congue et viverra vel, faucibus in orci. Nam mattis massa vitae maximus finibus. Maecenas vitae iaculis purus, sed ultricies felis. Maecenas aliquet ut libero et lacinia. Sed ut pretium lorem. Nunc pellentesque magna massa, eu hendrerit turpis pharetra nec. 
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-3 col-sm-offset-5">
+		<div class="col-md-3 col-md-offset-5">
 
 			<ul class="list-inline">
-				<li style>
-					<a href="/Top">Add Friend</a>
+				<li >
+					<a class="btn btn-default btn-xs" href="#" role="button">Add Friend</a>
 				</li>
 				<li>
-					<a href="/World">Gallery</a>
+					<a class="btn btn-default btn-xs" href="#" role="button">Follow</a>
 				</li>
 				<li>
-					<a href="/Add">Message</a>
+					<a class="btn btn-default btn-xs" href="#" role="button">Message</a>
 				</li>
 			</ul>
+
 		</div>
 	</div>
+	
+	<div class = "row">
+		<h1 class="text-center">Personal Gallery</h1>
+	</div>
+
+	<div class = "row">
+			<div class='col-md-3 col-md-offset-2'>
+				<img src="/images/outfit1.jpg" max-width="300" height="400">
+				<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
+			</div>
+			<div class='col-md-3 '>
+				<img src="/images/outfit2.jpg" max-width="300" height="400">
+				<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
+			</div>
+			<div class='col-md-3 '>
+				<img src="/images/outfit3.jpg" max-width="300" height="400">
+				<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
+			</div>
+	</div>
+
 {% endblock %}
