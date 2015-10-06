@@ -10,31 +10,69 @@ textarea{
     width: 100% !important;
     border-radius: none; !important
 }
-.adore{
-    position: absolute;
-    font-size: 25px;
-    width: 160px;
-    height: 60px;
+.img-button{
+    font-size: 15px;
+    width: 90px;
+    height: 35px;
     line-height: 30px;
     text-align: center;
-    left: 50%;
-    margin-top: 100px;
-    transform: translate(-50%,-0%);
-    -webkit-transform: translate(-50%,-0%);
-    -moz-transform: translate(-50%,-0%);
-    -o-transform: translate(-50%,-0%);
-    -ms-transform: translate(-50%,-0%);
+    background-color: none;
+    cursor: pointer;
+}
+.adore{
     color: #F26F78;
     border: 1px solid #F26F78;
-    background-color: #1F1F21 !important;
+    color: #EBB0CF;
+    border: 1px solid #EBB0CF;
+}
+.see-image{
+    color: #82B6FF;
+    border: 1px solid #82B6FF;
 }
 .adore:hover{
     color: #D9454F;
     border: 1px solid #D9454F;
 }
+.see-image:hover{
+    color: #6F9DDE;
+    border: 1px solid #6F9DDE;
+}
 
 .border-bottom{
     border-bottom: 1px solid #DAE1E3;
+}
+.center-list{
+    position:  absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+   
+    padding: 0px;
+    margin: 0px;
+}
+.center-list li{
+    display: inline-block;
+    margin-left:0px;
+    padding-left:0px;
+}
+
+.center-list li:nth-child(1){
+    margin-bottom: 15px;
+    height: auto;
+    list-style-image: url('../images/icons/heart.png') !important;
+    list-style-position: inside;
+}
+.center-list li p{
+    text-align: right; 
+    display:inline-block;
+    padding: 0;
+}
+.heart{
+    padding: 0; 
 }
 
 .image-panel{
@@ -61,10 +99,12 @@ textarea{
     position:  absolute;
     display: block;
     margin-left: -60px;
-    cursor: pointer;
+    z-index: 1;
 }
+/*
 
 .img-block img:hover { opacity: .5; -webkit-filter: grayscale(100%) sepia(100%); }
+*/
 
 .info{
     display: block;
@@ -78,4 +118,34 @@ textarea{
     border-bottom-right-radius: 10px !important;
 */
     border: 1px solid #52525C;
+}
+
+
+
+span.text-content {
+  background: rgba(0,0,0,0.7);
+  color: white;
+  display: table;
+  height: 150px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+    height: 100%;
+    z-index: 2;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.img-block:hover span.text-content {
+  opacity: 1;
+}
+
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
