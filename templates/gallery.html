@@ -18,13 +18,19 @@
 
 <div class="row image-panel">
     <div class="col-sm-8 left-panel">
-        {% for name in photos %}
+        {% for photo in photos %}
              <div class="col-sm-2 img-block">
-                <img src="/images/{{name}}">
+                <img src="/images/{{photo.name}}">
                 <span class="text-content">
                     <span>
                         <ul class="center-list">
-                            <li><span class="glyphicon glyphicon-heart"><p>Adore </p></span></li>
+                            <li>
+                                {% if photo.adored %}
+                                <span class="glyphicon glyphicon-heart heart-filled"><p>Adore</p></span>
+                                {% else %}
+                                <span class="glyphicon glyphicon-heart"><p>Adore</p></span>
+                                {% endif %}
+                            </li>
                             <li><span class="img-button see-image">View</span></li>
                         </ul>
                     </span>

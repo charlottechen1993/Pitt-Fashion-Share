@@ -14,5 +14,12 @@ class index(webapp2.RequestHandler):
         # images = imagesModels.getImages()
         photo_list = []
         for i in range(1,17):
-            photo_list.append('girl'+ str(i) + '.jpg')
-        app_global.render_template(self,'gallery.html',{'photos':photo_list})
+            photo = {}
+            photo['name'] = 'girl'+ str(i) + '.jpg';
+            if i%2==0:
+                photo['adored'] = True;
+            else:
+                photo['adored'] = False;
+            photo_list.append(photo)
+            
+        app_global.render_template(self,'gallery.html', {'photos':photo_list})
