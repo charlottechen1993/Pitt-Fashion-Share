@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>{{message}}</h3>
+    <ul>
+    {% for user in users %}
+        <li>{{user.un}}, {{user.pw}}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

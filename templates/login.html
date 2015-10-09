@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-            <form>
+            <form method="post" enctype="multipart/form-data" action="/userFunctions?method=login">
               <h3>Login</h3>
               <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
@@ -29,19 +29,22 @@
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
-            <form>
+            <form method="post" enctype="multipart/form-data" action="/userFunctions?method=newUser">
               <h3>New User</h3>
               <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="un">
+                <input type="text" class="form-control" placeholder="Email" name="un">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pw">
+                <input type="password" class="form-control" placeholder="Password" name="pw">
               </div>
-              <a href="/newUser" class="btn btn-default">Create New User</a>
+              <button type="submit" class="btn btn-default">Create New User</button>
             </form>
         </div>
         <div class="col-sm-1"></div>
+    </div>
+    <div class="row">
+        <h3>{{message}}</h3>
     </div>
 {% endblock %}

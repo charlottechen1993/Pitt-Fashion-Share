@@ -2,13 +2,55 @@
 {% block css %}
 	<link rel="stylesheet" type="text/css" href="/static/style/header.css">
 {% endblock %}
+<!--
 
 <div class = "controller-fluid">
+-->
+<!--
 	<div class="row">
-		<div class= "col-ms-10">
-			<div id="title">
-                Thrifty Clothes
-			</div>
+		<div class= "col-sm-12">
+            <div class="row">
+                <span id="title">
+                    Thrifty Clothes
+                </span>
+            </div>
+            <div class="row">
+                <ul id="menu">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/gallery">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="/profile">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+-->
+
+<div class="row header">
+  <div class="col-xs-6 col-sm-4">Pitt Fashion Share</div>
+  <div class="col-xs-6 col-sm-4">
+        <div class="row">
+            <div class="col-xs-2 col-sm-4"><a href="/">Home</a></div>
+            <div class="col-xs-2 col-sm-4"><a href="/gallery">Gallery</a></div>
+            <div class="col-xs-2 col-sm-4"><a href="/profile">Profile</a></div>
+        </div>
+  </div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs-block"></div>
+  <div class="col-xs-6 col-sm-4">
+      <div class="row">
+          <div class="col-xs-3 col-sm-4">{{message}}</div>
+          <div class="col-xs-3 col-sm-4"><a href="/user">Login/New User</a></div>
+      </div>      
+  </div>
+</div>
+        
+        <!--
 			<ul id="menu">
 				<li>
 					<a href="/">Home</a>
@@ -21,8 +63,12 @@
 				</li>
 			</ul>
 		</div>
-        <div class= "col-ms-2">
-            <a href="/userLog?method=newUser">Login/New User</a>
+        <div class= "col-sm-2">
+            <div class="row">{{message}}</div>
+            <div class="row"><a href="/user">Login/New User</a></div>
         </div>
-	</div>
-</div>
+-->
+
+
+
+

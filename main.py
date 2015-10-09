@@ -19,8 +19,8 @@ mappings = [
     ('/', indexController.index),
     ('/gallery', galleryController.index),
     ('/profile', profileController.index),
-    ('/userLog', userController.index),
-    ('/newUser', userController.index)
+    ('/user', userController.index),
+    ('/userFunctions', userController.userFunctions)
 #    ('/userLog', userController.loginPage.show)
 ]
 

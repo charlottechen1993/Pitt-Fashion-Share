@@ -1,5 +1,26 @@
-ul#menu {
+
+
+.header{
+    text-align: center;
+}
+
+/*
+
+#title{
 	position: absolute;
+	left: 50%;
+	top: 10%;
+	transform: translate(-50%,-10%);
+    -webkit-transform: translate(-50%,-10%);
+    -moz-transform: translate(-50%,-10%);
+    -o-transform: translate(-50%,-10%);
+    -ms-transform: translate(-50%,-10%);
+	font-size: 50px;
+	font-family: 'Qwigley', cursive;
+	color: #3E869E;
+}
+ul#menu {
+    position: absolute
 	left: 50%;
 	top: 20%;
 	transform: translate(-50%,-20%);
@@ -26,3 +47,6 @@ ul#menu li a {
 ul#menu li a:hover {
     color: black;
 }
+.row{
+    border: 1px solid red;
+}*/

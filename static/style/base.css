@@ -8,19 +8,9 @@
 .heart-filled{
     color: red !important;
 }
-#title{
-	position: absolute;
-	left: 50%;
-	top: 10%;
-	transform: translate(-50%,-10%);
-    -webkit-transform: translate(-50%,-10%);
-    -moz-transform: translate(-50%,-10%);
-    -o-transform: translate(-50%,-10%);
-    -ms-transform: translate(-50%,-10%);
-	font-size: 50px;
-	font-family: 'Qwigley', cursive;
-	color: #3E869E;
-}
+
+
+/*
 ul#menu {
 	position: absolute;
 	left: 50%;
@@ -39,12 +29,14 @@ ul#menu li {
 
 ul#menu li a {
     color: #C3D7DE;
+    color: white;
     padding: 10px 10px;
     text-decoration: none;
     border-radius: 4px 4px 0 0;
 	width: 50px;
 	cursor: pointer;
 }
+*/
 
 ul#menu li a:hover {
     color: black;
