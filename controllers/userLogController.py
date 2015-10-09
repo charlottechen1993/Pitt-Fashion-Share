@@ -1,51 +1,20 @@
 import webapp2
-
-
 import models.userModel as userModel
-
 import app_global
 import main
-
+from webapp2_extras import sessions
+import controllers.indexController 
+import indexController
     
     
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
-class index(webapp2.RequestHandler):
+# class index(webapp2.RequestHandler)
+class index(indexController.index):
         
     #respond to HTTP GET requests
     def get(self):
-        method  = self.request.get('method')
-        template = ''
-        message = ''
-        userList = list()
-        
-        if method == 'newUser':
-            un = self.request.get('un')
-            pw = self.request.get('pw')
-            app_global.render_template(self, 'test.html', {'message':un, 'users':userList})
-            # check that username does not already exist
-#            user = userModel.Users.getUser(un)
-#            if user:
-#                message = 'Username already exist!'
-#                template = 'index.html'
-#            else:
-#            user_key = userModel.createNewUser(un, pw)
-#            template = 'profile.html'
-#        elif method == 'login':
-#            un = self.request.get('un')
-#            pw = self.request.get('pw')
-##            user = userModel.getUser(un, pw)
-##            
-##            if user > 0:
-##                template = 'profile.html'
-##                message = 'Logged in as ' + user[0].un
-##            else:
-##                template = 'index.html'
-##                message = 'Login Fail!'
-#            userList = userModel.getUsers()
-#            template = 'test.html'
-        else:
-            template = 'login.html'
-            app_global.render_template(self, template, {'message':message, 'users':userList})
+        user = self.session.get('user')
+        app_global.render_template(self, 'login.html', {'user':user})
     
         
 		  

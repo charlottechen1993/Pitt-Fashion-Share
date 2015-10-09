@@ -14,6 +14,13 @@ import controllers.profileController as profileController
 import controllers.userLogController as userController
 
 
+
+config = {}
+config['webapp2_extras.sessions'] = {
+    'secret_key': 'aklsdfnkanxcjkzbxfjkhadfsks',
+}
+
+
 # set up paths
 mappings = [
     ('/', indexController.index),
@@ -25,7 +32,7 @@ mappings = [
 ]
 
 
-app = webapp2.WSGIApplication(mappings, debug=True)
+app = webapp2.WSGIApplication(mappings, config=config, debug=True)
 
 
 
