@@ -33,7 +33,7 @@ class userFunctions(webapp2.RequestHandler):
         else:
             if method == 'newUser':
                 #check that username does not already exist
-                user = userModel.Users.getUser(un)
+                user = userModel.getUser(un, pw)
 
                 if user:
                     message = 'Username already exist!'

@@ -5,7 +5,15 @@
      box-sizing: border-box;
      z-index: 1;
 }
+
+.glyphicon-heart{
+    cursor: pointer;
+}
 .heart-filled{
+    color: red !important;
+}
+
+.glyphicon-heart:hover{
     color: red !important;
 }
 
