@@ -54,8 +54,8 @@ class userFunctions(webapp2.RequestHandler):
     
     def post(self):
         method = self.request.get('method')
-        un = self.request.get('un')
-        pw = self.request.get('pw')
+        un = self.request.get('un').strip()
+        pw = self.request.get('pw').strip()
         userList = list()
         message = ''
         
@@ -68,14 +68,14 @@ class userFunctions(webapp2.RequestHandler):
 
                 if user:
                     message = 'Username already exist!'
-                    template = 'index.html'
+                    template = 'login.html'
                 else:
                     user_key = userModel.createNewUser(un, pw)
                     template = 'profile.html'
             elif method == 'login':
                 user = userModel.getUser(un, pw)
 
-                if user > 0:
+                if len(user) > 0:    # user login success
                     template = 'profile.html'
                     message = 'Logged in as ' + user[0].un
                 else:

@@ -4,6 +4,7 @@ import urllib
 from google.appengine.ext import ndb
 
 import webapp2
+from webapp2_extras import security
 
 
 class Users(ndb.Model):
@@ -36,14 +37,22 @@ class Users(ndb.Model):
     
 def createNewUser(un, pw):
     newUser = Users()
+    secure_pw = security.generate_password_hash(pw, 'sha1')
     newUser.un = un
-    newUser.pw = pw
+    newUser.pw = secure_pw
     newUser.put()
     
 def getUser(un, pw):
-    userList  = list()
-    query = Users.query(Users.un==un, Users.pw==pw)
-    return query.fetch(1)
+    result = list()
+  #  secure_pw = security.generate_password_hash(pw, 'sha1')
+    query = Users.query(Users.un==un)
+    user = query.fetch(1)
+    
+    if len(user) > 0:
+        if security.check_password_hash(pw, user[0].pw):
+            result.append(user[0])
+    
+    return result
     
     
 def getUsers():
