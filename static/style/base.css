@@ -5,7 +5,9 @@
      box-sizing: border-box;
      z-index: 1;
 }
-
+body{
+    background-color: #FAF7F8;
+}
 .glyphicon-heart{
     cursor: pointer;
 }

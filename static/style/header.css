@@ -2,51 +2,101 @@
 
 .header{
     text-align: center;
+    font-family: 'Alegreya Sans SC', sans-serif;
 }
 
-/*
-
-#title{
-	position: absolute;
-	left: 50%;
-	top: 10%;
-	transform: translate(-50%,-10%);
-    -webkit-transform: translate(-50%,-10%);
-    -moz-transform: translate(-50%,-10%);
-    -o-transform: translate(-50%,-10%);
-    -ms-transform: translate(-50%,-10%);
-	font-size: 50px;
-	font-family: 'Qwigley', cursive;
-	color: #3E869E;
+.outer-menu{
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    -webkit-transform: translate(-50%,-0%);
+    -moz-transform: translate(-50%,-0%);
+    -o-transform: translate(-50%,-0%);
+    -ms-transform: translate(-50%,-0%);
+    width: 400px;
+    border: 1px solid red;
+    padding: 0px;
+    margin: 0px;
 }
+.pitt{
+    color: #F27C49;
+}
+.outer-trapezoid{
+    position: absolute;
+    top: 0%;
+    left: 2%;
+    transform: translate(-2%,-0%);
+    -webkit-transform: translate(-2%,-0%);
+    -moz-transform: translate(-2%,-0%);
+    -o-transform: translate(-2%,-0%);
+    -ms-transform: translate(-2%,-0%);
+}
+.trapezoid{
+    height: 140px;
+    width: 0px;
+    border-left: 200px solid #3C3C3D;
+    border-top: 10px solid #3C3C3D;
+    
+    border-left: 200px solid rgba(0,0,0,.8);
+    border-top: 10px solid rgba(0,0,0,.8);
+    
+    border-bottom: 50px solid transparent;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    text-align: left;
+}
+.title{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    color: #D6D3DE;
+    font-size: 25px;
+}
+
 ul#menu {
-    position: absolute
+    position: absolute;
 	left: 50%;
-	top: 20%;
-	transform: translate(-50%,-20%);
-    -webkit-transform: translate(-50%,-20%);
-    -moz-transform: translate(-50%,-20%);
-    -o-transform: translate(-50%,-20%);
-    -ms-transform: translate(-50%,-20%);
-    padding: 0;
+	top: 5%;
+	transform: translate(-50%,-5%);
+    -webkit-transform: translate(-50%,-5%);
+    -moz-transform: translate(-50%,-5%);
+    -o-transform: translate(-50%,-5%);
+    -ms-transform: translate(-50%,-5%);
+    border-bottom: 1px solid #BFBBBD;
+    width: auto;
+    display: block;
+    margin: 0px;
+    padding: 0px;
 }
-
+ul#menu, ul#menu li{
+    height: 40px !important;
+}
 ul#menu li {
-    display: inline;
+    display: inline-block;
+    margin-bottom: 0px;
 }
-
-ul#menu li a {
-    color: #C3D7DE;
-    padding: 10px 10px;
-    text-decoration: none;
-    border-radius: 4px 4px 0 0;
-	width: 50px;
-	cursor: pointer;
-}
-
-ul#menu li a:hover {
+ul#menu li:hover{
+    border-bottom: 1px solid black;
     color: black;
 }
-.row{
-    border: 1px solid red;
-}*/
+ul#menu li a {
+    color: #BFBBBD;
+    padding: 0px 20px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.userLog{
+    position: absolute;
+	left: 90%;
+	top: 5%;
+	transform: translate(-90%,-5%);
+    -webkit-transform: translate(-90%,-5%);
+    -moz-transform: translate(-90%,-5%);
+    -o-transform: translate(-90%,-5%);
+    -ms-transform: translate(-90%,-5%);
+    font-size: 17px;
+}
+
