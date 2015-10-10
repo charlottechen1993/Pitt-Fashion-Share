@@ -7,6 +7,10 @@
 }
 body{
     background-color: #FAF7F8;
+/*
+    background-color: white;
+        background-image: url("../images/background/brillant.png");
+*/
 }
 .glyphicon-heart{
     cursor: pointer;
