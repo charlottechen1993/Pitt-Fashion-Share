@@ -1,11 +1,11 @@
 import webapp2
-
-
+from google.appengine.ext import blobstore
+import indexController
 import app_global
 import main
     
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
-class index(webapp2.RequestHandler):
+class index(indexController.index):
     #respond to HTTP GET requests
     def get(self):
         # images = imagesModels.getImages()
@@ -19,4 +19,13 @@ class index(webapp2.RequestHandler):
                 photo['adored'] = False;
             photo_list.append(photo)
             
-        app_global.render_template(self,'gallery.html', {'photos':photo_list})
+            
+        upload_url = blobstore.create_upload_url('/uploadImage')    
+            
+        params = {
+            'photos':photo_list,
+            'user_id':self.session.get('user_id'),
+            'upload_url': upload_url
+        }
+        
+        app_global.render_template(self,'gallery.html', params)

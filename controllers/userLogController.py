@@ -2,7 +2,7 @@ import webapp2
 import models.userModel as userModel
 import app_global
 from webapp2_extras import sessions
-import controllers.indexController 
+#import controllers.indexController 
 import indexController
     
     
@@ -13,7 +13,13 @@ class index(indexController.index):
     #respond to HTTP GET requests
     def get(self):
         user = self.session.get('user')
-        app_global.render_template(self, 'login.html', {'user':user})
+        
+        params = {
+            'user': user,
+            'user_id': self.session.get('user_id')
+        }
+        
+        app_global.render_template(self, 'login.html', params)
     
         
 		  
@@ -57,8 +63,13 @@ class userFunctions(indexController.index):
                 template = 'test.html'
             else:
                 template = 'login.html'
+                
+        params = {
+            'message': message,
+            'user_id': self.session.get('user_id')
+        }        
         
-        app_global.render_template(self, template, {'message':message, 'user_id':self.session.get('user_id')})
+        app_global.render_template(self, template, params)
     
         
 
