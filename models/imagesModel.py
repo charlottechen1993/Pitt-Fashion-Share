@@ -23,3 +23,22 @@ def addImage(categoryID, total, title, image_url, user):
     image.image_url = image_url
     image.user = user
     image.put()
+    
+    
+    
+def getImages():
+    result = list()
+    query = Image.query()
+   # query = query.order(Image.time_created)
+    images = query.fetch()
+    
+    for i in range(0,len(images)):
+        im = {}
+        im['categoryID'] = images[i].categoryID
+        im['total'] = images[i].total
+        im['title'] = images[i].title
+        im['image_url'] = images[i].image_url
+        im['user_id'] = images[i].user
+        im['img_id'] = images[i].key.id()
+        result.append(im)
+    return result

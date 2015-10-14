@@ -37,3 +37,4 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler):
             imagesModel.addImage(categoryID, total, title, image_url, user)
 
             self.redirect('/')
+            
