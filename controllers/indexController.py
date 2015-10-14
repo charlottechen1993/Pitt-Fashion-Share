@@ -1,12 +1,9 @@
 
 import webapp2
 from webapp2_extras import sessions
-# import path to models
-import sys
-sys.path.insert(0, '/models')
 
 import app_global
-import main
+
 
     
     

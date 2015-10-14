@@ -17,30 +17,66 @@
 
 
 <div class="row image-panel">
-    <div class="col-sm-8 left-panel">
-        {% for photo in photos %}
-             <div class="col-sm-2 img-block">
-                <img src="/images/{{photo.name}}">
-                <span class="text-content">
-                    <span>
-                        <ul class="center-list">
-                            <li>
+    <div class="col-xs-12 col-sm-10 col-md-8 left-panel">
+    {% for photo in photos %}
+        <div class="col-xs-12 col-sm-5 col-md-3 img-block">
+            <img src="/images/{{photo.name}}">
+            <span class="text-content">
+                <span>
+                    <div class="center-list">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="center-list">
                                 {% if photo.adored %}
-                                <span class="glyphicon glyphicon-heart heart-filled"><p>Adore</p></span>
+                                    <span class="glyphicon glyphicon-heart heart-filled"></span>
                                 {% else %}
-                                <span class="glyphicon glyphicon-heart"><p>Adore</p></span>
+                                    <p class="adore">Adore</p>
                                 {% endif %}
-                            </li>
-                            <li><span class="img-button see-image">View</span></li>
-                        </ul>
-                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:25px">
+                            <div class="col-sm-12">
+                                <span class="img-button see-image">View</span>
+                            </div>
+                        </div>
+                    </div>
+<!--
+                    <ul class="center-list">
+                        <li>
+                            {% if photo.adored %}
+                            <span class="glyphicon glyphicon-heart heart-filled"><p>Adore</p></span>
+                            {% else %}
+                            <span class="glyphicon glyphicon-heart"><p>Adore</p></span>
+                            {% endif %}
+                        </li>
+                        <li><span class="img-button see-image">View</span></li>
+                    </ul>
+-->
                 </span>
-             </div>   
-        {% endfor %}
+            </span>
+        </div>   
+    {% endfor %}
     </div>
+    <div class="col-sm-2 col-md-4 right-panel">
+    </div>
+</div>
 
-    <div class="col-sm-1"></div>
-    <div class="col-sm-3 right-panel">
+
+<div class="row">
+    <h2>Image Upload</h2>
+    <form method="post" enctype="multipart/form-data" action="/imageFunctions?method=upload">
+        Picture Title:<br>
+        <input name="title" type="text"><br><br><br>
+        File:<br>
+        <input name="file" type="file"><br><br><br>
+        <input type="submit">
+    </form>
+</div>
+
+<!--    </div>-->
+<!--
+    <div class="col-sm-12 col-sm-2 col-md-4 right-panel">
         <div class="row">
             <div class="col-sm-12">
                 <h3>The Classy Girl</h3>
@@ -65,7 +101,7 @@
             </div>
         </div>
     </div>
-</div>
+-->
 
 
 	

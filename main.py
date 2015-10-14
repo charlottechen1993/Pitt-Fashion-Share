@@ -12,7 +12,7 @@ import controllers.indexController as indexController
 import controllers.galleryController as galleryController
 import controllers.profileController as profileController
 import controllers.userLogController as userController
-
+import controllers.imageController as imageController
 
 
 config = {}
@@ -27,7 +27,8 @@ mappings = [
     ('/gallery', galleryController.index),
     ('/profile', profileController.index),
     ('/user', userController.index),
-    ('/userFunctions', userController.userFunctions)
+    ('/userFunctions', userController.userFunctions),
+    ('/imageFunctions', imageController.imageFunctions)
 #    ('/userLog', userController.loginPage.show)
 ]
 

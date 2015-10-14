@@ -1,8 +1,5 @@
 import webapp2
 
-# import path to models
-import sys
-sys.path.insert(0, '/models')
 
 import app_global
 import main

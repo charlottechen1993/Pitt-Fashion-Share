@@ -1,7 +1,6 @@
 import webapp2
 import models.userModel as userModel
 import app_global
-import main
 from webapp2_extras import sessions
 import controllers.indexController 
 import indexController
@@ -19,7 +18,8 @@ class index(indexController.index):
         
 		  
 		
-class userFunctions(webapp2.RequestHandler):
+#class userFunctions(webapp2.RequestHandler):
+class userFunctions(indexController.index):
     
     def post(self):
         method = self.request.get('method')
@@ -47,6 +47,9 @@ class userFunctions(webapp2.RequestHandler):
                 if len(user) > 0:    # user login success
                     template = 'profile.html'
                     message = 'Logged in as ' + user[0].un
+                    
+                    self.session['user'] = user[0].un
+                    self.session['user_id'] = user[0].user_id 
                 else:
                     template = 'index.html'
                     message = 'Login Fail!'
@@ -55,7 +58,7 @@ class userFunctions(webapp2.RequestHandler):
             else:
                 template = 'login.html'
         
-        app_global.render_template(self, template, {'message':message, 'users':userList})
+        app_global.render_template(self, template, {'message':message, 'user_id':self.session.get('user_id')})
     
         
 

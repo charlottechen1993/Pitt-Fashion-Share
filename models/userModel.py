@@ -33,6 +33,7 @@ def getUser(un, pw):
     
     if len(user) > 0:
         if security.check_password_hash(pw, user[0].pw):
+            user[0].user_id = user[0].key.id()
             result.append(user[0])
     
     return result

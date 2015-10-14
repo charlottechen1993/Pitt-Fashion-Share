@@ -1,6 +1,18 @@
+/* Phones */
+@media (min-width: @screen-xs-min) { ... }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+
+
+
 h3{
     color: #EBF0F2;
 }
+
 small{
     color: #C0C9CC;
 }
@@ -41,9 +53,10 @@ textarea{
     -moz-transform: translate(-50%,-50%);
     -o-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
-   
     padding: 0px;
     margin: 0px;
+    width: auto
+    height: auto;
 }
 .center-list li{
     display: inline-block;
@@ -62,6 +75,16 @@ textarea{
     display:inline-block;
     padding: 0;
 }
+
+.glyphicon-heart{
+    position:  relative;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    -webkit-transform: translate(-50%,-0%);
+    -moz-transform: translate(-50%,-0%);
+    -o-transform: translate(-50%,-0%);
+    -ms-transform: translate(-50%,-0%);
+}
 .heart{
     padding: 0; 
 }
@@ -74,7 +97,7 @@ textarea{
     overflow: hidden;
 }
 .left-panel{
-    background-color: rgba(255,255,255,.2);
+/*    background-color: rgba(255,255,255,.2);*/
     min-height: 300px;
 }
 
@@ -85,15 +108,21 @@ textarea{
 .img-block{
     border: 1px solid #DAE1E3;
     height: 200px;
-    width: 25%;
+/*    width: 25%;*/
     overflow: hidden;
 }
 
 .img-block img{
     position:  absolute;
     display: block;
-    margin-left: -60px;
+/*    margin-left: -60px;*/
     z-index: 1;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    -webkit-transform: translate(-50%,-0%);
+    -moz-transform: translate(-50%,-0%);
+    -o-transform: translate(-50%,-0%);
+    -ms-transform: translate(-50%,-0%);
 }
 /*
 
@@ -123,6 +152,7 @@ textarea{
     -ms-transform: translate(-100%,-50%);
 */
 }
+
 
 
 
