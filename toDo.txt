@@ -1,0 +1,15 @@
+Required
+--------------
+logout
+build category db table
+check if username exist when creating new user
+pricing db table for clothes
+
+
+
+Optional
+--------------
+fb share
+image censoring
+limit image size
+email notification
