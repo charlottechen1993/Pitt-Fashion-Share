@@ -28,8 +28,9 @@ mappings = [
     ('/profile', profileController.index),
     ('/user', userController.index),
     ('/userFunctions', userController.userFunctions),
-    ('/imageFunctions', imageController.imageFunctions),
-    ('/uploadImage', imageController.uploadImageHandler)
+    ('/uploadImage', imageController.uploadImageHandler),
+    ('/addLike', imageController.addLikeHandler),
+    ('/getLikes', imageController.getLikeHandler)
 #    ('/userLog', userController.loginPage.show)
 ]
 

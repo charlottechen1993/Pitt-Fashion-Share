@@ -21,21 +21,23 @@ class index(indexController.index):
 #            else:
 #                photo['adored'] = False;
 #            photo_list.append(photo)
-#            
-        images = imagesModel.getImages()
-        i = 0
-        for img in images:
-            i+=1
-            if i%2==0:
-                img['adored'] = True
-            else:
-                img['adored'] = False
-            photo_list.append(img)
+#       
+        user_id = self.session.get('user_id')
+        images = imagesModel.getImages(user_id)
+#        i = 0
+#        for img in images:
+#            i+=1
+#            if i%2==0:
+#                img['adored'] = True
+#            else:
+#                img['adored'] = False
+
+        #photo_list.append(img)
     
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
         params = {
-            'photos':photo_list,
+            'photos':images,
             'user_id':self.session.get('user_id'),
             'upload_url': upload_url
         }

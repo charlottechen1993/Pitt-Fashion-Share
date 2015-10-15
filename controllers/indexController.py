@@ -32,8 +32,6 @@ class index(webapp2.RequestHandler):
     def get(self):
         # images = imagesModels.getImages()
         
-        self.session['user'] = ''
-        self.session['user_id'] = ''
         
         params = {'page_name':'Thrifty Clothes', 
             'photo_name':'male-photo.jpg', 

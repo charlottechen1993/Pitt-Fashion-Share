@@ -2,7 +2,6 @@ import webapp2
 import models.userModel as userModel
 import app_global
 from webapp2_extras import sessions
-#import controllers.indexController 
 import indexController
     
     
