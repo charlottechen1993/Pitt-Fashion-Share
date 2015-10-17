@@ -2,9 +2,11 @@ Required
 --------------
 logout
 build category db table
+filter categories
 check if username exist when creating new user
 pricing db table for clothes
-
+comment table - insert, pull
+limit comment characters
 
 
 Optional

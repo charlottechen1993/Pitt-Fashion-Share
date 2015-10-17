@@ -15,6 +15,16 @@ body{
     color: #DCE1E3;
 }
 
+.commentSub{
+    padding: 5px;
+    width: 100%; 
+     border: 1px solid #6D7BE8;
+}
+
+/* boostrap */
+.glyphicon-pencil{
+   font-size:2.5em;
+}
 .glyphicon-heart, .adore{
     cursor: pointer;
 }
@@ -26,8 +36,32 @@ body{
     color: red !important;
 }
 
+div.cmt{
+    margin: 25px;
+    text-align: left;
+}
+div.cmt div.left-inner-cmt{
+    font-size: 12px;
+    font-weight: 500;
+    color: #5C6291;
+}
+
+div.cmt div.right-inner-cmt{
+    padding: 5px;
+    background-color: rgba(255,255,255,.3);
+    border: 1px solid #F0F0F2;
+    background-color: #F5F5FA;
+}
+
+a.cmt-sub{
+    border: 1px solid grey;
+    padding: 10px;
+    background-color: #F0F1F7;
+    display: block;
+}
+
 .img-modal{
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translate(-50%,-0%);
     -webkit-transform: translate(-50%,-0%);
@@ -37,7 +71,34 @@ body{
     max-width: 100%;
 }
 
-div.modal div.modal-backdrop {
-    z-index: 0;
+/* bootstrap */
+.modal-wide,.modal-dialog{
+    width: 70%;
+    left: 50%;
+    margin-left: -35%;
+    overflow-y: auto;
 }
-body.modal-open div.modal-backdrop { z-index: 0; }
+
+/* bootstrap */
+.modal-body{
+    overflow: hidden; 
+    padding:10px; 
+    margin-top:0px; 
+    top: 0px;
+    height:auto;
+    width: 100%;
+    background-color: #F5F2F2;
+}
+
+/* boostrap */
+.modal-content  {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important; 
+}
+
+
+/* boostrap */
+.modal-footer  {
+    padding: 20px !important; 
+}

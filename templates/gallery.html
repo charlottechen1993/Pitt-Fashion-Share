@@ -17,9 +17,9 @@
 
 
 <div class="row image-panel">
-    <div class="col-xs-12 col-sm-10 col-md-8 left-panel">
+    <div class="col-xs-12 col-sm-8 col-md-8 left-panel">
     {% for photo in photos %}
-        <div class="col-xs-12 col-sm-5 col-md-3 img-block">
+        <div class="col-xs-12 col-sm-4 col-md-3 img-block">
             <img img_id="{{photo.img_id}}" src="{{photo.image_url}}">
             <span class="text-content">
                 <span>
@@ -44,29 +44,153 @@
                 </span>
             </span>
         </div>  
-        
-        <!-- Image Modal -->
-        <div class="modal fade" id="Modal{{photo.img_id}}" tabindex="-1" role="dialog" aria-labelledby="Modal{{photo.img_id}}Label">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{photo.title}}</h4>
-              </div>
-              <div class="modal-body">
-                <img class="img-modal" src="{{photo.image_url}}">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
     {% endfor %}
     </div>
-    <div class="col-sm-2 col-md-4 right-panel">
+    <div class="hidden-xs col-sm-4 col-md-4 right-panel">
+          <div class="row">
+            <div class="col-sm-12">
+                <h3>     <small></small></h3>
+            </div>
+        </div>
+        <br> 
+        <div class="row border-bottom">
+            <div class="col-sm-12">
+               <span class="info">
+                   <table class="table table-hover">
+                        <tr>
+                            <td>Shirt</td>
+                            <td>H&M</td>
+                            <td>$100</td>
+                        </tr>
+                        <tr>
+                            <td>Jeans</td>
+                            <td>Forever 21</td>
+                            <td>$200</td>
+                        </tr>
+                        <tr>
+                            <td>Shoes</td>
+                            <td>Gap</td>
+                            <td>$80</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td></td>
+                            <td>$800</td>
+                        </tr>
+                    </table>
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <form class="form-inline">
+<!--                    <textarea class="form-control" rows="3" placeholder="Comment here"></textarea><br><br>-->
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+
+
+<!-- Image Modal -->
+{% for photo in photos %}
+<div class="modal fade modal-wide" id="Modal{{photo.img_id}}" tabindex="-1" role="dialog" aria-labelledby="Modal{{photo.img_id}}Label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{photo.title}}</h4>
+      </div>
+      <div class="modal-body">
+         <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <img class="img-modal" src="{{photo.image_url}}">
+            </div>
+         </div>
+      </div>
+      <div class="modal-footer">
+          <form method="post" enctype="multipart/form-data" action="">
+          <div class="row cmt">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 left-inner-cmt">
+                <a type="submit" class="glyphicon glyphicon-pencil" href=" "></a>  
+            </div> 
+            <div class="col-sm-8" style="padding:0px;">
+                <input type="text" class="commentSub" placeholder="Compliment here">  
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          </form>
+          <hr>
+          <div class="row cmt">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 left-inner-cmt">
+                9/10/12<br>  
+                6:00PM
+            </div>
+            <div class="col-sm-8 right-inner-cmt">
+                Here is a comment
+            </div>
+            <div class="col-sm-1"></div>
+         </div>
+          <div class="row cmt">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 left-inner-cmt">
+                9/10/12<br>  
+                6:00PM
+            </div>
+            <div class="col-sm-8 right-inner-cmt">
+                Here is a comment
+            </div>
+            <div class="col-sm-1"></div>
+         </div>
+          <div class="row cmt">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 left-inner-cmt">
+                9/10/12<br>  
+                6:00PM
+            </div>
+            <div class="col-sm-8 right-inner-cmt">
+                Here is a comment
+            </div>
+            <div class="col-sm-1"></div>
+         </div>
+          
+
+          
+          
+<!--
+          <div class="row">
+              <form method="post" enctype="multipart/form-data" action="">
+                  <div class="col-sm-9">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Compliment">
+                      </div>
+                  </div>
+                  <div class="col-sm-2">              
+                      <div class="form-group">
+                        <input class="btn btn-default" type="submit" value="Comment">
+                          <button type="submit" class="btn btn-default">Compliment</button>
+                      </div>
+                  </div>
+              </form>
+              <div class="col-sm-1"></div>
+          </div>
+-->
+<!--
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+-->
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+
 
 
 <div class="row">
@@ -82,6 +206,7 @@
 
 <div class="row">
     <a href="/getLikes">get likes</a>
+    
 </div>
 <br><br><br><br><br>
 <!--    </div>-->

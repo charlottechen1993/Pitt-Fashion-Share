@@ -90,11 +90,14 @@ textarea{
 }
 
 .image-panel{
-    background-color: black;
+/*    background-color: black;*/
+    background-color: white;
     padding: 0px 20px 0px 20px;
     z-index: 1;
     margin-bottom: 100px;
     overflow: hidden;
+    border-top: 1px solid #BABEBF;
+    border-bottom: 1px solid #BABEBF;
 }
 .left-panel{
 /*    background-color: rgba(255,255,255,.2);*/
@@ -134,13 +137,14 @@ textarea{
     color: #A1B8BF;
     padding-bottom: 20px;
 }
+
+
+
 .right-panel{
-    background-color: #27272E;
-/*
-    border-bottom-left-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
-*/
-    border: 1px solid #52525C;
+    background-color: #EBEBEB;
+    height : 100vh !important;
+    max-width: 100%;
+   
 /*
     position: fixed;
     top: 50%;
