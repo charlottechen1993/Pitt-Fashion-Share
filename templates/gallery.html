@@ -104,9 +104,15 @@
         <h4 class="modal-title" id="myModalLabel">{{photo.title}}</h4>
       </div>
       <div class="modal-body">
-         <div class="row">
-            <div class="col-sm-12 col-md-12">
+         <div class="row equal-height-col">
+            <div class="col-sm-1">
+                <a class="glyphicon glyphicon-chevron-left"></a> 
+            </div>
+            <div class="col-sm-10">
                 <img class="img-modal" src="{{photo.image_url}}">
+            </div>
+            <div class="col-sm-1">
+                <a class="glyphicon glyphicon-chevron-right"></a> 
             </div>
          </div>
       </div>

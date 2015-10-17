@@ -3,6 +3,7 @@ Required
 logout
 build category db table
 filter categories
+comment word filter - curses, inappropriate
 check if username exist when creating new user
 pricing db table for clothes
 comment table - insert, pull
