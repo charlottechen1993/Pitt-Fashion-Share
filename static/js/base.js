@@ -1,6 +1,7 @@
 
 
 $(document).ready(function(){
+    
     $('.adore').click(function(){
    
         var photo_id = $(this).attr('data-id');

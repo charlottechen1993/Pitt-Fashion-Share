@@ -9,16 +9,24 @@
 
 
 {% block js %}
-	<script src="/static/js/index.js"></script>
+	<script src="/js/gallery.js"></script>
+
+    <!-- store photo json data -->
+    <script type="text/javascript">
+        var photos = {{photos_json|safe}};
+        var adore = photos[0].adored;
+        //alert(adore);
+        alert(JSON.stringify(photos[0], null, 2));
+ 
+            
+    </script>
 {% endblock %}
 
 
 {% block content %}
-
-
 <div class="row image-panel">
     <div class="col-xs-12 col-sm-8 col-md-8 left-panel">
-    {% for photo in photos %}
+    {% for photo in photos %} 
         <div class="col-xs-12 col-sm-4 col-md-3 img-block">
             <img img_id="{{photo.img_id}}" src="{{photo.image_url}}">
             <span class="text-content">
@@ -49,7 +57,7 @@
     <div class="hidden-xs col-sm-4 col-md-4 right-panel">
           <div class="row">
             <div class="col-sm-12">
-                <h3>     <small></small></h3>
+                <h3>{{photo.title}}<small>{{photo.time_created}}</small></h3>
             </div>
         </div>
         <br> 
