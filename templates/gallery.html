@@ -16,7 +16,7 @@
         var photos = {{photos_json|safe}};
         var adore = photos[0].adored;
         //alert(adore);
-        alert(JSON.stringify(photos[0], null, 2));
+      //  alert(JSON.stringify(photos[0], null, 2));
  
             
     </script>
@@ -57,14 +57,14 @@
     <div class="hidden-xs col-sm-4 col-md-4 right-panel">
           <div class="row">
             <div class="col-sm-12">
-                <h3>{{photo.title}}<small>{{photo.time_created}}</small></h3>
+                <h3 class="photo-title">The Look<br><small class="photo-time">9/10/2 6PM</small></h3>
             </div>
         </div>
         <br> 
         <div class="row border-bottom">
             <div class="col-sm-12">
                <span class="info">
-                   <table class="table table-hover">
+                   <table class="table table-hover table-clothes">
                         <tr>
                             <td>Shirt</td>
                             <td>H&M</td>

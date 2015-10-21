@@ -138,7 +138,13 @@ textarea{
     padding-bottom: 20px;
 }
 
+h3.photo-title{
+    color: #515E85;
+}
 
+h3.photo-title small.photo-time{
+    color: #6F7380;
+}
 
 .right-panel{
     background-color: #EBEBEB;
@@ -185,4 +191,13 @@ span.text-content span {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+}
+
+table.table-clothes{
+    color: #636775;
+}
+
+table.table-clothes td:nth-child(1){
+    color: #3F4454;
+    font-weight: 600;
 }
