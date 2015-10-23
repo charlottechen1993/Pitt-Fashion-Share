@@ -1,21 +1,13 @@
 
 {% block css %}
 	<link rel="stylesheet" type="text/css" href="/static/style/header.css">
-    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,500' rel='stylesheet' type='text/css'>		
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:100,200,300' rel='stylesheet' type='text/css'>
 {% endblock %}
 
-<div class="row header">
-    <input type="hidden" name="user_id" value="{{user_id}}">
+<input type="hidden" name="user_id" value="{{user_id}}">
 <!--
-    <div class="outer-trapezoid">
-        <div class="trapezoid">
-            <div class="title">
-                <span class="pitt">Pitt</span>
-                <b>Fashion</b>Share
-            </div>
-        </div>
-    </div>
--->
+<div class="row header">  <link href='https://fonts.googleapis.com/css?family=Raleway:100,200,300' rel='stylesheet' type='text/css'> 
     <div class="rectangle">
         <div class="title2">
             <span class="pitt">Pitt</span>
@@ -38,77 +30,28 @@
         <div class="row">{{message}}, {{user_id}}</div>
     </div>
 </div>
-
-
-<!--
-
-<div class = "controller-fluid">
 -->
-<!--
-	<div class="row">
-		<div class= "col-sm-12">
-            <div class="row">
-                <span id="title">
-                    Thrifty Clothes
-                </span>
-            </div>
-            <div class="row">
-                <ul id="menu">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="/gallery">Gallery</a>
-                    </li>
-                    <li>
-                        <a href="/profile">Profile</a>
-                    </li>
-                </ul>
-            </div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" id="menu">
+                <li><a href="/">HOME<span class="sr-only">(current)</span></a></li>
+                <li><a href="/gallery">GALLERY</a></li>
+                <li><a href="/profile">PROFILE</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/user">Login/New User</a></li>
+                <div class="row">{{message}}, {{user_id}}</div>
+            </ul>
         </div>
     </div>
--->
-<!--
-
-<div class="row header">
-  <div class="col-xs-6 col-sm-4">Pitt Fashion Share</div>
-  <div class="col-xs-6 col-sm-4">
-        <div class="row">
-            <div class="col-xs-2 col-sm-4"><a href="/">Home</a></div>
-            <div class="col-xs-2 col-sm-4"><a href="/gallery">Gallery</a></div>
-            <div class="col-xs-2 col-sm-4"><a href="/profile">Profile</a></div>
-        </div>
-  </div>
-   Optional: clear the XS cols if their content doesn't match in height 
-  <div class="clearfix visible-xs-block"></div>
-  <div class="col-xs-6 col-sm-4">
-      <div class="row">
-          <div class="col-xs-3 col-sm-4">{{message}}</div>
-          <div class="col-xs-3 col-sm-4"><a href="/user">Login/New User</a></div>
-      </div>      
-  </div>
-</div>
-        
--->
-        <!--
-			<ul id="menu">
-				<li>
-					<a href="/">Home</a>
-				</li>
-				<li>
-					<a href="/gallery">Gallery</a>
-				</li>
-				<li>
-					<a href="/profile">Profile</a>
-				</li>
-			</ul>
-		</div>
-        <div class= "col-sm-2">
-            <div class="row">{{message}}</div>
-            <div class="row"><a href="/user">Login/New User</a></div>
-        </div>
--->
-
-
-
-
+</nav>

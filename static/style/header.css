@@ -1,88 +1,29 @@
-
-
-.header{
-    text-align: center;
-    font-family: 'Alegreya Sans SC', sans-serif;
-    height: 120px;
-}
-
-
-.pitt{
-    color: #F27C49;
-}
-
-.rectangle{
-    position: absolute;
-    top: 3%;
-    left: 2%;
-    transform: translate(-2%,-3%);
-    -webkit-transform: translate(-2%,-3%);
-    -moz-transform: translate(-2%,-3%);
-    -o-transform: translate(-2%,-3%);
-    -ms-transform: translate(-2%,-3%);
-    padding: 10px;
-/*    border: 2px solid #3D3D3C;*/
-}
-
-.title{
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -20%);
-    color: #D6D3DE;
-    font-size: 25px;
-}
-.title2{
-    color: #82807E;
-    font-size: 25px;
-}
-
+/* center menu items */
 ul#menu {
     position: absolute;
-	left: 50%;
-	top: 5%;
-	transform: translate(-50%,-5%);
-    -webkit-transform: translate(-50%,-5%);
-    -moz-transform: translate(-50%,-5%);
-    -o-transform: translate(-50%,-5%);
-    -ms-transform: translate(-50%,-5%);
-    border-bottom: 1px solid #BFBBBD;
-    width: auto;
-    display: block;
-    margin: 0px;
-    padding: 0px;
-}
-ul#menu, ul#menu li{
-    height: 40px !important;
-}
-ul#menu li {
-    display: inline-block;
-    margin-bottom: 0px;
-}
-ul#menu li:hover{
-    border-bottom: 1px solid black;
-    color: black;
-}
-ul#menu li a {
-    color: #BFBBBD;
-    padding: 0px 20px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-}
-ul#menu li a:hover {
-    color: black;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%,-20%);
+    -webkit-transform: translate(-50%,-20%);
+    -moz-transform: translate(-50%,-20%);
+    -o-transform: translate(-50%,-20%);
+    -ms-transform: translate(-50%,-20%);
+    padding: 0;
 }
 
-.userLog{
-    position: absolute;
-	left: 90%;
-	top: 5%;
-	transform: translate(-90%,-5%);
-    -webkit-transform: translate(-90%,-5%);
-    -moz-transform: translate(-90%,-5%);
-    -o-transform: translate(-90%,-5%);
-    -ms-transform: translate(-90%,-5%);
-    font-size: 17px;
+.navbar-inverse{
+    background-color: black !important;   
+    background-image: none;
+    background-repeat: no-repeat;
+
 }
 
+li{
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: 300;
+}
+
+ul#menu li:hover {
+    border-bottom: 2px solid white;
+    height: 100%;
+}
