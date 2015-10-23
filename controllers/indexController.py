@@ -31,9 +31,9 @@ class index(webapp2.RequestHandler):
         
         
         params = {'page_name':'Fashion Share', 
-            'photo_name':'photo6', 
-            'photo_name2':'photo5',
-            'photo_name3':'photo4',
+            'photo_name':'photo3', 
+            'photo_name2':'photo2',
+            'photo_name3':'photo',
             'cow1':'girl1.jpg', 
             'cow2':'girl2.jpg', 
             'cow3':'girl3.jpg', 
@@ -46,9 +46,9 @@ class index(webapp2.RequestHandler):
          }
         
         app_global.render_template(self,'index.html',{'page_name':'Fashion Share', 
-                                                      'photo_name':'photo6.jpg', 
-                                                      'photo_name2':'photo5.jpg',
-                                                      'photo_name3':'photo4.jpg',
+                                                      'photo_name':'photo3.jpg', 
+                                                      'photo_name2':'photo2.jpg',
+                                                      'photo_name3':'photo.jpg',
                                                       'cow1':'girl1.jpg', 
                                                       'cow2':'girl2.jpg', 
                                                       'cow3':'girl3.jpg', 
