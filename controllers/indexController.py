@@ -36,7 +36,7 @@ class index(webapp2.RequestHandler):
         params = {'page_name':'Thrifty Clothes', 
             'photo_name':'male-photo.jpg', 
             'photo_name2':'test.jpg',
-            'photo_name3':'sketch.jpg',
+            'photo_name3':'photo4',
             'cow1':'girl1.jpg', 
             'cow2':'girl2.jpg', 
             'cow3':'girl3.jpg', 
@@ -48,10 +48,10 @@ class index(webapp2.RequestHandler):
             'user_id':self.request.get('user_id')
          }
         
-        app_global.render_template(self,'index.html',{'page_name':'Thrifty Clothes', 
-                                                      'photo_name':'male-photo.jpg', 
-                                                      'photo_name2':'test.jpg',
-                                                      'photo_name3':'sketch.jpg',
+        app_global.render_template(self,'index.html',{'page_name':'Fashion Share', 
+                                                      'photo_name':'photo6.jpg', 
+                                                      'photo_name2':'photo5.jpg',
+                                                      'photo_name3':'photo4.jpg',
                                                       'cow1':'girl1.jpg', 
                                                       'cow2':'girl2.jpg', 
                                                       'cow3':'girl3.jpg', 
