@@ -12,7 +12,7 @@ ul#menu {
 }
 
 .navbar-inverse{
-    background-color: black !important;   
+    background-color: rgba(0, 0, 0, 0.8) !important;   
     background-image: none;
     background-repeat: no-repeat;
 
@@ -26,4 +26,21 @@ li{
 ul#menu li:hover {
     border-bottom: 2px solid white;
     height: 100%;
+}
+
+.navbar-collapse.collapse.off {
+    display: block!important;
+}
+.navbar-collapse.collapse.off ul {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav.no-collapse>li,
+.navbar-nav.no-collapse {
+    float: left !important;
+}
+
+.navbar-right.no-collapse {
+    float: right!important;
 }

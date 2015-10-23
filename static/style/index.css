@@ -1,3 +1,4 @@
+/* Carousel */
 @media screen and (min-width: 100px) {
     .carousel_img{
         width: 100%;   
@@ -19,4 +20,9 @@
 
 .badge{
     background-color: #3E869E;   
+}
+
+.glyphicon-menu-left .glyphicon-menu-right{
+    margin-top: 100px;
+    position: relative;
 }
