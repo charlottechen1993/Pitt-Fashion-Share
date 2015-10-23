@@ -30,7 +30,9 @@ mappings = [
     ('/userFunctions', userController.userFunctions),
     ('/uploadImage', imageController.uploadImageHandler),
     ('/addLike', imageController.addLikeHandler),
-    ('/getLikes', imageController.getLikeHandler)
+    ('/getLikes', imageController.getLikeHandler),
+    ('/comment', imageController.addCommentHandler),
+    ('/getCommentsTest', imageController.getCommentsHandler)
 #    ('/userLog', userController.loginPage.show)
 ]
 

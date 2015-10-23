@@ -125,52 +125,36 @@
          </div>
       </div>
       <div class="modal-footer">
-          <form method="post" enctype="multipart/form-data" action="">
+          <form method="post" enctype="multipart/form-data" action="/comment?image_id={{photo.img_id}}" id="form-comment">
           <div class="row cmt">
             <div class="col-sm-1"></div>
             <div class="col-sm-2 left-inner-cmt">
-                <a type="submit" class="glyphicon glyphicon-pencil" href=" "></a>  
+                
+                <a onclick="document.getElementById('form-comment').submit();" class="glyphicon glyphicon-pencil"></a>  
             </div> 
             <div class="col-sm-8" style="padding:0px;">
-                <input type="text" class="commentSub" placeholder="Compliment here">  
+                <input type="text" name="comment" class="commentSub" 
+                       placeholder="Compliment here">  
             </div>
             <div class="col-sm-1"></div>
           </div>
           </form>
           <hr>
+          
+        
+          {% for comment in photo.comments %}
           <div class="row cmt">
             <div class="col-sm-1"></div>
             <div class="col-sm-2 left-inner-cmt">
-                9/10/12<br>  
-                6:00PM
+                <--! 9/10/12 !--> <br>  
+                {{comment.time_created}}
             </div>
             <div class="col-sm-8 right-inner-cmt">
-                Here is a comment
+                {{comment.text}}
             </div>
             <div class="col-sm-1"></div>
          </div>
-          <div class="row cmt">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2 left-inner-cmt">
-                9/10/12<br>  
-                6:00PM
-            </div>
-            <div class="col-sm-8 right-inner-cmt">
-                Here is a comment
-            </div>
-            <div class="col-sm-1"></div>
-         </div>
-          <div class="row cmt">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2 left-inner-cmt">
-                9/10/12<br>  
-                6:00PM
-            </div>
-            <div class="col-sm-8 right-inner-cmt">
-                Here is a comment
-            </div>
-            <div class="col-sm-1"></div>
-         </div>
+          {% endfor %}
           
 
           
@@ -219,7 +203,7 @@
 </div>
 
 <div class="row">
-    <a href="/getLikes">get likes</a>
+    <a href="/getCommentsTest">get photos</a>
     
 </div>
 <br><br><br><br><br>

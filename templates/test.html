@@ -8,4 +8,13 @@
         <li>{{like.userID}}, {{like.imgID}}</li>
     {% endfor %}
     </ul>
+
+
+    <br><br>
+
+    <ul>
+    {% for c in comments %}
+        <li>{{c.userID}}, {{c.imgID}}, {{c.text}}</li>
+    {% endfor %}
+    </ul>
 {% endblock %}

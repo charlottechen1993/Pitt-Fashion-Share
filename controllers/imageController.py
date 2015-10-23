@@ -1,9 +1,14 @@
 import webapp2
 import app_global
+import datetime
+import logging
 import models.imagesModel as imagesModel
-from google.appengine.ext.webapp import blobstore_handlers
-from google.appengine.api import images
 import indexController
+from google.appengine.ext import ndb
+from google.appengine.api import images
+from google.appengine.api import users
+from google.appengine.ext import blobstore
+from google.appengine.ext.webapp import blobstore_handlers
 
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the imageFunctions class
 #class imageFunctions(webapp2.RequestHandler):
@@ -20,6 +25,18 @@ import indexController
 #        
 #        if method == 'upload':
 #            imagesModel.addImage(categoryID, total, title, image_url, user)
+
+
+class addCommentHandler(indexController.index):
+    def post(self):
+        imgID = self.request.get('image_id')
+        userID = self.session.get('user_id')
+        if userID: 
+            text = self.request.get('comment')
+            imagesModel.create_comment(userID, text, imgID)
+            self.redirect('/gallery')
+        else:
+            self.redirect('/')
             
             
 class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler):
@@ -60,7 +77,7 @@ class addLikeHandler(indexController.index):
         app_global.render_template(self,'index.html', params)
     
     
-        
+# test        
 class getLikeHandler(indexController.index):
     
     def get(self):
@@ -79,6 +96,21 @@ class getLikeHandler(indexController.index):
         app_global.render_template(self, template, params)
         
 
+# test
+class getCommentsHandler(indexController.index):
+    
+    def get(self):
+        comments = imagesModel.get_all_comments()
+        likes = imagesModel.getLikes()
+        template = 'test.html'
+        params = {
+            'message': self.session.get('user_id'),
+            'user_id': self.session.get('user_id'),
+            'likes': likes,
+            'comments': comments
+        }        
+        
+        app_global.render_template(self, template, params)
     
     
     
