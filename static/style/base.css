@@ -3,11 +3,11 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
      box-sizing: border-box;
-     z-index: 1;
 }
 body{
     background-color: #FAF7F8;
     overflow-x: hidden;
+    padding-top: 20px;
 }
 
 .adore{
@@ -26,7 +26,7 @@ body{
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display:         flex;
+    display: flex;
 }
 
 /* boostrap */

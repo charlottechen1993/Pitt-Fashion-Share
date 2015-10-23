@@ -4,6 +4,10 @@
     }
 }
 
+.carousel{
+    z-index: 1;   
+}
+
 .cow{
     max-height: auto;
     max-width: 100%;
@@ -11,35 +15,6 @@
 
 .sm-font{
     font-size: small;   
-}
-
-ul#menu {
-    position: absolute;
-    left: 50%;
-    top: 20%;
-    transform: translate(-50%,-20%);
-    -webkit-transform: translate(-50%,-20%);
-    -moz-transform: translate(-50%,-20%);
-    -o-transform: translate(-50%,-20%);
-    -ms-transform: translate(-50%,-20%);
-    padding: 0;
-}
-
-ul#menu li {
-    display: inline;
-}
-
-ul#menu li a {
-    color: #C3D7DE;
-    padding: 10px 10px;
-    text-decoration: none;
-    border-radius: 4px 4px 0 0;
-    width: 50px;
-    cursor: pointer;
-}
-
-ul#menu li a:hover {
-    color: black;
 }
 
 .badge{
