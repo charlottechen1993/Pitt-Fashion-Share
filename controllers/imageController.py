@@ -38,6 +38,13 @@ class addCommentHandler(indexController.index):
         else:
             self.redirect('/')
             
+class deleteCommentHandler(indexController.index):
+    def post(self):
+        commentID = self.request.get('commentID')
+        commentKey = ndb.Key(imagesModel.ImageComment, int(commentID))
+        if commentKey is not None:
+            commentKey.delete()
+        self.redirect('/gallery')
             
 class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler):
     def post(self):

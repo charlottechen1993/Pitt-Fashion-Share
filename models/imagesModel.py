@@ -17,6 +17,7 @@ class ImageComment(ndb.Model):
     imgID = ndb.StringProperty()
     text = ndb.TextProperty()
     time_created = ndb.DateTimeProperty(auto_now_add=True) 
+    yours = ndb.IntegerProperty()
 
 class Image(ndb.Model):
     categoryID = ndb.IntegerProperty()
@@ -99,11 +100,16 @@ def getImages(user_id):
         im['image_url'] = images[i].image_url
         im['user_id'] = images[i].user
         im['img_id'] = str(images[i].key.id())
-        #images[i].comments = comments
-        #images[i].comments = commentsFinal
+        
         comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
         comments = comments.order(-ImageComment.time_created)
         comments = comments.fetch()
+        
+        for elem in comments:
+            elem.commentID = elem.key.id()
+            if elem.userID == str(user_id):
+                elem.yours = 1
+        
         im['comments'] = comments
         
         if im['img_id'] in dictLikes:

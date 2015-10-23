@@ -129,8 +129,8 @@
           <div class="row cmt">
             <div class="col-sm-1"></div>
             <div class="col-sm-2 left-inner-cmt">
-                
-                <a onclick="document.getElementById('form-comment').submit();" class="glyphicon glyphicon-pencil"></a>  
+                <a onclick="document.getElementById('form-comment').submit();" 
+                     class="glyphicon glyphicon-pencil"></a>  
             </div> 
             <div class="col-sm-8" style="padding:0px;">
                 <input type="text" name="comment" class="commentSub" 
@@ -146,11 +146,18 @@
           <div class="row cmt">
             <div class="col-sm-1"></div>
             <div class="col-sm-2 left-inner-cmt">
-                <--! 9/10/12 !--> <br>  
+                <br>  
                 {{comment.time_created}}
             </div>
             <div class="col-sm-8 right-inner-cmt">
                 {{comment.text}}
+                <br>
+                {% if comment.yours %}
+                    <!-- You wrote this comment! !-->
+                <form method="post" enctype="multipart/form-data" action="/deleteComment?commentID={{comment.commentID}}">
+                    <input type="submit" value="Delete">
+                </form>
+                {% endif %}
             </div>
             <div class="col-sm-1"></div>
          </div>
