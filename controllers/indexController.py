@@ -4,9 +4,6 @@ from webapp2_extras import sessions
 
 import app_global
 
-
-    
-    
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
 class index(webapp2.RequestHandler):
     
@@ -33,9 +30,9 @@ class index(webapp2.RequestHandler):
         # images = imagesModels.getImages()
         
         
-        params = {'page_name':'Thrifty Clothes', 
-            'photo_name':'male-photo.jpg', 
-            'photo_name2':'test.jpg',
+        params = {'page_name':'Fashion Share', 
+            'photo_name':'photo6', 
+            'photo_name2':'photo5',
             'photo_name3':'photo4',
             'cow1':'girl1.jpg', 
             'cow2':'girl2.jpg', 
