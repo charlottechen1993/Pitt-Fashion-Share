@@ -108,7 +108,7 @@ def getImages(user_id):
         for elem in comments:
             elem.commentID = elem.key.id()
             if elem.userID == str(user_id):
-                elem.yours = 1
+                elem.yours = 1 #i only check if it exists later on
         
         im['comments'] = comments
         
