@@ -23,6 +23,19 @@
 }
 
 .glyphicon-menu-left .glyphicon-menu-right{
-    margin-top: 100px;
     position: relative;
+    top: 50%;
+}
+
+#carouselButtons {
+    top: 50%;
+}
+
+.mosaicflow__column {
+    float:left;
+    }
+.mosaicflow__item img {
+    display:block;
+    width:100%;
+    height:auto;
 }

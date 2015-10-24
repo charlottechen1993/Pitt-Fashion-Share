@@ -6,6 +6,8 @@
 
 
 {% block js %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="jquery.mosaicflow.min.js"></script>
 	<script src="/static/js/index.js"></script>
 {% endblock %}
 
@@ -21,21 +23,19 @@
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <img src="/images/{{photo_name3}}" class="carousel_img">
-                    <div class="carousel-caption">
-
-                    </div>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Pitt in the Winter</h1>
+                            <p>Check out our exclusive winter section uploads</p>
+                            <p><a class="btn btn-lg btn-primary" href="/gallery">Check it Out!</a>
+        </p></div>
+      </div>
                 </div>
                 <div class="item">
                     <img src="/images/{{photo_name2}}" class="carousel_img">
-                    <div class="carousel-caption">
-
-                    </div>
                 </div>
                 <div class="item">
                     <img src="/images/{{photo_name}}" class="carousel_img">
-                    <div class="carousel-caption">
-
-                    </div>
                 </div>
             </div>
 
@@ -48,7 +48,19 @@
             </a>
         </div>
 </div>
+
 <div class="row" style="margin-top: 20px;">
+    <div class="col-sm-12">
+        <div class="clearfix mosaicflow" data-item-selector=".item" data-min-item-width="300">
+        <div class="mosaicflow__item">
+            <img width="50" height="30" src="/images/{{cow1}}" alt="">
+        </div>
+        <div class="mosaicflow__item">
+            <img width="50" height="50" src="/images/{{cow2}}" alt="">
+        </div>
+</div>
+    </div>
+<!--
     <div class="col-sm-8">
         <div>
             <h4>Popular Outfit of the Week</h4>
@@ -119,6 +131,7 @@
             </table>
         </div>
     </div>
+-->
 </div>
 <br>
 <br>
