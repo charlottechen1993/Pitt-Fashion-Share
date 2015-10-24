@@ -68,21 +68,20 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler):
 
             app_global.render_template(self,'index.html', params)
     
-    
+class deleteLikeHandler(indexController.index):
+    def get(self):
+        likeID = self.request.get('likeID')
+        likeKey = ndb.Key(imagesModel.Like, int(likeID))
+        if likeID is not None:
+            likeKey.delete()
+        self.redirect('gallery')
     
 class addLikeHandler(indexController.index):
-    
     def get(self):
         photo_id = self.request.get('photo_id')
         user_id = self.session.get('user_id')
         imagesModel.addLike(user_id, photo_id)    
-    
-        params = {
-            'user_id':self.session.get('user_id'),
-        }
-
-        app_global.render_template(self,'index.html', params)
-    
+        self.redirect('/gallery')
     
 # test        
 class getLikeHandler(indexController.index):

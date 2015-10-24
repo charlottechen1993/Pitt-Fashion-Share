@@ -3,6 +3,7 @@
 {% block content %}
     <h3>{{message}}</h3>
 <h3>{{user_id}}</h3>
+    Likes:
     <ul>
     {% for like in likes %}
         <li>{{like.userID}}, {{like.imgID}}</li>
@@ -12,6 +13,7 @@
 
     <br><br>
 
+    Comments:
     <ul>
     {% for c in comments %}
         <li>{{c.userID}}, {{c.imgID}}, {{c.text}}</li>

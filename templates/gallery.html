@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="center-list">
-                                {% if photo.adored %}
+                                {% if photo.likedByYou %}
                                     <span class="glyphicon glyphicon-heart heart-filled"></span>
                                 {% else %}
                                     <p class="adore" data-id="{{photo.img_id}}">Adore</p>
@@ -123,7 +123,16 @@
                 <a class="glyphicon glyphicon-chevron-right"></a> 
             </div>
          </div>
+          {% if photo.likedByYou %}
+            <a href = "/unlike?likeID={{photo.yourLikeID}}">Unlike</a>
+            <br>
+          {% else %}
+            <a href = "/addLike?photo_id={{photo.img_id}}&user_id={{user_id}}">Like</a>
+            <br>
+          {% endif %}
+          This image has a total of {{photo.total}} likes.
       </div>
+        
       <div class="modal-footer">
           <form method="post" enctype="multipart/form-data" action="/comment?image_id={{photo.img_id}}" id="form-comment">
           <div class="row cmt">
@@ -141,7 +150,7 @@
           </form>
           <hr>
           
-        
+         
           {% for comment in photo.comments %}
           <div class="row cmt">
             <div class="col-sm-1"></div>

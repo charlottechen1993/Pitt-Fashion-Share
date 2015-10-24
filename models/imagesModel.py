@@ -17,7 +17,8 @@ class ImageComment(ndb.Model):
     imgID = ndb.StringProperty()
     text = ndb.TextProperty()
     time_created = ndb.DateTimeProperty(auto_now_add=True) 
-    yours = ndb.IntegerProperty()
+    yours = ndb.IntegerProperty() #I  just set it something if true since bool didnt work
+                                  # so (if yours) then it shows on the html
 
 class Image(ndb.Model):
     categoryID = ndb.IntegerProperty()
@@ -27,6 +28,7 @@ class Image(ndb.Model):
     user = ndb.StringProperty()
     time_created = ndb.DateTimeProperty(auto_now_add=True)
     comments = list()
+    liked = ndb.IntegerProperty() #using same way as ImageComment.yours
     
 class Like(ndb.Model):
     imgID = ndb.StringProperty()
@@ -95,15 +97,30 @@ def getImages(user_id):
     for i in range(0,len(images)):
         im = {}
         im['categoryID'] = images[i].categoryID
-        im['total'] = images[i].total
+        im['img_id'] = str(images[i].key.id())
+        # im['total'] = images[i].total
+        im['total'] = Like.query(im['img_id']==Like.imgID).count()
         im['title'] = images[i].title
         im['image_url'] = images[i].image_url
         im['user_id'] = images[i].user
-        im['img_id'] = str(images[i].key.id())
+       
         
         comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
         comments = comments.order(-ImageComment.time_created)
         comments = comments.fetch()
+        
+        
+        allLikes = Like.query()
+        thisImageLikes = allLikes.filter(im['img_id'] == Like.imgID) #problem is here
+        likedByYou = thisImageLikes.filter(Like.userID == str(user_id))
+        cnt = likedByYou.count()
+        
+        
+        #None value if not liked. 
+        if cnt > 0:
+            im['likedByYou'] = thisImageLikes.count()
+            specificLike = likedByYou.fetch(1)[0]
+            im['yourLikeID'] = specificLike.key.id()
         
         for elem in comments:
             elem.commentID = elem.key.id()
