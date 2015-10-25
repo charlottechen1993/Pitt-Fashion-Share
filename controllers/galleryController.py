@@ -68,3 +68,8 @@ class index(indexController.index):
 
  
         app_global.render_template(self,'gallery.html', params)
+    
+    
+class gallery2(indexController.index):
+    def get(self):
+         app_global.render_template(self,'gallery2.html', {})    
