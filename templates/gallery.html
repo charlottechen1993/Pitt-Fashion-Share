@@ -69,6 +69,7 @@
                         <td><a href = "/gallery?brand={{brand}}">{{brand}}</a></td>
                         <br>
                     {% endfor %}
+                    <td><a href = "/gallery">Any</a></td><br>
                 </tr>
             </div>
             
@@ -79,16 +80,18 @@
                         <td><a href = "/gallery?clothingType={{type}}">{{type}}</a></td>
                         <br>
                     {% endfor %}
+                    <td><a href = "/gallery">Any</a></td><br>
                 </tr>
             </div>
             
             <div class="col-sm-4">
                 <h4 class="priceListings">Price<br></h4>
                 <tr>
-                    {% for price in prices %}
+                    {% for price in priceOptions %}
                         <td><a href = "/gallery?maxPrice={{price}}">{{price}}</a></td>
                         <br>
                     {% endfor %}
+                    <td><a href = "/gallery">Any</a></td><br>
                 </tr>
             </div>
             
@@ -252,9 +255,13 @@
         Picture Title:<br>
         <input name="title" type="text"><br><br>
         
-        Price: <br>
-        <input name = "price" type="text"><br><br>
-        
+        Price Range: <br>
+        <select name="priceRange">
+            {% for priceOption in priceOptions %}
+                <option value="{{priceOption}}">{{priceOption}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
         
         Type of Clothing: <br>
         <select name="clothingType">

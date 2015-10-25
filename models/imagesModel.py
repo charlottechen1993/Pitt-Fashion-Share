@@ -29,7 +29,8 @@ class Image(ndb.Model):
     time_created = ndb.DateTimeProperty(auto_now_add=True)
     comments = list()
     liked = ndb.IntegerProperty() #if initialized, yes
-    price = ndb.IntegerProperty()
+    minPrice = ndb.IntegerProperty()
+    maxPrice = ndb.IntegerProperty()
     brand = ndb.StringProperty()
     clothingType = ndb.StringProperty() # type as in shirt, jeans, etc. 
     
@@ -69,14 +70,15 @@ def get_all_comments():
     comments = q.fetch()
     return comments
 
-def addImage(categoryID, total, title, image_url, user, price, brand, clothingType):
+def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, brand, clothingType):
     image = Image()
     image.total = total
     image.categoryID = categoryID
     image.title = title
     image.image_url = image_url
     image.user = user
-    image.price = price
+    image.maxPrice = maxPrice
+    image.minPrice = minPrice
     image.brand = brand
     image.clothingType = clothingType
     image.put()
@@ -98,12 +100,14 @@ def getImages(user_id, restrictionsList):
     for i in range(0, len(likes)):
         dictLikes.append(likes[i].imgID)
         
-    maxPrice = restrictionsList[0]
-    brandName = restrictionsList[1]
-    clothingType = restrictionsList[2]
+    minPrice = restrictionsList[0]
+    maxPrice = restrictionsList[1]
+    brandName = restrictionsList[2]
+    clothingType = restrictionsList[3]
     
     for i in range(0,len(images)):
-        if maxPrice is not None and (images[i].price > maxPrice or images[i].price is None):
+        
+        if (maxPrice is not None and minPrice is not None) and (images[i].minPrice >= maxPrice or images[i].maxPrice <= minPrice):
             continue
         
         if brandName is not None and images[i].brand != brandName:
@@ -120,9 +124,10 @@ def getImages(user_id, restrictionsList):
         im['title'] = images[i].title
         im['image_url'] = images[i].image_url
         im['user_id'] = images[i].user
-        im['price'] = images[i].price
         im['brand'] = images[i].brand
         im['clothingType'] = images[i].clothingType
+        im['minPrice'] = images[i].minPrice
+        im['maxPrice'] = images[i].maxPrice
         
         comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
         comments = comments.order(-ImageComment.time_created)

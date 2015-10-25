@@ -4,6 +4,7 @@ import datetime
 import logging
 import models.imagesModel as imagesModel
 import indexController
+import galleryController
 from google.appengine.ext import ndb
 from google.appengine.api import images
 from google.appengine.api import users
@@ -55,17 +56,55 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler):
         if type in ['image/jpeg', 'image/png']: 
             title = self.request.get('title')
             user = self.request.get('user_id')
-            priceField = self.request.get('price')
+            priceRange = self.request.get('priceRange')
             brand = self.request.get('brand')
             clothingType = self.request.get('clothingType')
-            try:
-                price = int(priceField)
-            except:
-                price = None
+        
+            prices = galleryController.prices
+        
+            #These things generate a dynamic price menu based on the prices. 
+            #prices = [0, 25, 50] ==> priceOptions = ['$0-$25', '$25-$50', 'Over $50']
+            priceOptions = list()
+            lastValue = 0
+            nextValue = prices[0]
+            index = 0
+        
+            for i in range(0, len(prices)+1):
+                if (i != len(prices)):
+                    priceOptions.append('$' + str(lastValue) + '-$' + str(nextValue))
+                else:
+                    priceOptions.append('Over $' + str(nextValue))
+                if (i < len(prices)-1):
+                    lastValue = nextValue
+                    index += 1
+                    nextValue = prices[index]
+        
+             #[25, 50]
+        #['0-25', '25-50', 'Over 50'] 
+        #This part just changes the option '25-50', etc. to an actual number for the filter.
+        # '$0-$25' ==> minimumPrice = 0, maximumPrice = 25
+        # Note: for maximum value. ie. over 1000, I use minimumPrice = highest + 1 (so 1001)
+        # and maximumPrice = highest + 2. 
+            
+            if priceRange is not None:
+                index = priceOptions.index(priceRange)
+                if index < len(priceOptions)-1:
+                    picPriceMax = prices[index]
+                    if (index-1 > -1):
+                        picPriceMin = prices[index-1]
+                    else:
+                        picPriceMin = 0
+                else:
+                    picPriceMax = prices[len(prices)-1] + 2
+                    picPriceMin = prices[len(prices)-1] + 1
+            else:
+                picPriceMin = None
+                picPriceMax = None
+         
             categoryID = 0
             total = 59
             image_url = images.get_serving_url(blob_info.key())
-            imagesModel.addImage(categoryID, total, title, image_url, user, price, brand, clothingType)
+            imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, brand, clothingType)
 
             
             params = {
@@ -118,6 +157,7 @@ class getCommentsHandler(indexController.index):
         user_id = self.session.get('user_id')
         
         restrictions = list()
+        restrictions.append(None)
         restrictions.append(None)
         restrictions.append(None)
         restrictions.append(None)

@@ -4,17 +4,37 @@ import indexController
 import app_global
 import main
 import models.imagesModel as imagesModel
+from google.appengine.ext import ndb
 import json
 
+# I use price ranges for my filtering. ie. 25-50. 
+# So if you change the prices list after there are images in the datastore,
+# you may get imprecise filtering. 
 
+brands = ['Asian', 'Forever 21', 'Gap', 'PS', 'Other']
+types = ['Shirt', 'Jeans', 'Shoes', 'Entire Body', 'Other']
+prices = [25, 50, 100, 500, 1000]
 
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
 class index(indexController.index):
+    
     #respond to HTTP GET requests
     def get(self):
         # images = imagesModels.getImages()
   
-        
+        #ims = imagesModel.Image.query()
+        #for im in ims.fetch():
+        #    im.key.delete()
+
+        #likes = imagesModel.Like.query()
+        #for like in likes.fetch():
+        #        like.key.delete()
+                
+        #coms = imagesModel.ImageComment.query()
+        #for com in coms.fetch():
+        #        com.key.delete()
+                
+                
 #        for i in range(1,17):
 #            photo = {}
 #            photo['name'] = 'girl'+ str(i) + '.jpg';
@@ -37,23 +57,58 @@ class index(indexController.index):
             brandName = None
         if clothingType == "":
             clothingType = None
+        if maxPrice == "":
+            maxPrice = None
         
-        try:
-            maximumPrice = int(maxPrice)
-        except:
+        #These things generate a dynamic price menu based on the prices. 
+        #prices = [0, 25, 50] ==> priceOptions = ['$0-$25', '$25-$50', 'Over $50']
+        priceOptions = list()
+        lastValue = 0
+        nextValue = prices[0]
+        index = 0
+        
+        for i in range(0, len(prices)+1):
+            if (i != len(prices)):
+                priceOptions.append('$' + str(lastValue) + '-$' + str(nextValue))
+            else:
+                priceOptions.append('Over $' + str(nextValue))
+            if (i < len(prices)-1):
+                lastValue = nextValue
+                index += 1
+                nextValue = prices[index]
+        
+        
+        #[25, 50]
+        #['0-25', '25-50', 'Over 50'] 
+        #This part just changes the option '25-50', etc. to an actual number for the filter.
+        # '$0-$25' ==> minimumPrice = 0, maximumPrice = 25
+        # Note: for maximum value. ie. over 1000, I use minimumPrice = highest + 1 (so 1001)
+        # and maximumPrice = highest + 2. 
+        
+        if maxPrice is not None:
+            index = priceOptions.index(maxPrice)
+            if index < len(priceOptions)-1:
+                    maximumPrice = prices[index]
+                    if (index-1 > -1):
+                        minimumPrice = prices[index-1]
+                    else:
+                        minimumPrice = 0
+            else:
+                maximumPrice = prices[len(prices)-1] + 2
+                minimumPrice = prices[len(prices)-1] + 1
+        else:
+            minimumPrice = None
             maximumPrice = None
-            
+       
+        #This list is used to narrow the images down when filtering.
         restrictionList = list()
+        restrictionList.append(minimumPrice)
         restrictionList.append(maximumPrice)
         restrictionList.append(brandName)
         restrictionList.append(clothingType)
-    
+        
         images = imagesModel.getImages(user_id, restrictionList)
         
-        brands = ['Asian', 'Forever 21', 'Gap', 'PS', 'Other']
-        types = ['Shirt', 'Jeans', 'Shoes', 'Entire Body', 'Other']
-        prices = [25, 50, 100, 500, 1000]
-    
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
         params = {
@@ -63,7 +118,8 @@ class index(indexController.index):
             'upload_url': upload_url,
             'brands': brands,
             'types': types,
-            'prices': prices
+            'prices': prices,
+            'priceOptions': priceOptions
         }
 
  
