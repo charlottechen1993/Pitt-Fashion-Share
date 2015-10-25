@@ -34,7 +34,8 @@ mappings = [
     ('/comment', imageController.addCommentHandler),
     ('/deleteComment', imageController.deleteCommentHandler),
     ('/getCommentsTest', imageController.getCommentsHandler),
-    ('/unlike', imageController.deleteLikeHandler)
+    ('/unlike', imageController.deleteLikeHandler),
+    ('/gallery2', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]
 
