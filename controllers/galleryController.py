@@ -23,10 +23,36 @@ class index(indexController.index):
 #            else:
 #                photo['adored'] = False;
 #            photo_list.append(photo)
-#       
+
+        #getImages(user_id, maxPrice, brandName, clothingType)
+#       None is used to not consider that restriction
+
         user_id = self.session.get('user_id')
-        images = imagesModel.getImages(user_id)
-      
+    
+        maxPrice = self.request.get('maxPrice')
+        brandName = self.request.get('brand')
+        clothingType = self.request.get('clothingType')
+        
+        if brandName == "":
+            brandName = None
+        if clothingType == "":
+            clothingType = None
+        
+        try:
+            maximumPrice = int(maxPrice)
+        except:
+            maximumPrice = None
+            
+        restrictionList = list()
+        restrictionList.append(maximumPrice)
+        restrictionList.append(brandName)
+        restrictionList.append(clothingType)
+    
+        images = imagesModel.getImages(user_id, restrictionList)
+        
+        brands = ['Asian', 'Forever 21', 'Gap', 'PS', 'Other']
+        types = ['Shirt', 'Jeans', 'Shoes', 'Entire Body', 'Other']
+        prices = [25, 50, 100, 500, 1000]
     
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
@@ -34,7 +60,10 @@ class index(indexController.index):
             'photos': images,
             #'photos_json': json.dumps(images),
             'user_id':self.session.get('user_id'),
-            'upload_url': upload_url
+            'upload_url': upload_url,
+            'brands': brands,
+            'types': types,
+            'prices': prices
         }
 
  

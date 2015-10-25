@@ -28,7 +28,10 @@ class Image(ndb.Model):
     user = ndb.StringProperty()
     time_created = ndb.DateTimeProperty(auto_now_add=True)
     comments = list()
-    liked = ndb.IntegerProperty() #using same way as ImageComment.yours
+    liked = ndb.IntegerProperty() #if initialized, yes
+    price = ndb.IntegerProperty()
+    brand = ndb.StringProperty()
+    clothingType = ndb.StringProperty() # type as in shirt, jeans, etc. 
     
 class Like(ndb.Model):
     imgID = ndb.StringProperty()
@@ -66,21 +69,22 @@ def get_all_comments():
     comments = q.fetch()
     return comments
 
-
-    
-def addImage(categoryID, total, title, image_url, user):
+def addImage(categoryID, total, title, image_url, user, price, brand, clothingType):
     image = Image()
     image.total = total
     image.categoryID = categoryID
     image.title = title
     image.image_url = image_url
     image.user = user
+    image.price = price
+    image.brand = brand
+    image.clothingType = clothingType
     image.put()
     
 #def get_image(image_id):
 #    return ndb.Key(urlsafe=image_id).get()
     
-def getImages(user_id):
+def getImages(user_id, restrictionsList):
     result = list()
     queryImg = Image.query()
     #query = query.order(Image.time_created)
@@ -93,8 +97,21 @@ def getImages(user_id):
     dictLikes = list()
     for i in range(0, len(likes)):
         dictLikes.append(likes[i].imgID)
+        
+    maxPrice = restrictionsList[0]
+    brandName = restrictionsList[1]
+    clothingType = restrictionsList[2]
     
     for i in range(0,len(images)):
+        if maxPrice is not None and (images[i].price > maxPrice or images[i].price is None):
+            continue
+        
+        if brandName is not None and images[i].brand != brandName:
+            continue
+        
+        if clothingType is not None and images[i].clothingType != clothingType:
+            continue
+        
         im = {}
         im['categoryID'] = images[i].categoryID
         im['img_id'] = str(images[i].key.id())
@@ -103,7 +120,9 @@ def getImages(user_id):
         im['title'] = images[i].title
         im['image_url'] = images[i].image_url
         im['user_id'] = images[i].user
-       
+        im['price'] = images[i].price
+        im['brand'] = images[i].brand
+        im['clothingType'] = images[i].clothingType
         
         comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
         comments = comments.order(-ImageComment.time_created)

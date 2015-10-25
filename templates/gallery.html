@@ -59,36 +59,74 @@
             <div class="col-sm-12">
                 <h3 class="photo-title">The Look<br><small class="photo-time">9/10/2 6PM</small></h3>
             </div>
-        </div>
+          </div>
+            
+        <div class="row">
+            <div class="col-sm-4">
+                <h4 class="brandListings">Brand<br></h4>
+                <tr>
+                    {% for brand in brands %}
+                        <td><a href = "/gallery?brand={{brand}}">{{brand}}</a></td>
+                        <br>
+                    {% endfor %}
+                </tr>
+            </div>
+            
+            <div class="col-sm-4">
+                <h4 class="typeListings">Type<br></h4>
+                <tr>
+                    {% for type in types %}
+                        <td><a href = "/gallery?clothingType={{type}}">{{type}}</a></td>
+                        <br>
+                    {% endfor %}
+                </tr>
+            </div>
+            
+            <div class="col-sm-4">
+                <h4 class="priceListings">Price<br></h4>
+                <tr>
+                    {% for price in prices %}
+                        <td><a href = "/gallery?maxPrice={{price}}">{{price}}</a></td>
+                        <br>
+                    {% endfor %}
+                </tr>
+            </div>
+            
+          </div>
+        
         <br> 
+        
+    <!--
         <div class="row border-bottom">
             <div class="col-sm-12">
-               <span class="info">
+               <span class="info">                   
                    <table class="table table-hover table-clothes">
                         <tr>
                             <td>Shirt</td>
-                            <td>H&M</td>
-                            <td>$100</td>
+                            <td><a href = "/gallery?brand=h&m">H&#38;M</a></td>
+                            <td><a href = "/gallery?maxPrice=50">$50</a></td>
                         </tr>
                         <tr>
                             <td>Jeans</td>
-                            <td>Forever 21</td>
-                            <td>$200</td>
+                            <td><a href = "/gallery?brand=forever21">Forever 21</a></td>
+                            <td><a href = "/gallery?maxPrice=100">$100</a></td>
                         </tr>
                         <tr>
                             <td>Shoes</td>
-                            <td>Gap</td>
-                            <td>$80</td>
+                            <td><a href = "/gallery?brand=gap">Gap</a></td>
+                            <td><a href = "/gallery?maxPrice=500">$500</a></td>
                         </tr>
                         <tr>
                             <td>Total</td>
-                            <td></td>
-                            <td>$800</td>
+                            <td><a href = "/gallery?brand=other">Other Brands</a></td>
+                            <td><a href = "/gallery?maxPrice=1000">$1000</a></td>
                         </tr>
                     </table>
                 </span>
             </div>
-        </div>
+        </div> 
+    !-->
+        
         <br>
         <div class="row">
             <div class="col-sm-12">
@@ -162,7 +200,7 @@
                 {{comment.text}}
                 <br>
                 {% if comment.yours %}
-                    <!-- You wrote this comment! !-->
+                    <!-- You wrote this comment! Option to delete.!-->
                 <form method="post" enctype="multipart/form-data" action="/deleteComment?commentID={{comment.commentID}}">
                     <input type="submit" value="Delete">
                 </form>
@@ -208,18 +246,42 @@
 
 
 <div class="row">
-    <h2>Image Upload</h2>
+    <h2>Image Upload</h2> <br>
     <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
+        
         Picture Title:<br>
-        <input name="title" type="text"><br><br><br>
+        <input name="title" type="text"><br><br>
+        
+        Price: <br>
+        <input name = "price" type="text"><br><br>
+        
+        
+        Type of Clothing: <br>
+        <select name="clothingType">
+            {% for type in types %}
+                <option value="{{type}}">{{type}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        
+        Brand: <br>
+        <select name="brand">
+            {% for brand in brands %}
+                <option value="{{brand}}">{{brand}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        
         File:<br>
         <input name="file" type="file"><br><br><br>
         <input type="submit">
+        
     </form>
 </div>
 
+<br>
 <div class="row">
-    <a href="/getCommentsTest">get photos</a>
+    <a href="/getCommentsTest">NDB Contents</a>
     
 </div>
 <br><br><br><br><br>

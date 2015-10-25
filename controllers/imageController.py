@@ -53,19 +53,26 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler):
         type = blob_info.content_type
 
         if type in ['image/jpeg', 'image/png']: 
-
             title = self.request.get('title')
             user = self.request.get('user_id')
+            priceField = self.request.get('price')
+            brand = self.request.get('brand')
+            clothingType = self.request.get('clothingType')
+            try:
+                price = int(priceField)
+            except:
+                price = None
             categoryID = 0
             total = 59
             image_url = images.get_serving_url(blob_info.key())
-            imagesModel.addImage(categoryID, total, title, image_url, user)
+            imagesModel.addImage(categoryID, total, title, image_url, user, price, brand, clothingType)
 
             
             params = {
                 'user_id':1
             }
 
+            #self.redirect('/gallery')
             app_global.render_template(self,'index.html', params)
     
 class deleteLikeHandler(indexController.index):
@@ -108,12 +115,21 @@ class getCommentsHandler(indexController.index):
     def get(self):
         comments = imagesModel.get_all_comments()
         likes = imagesModel.getLikes()
+        user_id = self.session.get('user_id')
+        
+        restrictions = list()
+        restrictions.append(None)
+        restrictions.append(None)
+        restrictions.append(None)
+        
+        images = imagesModel.getImages(user_id, restrictions)
         template = 'test.html'
         params = {
             'message': self.session.get('user_id'),
             'user_id': self.session.get('user_id'),
             'likes': likes,
-            'comments': comments
+            'comments': comments,
+            'images': images
         }        
         
         app_global.render_template(self, template, params)

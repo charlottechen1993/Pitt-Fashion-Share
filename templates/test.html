@@ -19,4 +19,18 @@
         <li>{{c.userID}}, {{c.imgID}}, {{c.text}}</li>
     {% endfor %}
     </ul>
+
+    <br><br>
+    Images:
+    <ul>
+    {% for img in images %}
+        <li>title = {{img.title}}</li>
+        <ul>
+            <li>type = {{img.clothingType}}</li> 
+            <li>brand = {{img.brand}}</li> 
+            <li>imgID = {{img.img_id}}</li> 
+            <li>price = {{img.price}}</li>
+        </ul>
+    {% endfor %}
+    </ul>
 {% endblock %}
