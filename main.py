@@ -34,11 +34,8 @@ mappings = [
     ('/comment', imageController.addCommentHandler),
     ('/deleteComment', imageController.deleteCommentHandler),
     ('/getCommentsTest', imageController.getCommentsHandler),
-<<<<<<< Updated upstream
     ('/unlike', imageController.deleteLikeHandler)
-=======
     ('/gallery2', galleryController.gallery2)
->>>>>>> Stashed changes
 #    ('/userLog', userController.loginPage.show)
 ]
 
