@@ -1,6 +1,3 @@
-
-
-
 {% extends "base.html" %}
 
 {% block css %}
@@ -56,9 +53,16 @@
     </div>
     <div class="hidden-xs col-sm-4 col-md-4 right-panel">
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <h3 class="photo-title">The Look<br><small class="photo-time">9/10/2 6PM</small></h3>
             </div>
+              
+            <!-- Can only upload an image if logged in. !-->
+            {% if user_id %}
+            <div class = "col-sm-6">
+              <h3><a href = "#uploadImage">Upload Image</a></h3>
+              </div>
+            {% endif %}
           </div>
             
         <div class="row">
@@ -164,17 +168,28 @@
                 <a class="glyphicon glyphicon-chevron-right"></a> 
             </div>
          </div>
-          {% if photo.likedByYou %}
-            <a href = "/unlike?likeID={{photo.yourLikeID}}">Unlike</a>
+          <br>
+          <!-- Can only like/unlike if logged in. !-->
+          {% if user_id %}
             <br>
+            {% if photo.likedByYou %}
+                <a href = "/unlike?likeID={{photo.yourLikeID}}">Unlike</a>
+                <br>
+            {% else %}
+                <a href = "/addLike?photo_id={{photo.img_id}}&user_id={{user_id}}">Like</a>
+                <br>
+            {% endif %}
           {% else %}
-            <a href = "/addLike?photo_id={{photo.img_id}}&user_id={{user_id}}">Like</a>
             <br>
           {% endif %}
-          This image has a total of {{photo.total}} likes.
+            This image has a total of {{photo.total}} likes.
+          <br>  Uploaded by {{photo.uploadedBy}}
       </div>
         
       <div class="modal-footer">
+          
+        <!-- Can only comment if logged in. !-->
+        {% if user_id %}
           <form method="post" enctype="multipart/form-data" action="/comment?image_id={{photo.img_id}}" id="form-comment">
           <div class="row cmt">
             <div class="col-sm-1"></div>
@@ -189,6 +204,7 @@
             <div class="col-sm-1"></div>
           </div>
           </form>
+        {% endif %}
           <hr>
           
          
@@ -202,13 +218,17 @@
             <div class="col-sm-8 right-inner-cmt">
                 {{comment.text}}
                 <br>
-                {% if comment.yours %}
+                <!-- Can only delete comment if you are logged in, and it's yours. !-->
+                {% if user_id %}
+                    {% if comment.yours %}
                     <!-- You wrote this comment! Option to delete.!-->
-                <form method="post" enctype="multipart/form-data" action="/deleteComment?commentID={{comment.commentID}}">
-                    <input type="submit" value="Delete">
-                </form>
+                        <form method="post" enctype="multipart/form-data" action="/deleteComment?commentID={{comment.commentID}}">
+                            <input type="submit" value="Delete">
+                        </form>
+                    {% endif %}
                 {% endif %}
             </div>
+            Comment by {{username}}
             <div class="col-sm-1"></div>
          </div>
           {% endfor %}
@@ -246,9 +266,9 @@
 
 
 
-
-
-<div class="row">
+<!-- Can only upload an image/see the upload menu if logged in. !-->
+{% if user_id %}
+<div class="row" id="uploadImage">
     <h2>Image Upload</h2> <br>
     <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
         
@@ -285,8 +305,11 @@
         
     </form>
 </div>
+{% endif %}
 
 <br>
+
+<!-- Debugging page to see the contents of the database. !-->
 <div class="row">
     <a href="/getCommentsTest">NDB Contents</a>
     

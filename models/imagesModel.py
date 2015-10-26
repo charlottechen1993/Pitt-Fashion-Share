@@ -4,6 +4,7 @@ from google.appengine.api import images
 from google.appengine.api import users
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
+
 #
 #def get_user_email():
 #  result = None
@@ -17,6 +18,7 @@ class ImageComment(ndb.Model):
     imgID = ndb.StringProperty()
     text = ndb.TextProperty()
     time_created = ndb.DateTimeProperty(auto_now_add=True) 
+    uploadedBy = ndb.StringProperty()
     yours = ndb.IntegerProperty() #I  just set it something if true since bool didnt work
                                   # so (if yours) then it shows on the html
 
@@ -31,17 +33,21 @@ class Image(ndb.Model):
     liked = ndb.IntegerProperty() #if initialized, yes
     minPrice = ndb.IntegerProperty()
     maxPrice = ndb.IntegerProperty()
+    priceRange = ndb.StringProperty()
     brand = ndb.StringProperty()
     clothingType = ndb.StringProperty() # type as in shirt, jeans, etc. 
+    uploadedBy = ndb.StringProperty()
     
 class Like(ndb.Model):
     imgID = ndb.StringProperty()
     userID = ndb.StringProperty()
+    uploadedBy = ndb.StringProperty()
 
-def addLike(userID, imgID):
+def addLike(userID, imgID, username):
     like = Like()
     like.imgID = str(imgID)
     like.userID = str(userID)
+    like.uploadedBy = username
     like.put()
     
 def getLikes():
@@ -49,11 +55,12 @@ def getLikes():
     likes = query.fetch()
     return likes
 
-def create_comment(userID, text, imgID):
+def create_comment(userID, text, imgID, username):
     comment = ImageComment()
     comment.imgID = str(imgID)
     comment.userID = str(userID)
     comment.text = text
+    comment.uploadedBy = username
     comment.put()
    
 def get_comments(imgID):
@@ -70,17 +77,19 @@ def get_all_comments():
     comments = q.fetch()
     return comments
 
-def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, brand, clothingType):
+def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, priceRange, brand, clothingType, username):
     image = Image()
     image.total = total
     image.categoryID = categoryID
     image.title = title
     image.image_url = image_url
     image.user = user
-    image.maxPrice = maxPrice
     image.minPrice = minPrice
+    image.maxPrice = maxPrice
+    image.priceRange = priceRange
     image.brand = brand
     image.clothingType = clothingType
+    image.uploadedBy = username
     image.put()
     
 #def get_image(image_id):
@@ -128,17 +137,16 @@ def getImages(user_id, restrictionsList):
         im['clothingType'] = images[i].clothingType
         im['minPrice'] = images[i].minPrice
         im['maxPrice'] = images[i].maxPrice
+        im['uploadedBy'] = images[i].uploadedBy
         
         comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
         comments = comments.order(-ImageComment.time_created)
         comments = comments.fetch()
         
-        
         allLikes = Like.query()
-        thisImageLikes = allLikes.filter(im['img_id'] == Like.imgID) #problem is here
+        thisImageLikes = allLikes.filter(im['img_id'] == Like.imgID)
         likedByYou = thisImageLikes.filter(Like.userID == str(user_id))
         cnt = likedByYou.count()
-        
         
         #None value if not liked. 
         if cnt > 0:

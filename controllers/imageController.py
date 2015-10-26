@@ -5,6 +5,7 @@ import logging
 import models.imagesModel as imagesModel
 import indexController
 import galleryController
+import userLogController as userLog
 from google.appengine.ext import ndb
 from google.appengine.api import images
 from google.appengine.api import users
@@ -32,9 +33,10 @@ class addCommentHandler(indexController.index):
     def post(self):
         imgID = self.request.get('image_id')
         userID = self.session.get('user_id')
+        username = self.session.get('user')
         if userID: 
             text = self.request.get('comment')
-            imagesModel.create_comment(userID, text, imgID)
+            imagesModel.create_comment(userID, text, imgID, username)
             self.redirect('/gallery')
         else:
             self.redirect('/')
@@ -47,7 +49,7 @@ class deleteCommentHandler(indexController.index):
             commentKey.delete()
         self.redirect('/gallery')
             
-class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler):
+class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, indexController.index):
     def post(self):
         upload_files = self.get_uploads()
         blob_info = upload_files[0]
@@ -104,7 +106,8 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler):
             categoryID = 0
             total = 59
             image_url = images.get_serving_url(blob_info.key())
-            imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, brand, clothingType)
+            username = self.session.get('user')
+            imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, priceRange, brand, clothingType, username)
 
             
             params = {
@@ -126,7 +129,8 @@ class addLikeHandler(indexController.index):
     def get(self):
         photo_id = self.request.get('photo_id')
         user_id = self.session.get('user_id')
-        imagesModel.addLike(user_id, photo_id)    
+        username = self.session.get('user')
+        imagesModel.addLike(user_id, photo_id, username)    
         self.redirect('/gallery')
     
 # test        
@@ -167,6 +171,7 @@ class getCommentsHandler(indexController.index):
         params = {
             'message': self.session.get('user_id'),
             'user_id': self.session.get('user_id'),
+            'username': self.session.get('user'),
             'likes': likes,
             'comments': comments,
             'images': images

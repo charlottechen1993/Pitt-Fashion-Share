@@ -60,7 +60,7 @@ class index(indexController.index):
         if maxPrice == "":
             maxPrice = None
         
-        #These things generate a dynamic price menu based on the prices. 
+        #These things generate a price menu based on the prices. 
         #prices = [0, 25, 50] ==> priceOptions = ['$0-$25', '$25-$50', 'Over $50']
         priceOptions = list()
         lastValue = 0
@@ -83,7 +83,7 @@ class index(indexController.index):
         #This part just changes the option '25-50', etc. to an actual number for the filter.
         # '$0-$25' ==> minimumPrice = 0, maximumPrice = 25
         # Note: for maximum value. ie. over 1000, I use minimumPrice = highest + 1 (so 1001)
-        # and maximumPrice = highest + 2. 
+        # and maximumPrice = highest + 2 (so 1002).
         
         if maxPrice is not None:
             index = priceOptions.index(maxPrice)
@@ -107,14 +107,16 @@ class index(indexController.index):
         restrictionList.append(brandName)
         restrictionList.append(clothingType)
         
-        images = imagesModel.getImages(user_id, restrictionList)
+        images = imagesModel.getImages(None, restrictionList)
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
         params = {
             'photos': images,
             #'photos_json': json.dumps(images),
-            'user_id':self.session.get('user_id'),
+            #'user_id':self.session.get('user_id'),
+            'username': self.session.get('user'),
+            'user_id': None, #testing when user is logged out
             'upload_url': upload_url,
             'brands': brands,
             'types': types,

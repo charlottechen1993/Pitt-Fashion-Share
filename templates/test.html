@@ -2,21 +2,31 @@
 
 {% block content %}
     <h3>{{message}}</h3>
-<h3>{{user_id}}</h3>
+<h3>You are {{username}} with user_id {{user_id}}</h3>
     Likes:
     <ul>
     {% for like in likes %}
-        <li>{{like.userID}}, {{like.imgID}}</li>
+        <li>imgID = {{like.imgID}}</li>
+        <ul>
+            <li>userID = {{like.userID}}</li> 
+            <!-- <li>imgID = {{like.imgID}}</li> !-->
+            <li>uploadedBy = {{like.uploadedBy}}</li>
+        </ul>
     {% endfor %}
     </ul>
-
 
     <br><br>
 
     Comments:
     <ul>
     {% for c in comments %}
-        <li>{{c.userID}}, {{c.imgID}}, {{c.text}}</li>
+        <li>Text = "{{c.text}}"</li>
+        <ul>
+            <li>userID = {{c.userID}}</li> 
+            <li>imgID = {{c.imgID}}</li> 
+            <li>uploadedBy = {{c.uploadedBy}}</li>
+        </ul>
+        
     {% endfor %}
     </ul>
 
@@ -26,6 +36,7 @@
     {% for img in images %}
         <li>title = {{img.title}}</li>
         <ul>
+            <li>Uploaded by = {{img.uploadedBy}}</li>
             <li>type = {{img.clothingType}}</li> 
             <li>brand = {{img.brand}}</li> 
             <li>imgID = {{img.img_id}}</li> 
