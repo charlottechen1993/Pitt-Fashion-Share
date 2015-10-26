@@ -21,7 +21,9 @@ class index(indexController.index):
     #respond to HTTP GET requests
     def get(self):
         # images = imagesModels.getImages()
-  
+
+        #The following 10 lines of code just wipe the entire images, likes, comments datastore.
+        
         #ims = imagesModel.Image.query()
         #for im in ims.fetch():
         #    im.key.delete()
@@ -107,16 +109,16 @@ class index(indexController.index):
         restrictionList.append(brandName)
         restrictionList.append(clothingType)
         
-        images = imagesModel.getImages(None, restrictionList)
+        images = imagesModel.getImages(user_id, restrictionList)
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
         params = {
             'photos': images,
             #'photos_json': json.dumps(images),
-            #'user_id':self.session.get('user_id'),
+            'user_id':self.session.get('user_id'),
             'username': self.session.get('user'),
-            'user_id': None, #testing when user is logged out
+            #'user_id': None, #testing when user is logged out
             'upload_url': upload_url,
             'brands': brands,
             'types': types,
