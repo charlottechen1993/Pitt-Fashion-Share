@@ -138,6 +138,7 @@ def getImages(user_id, restrictionsList):
         im['minPrice'] = images[i].minPrice
         im['maxPrice'] = images[i].maxPrice
         im['uploadedBy'] = images[i].uploadedBy
+        im['priceRange'] = images[i].priceRange
         
         comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
         comments = comments.order(-ImageComment.time_created)

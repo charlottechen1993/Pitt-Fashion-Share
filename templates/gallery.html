@@ -170,20 +170,30 @@
          </div>
           <br>
           <!-- Can only like/unlike if logged in. !-->
-          {% if user_id %}
-            <br>
-            {% if photo.likedByYou %}
-                <a href = "/unlike?likeID={{photo.yourLikeID}}">Unlike</a>
+          <div class="col-sm-6">
+            {% if user_id %}
                 <br>
-            {% else %}
-                <a href = "/addLike?photo_id={{photo.img_id}}&user_id={{user_id}}">Like</a>
+                {% if photo.likedByYou %}
+                    <a href = "/unlike?likeID={{photo.yourLikeID}}">Unlike</a>
+                    <br>
+                {% else %}
+                    <a href = "/addLike?photo_id={{photo.img_id}}&user_id={{user_id}}">Like</a>
+                    <br>
+                {% endif %}
+              {% else %}
                 <br>
-            {% endif %}
-          {% else %}
-            <br>
-          {% endif %}
-            This image has a total of {{photo.total}} likes.
-          <br>  Uploaded by {{photo.uploadedBy}}
+              {% endif %}
+              Total Likes: {{photo.total}}
+                <br>Uploaded by: {{photo.uploadedBy}}
+                <br>
+            </div>
+          <div class="col-sm-6">
+             
+          <br>  Price Range: {{photo.priceRange}}
+          <br>  Brand: {{photo.brand}}
+          <br>  Type of Clothing: {{photo.clothingType}}
+          </div>
+          
       </div>
         
       <div class="modal-footer">
