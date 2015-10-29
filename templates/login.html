@@ -2,6 +2,7 @@
 
 {% block css %}
 	<link rel="stylesheet" href="/static/style/gallery.css">
+    <link rel="stylesheet" href="/static/style/login.css">
 {% endblock %}
 
 
@@ -11,40 +12,68 @@
 
 
 {% block content %}
-    <h3>{{user}}</h3>
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-4">
+<h3>{{user}}</h3>
+<div class="container">
+<div class="row">
+<div class="col-sm-offset-3 col-sm-6">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Log In</a></li>
+        <li><a data-toggle="tab" href="#menu1">Register</a></li>
+    </ul>
+    <div class="tab-content">
+        <!-- Log In -->
+        <div id="home" class="tab-pane fade in active">
             <form method="post" enctype="multipart/form-data" action="/userFunctions?method=login">
-              <h3 style="color: black">Login</h3>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="un">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pw">
-              </div>
-              <button type="submit" class="btn btn-default">Login</button>
+                <br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="un">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pw">
+                </div>
+                <button type="submit" class="btn btn-default" style="margin: 15px;">Login</button>
             </form>
         </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-4">
+        
+        <!-- Register -->
+        <div id="menu1" class="tab-pane fade">
             <form method="post" enctype="multipart/form-data" action="/userFunctions?method=newUser">
-              <h3 style="color: black">New User</h3>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
-                <input type="text" class="form-control" placeholder="Email" name="un">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" placeholder="Password" name="pw">
-              </div>
-              <button type="submit" class="btn btn-default">Create New User</button>
+                <br>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="exampleInputEmail1">Username</label>
+                            <input type="text" class="form-control" id="registerUser" placeholder="Email" name="un">
+                        </div>
+                        <div class="col-xs-4" style="margin-top: 6px;">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                    Female
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                    Male
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="registerEmail" placeholder="Password" name="pw">
+                </div>
+                <button type="submit" class="btn btn-default" style="margin: 15px">Create New User</button>
             </form>
         </div>
-        <div class="col-sm-1"></div>
     </div>
+</div>
+</div>  
+</div>
     <div class="row">
         <h3>{{message}}</h3>
     </div>
