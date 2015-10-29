@@ -11,7 +11,7 @@ import json
 # So if you change the prices list after there are images in the datastore,
 # you may get imprecise filtering. 
 
-brands = ['Asian', 'Forever 21', 'Gap', 'PS', 'Other']
+brands = ['Forever 21', 'Gap', 'PS', 'Other']
 types = ['Shirt', 'Jeans', 'Shoes', 'Entire Body', 'Other']
 prices = [25, 50, 100, 500, 1000]
 

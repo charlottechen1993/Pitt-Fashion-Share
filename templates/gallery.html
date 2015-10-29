@@ -32,10 +32,12 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="center-list">
-                                {% if photo.likedByYou %}
-                                    <span class="glyphicon glyphicon-heart heart-filled"></span>
-                                {% else %}
-                                    <p class="adore" data-id="{{photo.img_id}}">Adore</p>
+                                {% if user_id %}
+                                    {% if photo.likedByYou %}
+                                        <span class="glyphicon glyphicon-heart heart-filled"></span>
+                                    {% else %}
+                                        <p class="adore"><a href = "/addLike?photo_id={{photo.img_id}}&user_id={{user_id}}">Adore</a></p>
+                                    {% endif %}
                                 {% endif %}
                                 </div>
                             </div>
