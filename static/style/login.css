@@ -1,8 +1,72 @@
 .form-group{
-    margin: 15px;   
+    margin: 20px;  
+    margin-bottom: 10px;
 }
 
+/* default nav tabs */
+.nav-tabs > li > a{
+    border: medium none;
+    color: black;
+}
+
+/* when hover over non active tabs */
+.nav-tabs > li > a:hover{
+    background-color: rgba(0,0,0,0.04)!important;
+    border: medium none;
+    color: black;
+}
+
+/* active tabs */
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover{
+    background-color: rgba(0,0,0,0.08) !important;
+    border-bottom: rgba(0,0,0,0.08) !important;
+    font: bold;
+    color: black;
+    font-weight: bold;
+}
+
+/* tab contents */
 .tab-pane{
-    background-color: white;
-    border: none;
+    background-color: rgba(0,0,0,0.08);
+    border: medium none;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.btn-default{
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    width: 100%;
+    border-radius: 0;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    position: inherit;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.btn-default:focus, 
+.btn-default:active, 
+.btn-default:hover, 
+.btn-default.active, 
+.btn-default.active, 
+.open > .dropdown-toggle.btn-default{
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.btn-default:active:focus{
+    background: black;
+    color: white;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+input{
+    border-radius: 0 !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
 }
