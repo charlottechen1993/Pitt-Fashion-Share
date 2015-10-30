@@ -14,29 +14,39 @@
 
 {% block content %}
 	<div class = "row">
-		<h1 class="text-center" style="color: red">{{user_id}}</h1>
-		<div class='col-md-3 col-md-offset-3'>
-			<img src="/images/{{profilePic}}">
+		<h1 class="text-center" style="color: grey">{{user}}</h1>
+		<div class='text-center'>
+			{% if user.profilepic %}
+				<img src="/images/{{user.profilepic}}" class = "res">
+			{% else %}
+				<img src="/images/profilePic.jpeg" class = "res">
+			{% endif %} 
 		</div>
-		<div class='col-sm-3'>
+		<div class='text-center'>
 			<br>
-
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam congue ex ut lectus convallis gravida. Sed in egestas urna, a consequat nunc. Vestibulum a mollis urna, et consectetur turpis. Cras dolor augue, porttitor non aliquam sit amet, tempor eu eros. Quisque turpis neque, congue et viverra vel, faucibus in orci. Nam mattis massa vitae maximus finibus. Maecenas vitae iaculis purus, sed ultricies felis. Maecenas aliquet ut libero et lacinia. Sed ut pretium lorem. Nunc pellentesque magna massa, eu hendrerit turpis pharetra nec. 
+			{% if user.description %}
+				{{user.description}}
+			{% else %}
+				Pas D'description <br><br>
+			{% endif %} 
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-3 col-md-offset-5">
+		<div class="text-center">
 
 			<ul class="list-inline">
-				<li >
-					<a class="btn btn-default btn-xs" href="#" role="button">Add Friend</a>
-				</li>
 				<li>
 					<a class="btn btn-default btn-xs" href="#" role="button">Follow</a>
 				</li>
 				<li>
 					<a class="btn btn-default btn-xs" href="#" role="button">Message</a>
 				</li>
+				<!-- if they are looking at their own profile, they will have option to edit -->
+				{% if user %} 
+				<li>
+					<a class="btn btn-default btn-xs" href = "/updateprofile" role="button">Edit Profile</a>
+				</li>
+				{% endif %} 
 			</ul>
 
 		</div>
@@ -47,7 +57,21 @@
 	</div>
 
 	<div class = "row">
-			<div class='col-md-3 col-md-offset-2'>
+		<div  class="col-md-8 col-md-offset-2"></div>
+		<!-- id = "photo_loop" each pictures will take up 2/12 of the page, for a total of 8/12 of page taken up, and 2/12 space on either side. write a javascript loops to page all photos associated with the user 
+			<script>
+			photos = "";
+			for (x in user.photos){}
+				photos +=   '<div class="col-md-3 "">
+								<img ' + "x IMAGELOCATION?" + ' max-width="300" height="400">
+								<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
+								<p><a class="btn btn-default btn-xs" href="#" role="button">View</a></p>
+					    	</div>';
+			}
+			</script>  -->
+
+		<!-- TEMPORARY
+			<div class='col-md-3 '>
 				<img src="/images/outfit1.jpg" max-width="300" height="400">
 				<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
 			</div>
@@ -58,7 +82,8 @@
 			<div class='col-md-3 '>
 				<img src="/images/outfit3.jpg" max-width="300" height="400">
 				<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
-			</div>
+			</div> -->
+		</div>
 	</div>
 
 {% endblock %}
