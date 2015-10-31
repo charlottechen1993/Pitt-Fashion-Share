@@ -45,7 +45,7 @@
     </head>
 	<body>
 		{% include 'header.html' %}
-		
+		<input type="hidden" name="user_id" value="{{user_id}}">
 		<div class="container-fluid" style="margin-top: 30px;">
 			{% block content %}
 			{% endblock %}
