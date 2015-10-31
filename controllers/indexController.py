@@ -1,4 +1,3 @@
-
 import webapp2
 from webapp2_extras import sessions
 
@@ -59,4 +58,3 @@ class index(webapp2.RequestHandler):
                                                       'girl8':'girl12.jpg',
                                                        'user_id':self.request.get('user_id')
                                                      })
-		
