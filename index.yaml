@@ -15,3 +15,8 @@ indexes:
   - name: imgID
   - name: time_created
     direction: desc
+
+- kind: Like
+  properties:
+  - name: userID
+  - name: imgID

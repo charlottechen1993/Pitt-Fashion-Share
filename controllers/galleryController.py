@@ -109,7 +109,7 @@ class index(indexController.index):
         restrictionList.append(brandName)
         restrictionList.append(clothingType)
         
-        images = imagesModel.getImages(user_id, restrictionList)
+      #  images = imagesModel.getImages(user_id, restrictionList)
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
@@ -127,9 +127,45 @@ class index(indexController.index):
         }
 
  
-        app_global.render_template(self,'gallery.html', params)
+        app_global.render_template(self,'gallery2.html', params)
     
     
 class gallery2(indexController.index):
     def get(self):
-         app_global.render_template(self,'gallery2.html', {})    
+        restrictionList = list()
+        
+        maxPrice = self.request.get('maxPrice')
+        brandName = self.request.get('brand')
+        clothingType = self.request.get('clothingType')
+        
+        if brandName == "":
+            brandName = None
+        if clothingType == "":
+            clothingType = None
+        
+        try:
+            maximumPrice = int(maxPrice)
+        except:
+            maximumPrice = None
+            
+        restrictionList.append(maximumPrice)
+        restrictionList.append(brandName)
+        restrictionList.append(clothingType)
+        
+        user_id = self.session.get('user_id')
+        images = imagesModel.getImages(user_id, restrictionList)
+        
+        params = {
+            user_id: user_id,
+            images: images
+        }
+        app_global.render_template(self,'gallery2.html', params)    
+            
+            
+            
+            
+            
+            
+            
+            
+            

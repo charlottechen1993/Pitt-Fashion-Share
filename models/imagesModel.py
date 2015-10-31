@@ -4,6 +4,8 @@ from google.appengine.api import images
 from google.appengine.api import users
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
+import json
+import requests
 
 #
 #def get_user_email():
@@ -95,6 +97,54 @@ def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, pric
 #def get_image(image_id):
 #    return ndb.Key(urlsafe=image_id).get()
     
+def getPhotosJSON():
+    result = list()
+    
+    user_id = request.args.get(user_id)
+    
+    queryImg = Image.query()     # get images
+    queryLike = Like.query()     # get likes
+    
+
+  #  likes = queryLike.fetch()
+    
+    # get list of imgID's liked by you
+    likedByYou = list()
+    likedByYou = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
+#    for i in range(0, len(likes)):
+#        likedByYou.append(likes[i].imgID)
+#        
+    images = queryImg.fetch()
+    for i in range(0,len(images)):
+        im = {}
+        im['categoryID'] = images[i].categoryID
+        im['img_id'] = str(images[i].key.id())
+        # im['total'] = images[i].total
+        im['title'] = images[i].title
+        im['image_url'] = images[i].image_url
+        im['user_id'] = images[i].user
+        im['total_likes'] = queryLike.filter(Like.imgID == im['img_id']).count()
+        
+        comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
+        comments = comments.order(-ImageComment.time_created)
+       # im['comments'] = comments.fetch()
+        
+        
+        if im['img_id'] in likedByYou:
+            im['adored'] = True
+        else:
+            im['adored'] = False
+        
+        for elem in comments:
+            elem.commentID = elem.key.id()
+            if elem.userID == str(user_id):
+                elem.yours = 1 #i only check if it exists later on
+        
+        result.append(im)
+        
+    return json.dumps(result)
+
+
 def getImages(user_id, restrictionsList):
     result = list()
     queryImg = Image.query()
@@ -169,3 +219,72 @@ def getImages(user_id, restrictionsList):
         
         result.append(im)
     return result
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

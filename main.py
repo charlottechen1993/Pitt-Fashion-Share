@@ -14,6 +14,8 @@ import controllers.profileController as profileController
 import controllers.userLogController as userController
 import controllers.imageController as imageController
 
+import models.imagesModel as imagesModel
+
 
 config = {}
 config['webapp2_extras.sessions'] = {
@@ -35,7 +37,8 @@ mappings = [
     ('/deleteComment', imageController.deleteCommentHandler),
     ('/getCommentsTest', imageController.getCommentsHandler),
     ('/unlike', imageController.deleteLikeHandler),
-    ('/gallery2', galleryController.gallery2)
+    ('/getPhotosJSON', imagesModel.getPhotosJSON),
+#    ('/gallery', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]
 
