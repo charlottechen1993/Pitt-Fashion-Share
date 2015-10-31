@@ -8,12 +8,14 @@ ul#menu {
     -moz-transform: translate(-50%,-20%);
     -o-transform: translate(-50%,-20%);
     -ms-transform: translate(-50%,-20%);
+    padding: 0;
 }
 
 .navbar-inverse{
     background-color: rgba(0, 0, 0, 0.8) !important;   
     background-image: none;
     background-repeat: no-repeat;
+
 }
 
 li{
