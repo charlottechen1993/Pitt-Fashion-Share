@@ -1,5 +1,17 @@
 
 
+var angularAPP = angular.module('angular-app', []);
+
+/* replace braces so that html interprets brackets as angularjs code*/
+angularAPP.config(['$interpolateProvider', function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+}]);
+
+
+
+
+
 $(document).ready(function(){
     
     $('.adore').click(function(){
