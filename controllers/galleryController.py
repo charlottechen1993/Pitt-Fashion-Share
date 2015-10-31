@@ -114,7 +114,7 @@ class index(indexController.index):
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
         params = {
-            'photos': images,
+#            'photos': images,
             #'photos_json': json.dumps(images),
             'user_id':self.session.get('user_id'),
             'username': self.session.get('user'),

@@ -57,34 +57,88 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
+     
         
-        $.getJSON(
-            url: '/getPhotosJSON',
-            data: {'user_id': }
-            success: function(){
-            
+        $.ajax({
+            url: '/getPhotosJSON?user_id=' + 1,
+            data: {},
+//            dataType: 'json',
+//            contentType: "application/json",
+            success: function(data){
+                //console.log(data);
+                data = JSON.parse(data);
+               //alert(JSON.stringify(data, null, 2));
+              //  alert(data);
+                for( var i = 0; i < data.length; i++ ) {
+                    $('#photos').append('<img src="' + data[i].image_url + '" alt="pretty kitty">');                
+                }
+            },
+            error: function ( jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
             }
-        );
+        });
+    });
+        
+//    $.getJSON(
+//       '/getPhotosJSON?user_id=' + 1,
+//        function (data) {
+//           console.log(data);
+//              alert(JSON.stringify(data, null, 2));
+//                alert(data);
+//        }
+//    );
         
         
-        
-        function getRandomSize(min, max) {
-          return Math.round(Math.random() * (max - min) + min);
-        }
-
-        for (var i = 0; i < 25; i++) {
-          var width = getRandomSize(200, 400);
-          var height =  getRandomSize(200, 400);
-           $('#photos').append('<img src="//www.lorempixel.com/'+width+'/'+height+'/cats" alt="pretty kitty">');
-        }
-     });
+//        function getRandomSize(min, max) {
+//          return Math.round(Math.random() * (max - min) + min);
+//        }
+//
+//        for (var i = 0; i < 25; i++) {
+//          var width = getRandomSize(200, 400);
+//          var height =  getRandomSize(200, 400);
+//           $('#photos').append('<img src="//www.lorempixel.com/'+width+'/'+height+'/cats" alt="pretty kitty">');
+//        }
+   
 </script>
 {% endblock %}
 
 
 {% block content %}
     <div id="photos" style="width:100%;">
-
-     
     </div>
+
+    <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
+        
+        Picture Title:<br>
+        <input name="title" type="text"><br><br>
+        
+        Price Range: <br>
+        <select name="priceRange">
+            {% for priceOption in priceOptions %}
+                <option value="{{priceOption}}">{{priceOption}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        
+        Type of Clothing: <br>
+        <select name="clothingType">
+            {% for type in types %}
+                <option value="{{type}}">{{type}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        
+        Brand: <br>
+        <select name="brand">
+            {% for brand in brands %}
+                <option value="{{brand}}">{{brand}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        
+        File:<br>
+        <input name="file" type="file"><br><br><br>
+        <input type="submit">
+        
+    </form>
 {% endblock %}

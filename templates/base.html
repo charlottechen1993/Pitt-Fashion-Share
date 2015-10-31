@@ -23,6 +23,7 @@
 
 
         
+<!--
          <script type="text/javascript">
              $(document).ready(function(){
                             function getRandomSize(min, max) {
@@ -34,18 +35,19 @@
                   var height =  getRandomSize(200, 400);
                     $('#photos').append('<img src="//www.lorempixel.com/'+width+'/'+height+'/cats" alt="pretty kitty">');
 
-                 // $('#photos').append('<img src="http://lorempixel.com/200/400/cats/" alt="pretty kitty">');
-                    //var n = document.getElementById('photos');
-                   // n.appendChild('<img src="http://lorempixel.com/200/400/cats/" alt="pretty kitty">');
+                  $('#photos').append('<img src="http://lorempixel.com/200/400/cats/" alt="pretty kitty">');
+                    var n = document.getElementById('photos');
+                    n.appendChild('<img src="http://lorempixel.com/200/400/cats/" alt="pretty kitty">');
                 }
              });
              
         </script>
+-->
 
     </head>
 	<body>
 		{% include 'header.html' %}
-		<input type="hidden" name="user_id" value="{{user_id}}">
+		<input type="hidden" id="user_id" value="{{user_id}}">
 		<div class="container-fluid" style="margin-top: 30px;">
 			{% block content %}
 			{% endblock %}
