@@ -2,50 +2,110 @@
 {% extends "base.html" %}
 
 {% block css %}
-	<link rel="stylesheet" href="/static/style/gallery.css">
+<style>
+	#photos {
+      /* Prevent vertical gaps */
+      line-height: 0;
+
+      -webkit-column-count: 5;
+      -webkit-column-gap:   0px;
+      -moz-column-count:    5;
+      -moz-column-gap:      0px;
+      column-count:         5;
+      column-gap:           0px;  
+    }
+
+    #photos img {
+      /* Just in case there are inline attributes */
+      width: 97% !important;
+      height: auto !important;
+        margin: 4px;
+    }
+
+    @media (max-width: 1200px) {
+      #photos {
+      -moz-column-count:    4;
+      -webkit-column-count: 4;
+      column-count:         4;
+      }
+    }
+    @media (max-width: 1000px) {
+      #photos {
+      -moz-column-count:    3;
+      -webkit-column-count: 3;
+      column-count:         3;
+      }
+    }
+    @media (max-width: 800px) {
+      #photos {
+      -moz-column-count:    2;
+      -webkit-column-count: 2;
+      column-count:         2;
+      }
+    }
+    @media (max-width: 400px) {
+      #photos {
+      -moz-column-count:    1;
+      -webkit-column-count: 1;
+      column-count:         1;
+      }
+    }
+</style>
 {% endblock %}
 
-
 {% block js %}
-    <script type="text/javascript" src="../js/gallery.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+     
+        
+        $.ajax({
+            url: '/getPhotosJSON?user_id=' + 1,
+            data: {},
+//            dataType: 'json',
+//            contentType: "application/json",
+            success: function(data){
+                //console.log(data);
+                data = JSON.parse(data);
+               //alert(JSON.stringify(data, null, 2));
+              //  alert(data);
+                for( var i = 0; i < data.length; i++ ) {
+                    $('#photos').append('<img src="' + data[i].image_url + '" alt="pretty kitty">');                
+                }
+            },
+            error: function ( jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+    });
+        
+//    $.getJSON(
+//       '/getPhotosJSON?user_id=' + 1,
+//        function (data) {
+//           console.log(data);
+//              alert(JSON.stringify(data, null, 2));
+//                alert(data);
+//        }
+//    );
+        
+        
+//        function getRandomSize(min, max) {
+//          return Math.round(Math.random() * (max - min) + min);
+//        }
+//
+//        for (var i = 0; i < 25; i++) {
+//          var width = getRandomSize(200, 400);
+//          var height =  getRandomSize(200, 400);
+//           $('#photos').append('<img src="//www.lorempixel.com/'+width+'/'+height+'/cats" alt="pretty kitty">');
+//        }
+   
+</script>
 {% endblock %}
 
 
 {% block content %}
-<!--
-    <div id="photos" style="width:100%;" ng-controller="imgCtrl">
-        <img src="[[img.image_url]]" alt="image" >
+    <div id="photos" style="width:100%;">
     </div>
--->
-
-    <div id="photos" ng-controller="imgCtrl">
-        <div class="image img-block" ng-repeat="img in images">
-            <img img_id="[[img.img_id]]" src="[[img.image_url]]">
-            <span class="text-content">
-                <span>
-                    <div class="center-list">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="center-list">
-                                    <span ng-if="[[img.adored]]" class="glyphicon glyphicon-heart heart-filled"></span>
-                                    <!-- javascript click event attached to class="adore" in base.js-->
-                                    <p ng-if="![[img.adored]]" class="adore" data-id="{{photo.img_id}}">Adore</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:25px">
-                            <div class="col-sm-12">
-                                <span class="img-button see-image" data-toggle="modal" data-target="#Modal[[img.img_id]]">View</span>
-                            </div>
-                        </div>
-                    </div>
-                </span>
-            </span>
-        </div>
-    </div>
-
-
-
 
     <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
         
