@@ -69,8 +69,3 @@ class userFunctions(indexController.index):
         }        
         
         app_global.render_template(self, template, params)
-    
-        
-
-
-       

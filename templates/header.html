@@ -1,4 +1,3 @@
-
 {% block css %}
 	<link rel="stylesheet" type="text/css" href="/static/style/header.css">
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,500' rel='stylesheet' type='text/css'>
@@ -20,13 +19,7 @@
                 <li><a href="/profile">PROFILE</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-<!--
-                {% if user_id %}
-                    <li><a href="/userFunctions?method=logoutUser">{{user}} Logout</a></li>
-                {% else %}
-                    <li><a href="/user">Login/New User</a></li>
-                {% endif %}
--->
+                <li><a href="/user">Login/New User</a></li>
 <!--                <div class="row">{{message}}, {{user_id}}</div>-->
             </ul>
         </div>
