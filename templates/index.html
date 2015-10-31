@@ -16,44 +16,48 @@
 <!-------------->
 <!-- CAROUSEL -->
 <!-------------->
-
+<div class="page-wrap">
 <div class = "row">
-        <div id="homeCarousel" class="carousel slide" data-interval = "3000" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="/images/{{photo_name3}}" class="carousel_img">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Pitt in the Winter</h1>
-                            <p>Check out our exclusive winter section uploads</p>
-                            <p><a class="btn btn-lg btn-primary" href="/gallery">Check it Out!</a>
-        </p></div>
-      </div>
-                </div>
-                <div class="item">
-                    <img src="/images/{{photo_name2}}" class="carousel_img">
-                </div>
-                <div class="item">
-                    <img src="/images/{{photo_name}}" class="carousel_img">
+    <div id="homeCarousel" class="carousel slide" data-interval = "3000" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="/images/{{photo_name3}}" class="carousel_img">
+                <div class="container">
+<!--
+                    <div class="carousel-caption">
+                        <h1>Pitt in the Winter</h1>
+                        <p>Check out our exclusive winter section uploads</p>
+                        <p><a class="btn btn-lg btn-primary" href="/gallery">Check it Out!</a></p>
+                    </div>
+-->
                 </div>
             </div>
-
-          <!-- Controls -->
-            <a class="left carousel-control" href="#homeCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#homeCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
+            <div class="item">
+                <img src="/images/{{photo_name2}}" class="carousel_img">
+            </div>
+            <div class="item">
+                <img src="/images/{{photo_name}}" class="carousel_img">
+            </div>
         </div>
+
+      <!-- Controls -->
+        <a class="left carousel-control" href="#homeCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#homeCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
 </div>
 
+<!-------------->
+<!-- CONTENT --->
+<!-------------->
 <div class="row" style="margin-top: 20px;">
     <div class="col-sm-12">
         
     </div>
-<!--
     <div class="col-sm-8">
         <div>
             <h4>Popular Outfit of the Week</h4>
@@ -124,8 +128,45 @@
             </table>
         </div>
     </div>
--->
 </div>
 <br>
 <br>
+<br>
+<!-------------->
+<!--- FOOTER --->
+<!-------------->
+<div class="row">
+    <div class="footer">
+        <div class="col-sm-3">
+            <h4>&lt LOGO &gt</h4>
+            
+        </div>
+        <div class="col-sm-1">
+            <hr class="hr-v">
+            <hr>
+        </div>
+        <div class="col-sm-3 white-font">
+            <h4>About Us</h4>
+            <p> Hello, we are Pitt Fashion Share. This is a platform created for college students to showcase their daily outfits.
+            If you have any questions, please visit our <span><a href="/">help</a></span> section, or <span><a href="/">contact us</a>              </span></p>
+            <br>
+        </div>
+        <div class="col-sm-1">
+            <hr class="hr-v">
+            <hr>
+        </div>
+        <div class="col-sm-4 white-font">
+            <h4><strong>Meet the Team:</strong></h4>
+            <p><strong>Daniel Hui</strong> - Computer Science, Pitt</p>
+            <p><strong>Charlotte Chen</strong> - Computer Science &amp Econ, Pitt</p>
+            <p><strong>Catherine Lesuisse</strong> - Bioinformatics, Pitt</p>
+            <p><strong>David Neiman</strong> - Computer Science, Pitt</p>
+            <br>
+        </div>          
+    </div>
+</div>
+</div>
+
+
+
 {% endblock %}
