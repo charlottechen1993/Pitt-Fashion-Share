@@ -23,6 +23,10 @@ $(document).ready(function(){
 
  angularAPP.controller('imgCtrl', function($scope,$http){
      
+     
+     
+     $scope.images = [];
+     
     /*
         Purpose: Get images from server
         Functionality: dynamically load build html gallery for images,
@@ -35,6 +39,7 @@ $(document).ready(function(){
 
         success: function(data){
             console.log(data);
+            
           //  data = JSON.parse(data);
            //alert(JSON.stringify(data, null, 2));
           //  alert(data);
@@ -54,8 +59,6 @@ $(document).ready(function(){
         populates image gallery with images
      */
      $scope.populateGallery = function(img){
-
-        $scope.images = [];
 
         $scope.$apply(function(){
             $scope.images.push(img);

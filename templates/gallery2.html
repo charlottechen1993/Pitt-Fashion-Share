@@ -21,6 +21,7 @@
     <div id="photos" ng-controller="imgCtrl">
         <div class="image img-block" ng-repeat="img in images">
             <img img_id="[[img.img_id]]" src="[[img.image_url]]">
+<!--
             <span class="text-content">
                 <span>
                     <div class="center-list">
@@ -28,7 +29,7 @@
                             <div class="col-sm-12">
                                 <div class="center-list">
                                     <span ng-if="[[img.adored]]" class="glyphicon glyphicon-heart heart-filled"></span>
-                                    <!-- javascript click event attached to class="adore" in base.js-->
+                                     javascript click event attached to class="adore" in base.js
                                     <p ng-if="![[img.adored]]" class="adore" data-id="{{photo.img_id}}">Adore</p>
                                 </div>
                             </div>
@@ -41,6 +42,7 @@
                     </div>
                 </span>
             </span>
+-->
         </div>
     </div>
 
