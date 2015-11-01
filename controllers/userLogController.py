@@ -10,12 +10,14 @@ import indexController
 class index(indexController.index):
         
     #respond to HTTP GET requests
-    def get(self):
+    def get(self):                                                  # /userFunctions
         user = self.session.get('user')
+        message = self.request.get('message')
         
         params = {
             'user': user,
-            'user_id': self.session.get('user_id')
+            'user_id': self.session.get('user_id'),
+            'message': message
         }
         
         app_global.render_template(self, 'login.html', params)
@@ -30,42 +32,49 @@ class userFunctions(indexController.index):
         method = self.request.get('method')
         un = self.request.get('un').strip()
         pw = self.request.get('pw').strip()
-        userList = list()
-        message = ''
+ 
         
         if un == '' or pw =='':
             message = 'You must fill out both username and password!'
+            template = 'login.html'
+            self.redirect('/userFunctions?message='+message)
+            
         else:
-            if method == 'newUser':
+            if method == 'newUser':                                 # /userFunctions?method=newUser
                 #check that username does not already exist
                 user = userModel.getUser(un, pw)
 
-                if user:
+                if len(user) > 0:
                     message = 'Username already exist!'
-                    template = 'login.html'
+                    self.redirect('/userFunctions?message='+message)
                 else:
                     user_key = userModel.createNewUser(un, pw)
                     template = 'profile.html'
-            elif method == 'login':
+                    
+                    self.redirect('/profile')
+                    
+            elif method == 'login':                                  # /userFunctions?method=login
                 user = userModel.getUser(un, pw)
 
+                
                 if len(user) > 0:    # user login success
                     template = 'profile.html'
                     message = 'Logged in as ' + user[0].un
                     
                     self.session['user'] = user[0].un
                     self.session['user_id'] = user[0].user_id 
+                    
+                    self.redirect('/profile')
                 else:
                     template = 'index.html'
                     message = 'Login Fail!'
-                userList = userModel.getUsers()
-                template = 'test.html'
-            else:
-                template = 'login.html'
+                    self.redirect('/userFunctions?message='+message)
+         
                 
-        params = {
-            'message': message,
-            'user_id': self.session.get('user_id')
-        }        
-        
-        app_global.render_template(self, template, params)
+#        params = {
+#            'message': message,
+#            'user_id': self.session.get('user_id')
+#        }        
+#        
+#
+#        app_global.render_template(self, template, params)
