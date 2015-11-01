@@ -21,15 +21,17 @@ class Users(ndb.Model):
 def createNewUser(un, pw):
     newUser = Users()
     secure_pw = security.generate_password_hash(pw, 'sha1')
+    
     newUser.un = un
     newUser.pw = secure_pw
     newUser.put()
     
 def getUser(un, pw):
     result = list()
-  #  secure_pw = security.generate_password_hash(pw, 'sha1')
+    secure_pw = security.generate_password_hash(pw, 'sha1')
     query = Users.query(Users.un==un)
     user = query.fetch(1)
+    
     
     if len(user) > 0:
         if security.check_password_hash(pw, user[0].pw):

@@ -122,6 +122,7 @@ class getPhotosJSONHandler(indexController.index):
     #        
         images = queryImg.fetch()
         for i in range(0,len(images)):
+            print images[i]
             im = {}
             im['categoryID'] = images[i].categoryID
             im['img_id'] = str(images[i].key.id())

@@ -44,9 +44,12 @@ $(document).ready(function(){
            //alert(JSON.stringify(data, null, 2));
           //  alert(data);
             for( var i = 0; i < data.length; i++ ) {
-                //$('#photos').append('<img src="' + data[i].image_url + '" alt="pretty kitty">');  
-                
-                var img = {'image_url': data[i].image_url};
+   
+                var img = {
+                    'image_url': data[i].image_url,
+                    'img_id': data[i].img_id,
+                    'adored': data[i].adored
+                };
                 $scope.populateGallery(img);
             }
         },
@@ -55,6 +58,7 @@ $(document).ready(function(){
         }
     });
 
+     
      /*
         populates image gallery with images
      */
@@ -65,11 +69,35 @@ $(document).ready(function(){
         });
      }
 
+     
     /*
         populates image modals
     */
      $scope.populateImgModal = function(){
 
+     }
+     
+     
+     /*
+        like image
+     */
+     $scope.likeImg = function(img_id){
+        
+        $.ajax({
+            url: '/addLike?photo_id=' + img_id,
+            type: 'GET',
+            success: function(data){
+                // remove like   
+            }
+        });
+     }
+     
+     
+     /*
+        like image
+     */
+     $scope.unlikeImg = function(){
+        alert('unlike');
      }
 
 });

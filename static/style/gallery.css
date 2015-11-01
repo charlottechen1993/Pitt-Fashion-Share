@@ -22,30 +22,15 @@ textarea{
     width: 100% !important;
     border-radius: none; !important
 }
-.img-button{
-    font-size: 15px;
-    width: 90px;
-    height: 35px;
-    line-height: 30px;
-    text-align: center;
-    background-color: none;
-    cursor: pointer;
-}
 
-.see-image{
-    color: #EBB0CF;
-    border: 1px solid #EBB0CF;
-}
-.see-image:hover{
-    color: #6F9DDE;
-    border: 1px solid #6F9DDE;
-}
 
 .border-bottom{
     border-bottom: 1px solid #DAE1E3;
 }
+/*
 .center-list{
-    position:  absolute;
+   
+    border: 1px solid red;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
@@ -88,6 +73,7 @@ textarea{
 .heart{
     padding: 0; 
 }
+*/
 
 .image-panel{
 /*    background-color: black;*/
@@ -109,35 +95,7 @@ textarea{
 .image-panel{ min-height: 300px; overflow: hidden;}
 
 
-.image-cover {
-  position: relative;
-  float: left;
-  /*border: thin silver solid; */
-  margin: 0.7em;
-  padding: 0.3em;
-  cursor: pointer;
-/*  box-shadow: rgba(0,0,0,.2) 3px 5px 5px;*/
-  background-color: white;
-  width: auto;
-  vertical-align: middle;
-  display: inline-block;
-  text-align: center;
-}
 
-.image-cover:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: none;
-   transition: all .3s linear;
-}
-.image-cover:hover:before{
-    background-color: rgba(0,0,0,.3);
-}
 
 
 .img-block{

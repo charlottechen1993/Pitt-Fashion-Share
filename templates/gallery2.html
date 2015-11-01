@@ -12,19 +12,124 @@
 
 
 {% block content %}
-<!--
-    <div id="photos" style="width:100%;" ng-controller="imgCtrl">
-        <img src="[[img.image_url]]" alt="image" >
-    </div>
--->
+
+<style>
+    
+.ctr-img-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+}
+.img-cover {
+    position: relative;
+    float: left;
+    width: auto;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+}
+
+.img-cover:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: none;
+    transition: all .3s linear;
+}
+.img-cover:hover:before{
+    background-color: rgba(0,0,0,.5);
+}
+    
+.img-text {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: none;
+    /*transition: all 0.5s ease;*/
+}
+    
+.img-cover:hover .img-text{
+    display: block;
+}
+    
+
+.view-image{
+    position: relative;
+    left: 50%;
+    -webkit-transform: translate(-50%, -0%);
+    -moz-transform: translate(-50%, -0%);
+    -o-transform: translate(-50%, -0%);
+    -ms-transform: translate(-50%, -0%);
+    margin-top: 15px;
+    font-size: 15px;
+    width: 90px;
+    height: 35px;
+    line-height: 30px;
+    text-align: center;
+    background-color: none;
+    cursor: pointer;
+    color: #EBB0CF;
+    border: 1px solid #EBB0CF;
+    display: block;
+}
+.view-image:hover{
+    color: #6F9DDE;
+    border: 1px solid #6F9DDE;
+}
+
+
+</style>
+
 
     <div id="photos" ng-controller="imgCtrl">
         <div class="image" ng-repeat="img in images">
-            <figure class="image-cover">
+            <figure class="img-cover">
                 <img img_id="[[img.img_id]]" src="[[img.image_url]]">
+                <figcaption class="img-text">
+                    <div class="ctr-img-text">
+                        <!-- adored : click event in 'gallery.js' attached to 'ng-click' -->
+                        <span class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="likeImg([[img.img_id]])"></span>
+                        <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored" ng-click="unlikeImg([[img.img_id]])"></span>
+                        <!-- end adored -->
+                        <span class="view-image" data-toggle="modal" data-target="#Modal{{photo.img_id}}">View</span>
+                    </div>
+                </figcaption>
             </figure>
         </div>
     </div>
+
+
+<!--
+<div class="center-list">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="center-list">
+                            <span class="glyphicon glyphicon-heart heart-filled" ng-if="[[img.adored]]"></span>
+                            <p class="adore"><a href = "/addLike?photo_id={{photo.img_id}}&user_id={{user_id}}" ng-if="![[img.adored]]">Adore</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:25px">
+                    <div class="col-sm-12">
+                        <span class="img-button see-image" data-toggle="modal" data-target="#Modal{{photo.img_id}}">View</span>
+                    </div>
+                </div>
+            </div>
+
+-->
 
 
 
