@@ -160,10 +160,9 @@ class gallery2(indexController.index):
             images: images
         }
         app_global.render_template(self,'gallery2.html', params)    
-            
-            
-            
-            
+
+                        
+  
             
             
             

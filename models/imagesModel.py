@@ -133,7 +133,7 @@ class getPhotosJSONHandler(indexController.index):
 
             comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
             comments = comments.order(-ImageComment.time_created)
-            im['comments'] = comments.fetch()
+            #im['comments'] = comments.fetch()
 
             if im['img_id'] in likedByYou:
                 im['adored'] = True
