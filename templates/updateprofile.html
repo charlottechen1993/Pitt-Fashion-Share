@@ -13,52 +13,26 @@
 
 
 {% block content %}
-	<div class = "row">
-		<h1 class="text-center" style="color: red">{{user_id}}</h1>
-		<div class='col-md-3 col-md-offset-3'>
-			<img src="/images/{{profilePic}}">
-		</div>
-		<div class='col-sm-3'>
-			<br>
+	<div class='col-md-3 col-md-offset-3'>
+		<form method="post" enctype="multipart/form-data" action="{{upload_url}}">
+       		<br><br>
+	        Name:<br>
+	        <input name="title" type="text"><br><br>
+	        <br>
+	        Description:<br>
+	        <textarea id="description "name="title" type="text" rows="5" > {{description}} </textarea><br><br>
+	        <br>
 
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam congue ex ut lectus convallis gravida. Sed in egestas urna, a consequat nunc. Vestibulum a mollis urna, et consectetur turpis. Cras dolor augue, porttitor non aliquam sit amet, tempor eu eros. Quisque turpis neque, congue et viverra vel, faucibus in orci. Nam mattis massa vitae maximus finibus. Maecenas vitae iaculis purus, sed ultricies felis. Maecenas aliquet ut libero et lacinia. Sed ut pretium lorem. Nunc pellentesque magna massa, eu hendrerit turpis pharetra nec. 
-		</div>
+	        New Profile Pic:<br>
+	        <input name="file" type="file"><br><br><br>
+	        <input class="btn btn-default btn-md" type="submit">
+		        
+	    </form>
 	</div>
-	<div class="row">
-		<div class="col-md-3 col-md-offset-5">
-
-			<ul class="list-inline">
-				<li >
-					<a class="btn btn-default btn-xs" href="#" role="button">Add Friend</a>
-				</li>
-				<li>
-					<a class="btn btn-default btn-xs" href="#" role="button">Follow</a>
-				</li>
-				<li>
-					<a class="btn btn-default btn-xs" href="#" role="button">Message</a>
-				</li>
-			</ul>
-
-		</div>
-	</div>
-	
-	<div class = "row">
-		<h1 class="text-center">Personal Gallery</h1>
+	<div class='col-md-3 col-md-offset-1'>
+		<br>
+		<img src="/images/updateprofile.png" class = "res">
 	</div>
 
-	<div class = "row">
-			<div class='col-md-3 col-md-offset-2'>
-				<img src="/images/outfit1.jpg" max-width="300" height="400">
-				<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
-			</div>
-			<div class='col-md-3 '>
-				<img src="/images/outfit2.jpg" max-width="300" height="400">
-				<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
-			</div>
-			<div class='col-md-3 '>
-				<img src="/images/outfit3.jpg" max-width="300" height="400">
-				<p><a class="btn btn-default btn-xs" href="#" role="button">Like</a></p>
-			</div>
-	</div>
 
 {% endblock %}
