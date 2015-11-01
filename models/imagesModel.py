@@ -111,9 +111,7 @@ class getPhotosJSONHandler(indexController.index):
         queryImg = Image.query()     # get images
         queryLike = Like.query()     # get likes
 
-
-      #  likes = queryLike.fetch()
-
+        
         # get list of imgID's liked by you
         likedByYou = list()
         likedByYou = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
@@ -122,9 +120,8 @@ class getPhotosJSONHandler(indexController.index):
     #        
         images = queryImg.fetch()
         for i in range(0,len(images)):
-            print images[i]
             im = {}
-            im['categoryID'] = images[i].categoryID
+            #im['categoryID'] = images[i].categoryID
             im['img_id'] = str(images[i].key.id())
             # im['total'] = images[i].total
             im['title'] = images[i].title
