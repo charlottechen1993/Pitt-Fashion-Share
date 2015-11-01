@@ -59,7 +59,7 @@ def create_comment(userID, text, imgID, username):
     comment.text = text
     comment.uploadedBy = username
     comment.put()
-   
+    
 def get_comments(imgID):
     result = list()
     q = ImageComment.query(ImageComment.imgID == imgID)

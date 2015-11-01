@@ -17,14 +17,13 @@ class ImageComment(ndb.Model):
     yours = ndb.IntegerProperty() #I  just set it something if true since bool didnt work
                                   # so (if yours) then it shows on the html
 
-        
-#An image can have multiple clothItems. 
+#An image can have multiple clothItems, associated by the imgID property. 
 class clothItem(ndb.Model):
     imgID = ndb.StringProperty()
     clothingType = ndb.StringProperty()
     brand = ndb.StringProperty()
     price = ndb.IntegerProperty()
-    
+
 class Image(ndb.Model):
     totalPrice = ndb.IntegerProperty()
     title = ndb.StringProperty()
@@ -34,31 +33,55 @@ class Image(ndb.Model):
     comments = list()
     liked = ndb.IntegerProperty() #if initialized, yes
     uploadedBy = ndb.StringProperty()
+    
+# Adds a new clothItem and also finds the associated image and adds to its total price. 
+def addClothItem(imgID, clothingType, brand, price):
+    newCloth = clothItem(imgID, clothingType, brand, price)
+    correspondingImage = Image.query(Image.imgID == imgID)
+    correspondingImage.totalPrice += price
 
+# Returns images with total prices within the range
 def getImagesByPriceRange(min, max):
     images = Image.query()
     imagesBelow = images.filter(Image.totalPrice <= max)
     imagesAboveBelow = imagesBelow.filter(Image.totalPrice >= min)
     return imagesAboveBelow.fetch()
 
-def getImages():
-    return Image.query()
+# Returns all clothItem instances for a given image/imageID. 
+# Since an image can have more than one clothItem associated with it,
+# this query can return multiple results. 
+def getClothItems(imgID):
+    return clothItem.query(clothItem.imgID == imgID).fetch()
 
+# Returns all images with the matching brand
+def getImagesByBrand(brand):
+    return Image.query().filter(Image.brand == brand).fetch()
+
+# Returns all images with the matching clothing type
+def getImagesByType(clothingType):
+    return Image.query().filter(Image.clothingType == clothingType).fetch()
+   
+# Returns all Images in the datastore.
+def getImages():
+    return Image.query().fetch()
+
+# Returns all Likes for a particular image
 def getLikesForPic(imgID):
-    return Like.query(Like.imgID == imgID)
+    return Like.query(Like.imgID == imgID).fetch()
 
 def getNumLikesForPic(imgID):
     return Like.query(Like.imgID == imgID).count()
 
-#returns 1 if found, None if not
+# Returns True if found, False if not
+# Used to determine if user has liked already, so to influence like/unlike option
 def likedByUser(imgID, userID):
     allLikes = Like.query()
     thisImageLikes = allLikes.filter(im['img_id'] == Like.imgID)
     likedByYou = thisImageLikes.filter(Like.userID == str(user_id))
     cnt = likedByYou.count()
     if (cnt > 0):
-        return 1
-    return None
+        return True
+    return False
 
 class Like(ndb.Model):
     imgID = ndb.StringProperty()
