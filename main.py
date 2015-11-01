@@ -13,6 +13,7 @@ import controllers.galleryController as galleryController
 import controllers.profileController as profileController
 import controllers.userLogController as userController
 import controllers.imageController as imageController
+import controllers.tempClothController as tempClothController
 
 import models.imagesModel as imagesModel
 
@@ -38,7 +39,8 @@ mappings = [
     ('/getCommentsTest', imageController.getCommentsHandler),
     ('/unlike', imageController.deleteLikeHandler),
     ('/getPhotosJSON', imagesModel.getPhotosJSONHandler),
-    ('/test', imagesModel.testGetImages)
+    ('/test', imagesModel.testGetImages),
+    ('/tempCloth', tempClothController.index)
 #    ('/gallery', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]
