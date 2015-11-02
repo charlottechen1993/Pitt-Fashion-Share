@@ -44,3 +44,9 @@ ul#menu li:hover {
 .navbar-right.no-collapse {
     float: right!important;
 }
+
+#logout{
+    color: white;
+    text-decoration: none;
+    margin-top: 25px;
+}

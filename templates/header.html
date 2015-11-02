@@ -22,7 +22,7 @@
                 {% if user %}
                 <form  method="post" action="/userFunctions?method=logout" name="logoutForm">
                     <li>
-                        <a onclick="document.logoutForm.submit();">Logout</a>
+                        <a href="#" onclick="document.logoutForm.submit();" id="logout">Logout</a>
                     </li>
                 </form>
                 {% else %}
