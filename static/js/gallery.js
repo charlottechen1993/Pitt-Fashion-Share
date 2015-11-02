@@ -82,13 +82,15 @@ $(document).ready(function(){
      /*
         like image
      */
-     $scope.likeImg = function(img_id){
+     $scope.likeImg = function($event, img_id){
         
         $.ajax({
             url: '/addLike?photo_id=' + img_id,
-            type: 'GET',
             success: function(data){
-                // remove like   
+                // uncolor heart
+                var item = $event.currentTarget;
+                $(angular.element(item)).removeClass('heart-unfilled'); 
+                $(angular.element(item)).addClass('heart-filled'); 
             }
         });
      }
@@ -98,7 +100,7 @@ $(document).ready(function(){
         like image
      */
      $scope.unlikeImg = function(){
-        alert('unlike');
+       
      }
 
 });

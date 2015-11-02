@@ -7,6 +7,7 @@ from google.appengine.ext.webapp import blobstore_handlers
 import json
 import controllers.indexController as indexController
 import app_global
+from sets import Set
 
 
 
@@ -111,13 +112,14 @@ class getPhotosJSONHandler(indexController.index):
         queryImg = Image.query()     # get images
         queryLike = Like.query()     # get likes
 
+        #likedByYou = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
+        likes = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
         
-        # get list of imgID's liked by you
-        likedByYou = list()
-        likedByYou = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
-    #    for i in range(0, len(likes)):
-    #        likedByYou.append(likes[i].imgID)
-    #        
+        likedByYou = set()
+        # add imgID's of images the current user liked to the set likedByYou
+        for item in likes:
+            likedByYou.add(item.imgID)
+     
         images = queryImg.fetch()
         for i in range(0,len(images)):
             im = {}
@@ -133,11 +135,14 @@ class getPhotosJSONHandler(indexController.index):
             comments = comments.order(-ImageComment.time_created)
             #im['comments'] = comments.fetch()
 
+  
+            print likedByYou
             if im['img_id'] in likedByYou:
                 im['adored'] = True
             else:
                 im['adored'] = False
 
+                
             for elem in comments:
                 elem.commentID = elem.key.id()
                 if elem.userID == str(user_id):

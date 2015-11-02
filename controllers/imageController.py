@@ -131,8 +131,7 @@ class addLikeHandler(indexController.index):
         user_id = self.session.get('user_id')
         username = self.session.get('user')
         imagesModel.addLike(user_id, photo_id, username)    
-        self.redirect('/gallery')
-    
+        
 # test        
 class getLikeHandler(indexController.index):
     
