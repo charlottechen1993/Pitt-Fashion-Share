@@ -82,15 +82,29 @@ $(document).ready(function(){
      /*
         like image
      */
-     $scope.likeImg = function($event, img_id){
-        
+     $scope.handleLike = function($event, img_id){
+         
+         var item =  $(angular.element($event.currentTarget));
+         var url;
+         
+         
+         if(item.hasClass('heart-unfilled'))    // like image
+         {
+            url = '/addLike?photo_id=' + img_id;
+            $(angular.element(item)).removeClass('heart-unfilled'); 
+            $(angular.element(item)).addClass('heart-filled'); 
+         }else{                                 // unlike image
+            url = '/unLike?photo_id=' + img_id;
+            $(angular.element(item)).removeClass('heart-filled'); 
+            $(angular.element(item)).addClass('heart-unfilled'); 
+         
+         }
+         
+         
         $.ajax({
-            url: '/addLike?photo_id=' + img_id,
+            url: url,
             success: function(data){
-                // uncolor heart
-                var item = $event.currentTarget;
-                $(angular.element(item)).removeClass('heart-unfilled'); 
-                $(angular.element(item)).addClass('heart-filled'); 
+    
             }
         });
      }
@@ -99,8 +113,17 @@ $(document).ready(function(){
      /*
         like image
      */
-     $scope.unlikeImg = function(){
-       
+     $scope.unlikeImg = function($event, img_id){
+
+        $.ajax({
+            url: '/unlike?photo_id=' + img_id,
+            success: function(data){
+                // uncolor heart
+                var item = $event.currentTarget;
+                $(angular.element(item)).removeClass('heart-filled'); 
+                $(angular.element(item)).addClass('heart-unfilled'); 
+            }
+        });
      }
 
 });

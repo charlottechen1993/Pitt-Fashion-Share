@@ -117,13 +117,14 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, indexControl
             #self.redirect('/gallery')
             app_global.render_template(self,'index.html', params)
     
+    
 class deleteLikeHandler(indexController.index):
     def get(self):
-        likeID = self.request.get('likeID')
-        likeKey = ndb.Key(imagesModel.Like, int(likeID))
-        if likeID is not None:
-            likeKey.delete()
-        self.redirect('gallery')
+        user_id = self.session.get('user_id')
+        img_id = self.request.get('photo_id')    
+        imagesModel.deleteLike(user_id, img_id)    
+
+    
     
 class addLikeHandler(indexController.index):
     def get(self):

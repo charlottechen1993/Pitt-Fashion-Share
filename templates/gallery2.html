@@ -14,7 +14,6 @@
 {% block content %}
 
 
-
     <section id="photos" ng-controller="imgCtrl">
         <div class="image" ng-repeat="img in images">
             <figure class="img-cover">
@@ -22,8 +21,8 @@
                 <figcaption class="img-text">
                     <div class="ctr-img-text">
                         <!-- adored : click event in 'gallery.js' attached to 'ng-click' -->
-                        <span id="hello" class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="unlikeImg($event,[[img.img_id]])"></span>
-                        <span id="bye" class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored" ng-click="likeImg($event,[[img.img_id]])"></span>
+                        <span class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="handleLike($event,[[img.img_id]])"></span>
+                        <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored" ng-click="handleLike($event,[[img.img_id]])"</span>
                         <!-- end adored -->
                         <span class="view-image" data-toggle="modal" data-target="#Modal[[img.img_id]]">View</span>
                     </div>
@@ -38,7 +37,6 @@
 
     
 
-<!--
     <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
         
         Picture Title:<br>
@@ -75,7 +73,6 @@
     </form>
 
     <br><br>
--->
 
 
 {% endblock %}

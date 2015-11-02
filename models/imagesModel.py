@@ -48,6 +48,10 @@ def addLike(userID, imgID, username):
     like.uploadedBy = username
     like.put()
     
+def deleteLike(user_id, photo_id):
+    like = Like.query(Like.userID==str(user_id), Like.imgID==str(photo_id)).fetch(1)
+    like[0].key.delete()
+    
 def getLikes():
     query = Like.query()
     likes = query.fetch()
@@ -135,8 +139,6 @@ class getPhotosJSONHandler(indexController.index):
             comments = comments.order(-ImageComment.time_created)
             #im['comments'] = comments.fetch()
 
-  
-            print likedByYou
             if im['img_id'] in likedByYou:
                 im['adored'] = True
             else:

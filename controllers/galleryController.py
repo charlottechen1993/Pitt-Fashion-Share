@@ -113,6 +113,8 @@ class index(indexController.index):
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
+        print user_id    
+            
         params = {
 #            'photos': images,
             #'photos_json': json.dumps(images),
