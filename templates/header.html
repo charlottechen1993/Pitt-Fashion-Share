@@ -19,8 +19,15 @@
                 <li><a href="/profile">PROFILE</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                {% if user %}
+                <form  method="post" action="/userFunctions?method=logout" name="logoutForm">
+                    <li>
+                        <a onclick="document.logoutForm.submit();">Logout</a>
+                    </li>
+                </form>
+                {% else %}
                 <li><a href="/user">Login/New User</a></li>
-<!--                <div class="row">{{message}}, {{user_id}}</div>-->
+                {% endif %}
             </ul>
         </div>
     </div>

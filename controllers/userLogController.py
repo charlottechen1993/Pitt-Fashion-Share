@@ -32,9 +32,9 @@ class userFunctions(indexController.index):
         method = self.request.get('method')
         un = self.request.get('un').strip()
         pw = self.request.get('pw').strip()
- 
+  
         
-        if un == '' or pw =='':
+        if method!='logout' and (un == '' or pw ==''):
             message = 'You must fill out both username and password!'
             template = 'login.html'
             self.redirect('/userFunctions?message='+message)
@@ -69,7 +69,11 @@ class userFunctions(indexController.index):
                     template = 'index.html'
                     message = 'Login Fail!'
                     self.redirect('/userFunctions?message='+message)
-         
+            elif method == 'logout':                                   # /userFunctions?method=logout
+                print 'here'
+                self.session['user'] = None
+                self.session['user_id'] = None
+                self.redirect('/user')
                 
 #        params = {
 #            'message': message,

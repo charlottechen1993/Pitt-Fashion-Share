@@ -70,7 +70,6 @@
 .hr-v{
     background-color: rgba(255, 255, 255, 0.6);
     width: 1px;
-    height: 160px;;
     display: inline-block;
     cursor: pointer;
 }
@@ -81,7 +80,7 @@
         display: none; 
     }
     hr{
-        display: block;   
+        display: block;
     }
 }
 
@@ -93,5 +92,15 @@
     
     .white-font{
         margin-left: -45px;   
+    }
+    
+    .hr-v{
+        height: 160px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .hr-v{
+        height: 125px;
     }
 }
