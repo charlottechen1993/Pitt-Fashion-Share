@@ -13,30 +13,32 @@
 
 {% block content %}
 
- {% include 'imgModal.html' %}
 
-    <div ng-controller="imgCtrl">
-        <div id="photos" ng-controller="imgCtrl">
-            <div class="image" ng-repeat="img in images">
-                <figure class="img-cover">
-                    <img img_id="[[img.img_id]]" src="[[img.image_url]]">
-                    <figcaption class="img-text">
-                        <div class="ctr-img-text">
-                            <!-- adored : click event in 'gallery.js' attached to 'ng-click' -->
-                            <span class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="likeImg([[img.img_id]])"></span>
-                            <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored" ng-click="unlikeImg([[img.img_id]])"></span>
-                            <!-- end adored -->
-                            <span class="view-image" data-toggle="modal" data-target="#Modal{{photo.img_id}}">View</span>
-                        </div>
-                    </figcaption>
-                </figure>
-            </div>
+
+    <section id="photos" ng-controller="imgCtrl">
+        <div class="image" ng-repeat="img in images">
+            <figure class="img-cover">
+                <img img_id="[[img.img_id]]" src="[[img.image_url]]">
+                <figcaption class="img-text">
+                    <div class="ctr-img-text">
+                        <!-- adored : click event in 'gallery.js' attached to 'ng-click' -->
+                        <span class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="likeImg([[img.img_id]])"></span>
+                        <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored" ng-click="unlikeImg([[img.img_id]])"></span>
+                        <!-- end adored -->
+                        <span class="view-image" data-toggle="modal" data-target="#Modal[[img.img_id]]">View</span>
+                    </div>
+                </figcaption>
+            </figure>
         </div>
+        
+        {% include 'imgModal.html' %}
+    </section>
 
-       
-    </div>
+    
 
+    
 
+<!--
     <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
         
         Picture Title:<br>
@@ -73,6 +75,7 @@
     </form>
 
     <br><br>
+-->
 
 
 {% endblock %}

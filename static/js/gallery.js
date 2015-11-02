@@ -48,6 +48,7 @@ $(document).ready(function(){
                 var img = {
                     'image_url': data[i].image_url,
                     'img_id': data[i].img_id,
+                    'title': data[i].title,
                     'adored': data[i].adored
                 };
                 $scope.populateGallery(img);
@@ -74,7 +75,7 @@ $(document).ready(function(){
         populates image modals
     */
      $scope.populateImgModal = function(){
-
+         
      }
      
      

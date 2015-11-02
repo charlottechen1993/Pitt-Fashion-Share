@@ -3,22 +3,12 @@
     pop up image modal 
 -->
 
-<style>
-    body{
-        background-color: black;
-    }
-</style>
-
-<script type="text/javascript">
-    alert('hello');
-</script>
-
 <div class="modal fade modal-wide" id="Modal[[img.img_id]]" tabindex="-1" role="dialog" aria-labelledby="Modal[[img.img_id]]Label" ng-repeat="img in images"> <!-- START modal -->
   <div class="modal-dialog" role="document">    <!-- START modal-dialog -->
     <div class="modal-content">                 <!-- START modal-content -->
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">[[img.title]]</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">[[img.title]]</h4>
         </div>
         <div class="modal-body">
          <div class="row equal-height-col">
@@ -26,7 +16,7 @@
                 <a class="glyphicon glyphicon-chevron-left"></a> 
             </div>
             <div class="col-sm-10">
-                <img class="img-modal" src="{{photo.image_url}}">
+                <img class="img-modal" src="[[img.image_url]]">
             </div>
             <div class="col-sm-1">
                 <a class="glyphicon glyphicon-chevron-right"></a> 
@@ -37,7 +27,8 @@
         <div class="modal-footer">     
             <!-- Can only comment if logged in. !-->
             {% if user_id %}
-            <form method="post" enctype="multipart/form-data" action="/comment?image_id=[[img.img_id]]" id="form-comment">
+<!--            <form method="post" enctype="multipart/form-data" action="/comment?image_id=[[img.img_id]]" id="form-comment">-->
+            <form method="post" enctype="multipart/form-data" action="/comment?image_id=" id="form-comment">
                 <div class="row cmt">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-2 left-inner-cmt">

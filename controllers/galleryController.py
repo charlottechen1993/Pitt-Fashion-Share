@@ -24,9 +24,9 @@ class index(indexController.index):
 
         #The following 10 lines of code just wipe the entire images, likes, comments datastore.
         
-        #ims = imagesModel.Image.query()
-        #for im in ims.fetch():
-        #    im.key.delete()
+#        ims = imagesModel.Image.query()
+#        for im in ims.fetch():
+#            im.key.delete()
 
         #likes = imagesModel.Like.query()
         #for like in likes.fetch():
