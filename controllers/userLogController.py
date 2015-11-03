@@ -45,7 +45,7 @@ class userFunctions(indexController.index):
                 user = userModel.getUser(un, pw)
 
                 if len(user) > 0:
-                    message = 'Username already exist!'
+                    message = 'ERROR: Username already exist!'
                     self.redirect('/user?message='+message)
                 else:
                     user_key = userModel.createNewUser(un, pw)
@@ -68,7 +68,7 @@ class userFunctions(indexController.index):
                     self.redirect('/profile')
                 else:
                     template = 'index.html'
-                    message = 'Login Fail!'
+                    message = 'ERROR: Login Fail!'
                     self.redirect('/user?message='+message)
             elif method == 'logout':                                   # /userFunctions?method=logout
                 self.session['user'] = None
