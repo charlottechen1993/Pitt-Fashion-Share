@@ -1,5 +1,6 @@
 import webapp2
 import models.userModel as userModel
+from google.appengine.api import mail
 import app_global
 from webapp2_extras import sessions
 import indexController
@@ -50,6 +51,9 @@ class userFunctions(indexController.index):
                 else:
                     user_key = userModel.createNewUser(un, pw)
                     template = 'profile.html'
+                    mail.send_mail('admin@pittfashionshare.appspotmail.com', un, 'Registration', 'Thanks for registering with Pitt Fashion Share! Your account is now active.')
+                
+
                     
                     # log newly registered user in
                     self.redirect('/userFunctions?method=login&un=' + un + '&pw=' + pw)
