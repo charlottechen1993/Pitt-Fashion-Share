@@ -22,7 +22,6 @@ p{
     margin-top: 10px;
     margin-right: 5px;
 }
-
 .badge{
     background-color: #3E869E;   
 }
@@ -96,7 +95,7 @@ p{
     }
     .title{
 /*        color: rgba(255, 255, 255, 0.5);   */
-        color: #545454;
+        color: black;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
         font-size: 25px;
@@ -121,7 +120,7 @@ p{
     }
     .title{
 /*        color: rgba(255, 255, 255, 0.5);   */
-        color: #545454;
+        color: black;
         font-family: 'Lato', sans-serif;
         font-weight: 400;
         font-size: 30px;
