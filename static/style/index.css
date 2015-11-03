@@ -1,8 +1,24 @@
 /* Carousel */
 @media screen and (min-width: 100px) {
     .carousel_img{
-        width: 100%;   
+        width: 100%;
     }
+}
+p{
+    color: rgba(255, 255, 255, 0.5);      
+}
+/* area of top popular outfit*/
+#top_area{
+    background-color: rgba(0,0,0,0.8);
+    padding-bottom: 20px !important;
+    margin-top: 20px;
+}
+
+/* pictures in the top area*/
+.top_pic{
+    width: 19.2%;
+    margin-top: 10px;
+    margin-right: 5px;
 }
 
 .badge{
@@ -18,23 +34,9 @@
     top: 50%;
 }
 
-.navbar-collapse.collapse {
-    display: block !important;
-}
-
-.navbar-nav>li, .navbar-nav {
-    float: left !important;
-}
-
-.navbar-nav.navbar-right:last-child {
-    margin-right: -15px !important;
-}
-
-.navbar-right {
-    float: right !important;
-}
-
-/* FOOTER */
+/* ============================ */
+/* ========== FOOTER ========== */
+/* ============================ */
 /* keep footer fixed to bottom */
 .footer{
     width: 100%;
@@ -74,6 +76,10 @@
     cursor: pointer;
 }
 
+/* ============================ */
+/* ======== END FOOTER ======== */
+/* ============================ */
+
 /* disable vertical line when screen becomes small*/
 @media screen and (max-width: 768px) {
     .hr-v{
@@ -81,6 +87,15 @@
     }
     hr{
         display: block;
+    }
+    #slider-top{
+        margin-top: 27px;   
+    }
+    .title{
+        color: rgba(255, 255, 255, 0.5);   
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 25px;
     }
 }
 
@@ -97,6 +112,17 @@
     .hr-v{
         height: 160px;
     }
+    
+    #slider-top{
+        margin-top: 20px;   
+    }
+    .title{
+        color: rgba(255, 255, 255, 0.5);   
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+    }
+
 }
 
 @media screen and (min-width: 992px) {
