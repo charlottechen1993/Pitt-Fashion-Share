@@ -10,16 +10,21 @@ ul#menu {
     -ms-transform: translate(-50%,-20%);
     padding: 0;
 }
+
+#part-login{
+    color: grey; 
+}
+
+.glyphicon-user:hover, 
+.glyphicon-user:active{
+    color: white;   
+}
 .navbar-collapse.collapse {
     display: block !important;
 }
 
 .navbar-nav>li, .navbar-nav {
     float: left !important;
-}
-
-.navbar-nav.navbar-right:last-child {
-    margin-right: -15px !important;
 }
 
 .navbar-right {
@@ -30,11 +35,6 @@ ul#menu {
     background-color: rgba(0, 0, 0, 0.8) !important;   
     background-image: none;
     background-repeat: no-repeat;
-}
-
-li{
-    font-family: 'Raleway', sans-serif !important;
-    font-weight: 300;
 }
 
 ul#menu li:hover {
@@ -63,4 +63,33 @@ ul#menu li:hover {
     color: white;
     text-decoration: none;
     margin-top: 25px;
+}
+
+/* when screen becomes small*/
+@media screen and (max-width: 768px) {
+    #full-login{
+        display: none;
+    }
+    li{
+        font-family: 'Raleway', sans-serif !important;
+        font-weight: 300;
+        font-size: 14px;
+        margin-right: -10px;
+    }
+    #part-login{
+        display: block;
+        margin-right: 0 !important;
+    }
+}
+        
+/* when screen is large */
+@media screen and (min-width: 768px) {
+    li{
+        font-family: 'Raleway', sans-serif !important;
+        font-weight: 300;
+        font-size: 15px;
+    }
+    #part-login{
+        display: none;
+    }
 }

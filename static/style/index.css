@@ -9,9 +9,11 @@ p{
 }
 /* area of top popular outfit*/
 #top_area{
-    background-color: rgba(0,0,0,0.8);
-    padding-bottom: 20px !important;
-    margin-top: 40px;
+/*    background-color: rgba(134,170,191,0.8);*/
+    background-color: white;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+/*    margin-top: 40px;*/
 }
 
 /* pictures in the top area*/
@@ -88,11 +90,13 @@ p{
     hr{
         display: block;
     }
+    /* Carousol */
     #slider-top{
         margin-top: 27px;   
     }
     .title{
-        color: rgba(255, 255, 255, 0.5);   
+/*        color: rgba(255, 255, 255, 0.5);   */
+        color: #545454;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
         font-size: 25px;
@@ -112,12 +116,12 @@ p{
     .hr-v{
         height: 160px;
     }
-    
     #slider-top{
         margin-top: 20px;   
     }
     .title{
-        color: rgba(255, 255, 255, 0.5);   
+/*        color: rgba(255, 255, 255, 0.5);   */
+        color: #545454;
         font-family: 'Lato', sans-serif;
         font-weight: 400;
         font-size: 30px;
