@@ -9,14 +9,14 @@ p{
 }
 /* area of top popular outfit*/
 #top_area{
-/*    background-color: rgba(0,0,0,0.8);*/
+    background-color: rgba(0,0,0,0.8);
     padding-bottom: 20px !important;
     margin-top: 40px;
 }
 
 /* pictures in the top area*/
 .top_pic{
-    width: 19.2%;
+    width: 24%;
     margin-top: 10px;
     margin-right: 5px;
 }
