@@ -39,15 +39,25 @@
                 </div>
             {% endif %}
             <hr>   
-            <div class="row cmt" ng-repeat="c in img.comments">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-2 left-inner-cmt">
-                    <br>  
-                    [[c.upload_date]]
+            
+            <style>
+                .eq-row {
+                    display: table;
+                }
+
+                .eq-row .eq-col {
+                    float: none;
+                    display: table-cell;
+                    vertical-align: top;
+                }
+            </style>
+            
+            <div class="row cmt eq-row" ng-repeat="c in img.comments">
+                <div class="col-sm-3 left-inner-cmt eq-col">
+                    <p class="center">[[c.uploadedBy]] says</p>
                 </div>
-                <div class="col-sm-8 right-inner-cmt">
-                    [[c.text]]
-                    <br>
+                <div class="col-sm-9 right-inner-cmt eq-col">
+                    <p class="center">[[c.text]] </p> 
                     <!-- Can only delete comment if you are logged in, and it's yours. !-->
                     {% if user_id %}
                         <!-- You wrote this comment! Option to delete.!-->
@@ -58,8 +68,7 @@
 -->
                     {% endif %}
                 </div>
-                [[c.uploadedBy]] says
-                <div class="col-sm-1"></div>
+                <hr>
              </div>   
         </div> <!-- END modal-footer -->
     </div>  <!-- END modal-content -->
