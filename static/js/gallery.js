@@ -26,6 +26,7 @@ $(document).ready(function(){
      
      
      $scope.images = [];
+     $scope.comments = [];
      
     /*
         Purpose: Get images from server
@@ -40,6 +41,9 @@ $(document).ready(function(){
         success: function(data){
             console.log(data);
             
+                        
+           // alert(JSON.stringify(data, null, 2));
+            
           //  data = JSON.parse(data);
            //alert(JSON.stringify(data, null, 2));
           //  alert(data);
@@ -49,8 +53,10 @@ $(document).ready(function(){
                     'image_url': data[i].image_url,
                     'img_id': data[i].img_id,
                     'title': data[i].title,
-                    'adored': data[i].adored
+                    'adored': data[i].adored,
+                    'comments': data[i].comments
                 };
+                
                 $scope.populateGallery(img);
             }
         },
@@ -69,13 +75,33 @@ $(document).ready(function(){
             $scope.images.push(img);
         });
      }
+     
+     
+     /*
+        populates image comments
+     */
+     $scope.populateComments = function(comment){
+         $scope.$apply(function(){
+            $scope.comments.push(comment);
+         });
+     }
 
      
     /*
-        populates image modals
+        add comment image modals
     */
-     $scope.populateImgModal = function(){
-         
+     $scope.addComment = function($event, img_id, comment){
+
+         $.ajax({
+             url: '/comment?image_id='+img_id + '&comment='+comment,
+             method: 'POST',
+             success: function(data){
+                console.log('comment added');
+                // clear comment input 
+                var input = document.getElementById("comment");
+                input.setAttribute("value", "");
+             }
+         });
      }
      
      

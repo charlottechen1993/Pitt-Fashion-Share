@@ -12,6 +12,7 @@ from google.appengine.api import users
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 
+
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the imageFunctions class
 #class imageFunctions(webapp2.RequestHandler):
 #    
@@ -34,12 +35,12 @@ class addCommentHandler(indexController.index):
         imgID = self.request.get('image_id')
         userID = self.session.get('user_id')
         username = self.session.get('user')
+        time_created = datetime.datetime.now().strftime('%m/%d/%Y')
+        
         if userID: 
             text = self.request.get('comment')
-            imagesModel.create_comment(userID, text, imgID, username)
-            self.redirect('/gallery')
-        else:
-            self.redirect('/')
+            imagesModel.create_comment(userID, text, imgID, username, time_created)
+        
             
 class deleteCommentHandler(indexController.index):
     def post(self):

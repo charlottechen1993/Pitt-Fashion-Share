@@ -15,11 +15,9 @@ class ImageComment(ndb.Model):
     userID = ndb.StringProperty()
     imgID = ndb.StringProperty()
     text = ndb.TextProperty()
-    time_created = ndb.DateTimeProperty(auto_now_add=True) 
+    upload_date = ndb.StringProperty(default='')
     uploadedBy = ndb.StringProperty()
-    yours = ndb.IntegerProperty() #I  just set it something if true since bool didnt work
-                                  # so (if yours) then it shows on the html
-
+    
 class Image(ndb.Model):
     categoryID = ndb.IntegerProperty()
     total = ndb.IntegerProperty()
@@ -27,7 +25,6 @@ class Image(ndb.Model):
     image_url = ndb.StringProperty()
     user = ndb.StringProperty()
     time_created = ndb.DateTimeProperty(auto_now_add=True)
-    comments = list()
     liked = ndb.IntegerProperty() #if initialized, yes
     minPrice = ndb.IntegerProperty()
     maxPrice = ndb.IntegerProperty()
@@ -36,10 +33,12 @@ class Image(ndb.Model):
     clothingType = ndb.StringProperty() # type as in shirt, jeans, etc. 
     uploadedBy = ndb.StringProperty()
     
+    
 class Like(ndb.Model):
     imgID = ndb.StringProperty()
     userID = ndb.StringProperty()
     uploadedBy = ndb.StringProperty()
+    
 
 def addLike(userID, imgID, username):
     like = Like()
@@ -57,12 +56,16 @@ def getLikes():
     likes = query.fetch()
     return likes
 
-def create_comment(userID, text, imgID, username):
+def create_comment(userID, text, imgID, username, time_created):
+    print 'create_comment'
+    print time_created
+    
     comment = ImageComment()
     comment.imgID = str(imgID)
     comment.userID = str(userID)
     comment.text = text
     comment.uploadedBy = username
+    comment.upload_date = time_created
     comment.put()
     
 def get_comments(imgID):
@@ -113,8 +116,9 @@ class getPhotosJSONHandler(indexController.index):
         if user_id is None:
             user_id = -1
 
-        queryImg = Image.query()     # get images
-        queryLike = Like.query()     # get likes
+        queryImg = Image.query()            # get images
+        queryLike = Like.query()            # get likes
+        queryComment = ImageComment.query() # get comments
 
         #likedByYou = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
         likes = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
@@ -135,9 +139,11 @@ class getPhotosJSONHandler(indexController.index):
             im['user_id'] = images[i].user
             im['total_likes'] = queryLike.filter(Like.imgID == im['img_id']).count()
 
-            comments = ImageComment.query(im['img_id'] == ImageComment.imgID)
-            comments = comments.order(-ImageComment.time_created)
-            #im['comments'] = comments.fetch()
+            comments = queryComment.filter(ImageComment.imgID ==  im['img_id'])
+            comments = comments.order(-ImageComment.upload_date).fetch()              
+            im['comments'] = [c.to_dict() for c in comments]
+    
+                
 
             if im['img_id'] in likedByYou:
                 im['adored'] = True

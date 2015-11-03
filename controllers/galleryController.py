@@ -27,14 +27,14 @@ class index(indexController.index):
 #        ims = imagesModel.Image.query()
 #        for im in ims.fetch():
 #            im.key.delete()
-
+#
 #        likes = imagesModel.Like.query()
 #        for like in likes.fetch():
 #                like.key.delete()
-                
-        #coms = imagesModel.ImageComment.query()
-        #for com in coms.fetch():
-        #        com.key.delete()
+#                
+#        coms = imagesModel.ImageComment.query()
+#        for com in coms.fetch():
+#                com.key.delete()
                 
                 
 #        for i in range(1,17):
