@@ -109,11 +109,10 @@ class index(indexController.index):
         restrictionList.append(brandName)
         restrictionList.append(clothingType)
         
-      #  images = imagesModel.getImages(user_id, restrictionList)
+
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
             
-        print user_id    
             
         params = {
 #            'photos': images,

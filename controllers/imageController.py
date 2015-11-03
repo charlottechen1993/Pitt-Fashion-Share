@@ -110,13 +110,9 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, indexControl
             username = self.session.get('user')
             imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, priceRange, brand, clothingType, username)
 
+        
+            self.redirect('/')
             
-            params = {
-                'user_id':1
-            }
-
-            #self.redirect('/gallery')
-            app_global.render_template(self,'index.html', params)
     
     
 class deleteLikeHandler(indexController.index):

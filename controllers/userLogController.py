@@ -35,9 +35,9 @@ class userFunctions(indexController.index):
   
         
         if method!='logout' and (un == '' or pw ==''):
-            message = 'You must fill out both username and password!'
+            message = 'You must fill out both email and password!'
             template = 'login.html'
-            self.redirect('/userFunctions?message='+message)
+            self.redirect('/user?message='+message)
             
         else:
             if method == 'newUser':                                 # /userFunctions?method=newUser
@@ -46,12 +46,13 @@ class userFunctions(indexController.index):
 
                 if len(user) > 0:
                     message = 'Username already exist!'
-                    self.redirect('/userFunctions?message='+message)
+                    self.redirect('/user?message='+message)
                 else:
                     user_key = userModel.createNewUser(un, pw)
                     template = 'profile.html'
                     
-                    self.redirect('/profile')
+                    # log newly registered user in
+                    self.redirect('/userFunctions?method=login&un=' + un + '&pw=' + pw)
                     
             elif method == 'login':                                  # /userFunctions?method=login
                 user = userModel.getUser(un, pw)
@@ -68,9 +69,8 @@ class userFunctions(indexController.index):
                 else:
                     template = 'index.html'
                     message = 'Login Fail!'
-                    self.redirect('/userFunctions?message='+message)
+                    self.redirect('/user?message='+message)
             elif method == 'logout':                                   # /userFunctions?method=logout
-                print 'here'
                 self.session['user'] = None
                 self.session['user_id'] = None
                 self.redirect('/user')
