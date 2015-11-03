@@ -9,19 +9,34 @@ p{
 }
 /* area of top popular outfit*/
 #top_area{
-/*    background-color: rgba(134,170,191,0.8);*/
-    background-color: white;
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-/*    margin-top: 40px;*/
+    margin-bottom: 40px !important;
 }
 
 /* pictures in the top area*/
 .top_pic{
     width: 24%;
     margin-top: 10px;
-    margin-right: 5px;
 }
+.btn-default{
+    color: black;
+    width: 100%;
+    border-radius: 0;
+    position: inherit;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.btn-default:focus, 
+.btn-default:active, 
+.btn-default:hover, 
+.btn-default.active, 
+.btn-default.active, 
+.open > .dropdown-toggle.btn-default{
+}
+
+.btn-default:active:focus{
+}
+
 .badge{
     background-color: #3E869E;   
 }
@@ -61,7 +76,7 @@ p{
 }
 /* customize links in footer*/
 .white-font h4 a:link, a:visited{
-    color: rgba(255, 255, 255, 0.6);
+/*    color: rgba(255, 255, 255, 0.6);*/
     text-decoration: none;
 }
 .white-font h4 a:hover, a:active{
@@ -86,7 +101,7 @@ p{
     .hr-v{
         display: none; 
     }
-    hr{
+    .hr-h{
         display: block;
     }
     /* Carousol */
@@ -95,16 +110,25 @@ p{
     }
     .title{
 /*        color: rgba(255, 255, 255, 0.5);   */
-        color: black;
+        color: #545454;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
         font-size: 25px;
     }
+    .btn-default{
+        color: black;
+        width: 30%;
+        border-radius: 0;
+        position: inherit;
+        padding-bottom: 8px;
+        padding-top: 8px;
+    }
+
 }
 
 /* disable horizontal line when screen is large */
 @media screen and (min-width: 768px) {
-    hr{
+    .hr-h{
         display: none;   
     }
     
@@ -120,7 +144,7 @@ p{
     }
     .title{
 /*        color: rgba(255, 255, 255, 0.5);   */
-        color: black;
+        color: #545454;
         font-family: 'Lato', sans-serif;
         font-weight: 400;
         font-size: 30px;
@@ -132,4 +156,5 @@ p{
     .hr-v{
         height: 125px;
     }
+    
 }

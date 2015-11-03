@@ -45,6 +45,7 @@
     position: inherit;
     padding-bottom: 8px;
     padding-top: 8px;
+    border: none;
 }
 
 .btn-default:focus, 

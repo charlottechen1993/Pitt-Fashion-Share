@@ -5,7 +5,8 @@
      box-sizing: border-box;
 }
 body{
-    background-color: rgba(195, 210, 210, 0.5);
+/*    background-color: rgba(195, 210, 210, 0.5);*/
+    background-color: white;
     overflow-x: hidden;
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
