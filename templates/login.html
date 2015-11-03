@@ -12,7 +12,7 @@
 
 
 {% block content %}
-<h3>{{user}}</h3>
+
 <div class="container">
 <div class="row" style="margin-top: 30px;">
 <div class="col-sm-offset-3 col-sm-6">
@@ -29,7 +29,7 @@
             <form method="post" enctype="multipart/form-data" action="/userFunctions?method=login">
                 <br>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="un">
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pw">
@@ -44,11 +44,11 @@
                 <br>
                 <!-- NEW -->
                 <div class="form-group">
-                    <input type="text" class="form-control" id="registerUser" placeholder="Email" name="un">
+                    <input type="text" class="form-control" id="registerUser" placeholder="Email" name="email">
                 </div>
                 <!-- NEW -->
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name" id="reg-username">
+                    <input type="text" class="form-control" placeholder="Name" id="reg-username" name="un">
                 </div>
                 <div class="form-inline">
                     <div class="form-group">

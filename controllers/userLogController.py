@@ -21,6 +21,9 @@ class index(indexController.index):
             'message': message
         }
         
+        userModel.getUsers()
+        
+        
         app_global.render_template(self, 'login.html', params)
     
         
@@ -31,41 +34,51 @@ class userFunctions(indexController.index):
     
     def post(self):
         method = self.request.get('method')
-        un = self.request.get('un').strip()
+        email = self.request.get('email').strip()   # unique identifier
+        un = self.request.get('un').strip()         # name, identifier of person
         pw = self.request.get('pw').strip()
-  
+        gender = ''
+
         
-        if method!='logout' and (un == '' or pw ==''):
-            message = 'You must fill out both email and password!'
-            template = 'login.html'
+        if method!='logout' and (email == '' or pw ==''):
+            message = 'ERROR: You must fill out both email and password!'
             self.redirect('/user?message='+message)
             
         else:
             if method == 'newUser':                                 # /userFunctions?method=newUser
                 #check that username does not already exist
-                user = userModel.getUser(un, pw)
+                user = userModel.getUser(email, pw)
 
                 if len(user) > 0:
                     message = 'ERROR: Username already exist!'
                     self.redirect('/user?message='+message)
                 else:
-                    user_key = userModel.createNewUser(un, pw)
-                    template = 'profile.html'
-                    mail.send_mail('admin@pittfashionshare.appspotmail.com', un, 'Registration', 'Thanks for registering with Pitt Fashion Share! Your account is now active.')
-                
-
+                    user_key = userModel.createNewUser(email, un, pw, gender)
+                    mail.send_mail('admin@pittfashionshare.appspotmail.com', email, 'Registration', 'Thanks for registering with Pitt Fashion Share! Your account is now active.')
+                    
+                    user = userModel.getUser(email, pw)
                     
                     # log newly registered user in
-                    self.redirect('/userFunctions?method=login&un=' + un + '&pw=' + pw)
+                    self.session['user'] = un,
+                    self.session['email'] = email,
+                    self.session['user_id'] = user_key.id()
+                
+                    params = {
+                        'user': un,
+                        'email': email
+                    }
+                    
+                    app_global.render_template(self, 'newUserSuccess.html', params)
                     
             elif method == 'login':                                  # /userFunctions?method=login
-                user = userModel.getUser(un, pw)
+                user = userModel.getUser(email, pw)
 
                 
                 if len(user) > 0:    # user login success
                     template = 'profile.html'
                     message = 'Logged in as ' + user[0].un
                     
+                    self.session['email'] = user[0].email
                     self.session['user'] = user[0].un
                     self.session['user_id'] = user[0].user_id 
                     

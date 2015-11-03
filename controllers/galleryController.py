@@ -4,6 +4,7 @@ import indexController
 import app_global
 import main
 import models.imagesModel as imagesModel
+import models.userModel as userModel
 from google.appengine.ext import ndb
 import json
 
@@ -21,9 +22,15 @@ class index(indexController.index):
     #respond to HTTP GET requests
     def get(self):
         # images = imagesModels.getImages()
+        
+         
 
         #The following 10 lines of code just wipe the entire images, likes, comments datastore.
-        
+#        
+#        users = userModel.Users.query()
+#        for u in users.fetch():
+#            u.key.delete()
+#        
 #        ims = imagesModel.Image.query()
 #        for im in ims.fetch():
 #            im.key.delete()
