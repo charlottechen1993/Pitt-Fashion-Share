@@ -23,10 +23,9 @@ $(document).ready(function(){
 
  angularAPP.controller('imgCtrl', function($scope,$http){
      
-     
-     
      $scope.images = [];
      $scope.comments = [];
+     
      
     /*
         Purpose: Get images from server
@@ -41,13 +40,18 @@ $(document).ready(function(){
         success: function(data){
             console.log(data);
             
+            var photosLength;   // amount of photos to load
+            
+            // if current page contains '#homeCarousel' then the current page must be the index
+            if( $('#homeCarousel').length > 0 && data.length>=12){
+                photosLength = 12;
+            }else{
+                photosLength = data.length;
+            }
                         
            // alert(JSON.stringify(data, null, 2));
             
-          //  data = JSON.parse(data);
-           //alert(JSON.stringify(data, null, 2));
-          //  alert(data);
-            for( var i = 0; i < data.length; i++ ) {
+            for( var i = 0; i < photosLength; i++ ) {
    
                 var img = {
                     'image_url': data[i].image_url,
