@@ -2,6 +2,7 @@
 import app_global
 import datetime
 import logging
+import json
 import models.imagesModel as imagesModel
 import main
 import galleryController
@@ -40,6 +41,7 @@ class addCommentHandler(main.index):
         if userID: 
             text = self.request.get('comment')
             imagesModel.create_comment(userID, text, imgID, username, time_created)
+            self.response.out.write(json.dumps({'user':username}))
         
             
 class deleteCommentHandler(main.index):

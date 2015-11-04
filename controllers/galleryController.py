@@ -42,7 +42,7 @@ class index(main.index):
 #        coms = imagesModel.ImageComment.query()
 #        for com in coms.fetch():
 #                com.key.delete()
-                
+#                
                 
 #        for i in range(1,17):
 #            photo = {}

@@ -24,7 +24,7 @@
          </div>
         </div> <!-- END modal-body -->
         
-        <div class="modal-footer">     
+        <div class="modal-footer" data-id="asdfasd">     
             <!-- Can only comment if logged in. !-->
             {% if user_id %}
                 <div class="row cmt">
@@ -33,7 +33,7 @@
                     <a ng-click="addComment($event,[[img.img_id]], comment)" class="glyphicon glyphicon-pencil"></a>  
                 </div> 
                 <div class="col-sm-8" style="padding:0px;">
-                    <input type="text" ng-model="comment" class="commentSub" placeholder="Compliment here" id="comment">  
+                    <input type="text" ng-model="comment" class="commentSub" placeholder="Compliment here" id="commentInput">  
                 </div>
                 <div class="col-sm-1"></div>
                 </div>
