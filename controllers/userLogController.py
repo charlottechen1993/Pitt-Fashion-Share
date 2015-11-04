@@ -59,9 +59,9 @@ class userFunctions(indexController.index):
                     user = userModel.getUser(email, pw)
                     
                     # log newly registered user in
-                    self.session['user'] = un,
-                    self.session['email'] = email,
-                    self.session['user_id'] = user_key.id()
+                    self.session['user'] = str(un),
+                    self.session['email'] = str(email),
+                    self.session['user_id'] = str(user_key.id())
                 
                     params = {
                         'user': un,
@@ -78,9 +78,9 @@ class userFunctions(indexController.index):
                     template = 'profile.html'
                     message = 'Logged in as ' + user[0].un
                     
-                    self.session['email'] = user[0].email
-                    self.session['user'] = user[0].un
-                    self.session['user_id'] = user[0].user_id 
+                    self.session['email'] = str(user[0].email)
+                    self.session['user'] = str(user[0].un)
+                    self.session['user_id'] = str(user[0].user_id)
                     
                     self.redirect('/profile')
                 else:
