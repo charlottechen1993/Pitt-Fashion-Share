@@ -1,5 +1,17 @@
 .btn-default { 
-	background-color: #E5EEFF; }
+	background-color: #E5EEFF; 
+}
+
 .btn-default:hover { 
 	background-color: #000819;
-	color: white;  }
+	color: white;  
+}
+
+.update_girl {
+	width: 120%;
+	max-width: 300px;
+}
+
+#propic {
+	width: 30%;
+}
