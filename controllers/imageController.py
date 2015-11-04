@@ -111,7 +111,7 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
             imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, priceRange, brand, clothingType, username)
 
         
-            self.redirect('/')
+            self.redirect('/gallery')
             
     
     

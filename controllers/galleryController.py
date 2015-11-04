@@ -125,7 +125,7 @@ class index(main.index):
 #            'photos': images,
             #'photos_json': json.dumps(images),
             'user_id':self.session.get('user_id'),
-            'username': self.session.get('user'),
+            'user': self.session.get('user'),
             #'user_id': None, #testing when user is logged out
             'upload_url': upload_url,
             'brands': brands,
