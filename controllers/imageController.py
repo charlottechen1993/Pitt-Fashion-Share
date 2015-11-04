@@ -60,7 +60,7 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
 
         if type in ['image/jpeg', 'image/png']: 
             title = self.request.get('title')
-            user = self.request.get('user_id')
+            user = self.session.get('user_id')
             priceRange = self.request.get('priceRange')
             brand = self.request.get('brand')
             clothingType = self.request.get('clothingType')

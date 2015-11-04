@@ -10,6 +10,18 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: Image
+  properties:
+  - name: uploadedBy
+  - name: time_created
+    direction: desc
+
+- kind: Image
+  properties:
+  - name: user
+  - name: time_created
+    direction: desc
+
 - kind: ImageComment
   properties:
   - name: imgID

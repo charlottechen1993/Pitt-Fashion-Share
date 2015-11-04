@@ -1,17 +1,18 @@
 {% extends "base.html" %}
+ 
 
 {% block content %}
+<br><br><br> 
     <ul>
     {% for img in images %}
         <li>{{img.title}}</li>
         <li>{{img.image_url}}</li>
     {% endfor %}
     </ul>
-{% endblock %}
 
 
-<!-- 
 
+   
     <h3>{{message}}</h3>
 <h3>You are {{username}} with user_id {{user_id}}</h3>
     Likes:
@@ -51,6 +52,7 @@
             <li>type = {{img.clothingType}}</li> 
             <li>brand = {{img.brand}}</li> 
             <li>imgID = {{img.img_id}}</li> 
+            <li>userID = {{img.user}}</li>
             <li>minPrice = {{img.minPrice}}</li>
             <li>maxPrice = {{img.maxPrice}}</li>
             <li>Price Range = {{img.priceRange}}</li>
@@ -58,5 +60,6 @@
     {% endfor %}
     </ul>
 
+{% endblock %}
 
--->
+

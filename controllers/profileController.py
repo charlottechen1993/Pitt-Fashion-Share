@@ -68,6 +68,7 @@ class index(main.index):
         maxPrice = self.request.get('maxPrice')
         brandName = self.request.get('brand')
         clothingType = self.request.get('clothingType')
+        print user_id
         
         if brandName == "":
             brandName = None
