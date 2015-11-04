@@ -40,29 +40,28 @@
   }
 }
 
-
 .img-cover{
     position: relative;
     width: auto;
     vertical-align: middle;
     display: inline-block;
     text-align: center;
-
 }
 
 .img-cover:before {
     content: "";
     display: block;
     position: absolute;
-    top: 0;
+    top: 4px;
     bottom: 0;
     left: 0;
     right: 0;
     background: none;
     transition: all .3s linear;
 }
+
 .img-cover:hover:before{
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,.7);  
 }
     
 .img-text {
@@ -247,8 +246,11 @@ table.table-clothes td:nth-child(1){
     text-align: center;
     background-color: none;
     cursor: pointer;
-    color: #EBB0CF;
-    border: 1px solid #EBB0CF;
+/*    color: #EBB0CF;*/
+    color: white;
+/*    border: 1px solid #EBB0CF;*/
+    border: 1px solid white;
+    display: block;
     display: block;
 }
 .view-image:hover{

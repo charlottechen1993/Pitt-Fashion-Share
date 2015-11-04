@@ -43,8 +43,8 @@ $(document).ready(function(){
             var photosLength;   // amount of photos to load
             
             // if current page contains '#homeCarousel' then the current page must be the index
-            if( $('#homeCarousel').length > 0 && data.length>=12){
-                photosLength = 12;
+            if( $('#homeCarousel').length > 0 && data.length>=15){
+                photosLength = 15;
             }else{
                 photosLength = data.length;
             }

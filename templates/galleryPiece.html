@@ -1,5 +1,5 @@
-    <section id="photos" ng-controller="imgCtrl">
-        <div class="image" ng-repeat="img in images">
+    <section id="photos" ng-controller="imgCtrl" style="margin-top: 20px;">
+        <div class="image" ng-repeat="img in images" class="blur" >
             <figure class="img-cover">
                 <img img_id="[[img.img_id]]" src="[[img.image_url]]">
                 <figcaption class="img-text">

@@ -90,7 +90,7 @@ class userFunctions(main.index):
             elif method == 'logout':                                   # /userFunctions?method=logout
                 self.session['user'] = None
                 self.session['user_id'] = None
-                self.redirect('/user')
+                # redirect in ajax call in header.html
                 
 #        params = {
 #            'message': message,

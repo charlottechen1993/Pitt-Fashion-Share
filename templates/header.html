@@ -6,6 +6,21 @@
 
 <input type="hidden" name="user_id" value="{{user_id}}">
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#logout').click(function(){
+            $.ajax({
+                url: '/userFunctions?method=logout',
+                method: 'POST',
+                success: function(){
+                    console.log('logged out');
+                    window.location.replace("http://pittfashionshare.appspot.com");
+                }
+            });
+        });
+    });
+</script>
+
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -20,11 +35,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user %}
-                <form  method="post" action="/userFunctions?method=logout" name="logoutForm">
+<!--                <form  method="post" action="/userFunctions?method=logout" name="logoutForm">-->
                     <li>
-                        <a href="#" onclick="document.logoutForm.submit();" id="logout">Logout</a>
+<!--                        <a href="#" onclick="document.logoutForm.submit();" id="logout">Logout</a>-->
+                        <a href="#" id="logout">Logout</a>
                     </li>
-                </form>
+<!--                </form>-->
                 {% else %}
                 <li id="part-login"><a href="/user"><span class="glyphicon glyphicon-user"></span></a></li>
                 <li id="full-login"><a href="/user"><span class="glyphicon glyphicon-user"></span> Login</a></li>
