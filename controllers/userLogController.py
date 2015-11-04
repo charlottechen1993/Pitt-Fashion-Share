@@ -4,6 +4,7 @@ from google.appengine.api import mail
 import app_global
 from webapp2_extras import sessions
 import main
+import time
     
     
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
@@ -25,13 +26,42 @@ class index(main.index):
         
         
         app_global.render_template(self, 'login.html', params)
+  
+
+
+class newUserSuccess(main.index):
     
+    def get(self):
+        app_global.render_template(self, 'newUserSuccess.html', {})
         
 		  
 		
+        
 #class userFunctions(webapp2.RequestHandler):
 class userFunctions(main.index):
     
+#    def get(self):
+#        email = self.request.get('email').strip()   # unique identifier
+#        pw = self.request.get('pw').strip()
+#        time.sleep(5) # delays for 5 seconds
+#        
+#        user = userModel.getUser(email, pw)
+#        
+#                
+#        if len(user) > 0:    # user login success
+#            template = 'profile.html'
+#            message = 'Successfully Logged in as ' + user[0].un
+#                    
+#            self.session['email'] = user[0].email,
+#            self.session['user'] = user[0].un,
+#            self.session['user_id'] = user[0].user_id
+#                    
+#            self.redirect('/profile')
+#        else:
+#            template = 'index.html'
+#            message = 'ERROR: Login Fail!'
+#            self.redirect('/user?message='+message)
+#    
     def post(self):
         method = self.request.get('method')
         email = self.request.get('email').strip()   # unique identifier
@@ -47,15 +77,14 @@ class userFunctions(main.index):
         else:
             if method == 'newUser':                                 # /userFunctions?method=newUser
                 #check that username does not already exist
-                user = userModel.getUser(email, pw)
-
-                if len(user) > 0:
+                if len(userModel.getUser(email, pw)) > 0:
                     message = 'ERROR: Username already exist!'
                     self.redirect('/user?message='+message)
                 else:
                     user_key = userModel.createNewUser(email, un, pw, gender)
                     mail.send_mail('admin@pittfashionshare.appspotmail.com', email, 'Registration', 'Thanks for registering with Pitt Fashion Share! Your account is now active.')
                     
+<<<<<<< Updated upstream
                     user = userModel.getUser(email, pw)
                     
                     # log newly registered user in
@@ -72,18 +101,20 @@ class userFunctions(main.index):
                     }
                     
                     app_global.render_template(self, 'newUserSuccess.html', params)
+=======
+                    self.redirect('/newUserSuccess')
+>>>>>>> Stashed changes
                     
             elif method == 'login':                                  # /userFunctions?method=login
                 user = userModel.getUser(email, pw)
-
                 
                 if len(user) > 0:    # user login success
                     template = 'profile.html'
                     message = 'Logged in as ' + user[0].un
                     
-                    self.session['email'] = str(user[0].email)
-                    self.session['user'] = str(user[0].un)
-                    self.session['user_id'] = str(user[0].user_id)
+                    self.session['email'] = user[0].email,
+                    self.session['user'] = user[0].un,
+                    self.session['user_id'] = user[0].user_id
                     
                     self.redirect('/profile')
                 else:

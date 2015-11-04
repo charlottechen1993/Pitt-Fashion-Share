@@ -57,9 +57,6 @@ def getLikes():
     return likes
 
 def create_comment(userID, text, imgID, username, time_created):
-    print 'create_comment'
-    print time_created
-    
     comment = ImageComment()
     comment.imgID = str(imgID)
     comment.userID = str(userID)

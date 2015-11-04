@@ -1,12 +1,18 @@
 
 from google.appengine.ext import blobstore
 import main
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import webapp2
 import models.userModel as userModel
 import app_global
 from webapp2_extras import sessions
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import app_global
 import main
 import models.imagesModel as imagesModel
@@ -27,7 +33,10 @@ class index(main.index):
     
     #respond to HTTP GET requests
     def get(self):
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         # images = imagesModels.getImages()
         
          
@@ -127,22 +136,27 @@ class index(main.index):
 
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
+<<<<<<< Updated upstream
             
             
 
+=======
+>>>>>>> Stashed changes
         
         user = self.session.get('user')
-        
-        if user is not None:
-            if "[u'" in user:
-                user = str(user).replace("[u'", "").replace("']", "")
+        user_id = self.session.get('user_id')
+        user_id = app_global.unicode(user_id)
+        user = app_global.unicode(user)
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         params = {
 #            'photos': images,
             #'photos_json': json.dumps(images),
-            'user_id':self.session.get('user_id'),
-            'user': self.session.get('user'),
+            'user_id': user_id,
+            'user': user,
             #'user_id': None, #testing when user is logged out
             'upload_url': upload_url,
             'brands': brands,

@@ -66,7 +66,8 @@ mappings = [
     ('/unlike', imageController.deleteLikeHandler),
     ('/getPhotosJSON', imagesModel.getPhotosJSONHandler),
     ('/test', imagesModel.testGetImages),
-    ('/tempCloth', tempClothController.index)
+    ('/tempCloth', tempClothController.index),
+    ('/newUserSuccess', userController.newUserSuccess)
 #    ('/gallery', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]

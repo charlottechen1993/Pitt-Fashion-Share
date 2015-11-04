@@ -30,7 +30,7 @@ class index(main.index):
 #        users = userModel.Users.query()
 #        for u in users.fetch():
 #            u.key.delete()
-#        
+        
 #        ims = imagesModel.Image.query()
 #        for im in ims.fetch():
 #            im.key.delete()

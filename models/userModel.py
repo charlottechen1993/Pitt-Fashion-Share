@@ -5,6 +5,7 @@ from webapp2_extras import security
 from google.appengine.ext import ndb
 
 
+
 class Users(ndb.Model):
     un = ndb.StringProperty()           # name, personal identifier
     pw = ndb.StringProperty()
@@ -36,6 +37,7 @@ def getUser(email, pw):
     query = Users.query(Users.email==email)
     user = query.fetch(1)
     
+    
     if len(user) > 0:
         if security.check_password_hash(pw, user[0].pw):
             user[0].user_id = user[0].key.id()
@@ -48,8 +50,7 @@ def getUsers():
     userList = list()
     query = Users.query().fetch()
     
-    print query
-    
+
     for user in query:
         userList.append(user)
     
