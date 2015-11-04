@@ -15,8 +15,8 @@ class index(main.index):
             'photo_name':'photo3.jpg', 
             'photo_name2':'photo2.jpg',
             'photo_name3':'photo.jpg',
-            'user': self.session.get('user'),
-            'user_id':self.session.get('user_id')
+            'user': app_global.unicode(self.session.get('user')),
+            'user_id': app_global.unicode(self.session.get('user_id'))
          }
         
         app_global.render_template(self,'index.html', params)

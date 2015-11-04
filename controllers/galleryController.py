@@ -124,8 +124,8 @@ class index(main.index):
         params = {
 #            'photos': images,
             #'photos_json': json.dumps(images),
-            'user_id':self.session.get('user_id'),
-            'user': self.session.get('user'),
+            'user_id':app_global.unicode(self.session.get('user_id')),
+            'user': app_global.unicode(self.session.get('user')),
             #'user_id': None, #testing when user is logged out
             'upload_url': upload_url,
             'brands': brands,

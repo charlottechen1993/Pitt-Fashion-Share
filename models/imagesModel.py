@@ -43,12 +43,12 @@ class Like(ndb.Model):
 def addLike(userID, imgID, username):
     like = Like()
     like.imgID = str(imgID)
-    like.userID = str(userID)
-    like.uploadedBy = username
+    like.userID = str(app_global.unicode(userID))
+    like.uploadedBy = app_global.unicode(username)
     like.put()
     
 def deleteLike(user_id, photo_id):
-    like = Like.query(Like.userID==str(user_id), Like.imgID==str(photo_id)).fetch(1)
+    like = Like.query(Like.userID==str(app_global.unicode(user_id)), Like.imgID==str(photo_id)).fetch(1)
     like[0].key.delete()
     
 def getLikes():
@@ -59,9 +59,9 @@ def getLikes():
 def create_comment(userID, text, imgID, username, time_created):
     comment = ImageComment()
     comment.imgID = str(imgID)
-    comment.userID = str(userID)
+    comment.userID = str(app_global.unicode(userID))
     comment.text = text
-    comment.uploadedBy = username
+    comment.uploadedBy = app_global.unicode(username)
     comment.upload_date = time_created
     comment.put()
     
@@ -108,7 +108,7 @@ class getPhotosJSONHandler(main.index):
         result = list()
 
         #user_id = request.args.get(user_id)
-        user_id = self.session.get('user_id')
+        user_id = app_global.unicode(self.session.get('user_id'))
         profile = self.request.get('page')
       
 

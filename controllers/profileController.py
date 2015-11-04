@@ -61,12 +61,11 @@ class index(main.index):
         #getImages(user_id, maxPrice, brandName, clothingType)
 #       None is used to not consider that restriction
 
-        user_id = self.session.get('user_id')
+        user_id = app_global.unicode(self.session.get('user_id'))
     
         maxPrice = self.request.get('maxPrice')
         brandName = self.request.get('brand')
         clothingType = self.request.get('clothingType')
-        print user_id
         
         if brandName == "":
             brandName = None
@@ -126,10 +125,8 @@ class index(main.index):
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
         
-        user = self.session.get('user')
-        user_id = self.session.get('user_id')
-        user_id = app_global.unicode(user_id)
-        user = app_global.unicode(user)
+        user_id = app_global.unicode(self.session.get('user_id'))
+        user = app_global.unicode(self.session.get('user'))
 
         params = {
 #            'photos': images,

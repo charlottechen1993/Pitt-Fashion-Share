@@ -150,7 +150,7 @@ $(document).ready(function(){
             $(angular.element(item)).removeClass('heart-unfilled'); 
             $(angular.element(item)).addClass('heart-filled'); 
          }else{                                 // unlike image
-            url = '/unLike?photo_id=' + img_id;
+            url = '/unlike?photo_id=' + img_id;
             $(angular.element(item)).removeClass('heart-filled'); 
             $(angular.element(item)).addClass('heart-unfilled'); 
          

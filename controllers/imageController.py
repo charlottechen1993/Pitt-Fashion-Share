@@ -35,7 +35,7 @@ class addCommentHandler(main.index):
     def post(self):
         imgID = self.request.get('image_id')
         userID = self.session.get('user_id')
-        username = self.session.get('user')
+        username = app_global.unicode(self.session.get('user'))
         time_created = datetime.datetime.now().strftime('%m/%d/%Y')
         
         if userID: 
@@ -91,25 +91,26 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
         # Note: for maximum value. ie. over 1000, I use minimumPrice = highest + 1 (so 1001)
         # and maximumPrice = highest + 2. 
             
-            if priceRange is not None:
-                index = priceOptions.index(priceRange)
-                if index < len(priceOptions)-1:
-                    picPriceMax = prices[index]
-                    if (index-1 > -1):
-                        picPriceMin = prices[index-1]
-                    else:
-                        picPriceMin = 0
-                else:
-                    picPriceMax = prices[len(prices)-1] + 2
-                    picPriceMin = prices[len(prices)-1] + 1
-            else:
-                picPriceMin = None
-                picPriceMax = None
-         
+#            if priceRange is not None:
+#                index = priceOptions.index(priceRange)
+#                if index < len(priceOptions)-1:
+#                    picPriceMax = prices[index]
+#                    if (index-1 > -1):
+#                        picPriceMin = prices[index-1]
+#                    else:
+#                        picPriceMin = 0
+#                else:
+#                    picPriceMax = prices[len(prices)-1] + 2
+#                    picPriceMin = prices[len(prices)-1] + 1
+#            else:
+#                picPriceMin = None
+#                picPriceMax = None
+            picPriceMin = 0
+            picPriceMax = 0
             categoryID = 0
             total = 59
             image_url = images.get_serving_url(blob_info.key())
-            username = self.session.get('user')
+            username = app_global.unicode(self.session.get('user'))
             imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, priceRange, brand, clothingType, username)
 
         
@@ -119,7 +120,7 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
     
 class deleteLikeHandler(main.index):
     def get(self):
-        user_id = self.session.get('user_id')
+        user_id = app_global.unicode(self.session.get('user_id'))
         img_id = self.request.get('photo_id')    
         imagesModel.deleteLike(user_id, img_id)    
 
@@ -129,7 +130,7 @@ class addLikeHandler(main.index):
     def get(self):
         photo_id = self.request.get('photo_id')
         user_id = self.session.get('user_id')
-        username = self.session.get('user')
+        username = app_global.unicode(self.session.get('user'))
         imagesModel.addLike(user_id, photo_id, username)    
         
 # test        
@@ -170,7 +171,7 @@ class getCommentsHandler(main.index):
         params = {
             'message': self.session.get('user_id'),
             'user_id': self.session.get('user_id'),
-            'username': self.session.get('user'),
+            'username': app_global.unicode(self.session.get('user')),
             'likes': likes,
             'comments': comments,
             'images': images
