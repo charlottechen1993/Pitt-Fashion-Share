@@ -58,12 +58,21 @@ $(document).ready(function(){
             
             for( var i = 0; i < photosLength; i++ ) {
    
+                var likes;
+                
+                if(data[i].total_likes == 0){
+                    likes = '';
+                }else{
+                    likes = data[i].total_likes;
+                }
+                
                 var img = {
                     'image_url': data[i].image_url,
                     'img_id': data[i].img_id,
                     'title': data[i].title,
                     'adored': data[i].adored,
-                    'comments': data[i].comments
+                    'comments': data[i].comments,
+                    'total_likes': likes
                 };
                 
                 $scope.populateGallery(img);

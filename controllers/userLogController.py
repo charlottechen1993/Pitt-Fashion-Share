@@ -13,7 +13,7 @@ class index(main.index):
         
     #respond to HTTP GET requests
     def get(self):                                                  # /userFunctions
-        user = self.session.get('user')
+        user = app_global.unicode(self.session.get('user'))
         message = self.request.get('message')
         
         params = {
@@ -32,7 +32,13 @@ class index(main.index):
 class newUserSuccess(main.index):
     
     def get(self):
-        app_global.render_template(self, 'newUserSuccess.html', {})
+        params = {
+            'user': app_global.unicode(self.session.get('user')),
+            'user_id': app_global.unicode(self.session.get('user_id')),
+            'email': app_global.unicode(self.session.get('email'))
+            
+        }
+        app_global.render_template(self, 'newUserSuccess.html', params)
         
 		  
 		
@@ -87,7 +93,9 @@ class userFunctions(main.index):
                 else:
                     user_key = userModel.createNewUser(email, un, pw, gender)
                     mail.send_mail('admin@pittfashionshare.appspotmail.com', email, 'Registration', 'Thanks for registering with Pitt Fashion Share! Your account is now active.')
-
+                    self.session['user'] = un
+                    self.session['user_id'] = user_key.id()
+                    self.session['email'] = email
          
                     self.redirect('/newUserSuccess')
 
