@@ -2,6 +2,7 @@
 
 {% block css %}
 	<link rel="stylesheet" href="/static/style/index.css">
+    <link rel="stylesheet" href="/static/style/gallery.css">
 {% endblock %}
 
 
@@ -56,7 +57,6 @@
 <!-------------->
 <br>
 <hr>
-<br>
 <div class="row" id="top_area">
     <div class="col-sm-2">
         <h2 class="title">Popular Outfit of the Week</h2>
@@ -82,10 +82,9 @@
         </div>
     </div>
 </div>
-<br>
 <hr>
 <br>
-<br>
+<!--
 <div class="row" id="top_area">
     <div class="col-sm-2">
         <h2 class="title">Features</h2>
@@ -106,6 +105,7 @@
         </div>
     </div>
 </div>
+-->
 <!--
     <div class="col-sm-4">
         <h4>Tips:</h4>
@@ -163,7 +163,8 @@
 <div class="row">
     <div class="footer">
         <div class="col-sm-3">
-            <h4>&lt LOGO &gt</h4>
+<!--            <h4>&lt LOGO &gt</h4>-->
+             <img src="/images/{{logo}}" id="logo">
         </div>
         <div class="col-sm-1">
             <hr class="hr-v">

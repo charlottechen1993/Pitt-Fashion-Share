@@ -41,6 +41,7 @@ class index(webapp2.RequestHandler):
             'girl6':'girl10.jpg', 
             'girl7':'girl11.jpg', 
             'girl8':'girl12.jpg',
+            'logo':'pitt_logo.png',
             'user_id':self.request.get('user_id')
          }
         
@@ -56,5 +57,6 @@ class index(webapp2.RequestHandler):
                                                       'girl6':'girl10.jpg', 
                                                       'girl7':'girl11.jpg', 
                                                       'girl8':'girl12.jpg',
+                                                      'logo':'pitt_logo.png',
                                                        'user_id':self.request.get('user_id')
                                                      })
