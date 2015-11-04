@@ -2,7 +2,6 @@ import webapp2
 import models.userModel as userModel
 import app_global
 from webapp2_extras import sessions
-import indexController
 # import path to models
 import sys
 sys.path.insert(0, '/models')
@@ -13,7 +12,7 @@ import main
     
     
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
-class index(indexController.index):
+class index(main.index):
         
     #respond to HTTP GET requests
     def get(self):

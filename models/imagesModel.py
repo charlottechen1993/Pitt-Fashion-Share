@@ -5,7 +5,7 @@ from google.appengine.api import users
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 import json
-import controllers.indexController as indexController
+import main
 import app_global
 from sets import Set
 
@@ -105,7 +105,7 @@ def testGetImages(self):
     images = Image.query().fetch()
     app_global.render_template(self,'test.html', {'images':images})
     
-class getPhotosJSONHandler(indexController.index):
+class getPhotosJSONHandler(main.index):
     
     def get(self):
         result = list()
@@ -164,7 +164,7 @@ class getPhotosJSONHandler(indexController.index):
 
 
 
-class getImagesHandler(indexController.index):
+class getImagesHandler(main.index):
 
     def get(self):
         result = list()

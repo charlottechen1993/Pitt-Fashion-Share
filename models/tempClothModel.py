@@ -5,7 +5,6 @@ from google.appengine.api import users
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 import json
-import controllers.indexController as indexController
 import app_global
 
 class ImageComment(ndb.Model):

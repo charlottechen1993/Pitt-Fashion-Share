@@ -1,6 +1,6 @@
-import webapp2
+
 from google.appengine.ext import blobstore
-import indexController
+import main
 import app_global
 import main
 import models.imagesModel as imagesModel
@@ -17,7 +17,7 @@ types = ['Shirt', 'Jeans', 'Shoes', 'Entire Body', 'Other']
 prices = [25, 50, 100, 500, 1000]
 
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
-class index(indexController.index):
+class index(main.index):
     
     #respond to HTTP GET requests
     def get(self):
@@ -138,7 +138,7 @@ class index(indexController.index):
         app_global.render_template(self,'gallery2.html', params)
     
     
-class gallery2(indexController.index):
+class gallery2(main.index):
     def get(self):
         restrictionList = list()
         

@@ -5,9 +5,39 @@
 
 import webapp2
 from google.appengine.ext.webapp import template
+from webapp2_extras import sessions
 import sys
 import os.path
 
+
+config = {}
+config['webapp2_extras.sessions'] = {
+    'secret_key': 'aklsdfnkanxcjkzbxfjkhadfsks',
+}
+
+
+
+class index(webapp2.RequestHandler):
+    
+    # start session    
+    def dispatch(self):
+        # Get a session store for this request.
+        self.session_store = sessions.get_store(request=self.request)
+ 
+        try:
+            # Dispatch the request.
+            webapp2.RequestHandler.dispatch(self)
+        finally:
+            # Save all sessions.
+            self.session_store.save_sessions(self.response)
+ 
+    @webapp2.cached_property
+    def session(self):
+        # Returns a session using the default cookie key.
+        return self.session_store.get_session()
+
+    
+    
 import controllers.indexController as indexController
 import controllers.galleryController as galleryController
 import controllers.profileController as profileController
@@ -15,13 +45,7 @@ import controllers.userLogController as userController
 import controllers.imageController as imageController
 import controllers.tempClothController as tempClothController
 
-import models.imagesModel as imagesModel
-
-
-config = {}
-config['webapp2_extras.sessions'] = {
-    'secret_key': 'aklsdfnkanxcjkzbxfjkhadfsks',
-}
+import models.imagesModel as imagesModel    
 
 
 # set up paths

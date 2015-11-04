@@ -1,27 +1,25 @@
 import webapp2
-from webapp2_extras import sessions
-
 import app_global
 
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
 class index(webapp2.RequestHandler):
     
-    # start session    
-    def dispatch(self):
-        # Get a session store for this request.
-        self.session_store = sessions.get_store(request=self.request)
- 
-        try:
-            # Dispatch the request.
-            webapp2.RequestHandler.dispatch(self)
-        finally:
-            # Save all sessions.
-            self.session_store.save_sessions(self.response)
- 
-    @webapp2.cached_property
-    def session(self):
-        # Returns a session using the default cookie key.
-        return self.session_store.get_session()
+#    # start session    
+#    def dispatch(self):
+#        # Get a session store for this request.
+#        self.session_store = sessions.get_store(request=self.request)
+# 
+#        try:
+#            # Dispatch the request.
+#            webapp2.RequestHandler.dispatch(self)
+#        finally:
+#            # Save all sessions.
+#            self.session_store.save_sessions(self.response)
+# 
+#    @webapp2.cached_property
+#    def session(self):
+#        # Returns a session using the default cookie key.
+#        return self.session_store.get_session()
     
     
     #respond to HTTP GET requests

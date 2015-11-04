@@ -3,12 +3,12 @@ import models.userModel as userModel
 from google.appengine.api import mail
 import app_global
 from webapp2_extras import sessions
-import indexController
+import main
     
     
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
 # class index(webapp2.RequestHandler)
-class index(indexController.index):
+class index(main.index):
         
     #respond to HTTP GET requests
     def get(self):                                                  # /userFunctions
@@ -30,7 +30,7 @@ class index(indexController.index):
 		  
 		
 #class userFunctions(webapp2.RequestHandler):
-class userFunctions(indexController.index):
+class userFunctions(main.index):
     
     def post(self):
         method = self.request.get('method')
