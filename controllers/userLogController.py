@@ -67,6 +67,7 @@ class userFunctions(main.index):
         email = self.request.get('email').strip()   # unique identifier
         un = self.request.get('un').strip()         # name, identifier of person
         pw = self.request.get('pw').strip()
+        pw2 = self.request.get('pw2').strip()
         gender = ''
 
         
@@ -79,6 +80,9 @@ class userFunctions(main.index):
                 #check that username does not already exist
                 if len(userModel.getUser(email, pw)) > 0:
                     message = 'ERROR: Username already exist!'
+                    self.redirect('/user?message='+message)
+                elif pw != pw2:
+                    message = 'ERROR: Passwords does not match each other'
                     self.redirect('/user?message='+message)
                 else:
                     user_key = userModel.createNewUser(email, un, pw, gender)
