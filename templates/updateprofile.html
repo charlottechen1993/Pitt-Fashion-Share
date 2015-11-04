@@ -13,14 +13,14 @@
 
 
 {% block content %}
-	<div class='col-md-3 col-md-offset-3'>
+	<div class='col-sm-3 col-sm-offset-3'>
 		<form method="post" enctype="multipart/form-data" action="{{upload_url}}">
        		<br><br>
 	        Name:<br>
-	        <input name="title" type="text"><br><br>
+	        <input name="title" placeholder="{{user}}" type="text"><br><br>
 	        <br>
 	        Description:<br>
-	        <textarea id="description "name="title" type="text" rows="5" > {{description}} </textarea><br><br>
+	        <textarea id="description "name="title" placeholder="Enter Profile Description" type="text" rows="5" > {{description}} </textarea><br><br>
 	        <br>
 
 	        New Profile Pic:<br>
@@ -29,9 +29,9 @@
 		        
 	    </form>
 	</div>
-	<div class='col-md-3 col-md-offset-1'>
-		<br>
-		<img src="/images/updateprofile.png" class = "res">
+	<div class='col-sm-3'>
+		<br><br>
+		<img src="/images/updateprofile.png" class = "update_girl">
 	</div>
 
 
