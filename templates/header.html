@@ -14,7 +14,11 @@
                 method: 'POST',
                 success: function(){
                     console.log('logged out');
-                    window.location.replace("http://pittfashionshare.appspot.com");
+                    if(window.location.href.indexOf("localhost")>-1){
+                         window.location.replace("/");
+                    }else{
+                        window.location.replace("http://pittfashionshare.appspot.com");
+                    }
                 }
             });
         });
