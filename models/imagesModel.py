@@ -85,13 +85,13 @@ def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, pric
     image.categoryID = categoryID
     image.title = title
     image.image_url = image_url
-    image.user = user
+    image.user = str(user)
     image.minPrice = minPrice
     image.maxPrice = maxPrice
     image.priceRange = priceRange
     image.brand = brand
     image.clothingType = clothingType
-    image.uploadedBy = username
+    image.uploadedBy = app_global.unicode(username)
     image.put()
     
 #def get_image(image_id):
@@ -121,7 +121,7 @@ class getPhotosJSONHandler(main.index):
         #Profile page
         else:
             #queryImg = Image.query()
-            queryImg = Image.query(Image.user == user_id)
+            queryImg = Image.query(Image.user == str(user_id))
         queryImg = queryImg.order(-Image.time_created)
         queryLike = Like.query()            # get likes
         queryComment = ImageComment.query() # get comments

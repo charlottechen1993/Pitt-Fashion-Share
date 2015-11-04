@@ -83,28 +83,10 @@ class userFunctions(main.index):
                 else:
                     user_key = userModel.createNewUser(email, un, pw, gender)
                     mail.send_mail('admin@pittfashionshare.appspotmail.com', email, 'Registration', 'Thanks for registering with Pitt Fashion Share! Your account is now active.')
-                    
-<<<<<<< Updated upstream
-                    user = userModel.getUser(email, pw)
-                    
-                    # log newly registered user in
-                    self.session['user'] = str(un),
-                    self.session['email'] = str(email),
-                    self.session['user_id'] = user_key.id()
-                
-                    print un
-                    print email
-                    
-                    params = {
-                        'user': str(un),
-                        'email': str(email)
-                    }
-                    
-                    app_global.render_template(self, 'newUserSuccess.html', params)
-=======
+
+         
                     self.redirect('/newUserSuccess')
->>>>>>> Stashed changes
-                    
+
             elif method == 'login':                                  # /userFunctions?method=login
                 user = userModel.getUser(email, pw)
                 
