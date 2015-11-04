@@ -54,12 +54,7 @@ p{
 /* ========== FOOTER ========== */
 /* ============================ */
 /* keep footer fixed to bottom */
-#logo{
-    z-index: 300;
-    height: 130px;
-    margin-top: 15px;
-    margin-left: 15px;
-}
+
 .footer{
     width: 100%;
     height: auto;
@@ -129,7 +124,10 @@ p{
         padding-bottom: 8px;
         padding-top: 8px;
     }
-
+    #logo{
+        height: 130px;
+        margin-top: 15px;
+    }
 }
 
 /* disable horizontal line when screen is large */
@@ -155,7 +153,11 @@ p{
         font-weight: 400;
         font-size: 30px;
     }
-
+    #logo{
+        height: 130px;
+        margin-top: 15px;
+        margin-left: 15px;
+    }
 }
 
 @media screen and (min-width: 992px) {
