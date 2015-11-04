@@ -2,6 +2,8 @@
 
 {% block css %}
 	<link rel="stylesheet" href="/static/style/index.css">
+	<link rel="stylesheet" href="/static/style/gallery.css">
+
 {% endblock %}
 
 
@@ -9,6 +11,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="jquery.mosaicflow.min.js"></script>
 	<script src="/static/js/index.js"></script>
+    <script type="text/javascript" src="../js/gallery.js"></script>
 {% endblock %}
 
 
@@ -65,6 +68,8 @@
     <div class="col-sm-10">
         <div class="row">
             <div class="col-sm-12">
+                {% include "galleryPiece.html" %}
+<!--
                 <img src="/images/{{cow1}}" class="top_pic">
                 <img src="/images/{{cow2}}" class="top_pic">
                 <img src="/images/{{cow3}}" class="top_pic">
@@ -77,6 +82,7 @@
                 <img src="/images/{{cow1}}" class="top_pic">
                 <img src="/images/{{cow2}}" class="top_pic">
                 <img src="/images/{{cow3}}" class="top_pic">
+-->
             </div>
         </div>
     </div>
