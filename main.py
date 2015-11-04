@@ -11,6 +11,7 @@ import os.path
 import controllers.indexController as indexController
 import controllers.galleryController as galleryController
 import controllers.profileController as profileController
+import controllers.updateprofileController as updateprofileController
 import controllers.userLogController as userController
 import controllers.imageController as imageController
 import controllers.tempClothController as tempClothController
@@ -29,6 +30,7 @@ mappings = [
     ('/', indexController.index),
     ('/gallery', galleryController.index),
     ('/profile', profileController.index),
+    ('/updateprofile', updateprofileController.index),
     ('/user', userController.index),
     ('/userFunctions', userController.userFunctions),
     ('/uploadImage', imageController.uploadImageHandler),
