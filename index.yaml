@@ -16,6 +16,12 @@ indexes:
   - name: time_created
     direction: desc
 
+- kind: ImageComment
+  properties:
+  - name: imgID
+  - name: upload_date
+    direction: desc
+
 - kind: Like
   properties:
   - name: userID

@@ -1,8 +1,40 @@
 /* Carousel */
 @media screen and (min-width: 100px) {
     .carousel_img{
-        width: 100%;   
+        width: 100%;
     }
+}
+p{
+    color: rgba(255, 255, 255, 0.5);      
+}
+/* area of top popular outfit*/
+#top_area{
+    margin-bottom: 40px !important;
+}
+
+/* pictures in the top area*/
+.top_pic{
+    width: 24%;
+    margin-top: 4px;
+}
+.btn-default{
+    color: black;
+    width: 100%;
+    border-radius: 0;
+    position: inherit;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.btn-default:focus, 
+.btn-default:active, 
+.btn-default:hover, 
+.btn-default.active, 
+.btn-default.active, 
+.open > .dropdown-toggle.btn-default{
+}
+
+.btn-default:active:focus{
 }
 
 .badge{
@@ -18,24 +50,11 @@
     top: 50%;
 }
 
-.navbar-collapse.collapse {
-    display: block !important;
-}
-
-.navbar-nav>li, .navbar-nav {
-    float: left !important;
-}
-
-.navbar-nav.navbar-right:last-child {
-    margin-right: -15px !important;
-}
-
-.navbar-right {
-    float: right !important;
-}
-
-/* FOOTER */
+/* ============================ */
+/* ========== FOOTER ========== */
+/* ============================ */
 /* keep footer fixed to bottom */
+
 .footer{
     width: 100%;
     height: auto;
@@ -58,7 +77,7 @@
 }
 /* customize links in footer*/
 .white-font h4 a:link, a:visited{
-    color: rgba(255, 255, 255, 0.6);
+/*    color: rgba(255, 255, 255, 0.6);*/
     text-decoration: none;
 }
 .white-font h4 a:hover, a:active{
@@ -70,28 +89,80 @@
 .hr-v{
     background-color: rgba(255, 255, 255, 0.6);
     width: 1px;
-    height: 160px;;
     display: inline-block;
     cursor: pointer;
 }
+
+/* ============================ */
+/* ======== END FOOTER ======== */
+/* ============================ */
 
 /* disable vertical line when screen becomes small*/
 @media screen and (max-width: 768px) {
     .hr-v{
         display: none; 
     }
-    hr{
-        display: block;   
+    .hr-h{
+        display: block;
+    }
+    /* Carousol */
+    #slider-top{
+        margin-top: 27px;   
+    }
+    .title{
+/*        color: rgba(255, 255, 255, 0.5);   */
+        color: #545454;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 25px;
+    }
+    .btn-default{
+        color: black;
+        width: 30%;
+        border-radius: 0;
+        position: inherit;
+        padding-bottom: 8px;
+        padding-top: 8px;
+    }
+    #logo{
+        height: 130px;
+        margin-top: 15px;
     }
 }
 
 /* disable horizontal line when screen is large */
 @media screen and (min-width: 768px) {
-    hr{
+    .hr-h{
         display: none;   
     }
     
     .white-font{
         margin-left: -45px;   
     }
+    
+    .hr-v{
+        height: 160px;
+    }
+    #slider-top{
+        margin-top: 20px;   
+    }
+    .title{
+/*        color: rgba(255, 255, 255, 0.5);   */
+        color: #545454;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+    }
+    #logo{
+        height: 130px;
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .hr-v{
+        height: 125px;
+    }
+    
 }

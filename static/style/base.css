@@ -5,9 +5,9 @@
      box-sizing: border-box;
 }
 body{
-    background-color: rgba(195, 210, 210, 0.5);
+/*    background-color: rgba(195, 210, 210, 0.5);*/
+    background-color: white;
     overflow-x: hidden;
-    padding-top: 20px;
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
 }
@@ -16,6 +16,16 @@ body{
     cursor: pointer;
     font-family: 'Poiret One', cursive;
     color: #DCE1E3;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    transform: translate(-0%,-50%);
+    -webkit-transform: translate(-0%,-50%);
+    -moz-transform: translate(-0%,-50%);
+    -o-transform: translate(-0%,-50%);
+    -ms-transform: translate(-0%,-50%);
 }
 
 .commentSub{
@@ -34,17 +44,23 @@ body{
 /* boostrap */
 .glyphicon-pencil{
    font-size:2.5em;
-}
-.glyphicon-heart, .adore{
     cursor: pointer;
 }
+
+.glyphicon-heart{
+    cursor: pointer;
+    top: 35%;
+    font-size: 2em;
+}
+
 .heart-filled{
     color: red !important;
 }
-
-.glyphicon-heart:hover, .adore:hover{
-    color: red !important;
+.heart-unfilled{
+    color: #C1C7C9 !important;
 }
+
+
 
 .glyphicon-chevron-left,.glyphicon-chevron-right{
     font-size: 2.5em;
@@ -63,10 +79,18 @@ body{
     text-decoration: none;
 }
 
+
 div.cmt{
-    margin: 20px;
     text-align: left;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+/*    border-bottom: 1px solid #81888A;*/
 }
+div.cmt:nth-child(1){
+    border-bottom: none;
+}
+
 div.cmt div.left-inner-cmt{
     font-size: 12px;
     font-weight: 500;
@@ -74,11 +98,17 @@ div.cmt div.left-inner-cmt{
 }
 
 div.cmt div.right-inner-cmt{
+/*
     padding: 5px;
     background-color: rgba(255,255,255,.3);
     border: 1px solid #F0F0F2;
     background-color: #F5F5FA;
+    position: relative;
+*/
+    width: 100% !important;
 }
+
+
 
 a.cmt-sub{
     border: 1px solid grey;

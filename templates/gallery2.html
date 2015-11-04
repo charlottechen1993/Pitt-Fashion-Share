@@ -12,21 +12,9 @@
 
 
 {% block content %}
-<!--
-    <div id="photos" style="width:100%;" ng-controller="imgCtrl">
-        <img src="[[img.image_url]]" alt="image" >
-    </div>
--->
-
-    <div id="photos" ng-controller="imgCtrl">
-        <div class="image" ng-repeat="img in images">
-            <figure class="image-cover">
-                <img img_id="[[img.img_id]]" src="[[img.image_url]]">
-            </figure>
-        </div>
-    </div>
 
 
+    {% include "galleryPiece.html" %}
 
 
     <form method="post" enctype="multipart/form-data" action="{{upload_url}}">

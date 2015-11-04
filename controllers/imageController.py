@@ -1,9 +1,9 @@
-import webapp2
+
 import app_global
 import datetime
 import logging
 import models.imagesModel as imagesModel
-import indexController
+import main
 import galleryController
 import userLogController as userLog
 from google.appengine.ext import ndb
@@ -11,6 +11,7 @@ from google.appengine.api import images
 from google.appengine.api import users
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
+
 
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the imageFunctions class
 #class imageFunctions(webapp2.RequestHandler):
@@ -29,19 +30,19 @@ from google.appengine.ext.webapp import blobstore_handlers
 #            imagesModel.addImage(categoryID, total, title, image_url, user)
 
 
-class addCommentHandler(indexController.index):
+class addCommentHandler(main.index):
     def post(self):
         imgID = self.request.get('image_id')
         userID = self.session.get('user_id')
         username = self.session.get('user')
+        time_created = datetime.datetime.now().strftime('%m/%d/%Y')
+        
         if userID: 
             text = self.request.get('comment')
-            imagesModel.create_comment(userID, text, imgID, username)
-            self.redirect('/gallery')
-        else:
-            self.redirect('/')
+            imagesModel.create_comment(userID, text, imgID, username, time_created)
+        
             
-class deleteCommentHandler(indexController.index):
+class deleteCommentHandler(main.index):
     def post(self):
         commentID = self.request.get('commentID')
         commentKey = ndb.Key(imagesModel.ImageComment, int(commentID))
@@ -49,7 +50,7 @@ class deleteCommentHandler(indexController.index):
             commentKey.delete()
         self.redirect('/gallery')
             
-class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, indexController.index):
+class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
     def post(self):
         upload_files = self.get_uploads()
         blob_info = upload_files[0]
@@ -109,32 +110,28 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, indexControl
             username = self.session.get('user')
             imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, priceRange, brand, clothingType, username)
 
+        
+            self.redirect('/gallery')
             
-            params = {
-                'user_id':1
-            }
-
-            #self.redirect('/gallery')
-            app_global.render_template(self,'index.html', params)
     
-class deleteLikeHandler(indexController.index):
+    
+class deleteLikeHandler(main.index):
     def get(self):
-        likeID = self.request.get('likeID')
-        likeKey = ndb.Key(imagesModel.Like, int(likeID))
-        if likeID is not None:
-            likeKey.delete()
-        self.redirect('gallery')
+        user_id = self.session.get('user_id')
+        img_id = self.request.get('photo_id')    
+        imagesModel.deleteLike(user_id, img_id)    
+
     
-class addLikeHandler(indexController.index):
+    
+class addLikeHandler(main.index):
     def get(self):
         photo_id = self.request.get('photo_id')
         user_id = self.session.get('user_id')
         username = self.session.get('user')
         imagesModel.addLike(user_id, photo_id, username)    
-        self.redirect('/gallery')
-    
+        
 # test        
-class getLikeHandler(indexController.index):
+class getLikeHandler(main.index):
     
     def get(self):
         likes = imagesModel.getLikes()
@@ -153,7 +150,7 @@ class getLikeHandler(indexController.index):
         
 
 # test
-class getCommentsHandler(indexController.index):
+class getCommentsHandler(main.index):
     
     def get(self):
         comments = imagesModel.get_all_comments()

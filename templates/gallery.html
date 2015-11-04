@@ -172,33 +172,7 @@
                 <a class="glyphicon glyphicon-chevron-right"></a> 
             </div>
          </div>
-          <br>
-          <!-- Can only like/unlike if logged in. !-->
-          <div class="col-sm-6">
-            {% if user_id %}
-                <br>
-                {% if photo.likedByYou %}
-                    <a href = "/unlike?likeID={{photo.yourLikeID}}">Unlike</a>
-                    <br>
-                {% else %}
-                    <a href = "/addLike?photo_id={{photo.img_id}}&user_id={{user_id}}">Like</a>
-                    <br>
-                {% endif %}
-              {% else %}
-                <br>
-              {% endif %}
-              Total Likes: {{photo.total}}
-                <br>Uploaded by: {{photo.uploadedBy}}
-                <br>
-            </div>
-          <div class="col-sm-6">
-             
-          <br>  Price Range: {{photo.priceRange}}
-          <br>  Brand: {{photo.brand}}
-          <br>  Type of Clothing: {{photo.clothingType}}
-          </div>
-          
-      </div>
+      </div> <!-- END modal-body -->
         
       <div class="modal-footer">
           
@@ -246,32 +220,6 @@
             <div class="col-sm-1"></div>
          </div>
           {% endfor %}
-          
-
-          
-          
-<!--
-          <div class="row">
-              <form method="post" enctype="multipart/form-data" action="">
-                  <div class="col-sm-9">
-                      <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Compliment">
-                      </div>
-                  </div>
-                  <div class="col-sm-2">              
-                      <div class="form-group">
-                        <input class="btn btn-default" type="submit" value="Comment">
-                          <button type="submit" class="btn btn-default">Compliment</button>
-                      </div>
-                  </div>
-              </form>
-              <div class="col-sm-1"></div>
-          </div>
--->
-<!--
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
--->
       </div>
     </div>
   </div>

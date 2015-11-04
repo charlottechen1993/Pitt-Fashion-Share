@@ -2,6 +2,8 @@
 
 {% block css %}
 	<link rel="stylesheet" href="/static/style/index.css">
+	<link rel="stylesheet" href="/static/style/gallery.css">
+
 {% endblock %}
 
 
@@ -9,6 +11,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="jquery.mosaicflow.min.js"></script>
 	<script src="/static/js/index.js"></script>
+    <script type="text/javascript" src="../js/gallery.js"></script>
 {% endblock %}
 
 
@@ -17,7 +20,7 @@
 <!-- CAROUSEL -->
 <!-------------->
 <div class="page-wrap">
-<div class = "row">
+<div class = "row" id="slider-top">
     <div id="homeCarousel" class="carousel slide" data-interval = "3000" data-ride="carousel">
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
@@ -54,31 +57,61 @@
 <!-------------->
 <!-- CONTENT --->
 <!-------------->
-<div class="row" style="margin-top: 20px;">
-    <div class="col-sm-12">
-        
+<br>
+<hr>
+<div class="row" id="top_area">
+    <div class="col-sm-2">
+        <h2 class="title">Popular Outfit of the Week</h2>
+        <p style="color: black; font-weight: 300"> Winter is coming! Find inpirations from these top outfits to get ready for Pittsburgh's coldest months<p>
+        <a class="btn btn-default" href="/gallery" role="button">See More </a>
     </div>
-    <div class="col-sm-8">
-        <div>
-            <h4>Popular Outfit of the Week</h4>
-            <div class="row">
-                <div class="col-xs-3"><img src="/images/{{cow1}}" class="cow"></div>
-                <div class="col-xs-3"><img src="/images/{{cow2}}" class="cow"></div>
-                <div class="col-xs-3"><img src="/images/{{cow3}}" class="cow"></div>
-                <div class="col-xs-3"><img src="/images/{{cow4}}" class="cow"></div>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-sm-12">
+                {% include "galleryPiece.html" %}
+<!--
+                <img src="/images/{{cow1}}" class="top_pic">
+                <img src="/images/{{cow2}}" class="top_pic">
+                <img src="/images/{{cow3}}" class="top_pic">
+                <img src="/images/{{cow4}}" class="top_pic">
+                <img src="/images/{{cow4}}" class="top_pic">
+                <img src="/images/{{cow1}}" class="top_pic">
+                <img src="/images/{{cow2}}" class="top_pic">
+                <img src="/images/{{cow3}}" class="top_pic">
+                <img src="/images/{{cow4}}" class="top_pic">
+                <img src="/images/{{cow1}}" class="top_pic">
+                <img src="/images/{{cow2}}" class="top_pic">
+                <img src="/images/{{cow3}}" class="top_pic">
+-->
             </div>
         </div>
-        <br><hr>
-        <div>
-            <h4>Best Deal Outfit of the Week</h4>
-            <div class="row">
-                <div class="col-xs-3"><img src="/images/{{girl5}}" class="cow"></div>
-                <div class="col-xs-3"><img src="/images/{{girl6}}" class="cow"></div>
-                <div class="col-xs-3"><img src="/images/{{girl7}}" class="cow"></div>
-                <div class="col-xs-3"><img src="/images/{{girl8}}" class="cow"></div>
+    </div>
+</div>
+<hr>
+<br>
+<!--
+<div class="row" id="top_area">
+    <div class="col-sm-2">
+        <h2 class="title">Features</h2>
+        <p style="color: black; font-weight: 300"><p>
+    </div>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="/images/{{cow1}}" class="top_pic">
+                <img src="/images/{{cow2}}" class="top_pic">
+                <img src="/images/{{cow3}}" class="top_pic">
+                <img src="/images/{{cow4}}" class="top_pic">
+                <img src="/images/{{cow4}}" class="top_pic">
+                <img src="/images/{{cow1}}" class="top_pic">
+                <img src="/images/{{cow2}}" class="top_pic">
+                <img src="/images/{{cow3}}" class="top_pic">
             </div>
         </div>
     </div>
+</div>
+-->
+<!--
     <div class="col-sm-4">
         <h4>Tips:</h4>
         <div class="panel panel-default">
@@ -127,37 +160,35 @@
                 </tbody>
             </table>
         </div>
-    </div>
-</div>
-<br>
-<br>
-<br>
+-->
+
 <!-------------->
 <!--- FOOTER --->
 <!-------------->
 <div class="row">
     <div class="footer">
         <div class="col-sm-3">
-            <h4>&lt LOGO &gt</h4>
+<!--            <h4>&lt LOGO &gt</h4>-->
+             <img src="/images/{{logo}}" id="logo">
         </div>
         <div class="col-sm-1">
             <hr class="hr-v">
-            <hr>
+            <hr class="hr-h">
         </div>
         <div class="col-sm-3 white-font">
             <h4>About Us</h4>
             <p> Hello, we are Pitt Fashion Share. This is a platform created for college students to showcase their daily outfits.
-            If you have any questions, please visit our <span><a href="/">help</a></span> section, or <span><a href="/">contact us</a>              </span>.</p>
+            If you have any questions, please visit our <span><a href="#">help</a></span> section, or <span><a href="#">contact us</a>              </span>.</p>
             <br>
         </div>
         <div class="col-sm-1">
             <hr class="hr-v">
-            <hr>
+            <hr class="hr-h">
         </div>
         <div class="col-sm-4 white-font">
             <h4>Meet the Team:</h4>
             <p><strong>Daniel Hui</strong> - Computer Science</p>
-            <p><strong>Charlotte Chen</strong> - Computer Science &amp Econ</p>
+            <p><strong>Charlotte Chen</strong> - Computer Science &amp Economics</p>
             <p><strong>Catherine Lesuisse</strong> - Bioinformatics</p>
             <p><strong>David Neiman</strong> - Computer Science</p>
             <br>

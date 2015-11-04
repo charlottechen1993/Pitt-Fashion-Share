@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="/static/style/newUserSuccess.css">
+{% endblock %}
+
+
+
+{% block js %}
+	<script src=""></script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row center">
+        <div class="col-sm-12">
+            <h3>Welcome <span class="highlight">{{user}}</span>, your account has been successfully created with email: <span class="highlight">{{email}}</span>!</h3>
+            <br>
+            <p>
+                <b>Please visit the <a class="linkToProfile" href="/profile">profile page</a> to upload a new photo!</b>
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,9 +1,10 @@
-import webapp2
+
 from google.appengine.ext import blobstore
-import indexController
+import main
 import app_global
 import main
 import models.imagesModel as imagesModel
+import models.userModel as userModel
 from google.appengine.ext import ndb
 import json
 
@@ -16,25 +17,31 @@ types = ['Shirt', 'Jeans', 'Shoes', 'Entire Body', 'Other']
 prices = [25, 50, 100, 500, 1000]
 
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
-class index(indexController.index):
+class index(main.index):
     
     #respond to HTTP GET requests
     def get(self):
         # images = imagesModels.getImages()
+        
+         
 
         #The following 10 lines of code just wipe the entire images, likes, comments datastore.
-        
-        #ims = imagesModel.Image.query()
-        #for im in ims.fetch():
-        #    im.key.delete()
-
-        #likes = imagesModel.Like.query()
-        #for like in likes.fetch():
-        #        like.key.delete()
-                
-        #coms = imagesModel.ImageComment.query()
-        #for com in coms.fetch():
-        #        com.key.delete()
+#        
+#        users = userModel.Users.query()
+#        for u in users.fetch():
+#            u.key.delete()
+#        
+#        ims = imagesModel.Image.query()
+#        for im in ims.fetch():
+#            im.key.delete()
+#
+#        likes = imagesModel.Like.query()
+#        for like in likes.fetch():
+#                like.key.delete()
+#                
+#        coms = imagesModel.ImageComment.query()
+#        for com in coms.fetch():
+#                com.key.delete()
                 
                 
 #        for i in range(1,17):
@@ -109,15 +116,16 @@ class index(indexController.index):
         restrictionList.append(brandName)
         restrictionList.append(clothingType)
         
-      #  images = imagesModel.getImages(user_id, restrictionList)
+
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
+            
             
         params = {
 #            'photos': images,
             #'photos_json': json.dumps(images),
             'user_id':self.session.get('user_id'),
-            'username': self.session.get('user'),
+            'user': self.session.get('user'),
             #'user_id': None, #testing when user is logged out
             'upload_url': upload_url,
             'brands': brands,
@@ -130,7 +138,7 @@ class index(indexController.index):
         app_global.render_template(self,'gallery2.html', params)
     
     
-class gallery2(indexController.index):
+class gallery2(main.index):
     def get(self):
         restrictionList = list()
         
@@ -160,10 +168,9 @@ class gallery2(indexController.index):
             images: images
         }
         app_global.render_template(self,'gallery2.html', params)    
-            
-            
-            
-            
+
+                        
+  
             
             
             

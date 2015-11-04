@@ -1,11 +1,11 @@
 import webapp2
 from webapp2_extras import sessions
 import app_global
-import indexController
+import main
 import models.tempClothModel as tempClothModel
 
 # When webapp2 receives an HTTP GET request to the URL /, it instantiates the index class
-class index(indexController.index):
+class index(main.index):
     
     def get(self):
         # images = imagesModels.getImages()

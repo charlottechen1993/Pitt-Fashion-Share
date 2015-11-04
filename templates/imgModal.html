@@ -1,0 +1,77 @@
+
+<!-- 
+    pop up image modal 
+-->
+
+<div class="modal fade modal-wide" id="Modal[[img.img_id]]" tabindex="-1" role="dialog" aria-labelledby="Modal[[img.img_id]]Label" ng-repeat="img in images"> <!-- START modal -->
+  <div class="modal-dialog" role="document">    <!-- START modal-dialog -->
+    <div class="modal-content">                 <!-- START modal-content -->
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">[[img.title]]</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row equal-height-col">
+            <div class="col-sm-1">
+                <a class="glyphicon glyphicon-chevron-left"></a> 
+            </div>
+            <div class="col-sm-10">
+                <img class="img-modal" src="[[img.image_url]]">
+            </div>
+            <div class="col-sm-1">
+                <a class="glyphicon glyphicon-chevron-right"></a> 
+            </div>
+         </div>
+        </div> <!-- END modal-body -->
+        
+        <div class="modal-footer">     
+            <!-- Can only comment if logged in. !-->
+            {% if user_id %}
+                <div class="row cmt">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-2 left-inner-cmt">
+                    <a ng-click="addComment($event,[[img.img_id]], comment)" class="glyphicon glyphicon-pencil"></a>  
+                </div> 
+                <div class="col-sm-8" style="padding:0px;">
+                    <input type="text" ng-model="comment" class="commentSub" placeholder="Compliment here" id="comment">  
+                </div>
+                <div class="col-sm-1"></div>
+                </div>
+            {% endif %}
+            <hr>   
+            
+            <style>
+                .eq-row {
+                    display: table;
+                }
+
+                .eq-row .eq-col {
+                    float: none;
+                    display: table-cell;
+                    vertical-align: top;
+                }
+            </style>
+            
+            <div class="row cmt eq-row" ng-repeat="c in img.comments">
+                <div class="col-sm-3 left-inner-cmt eq-col">
+                    <p class="center">[[c.uploadedBy]] says</p>
+                </div>
+                <div class="col-sm-9 right-inner-cmt eq-col">
+                    <p class="center">[[c.text]] </p> 
+                    <!-- Can only delete comment if you are logged in, and it's yours. !-->
+                    {% if user_id %}
+                        <!-- You wrote this comment! Option to delete.!-->
+<!--
+                        <form method="post" enctype="multipart/form-data" action="/deleteComment?commentID=">
+                            <input type="submit" value="Delete">
+                        </form>
+-->
+                    {% endif %}
+                </div>
+                <hr>
+             </div>   
+        </div> <!-- END modal-footer -->
+    </div>  <!-- END modal-content -->
+  </div>    <!-- END modal-dialog -->
+</div>      <!-- END modal -->
+

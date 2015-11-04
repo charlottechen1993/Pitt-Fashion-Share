@@ -6,9 +6,9 @@ from google.appengine.ext import ndb
 
 
 class Users(ndb.Model):
-    un = ndb.StringProperty()
+    un = ndb.StringProperty()           # name, personal identifier
     pw = ndb.StringProperty()
-    email = ndb.StringProperty()
+    email = ndb.StringProperty()        # unique login credential
     gender = ndb.StringProperty()       # m or f
     description = ndb.StringProperty()
     
@@ -18,17 +18,22 @@ class Users(ndb.Model):
 
 
     
-def createNewUser(un, pw):
+def createNewUser(email, un, pw, gender):
     newUser = Users()
     secure_pw = security.generate_password_hash(pw, 'sha1')
+
+    newUser.email = email
     newUser.un = un
     newUser.pw = secure_pw
-    newUser.put()
+    newUser.gender = gender
+    newUser_key = newUser.put()
+    return newUser_key
+
     
-def getUser(un, pw):
+def getUser(email, pw):
     result = list()
-  #  secure_pw = security.generate_password_hash(pw, 'sha1')
-    query = Users.query(Users.un==un)
+    secure_pw = security.generate_password_hash(pw, 'sha1')
+    query = Users.query(Users.email==email)
     user = query.fetch(1)
     
     if len(user) > 0:
@@ -41,7 +46,9 @@ def getUser(un, pw):
     
 def getUsers():
     userList = list()
-    query = Users.query()
+    query = Users.query().fetch()
+    
+    print query
     
     for user in query:
         userList.append(user)
