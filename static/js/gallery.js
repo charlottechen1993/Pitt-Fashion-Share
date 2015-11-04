@@ -26,6 +26,11 @@ $(document).ready(function(){
      $scope.images = [];
      $scope.comments = [];
      
+     var page;
+     if( $('#profilePage').length > 0)
+     {
+         page = 'profile';
+     }
      
     /*
         Purpose: Get images from server
@@ -33,7 +38,7 @@ $(document).ready(function(){
                        and html for image modals
     */
     $.ajax({
-        url: '/getPhotosJSON?user_id=' + 1,
+        url: '/getPhotosJSON?user_id=' + 1 + '&page=' + page,
         data: {},
         dataType: 'json',
 

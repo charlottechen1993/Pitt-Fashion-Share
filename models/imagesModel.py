@@ -112,14 +112,21 @@ class getPhotosJSONHandler(main.index):
 
         #user_id = request.args.get(user_id)
         user_id = self.session.get('user_id')
+        profile = self.request.get('profilePage')
 
         if user_id is None:
             user_id = -1
 
-        queryImg = Image.query()            # get images
+        #Not profile page
+        if (profile == ''):
+            queryImg = Image.query()            # get images
+        #Profile page
+        else:
+            queryImg = Image.query(Image.user == str(user_id))
+        queryImg = queryImg.order(-Image.time_created)
         queryLike = Like.query()            # get likes
         queryComment = ImageComment.query() # get comments
-
+        
         #likedByYou = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
         likes = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
         
