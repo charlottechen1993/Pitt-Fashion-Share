@@ -22,96 +22,102 @@
 
 {% if user %} 
 
-<div class = "row">
-	<div class="col-sm-7">
-		<div class = "row">
-			<br>
-			<h1 class="text-center" style="color: grey">{{user}}</h1>
-			<div class='text-center'>
-				{% if user.profilepic %}
-					<img src="/images/{{user.profilepic}}" id = "propic">
-				{% else %}
-					<img src="/images/profilePic.jpeg" class = "propic">
-				{% endif %} 
-			</div>
-			<div class='text-center'>
-				<br>
-				{% if user.description %}
-					{{user.description}}
-				{% else %}
-					Pas D'description <br><br>
-				{% endif %} 
-			</div>
-		</div>
+<div class = "row" style="margin-top: 20px">
+	<div class="col-sm-6">
+        <h1 class="text-center" style="color: grey">{{user}}</h1>
+        <div class='text-center'>
+            {% if user.profilepic %}
+                <img src="/images/{{user.profilepic}}" id = "propic">
+            {% else %}
+                <img src="/images/profilePic.jpeg" class = "propic">
+            {% endif %} 
+        </div>
+        <div class='text-center'>
+            <br>
+            {% if user.description %}
+                {{user.description}}
+            {% else %}
+<!--					Pas D'description <br><br>-->
+            {% endif %} 
+            <a class="btn btn-default" href = "/updateprofile" role="button">Edit Profile</a>
+        </div>
+<!--
 		<div class="row">
 			<div class="text-center">
-
 				<ul class="list-inline">
-					<!-- <li>
+					 <li>
 						<a class="btn btn-default btn-xs" href="#" role="button">Follow</a>
 					</li>
 					<li>
 						<a class="btn btn-default btn-xs" href="#" role="button">Message</a>
 					</li>
-					if they are looking at their own profile, they will have option to edit -->
+					if they are looking at their own profile, they will have option to edit 
 					
 					<li>
-						<a class="btn btn-default btn-xs" href = "/updateprofile" role="button">Edit Profile</a>
+						<a class="btn btn-default" href = "/updateprofile" role="button">Edit Profile</a>
 					</li>
-					<!-- <li>
+					 <li>
 						<a class="btn btn-default btn-xs" href = "/uploadPicsProfile" role="button" >Upload Photo</a>
-					</li> -->
+					</li> 
 				</ul>
-
 			</div>
 		</div>
+-->
 	</div>
-	<div class="col-sm-5">
-		<br><br><br>
-		<form method="post" enctype="multipart/form-data" action="{{upload_url}}">
-	        Picture Title:<br>
-	        <input name="title" type="text"><br><br>
-	        
-	        Price Range: <br>
-	        <select name="priceRange">
-	            {% for priceOption in priceOptions %}
-	                <option value="{{priceOption}}">{{priceOption}}</option>
-	            {% endfor %}
-	        </select>
-	        <br><br>
-	        
-	        Type of Clothing: <br>
-	        <select name="clothingType">
-	            {% for type in types %}
-	                <option value="{{type}}">{{type}}</option>
-	            {% endfor %}
-	        </select>
-	        <br><br>
-	        
-	        Brand: <br>
-	        <select name="brand">
-	            {% for brand in brands %}
-	                <option value="{{brand}}">{{brand}}</option>
-	            {% endfor %}
-	        </select>
-	        <br><br>
-	        
-	        File:<br>
-	        <input name="file" type="file"><br><br><br>
-	        <input class="btn btn-default btn-md" type="submit">
-	        
-	    </form>
+	<div class="col-sm-4">
+        <br><br><br>
+        <div class="panel panel-default">
+            <div class="panel-heading">Image Upload</div>
+            <div class="panel-body">
+                <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
+                    Picture Title:<br>
+                    <input name="title" type="text"><br><br>
+
+        <!--
+                    Price Range: <br>
+                    <select name="priceRange">
+                        {% for priceOption in priceOptions %}
+                            <option value="{{priceOption}}">{{priceOption}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+
+                    Type of Clothing: <br>
+                    <select name="clothingType">
+                        {% for type in types %}
+                            <option value="{{type}}">{{type}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+
+                    Brand: <br>
+                    <select name="brand">
+                        {% for brand in brands %}
+                            <option value="{{brand}}">{{brand}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+        -->
+
+                    File:<br>
+                    <input name="file" type="file">
+                    <br>
+                    <input class="btn btn-default btn-md" type="submit">
+
+                </form>
+            </div>
+        </div>
 	</div>
 </div>
 	<div class = "row">
-		<h1 class="text-center">Personal Gallery</h1>
-	</div>
-
-	<div class = "row">
-		<div  class="col-sm-10 col-sm-offset-1">
+        <div class="col-sm-10 col-sm-offset-1">
+            <h1 class="text-center">My Gallery</h1>
+            <hr>
 		    {% include "galleryPiece.html" %}
 		</div>
 	</div>
+    <br>
+    <br>
 {% else %}
 <div class="row">
 	<div class="text-center">

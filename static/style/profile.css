@@ -1,3 +1,4 @@
+/*
 .btn-default { 
 	background-color: #E5EEFF; 
 }
@@ -6,6 +7,7 @@
 	background-color: #000819;
 	color: white;  
 }
+*/
 
 .update_girl {
 	width: 120%;
@@ -14,4 +16,27 @@
 
 #propic {
 	width: 30%;
+}
+
+.btn-default{
+    border-radius: 0;
+    position: inherit;
+    padding-bottom: 8px;
+    padding-top: 8px;
+/*    border: none;*/
+}
+
+.btn-default:focus, 
+.btn-default:active, 
+.btn-default:hover, 
+.btn-default.active, 
+.btn-default.active, 
+.open > .dropdown-toggle.btn-default{
+    box-shadow: none;
+/*    outline: 0 none;*/
+}
+
+.btn-default:active:focus{
+    box-shadow: none;
+/*    outline: 0 none;*/
 }
