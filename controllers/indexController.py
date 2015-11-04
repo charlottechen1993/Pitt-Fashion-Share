@@ -12,9 +12,9 @@ class index(main.index):
         
         params = {
             'logo':'pitt_logo.png',
-            'photo_name':'photo3.jpg', 
-            'photo_name2':'photo2.jpg',
-            'photo_name3':'photo.jpg',
+            'photo_name':'banner3.jpg', 
+            'photo_name2':'banner2.jpg',
+            'photo_name3':'banner1.jpg',
             'user': app_global.unicode(self.session.get('user')),
             'user_id': app_global.unicode(self.session.get('user_id'))
          }
