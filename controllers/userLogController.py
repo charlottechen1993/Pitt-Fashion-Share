@@ -63,6 +63,9 @@ class userFunctions(main.index):
                     self.session['email'] = str(email),
                     self.session['user_id'] = str(user_key.id())
                 
+                    print un
+                    print email
+                    
                     params = {
                         'user': un,
                         'email': email
