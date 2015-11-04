@@ -15,43 +15,8 @@
 
 
     {% include "galleryPiece.html" %}
-
-    <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
-        
-        Picture Title:<br>
-        <input name="title" type="text"><br><br>
-        
-        Price Range: <br>
-        <select name="priceRange">
-            {% for priceOption in priceOptions %}
-                <option value="{{priceOption}}">{{priceOption}}</option>
-            {% endfor %}
-        </select>
-        <br><br>
-        
-        Type of Clothing: <br>
-        <select name="clothingType">
-            {% for type in types %}
-                <option value="{{type}}">{{type}}</option>
-            {% endfor %}
-        </select>
-        <br><br>
-        
-        Brand: <br>
-        <select name="brand">
-            {% for brand in brands %}
-                <option value="{{brand}}">{{brand}}</option>
-            {% endfor %}
-        </select>
-        <br><br>
-        
-        File:<br>
-        <input name="file" type="file"><br><br><br>
-        <input type="submit">
-        
-    </form>
-
-    <br><br>
+    <br>
+    <br>
 
 
 {% endblock %}

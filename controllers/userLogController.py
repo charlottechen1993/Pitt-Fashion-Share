@@ -61,14 +61,14 @@ class userFunctions(main.index):
                     # log newly registered user in
                     self.session['user'] = str(un),
                     self.session['email'] = str(email),
-                    self.session['user_id'] = str(user_key.id())
+                    self.session['user_id'] = user_key.id()
                 
                     print un
                     print email
                     
                     params = {
-                        'user': un,
-                        'email': email
+                        'user': str(un),
+                        'email': str(email)
                     }
                     
                     app_global.render_template(self, 'newUserSuccess.html', params)
