@@ -99,6 +99,24 @@ class userFunctions(main.index):
          
                     self.redirect('/newUserSuccess')
 
+                    
+                    user = userModel.getUser(email, pw)
+                    
+                    # log newly registered user in
+                    self.session['user'] = str(un),
+                    self.session['email'] = str(email),
+                    self.session['user_id'] = user_key.id()
+                    
+                    params = {
+                        'user': str(un),
+                        'email': str(email)
+                    }
+                    
+                    app_global.render_template(self, 'newUserSuccess.html', params)
+
+                    self.redirect('/newUserSuccess')
+
+  
             elif method == 'login':                                  # /userFunctions?method=login
                 user = userModel.getUser(email, pw)
                 

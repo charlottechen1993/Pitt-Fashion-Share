@@ -1,10 +1,16 @@
 
 from google.appengine.ext import blobstore
 import main
+
+
+
 import webapp2
 import models.userModel as userModel
 import app_global
 from webapp2_extras import sessions
+
+
+
 import app_global
 import main
 import models.imagesModel as imagesModel
@@ -124,6 +130,7 @@ class index(main.index):
 
         
         upload_url = blobstore.create_upload_url('/uploadImage')    
+
         
         user_id = app_global.unicode(self.session.get('user_id'))
         user = app_global.unicode(self.session.get('user'))
@@ -169,9 +176,11 @@ class gallery2(main.index):
         
         user_id = self.session.get('user_id')
         images = imagesModel.getImages(user_id, restrictionList)
+        photosYouLiked = imagesModel.imagesYouLiked(user_id)
         
         params = {
             user_id: user_id,
-            images: images
+            images: images,
+            yourLikedPhotos: photosYouLiked
         }
         app_global.render_template(self,'profile.html', params)    

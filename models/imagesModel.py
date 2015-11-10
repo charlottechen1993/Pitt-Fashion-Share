@@ -94,6 +94,17 @@ def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, pric
     image.uploadedBy = app_global.unicode(username)
     image.put()
     
+def imagesYouLiked(userID):
+    yourLikes = Like.query(Like.userID == userID)
+    imgIDList = list()
+    imgList = list()
+    for like in yourLikes.fetch():
+        imgIDList.append(like.imgID)
+    for img in Image.query().fetch():
+        if (img.key.id() in imgIDList):
+            imgList.append(img)
+    return imgList
+    
 #def get_image(image_id):
 #    return ndb.Key(urlsafe=image_id).get()
 
