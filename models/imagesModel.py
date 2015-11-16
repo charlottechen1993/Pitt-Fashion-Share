@@ -9,8 +9,6 @@ import main
 import app_global
 from sets import Set
 
-
-
 class ImageComment(ndb.Model):
     userID = ndb.StringProperty()
     imgID = ndb.StringProperty()
