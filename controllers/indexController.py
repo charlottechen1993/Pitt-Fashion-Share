@@ -11,6 +11,7 @@ class index(main.index):
         
         
         params = {
+            'page': '',
             'logo':'pitt_logo.png',
             'photo_name':'photo3.jpg', 
             'photo_name2':'banner2.jpg',

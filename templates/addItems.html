@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block css %}
+	<link rel="stylesheet" href="/static/style/addItems.css">
+	<style>
+
+		input[type="number"]{
+			width: 45px;
+			margin-left: 5px;
+		}
+		#imgSelect{
+			display: block;
+			/*max-width:100%;
+			max-height:100%;
+			height: auto;
+			width: auto;*/
+			position: absolute;
+			left: 50%;
+		    -webkit-transform: translate(-50%, 0%);
+		    -moz-transform: translate(-50%, 0%);
+		    -o-transform: translate(-50%, 0%);
+		    -ms-transform: translate(-50%, 0%);
+		}
+	</style>
+{% endblock %}
+
+
+{% block js %}
+	<script src="/js/addItems.js"></script>
+{% endblock %}
+
+
+{% block content %}
+	<div class="row" style="margin-top: 50px;">
+		<div class="col-xs-12 col-sm-6">
+			<img src="{{imgURL}}" class="img-responsive" id="imgSelect">
+		</div>
+		<div class="col-xs-12 col-sm-6">
+	        <div class="panel panel-default">
+	            <div class="panel-heading">Add new item</div>
+	            <div class="panel-body">
+	                <form>
+	                	<input type="hidden" id="imgID" value="{{imgID}}">
+	                    What is it? <input id="clothingType" type="text" placeholder="a sun dress"><br><br>
+	                    Why do you like it?<textarea rows="5" id="description" placeholder="This is my favorite summer clothing. It's great in cool weather :D"></textarea><br><br>
+	                   	Where did you buy it from? <input id="brand" type="text"><br><br>
+	                   	How much did it cost? 
+	                   	&nbsp;<b>$</b><input id="price" type="number" value="0">
+	                   	<br><br>
+	                    <input class="btn btn-default btn-md addNewItem" type="button" value="Add Clothing">
+	                </form>
+	            </div>
+	        </div>
+		</div>
+	</div>
+
+
+
+
+{% endblock %}

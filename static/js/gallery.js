@@ -44,6 +44,13 @@ $(document).ready(function(){
 
         success: function(data){
             console.log(data);
+
+            var page_url = window.location.href;
+            var isProfilePage = false;
+
+            if(page_url.indexOf("profile") > -1){
+                isProfilePage = true;
+            }
             
             var photosLength;   // amount of photos to load
             
@@ -67,6 +74,7 @@ $(document).ready(function(){
                 }
                 
                 var img = {
+                    'profilePage': isProfilePage,
                     'image_url': data[i].image_url,
                     'img_id': data[i].img_id,
                     'title': data[i].title,

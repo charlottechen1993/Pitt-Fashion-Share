@@ -45,6 +45,7 @@ import controllers.updateprofileController as updateprofileController
 import controllers.userLogController as userController
 import controllers.imageController as imageController
 import controllers.tempClothController as tempClothController
+import controllers.clothController as clothController
 
 import models.imagesModel as imagesModel    
 
@@ -67,7 +68,9 @@ mappings = [
     ('/getPhotosJSON', imagesModel.getPhotosJSONHandler),
     ('/test', imagesModel.testGetImages),
     ('/tempCloth', tempClothController.index),
-    ('/newUserSuccess', userController.newUserSuccess)
+    ('/newUserSuccess', userController.newUserSuccess),
+    ('/editItems', profileController.editItems),
+    ('/addNewItemHandler', clothController.index)
 #    ('/gallery', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]

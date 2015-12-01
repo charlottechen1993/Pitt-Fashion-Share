@@ -18,6 +18,31 @@ import models.userModel as userModel
 from google.appengine.ext import ndb
 import json
 
+
+
+class editItems(main.index):
+
+    def post(self):
+        imgURL = self.request.get('imgURL');
+        imgID = self.request.get('imgID');
+
+        print imgURL
+
+        user_id = app_global.unicode(self.session.get('user_id'))
+        user = app_global.unicode(self.session.get('user'))
+
+        params = {
+            'user_id': user_id,
+            'page': 'profile',
+            'user': user,
+            'imgURL': imgURL,
+            'imgID': imgID
+        }
+
+        app_global.render_template(self,'addItems.html', params)
+
+
+
 # I use price ranges for my filtering. ie. 25-50. 
 # So if you change the prices list after there are images in the datastore,
 # you may get imprecise filtering. 
@@ -139,6 +164,7 @@ class index(main.index):
 #            'photos': images,
             #'photos_json': json.dumps(images),
             'user_id': user_id,
+            'page': 'profile',
             'user': user,
             #'user_id': None, #testing when user is logged out
             'upload_url': upload_url,

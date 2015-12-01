@@ -131,7 +131,8 @@ class index(main.index):
             'brands': brands,
             'types': types,
             'prices': prices,
-            'priceOptions': priceOptions
+            'priceOptions': priceOptions,
+            'page':'gallery' 
         }
 
  

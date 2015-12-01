@@ -6,53 +6,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
        
         <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="http://odyniec.net/projects/imgareaselect/css/imgareaselect-default.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link href='https://fonts.googleapis.com/css?family=Qwigley|Poiret+One' rel='stylesheet' type='text/css'>
+		    <link href='https://fonts.googleapis.com/css?family=Qwigley|Poiret+One' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Raleway:100,200,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,900,300' rel='stylesheet' type='text/css'>	
         <link rel="stylesheet" type="text/css" href="/static/style/base.css">
-        
         {% block css %}{% endblock %}
-		
-        <!-- your css file goes here after all the bootstrap css -->
-        
-        <!--Javascript-->
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+              <!--Javascript-->
+
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src='http://odyniec.net/projects/imgareaselect/jquery.imgareaselect.pack.js'></script>
         <script src="/js/base.js"></script>
-		{% block js %}{% endblock %}
-         <!-- your js file goes here after all the bootstrap css -->
-
-
-        
-<!--
-         <script type="text/javascript">
-             $(document).ready(function(){
-                            function getRandomSize(min, max) {
-                  return Math.round(Math.random() * (max - min) + min);
-                }
-
-                for (var i = 0; i < 25; i++) {
-                  var width = getRandomSize(200, 400);
-                  var height =  getRandomSize(200, 400);
-                    $('#photos').append('<img src="//www.lorempixel.com/'+width+'/'+height+'/cats" alt="pretty kitty">');
-
-                  $('#photos').append('<img src="http://lorempixel.com/200/400/cats/" alt="pretty kitty">');
-                    var n = document.getElementById('photos');
-                    n.appendChild('<img src="http://lorempixel.com/200/400/cats/" alt="pretty kitty">');
-                }
-             });
-             
-        </script>
--->
+        {% block js %}{% endblock %}
 
     </head>
+
 	<body>
 		{% include 'header.html' %}
-		<div class="container-fluid" style="margin-top: 30px;">
-			{% block content %}
-			{% endblock %}
-		</div>
+  		<div class="container-fluid" style="margin-top: 30px;">
+  			{% block content %}
+  			{% endblock %}
+  		</div>
 	</body>	
 </html>

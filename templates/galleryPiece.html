@@ -16,6 +16,15 @@
         
                         <!-- end adored -->
                         <span class="view-image" data-toggle="modal" data-target="#Modal[[img.img_id]]">View</span>
+
+                                
+                        <form action="/editItems" method="post" ng-if="img.profilePage">
+                            <input name="imgURL" type="hidden" value="[[img.image_url]]">
+                            <input name="imgID" type="hidden" value="[[img.img_id]]">
+                            <input class="view-image" type="submit" value="Edit Fashion Item">
+                        </form>
+                         
+                        
                     </div>
                 </figcaption>
             </figure>
@@ -23,3 +32,8 @@
         
         {% include 'imgModal.html' %}
     </section>
+<!-- 
+    <div class="image">
+        <img width="300" height="285" id="image" src="http://localhost:8080/_ah/img/PRKAHVRJ7BEO3MxMxHm-Cw==" img_id="5348024557502464">
+    </div> -->
+
