@@ -36,9 +36,12 @@
         {% include 'imgModal.html' %}
     </section>
 
+ 
+
+
     <div class="row center" id="photo" ng-show="!showAllPhotos" style=" margin-top: 20px; width: 100%;">
         <div class="col-sm-12">
-              <img class="img-responsive centerHorizontally" id="itemPhoto" img_id="[[img.img_id]]" src="[[select_image_url]]">
+              <img class="centerHorizontally sizeOfEditedImage" id="itemPhoto" img_id="[[img.img_id]]" src="[[select_image_url]]">
         </div>
     </div>
 

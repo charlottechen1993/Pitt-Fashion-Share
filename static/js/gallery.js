@@ -191,7 +191,7 @@
      */
      $scope.loadClothingPanel = function($event, img_id, img_url){
             var item = $event.currentTarget;
-            $(angular.element(item)).css('width', '100% !important');
+//            $(angular.element(item)).css('width', '100% !important');
 
             // hide all photos and show the photo clicked
             $scope.showAllPhotos = false;
@@ -207,7 +207,31 @@
                     data = JSON.parse(data);
                     data = data['result'];
 
+                   // printJSON(data);
+
+
                     for(var i=0; i<data.length; i++){
+
+                        var height = data[i].height;
+                        var currHeight = $('#itemPhoto').height();
+                        var currWidth = $('#itemPhoto').width();
+
+                        var diffHeight = Math.abs(height-currHeight);
+                        // alert(diffHeight);
+
+                        //alert('current:'+ currHeight + '<br>' + 'before:' + height);
+                        if(currHeight > height){
+                            data[i].x1 =  data[i].x1+diffHeight/2;
+                            data[i].x2 =  data[i].x2+diffHeight/2;
+                            data[i].y1 =  data[i].y1+diffHeight/2;
+                            data[i].y2 =  data[i].y2+diffHeight/2;
+                        }else{       
+                            data[i].x1 =  data[i].x1-diffHeight;
+                            data[i].x2 =  data[i].x2-diffHeight;
+                            data[i].y1 =  data[i].y1-diffHeight;
+                            data[i].y2 =  data[i].y2-diffHeight;
+                        }
+
                         $scope.$apply(function(){
                             $scope.items.push(data[i]);
                         });
@@ -228,7 +252,7 @@
         var y2 = $(angular.element(item)).attr('data-y2');
 
              
-         $('#itemPhoto').imgAreaSelect({ x1: x1, y1: y1, x2: x2, y2: y2 });
+         $('#itemPhoto').imgAreaSelect({ x1: x1, y1: y1, x2: x2, y2: y2, aspectRatio: '4:3'});
      }
 
 

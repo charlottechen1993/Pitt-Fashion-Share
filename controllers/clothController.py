@@ -18,7 +18,9 @@ class index(webapp2.RequestHandler):
     	y2 = self.request.get('y2')
     	width = self.request.get('width')
     	height = self.request.get('height')
+        # imgH = self.request.get('height')
+        # imgW = self.request.get('width')
 
-    	addClothItem(imgID, clothingType, brand, price, x1, y1, x2, y2, width, height)
+    	clothModel.addClothItem(imgID, clothingType, brand, price, x1, y1, x2, y2, width, height)
         
  

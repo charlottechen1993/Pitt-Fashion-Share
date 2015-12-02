@@ -6,6 +6,7 @@ $(document).ready(function(){
 
     $('#imgSelect').imgAreaSelect({
         handles: true,
+        aspectRatio: '4:3',
         onSelectEnd: function (img, selection) {
             if (!selection.width || !selection.height) {
                 return;
@@ -15,16 +16,16 @@ $(document).ready(function(){
             y1 = selection.y1;
             x2 = selection.x2;
             y2 = selection.y2;
-            width = selection.width;
-            height = selection.height;
-
+            // width = selection.width;
+            // height = selection.height;
+            height = $('#imgSelect').height();
 
             $('#x1').val(x1);
             $('#y1').val(y1);
             $('#x2').val(x2);
             $('#y2').val(y2);
-            $('#w').val(width);
-            $('#h').val(height);
+            // $('#w').val(width);
+            // $('#h').val(height);
         }
     });
 
@@ -35,6 +36,7 @@ $(document).ready(function(){
         var brand = $('#brand').val();
         var price = $('#price').val();
         var imgID = $('#imgID').val();
+
 
         var parameters = 'clothingType=' + clothingType + "&description=" + 
                         description + "&brand=" + brand + "&price=" + price + 

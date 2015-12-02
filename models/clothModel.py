@@ -22,6 +22,8 @@ class clothItem(ndb.Model):
     y2 = ndb.IntegerProperty()
     width = ndb.IntegerProperty()
     height = ndb.IntegerProperty()
+    imgH = ndb.IntegerProperty()
+    imgW = ndb.IntegerProperty()
 
 
     
@@ -37,8 +39,11 @@ def addClothItem(imgID, clothingType, brand, price, x1, y1, x2, y2, width, heigh
     newClothItem.y1 = int(y1)
     newClothItem.x2 = int(x2)
     newClothItem.y2 = int(y2)
-    newClothItem.width = int(width)
+    #newClothItem.width = int(width)
+    newClothItem.width = 0
     newClothItem.height = int(height)
+    # newClothItem.imgH = int(imgH)
+    # newClothItem.imgW = int(imgW)
     newClothItem.put()
 
 
