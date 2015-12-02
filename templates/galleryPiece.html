@@ -1,5 +1,6 @@
-    <section id="photos" ng-controller="imgCtrl" style="margin-top: 20px;">
-        <div class="image" ng-repeat="img in images" class="blur" >
+<div>       
+    <section id="photos" style="margin-top: 20px;" ng-show="showAllPhotos">
+        <div class="image" ng-repeat="img in images" class="blur" id="[[img.img_id]]Block">
             <figure class="img-cover">
                 <img img_id="[[img.img_id]]" src="[[img.image_url]]">
                 <figcaption class="img-text">
@@ -19,11 +20,13 @@
 
                                 
                         <form action="/editItems" method="post" ng-if="img.profilePage">
-                            <input name="imgURL" type="hidden" value="[[img.image_url]]">
-                            <input name="imgID" type="hidden" value="[[img.img_id]]">
+                            <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
+                            <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
                             <input class="view-image" type="submit" value="Edit Fashion Item">
                         </form>
-                         
+
+                        <input class="view-image" type="button" value="See Clothing Items" ng-click="loadClothingPanel($event, [[img.img_id]], [[img.image_url]])" ng-if="img.galleryPage">
+                                     
                         
                     </div>
                 </figcaption>
@@ -32,6 +35,19 @@
         
         {% include 'imgModal.html' %}
     </section>
+
+    <div class="row center" id="photo" ng-show="!showAllPhotos" style=" margin-top: 20px; width: 100%;">
+        <div class="col-sm-12">
+              <img class="img-responsive centerHorizontally" img_id="[[img.img_id]]" src="[[select_image_url]]">
+        </div>
+    </div>
+
+<!--     <section id="photo" ng-show="!showAllPhotos" style="margin-top: 30px; width: 90%; border: 1px solid yellow;">
+
+        <img class="img-responsive center" style="position: relative; display: block" img_id="[[img.img_id]]" src="[[select_image_url]]">
+    </section> -->
+
+</div>
 <!-- 
     <div class="image">
         <img width="300" height="285" id="image" src="http://localhost:8080/_ah/img/PRKAHVRJ7BEO3MxMxHm-Cw==" img_id="5348024557502464">

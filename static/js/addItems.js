@@ -36,8 +36,6 @@ $(document).ready(function(){
         var price = $('#price').val();
         var imgID = $('#imgID').val();
 
-        alert(imgID);
-
         var parameters = 'clothingType=' + clothingType + "&description=" + 
                         description + "&brand=" + brand + "&price=" + price + 
                         '&x1=' + x1 + '&x2=' + x2 + '&y1=' + y1 + '&y2=' + y2 +

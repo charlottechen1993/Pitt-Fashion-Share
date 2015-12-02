@@ -7,6 +7,7 @@ from google.appengine.ext.webapp import blobstore_handlers
 import json
 import app_global
 from imagesModel import Image
+import webapp2
 
 
 #An image can have multiple clothItems, associated by the imgID property. 
@@ -67,5 +68,33 @@ def getImagesByType(clothingType):
     return Image.query().filter(Image.clothingType == clothingType).fetch()
    
 
+class getItems(webapp2.RequestHandler):
     
-    
+    def get(self):
+        result = list()
+
+        imgID = self.request.get('imgID')
+
+        allItems = getClothItems(imgID)
+       
+        queryItems = clothItem.query(clothItem.imgID == str(imgID))
+     
+        items = queryItems.fetch()
+        for i in range(0,len(items)):
+            item = {}
+            item['clothingType'] = items[i].clothingType
+            item['brand'] = items[i].brand
+            item['price'] = items[i].price
+            item['x1'] = items[i].x1
+            item['y1'] = items[i].y1
+            item['x2'] = items[i].x2 
+            item['y2'] = items[i].y2 
+            item['width'] = items[i].width
+            item['height'] = items[i].height 
+
+            result.append(item)
+            
+        data = json.dumps({'result':result})  
+          
+        self.response.out.write(data)
+

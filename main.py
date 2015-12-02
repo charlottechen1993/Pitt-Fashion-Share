@@ -48,6 +48,7 @@ import controllers.tempClothController as tempClothController
 import controllers.clothController as clothController
 
 import models.imagesModel as imagesModel    
+import models.clothModel as clothModel
 
 
 # set up paths
@@ -70,7 +71,8 @@ mappings = [
     ('/tempCloth', tempClothController.index),
     ('/newUserSuccess', userController.newUserSuccess),
     ('/editItems', profileController.editItems),
-    ('/addNewItemHandler', clothController.index)
+    ('/addNewItemHandler', clothController.index),
+    ('/getItems', clothModel.getItems)
 #    ('/gallery', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]

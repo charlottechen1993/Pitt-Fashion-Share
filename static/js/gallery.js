@@ -1,30 +1,13 @@
-$(document).ready(function(){
-//    $.ajax({
-//        url: '/getPhotosJSON?user_id=' + 1,
-//        data: {},
-//        dataType: 'json',
-////            contentType: "application/json",
-//        success: function(data){
-//            console.log(data);
-//          //  data = JSON.parse(data);
-//           //alert(JSON.stringify(data, null, 2));
-//          //  alert(data);
-//            for( var i = 0; i < data.length; i++ ) {
-//                //$('#photos').append('<img src="' + data[i].image_url + '" alt="pretty kitty">');  
-//                
-//            }
-//        },
-//        error: function ( jqXHR, textStatus, errorThrown) {
-//            alert(errorThrown);
-//        }
-//    });
 
-});
 
  angularAPP.controller('imgCtrl', function($scope,$http){
      
      $scope.images = [];
      $scope.comments = [];
+     $scope.items = [];
+     $scope.showAllPhotos = true;
+     $scope.select_image_url = '';
+
      
      var page;
      if( $('#profilePage').length > 0)
@@ -46,10 +29,12 @@ $(document).ready(function(){
             console.log(data);
 
             var page_url = window.location.href;
-            var isProfilePage = false;
+            var isProfilePage = false, isGalleryPage = false;
 
             if(page_url.indexOf("profile") > -1){
                 isProfilePage = true;
+            }else if(page_url.indexOf("gallery") > -1){
+                isGalleryPage = true;
             }
             
             var photosLength;   // amount of photos to load
@@ -75,6 +60,7 @@ $(document).ready(function(){
                 
                 var img = {
                     'profilePage': isProfilePage,
+                    'galleryPage': isGalleryPage,
                     'image_url': data[i].image_url,
                     'img_id': data[i].img_id,
                     'title': data[i].title,
@@ -199,4 +185,59 @@ $(document).ready(function(){
         });
      }
 
+
+     /*
+        load right panel that shows clothing item info
+     */
+     $scope.loadClothingPanel = function($event, img_id, img_url){
+            var item = $event.currentTarget;
+            $(angular.element(item)).css('width', '100% !important');
+
+            // hide all photos and show the photo clicked
+            $scope.showAllPhotos = false;
+
+            // replace image in photo section
+            $scope.select_image_url = img_url;
+
+            $.ajax({
+                url: '/getItems?imgID=' + img_id,
+                success: function(data){
+                    $scope.items = [];
+
+                    data = JSON.parse(data);
+                    data = data['result'];
+
+                    for(var i=0; i<data.length; i++){
+                        $scope.$apply(function(){
+                            $scope.items.push(data[i]);
+                        });
+                    }
+                }
+            });
+     }
+
+
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
