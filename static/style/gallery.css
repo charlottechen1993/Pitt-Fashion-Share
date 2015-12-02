@@ -234,6 +234,7 @@ table.table-clothes{
 
 table.table-clothes .item-row:hover{
   background-color: #8B8C8C;
+  cursor: pointer;
 }
 
 table.table-clothes th{
