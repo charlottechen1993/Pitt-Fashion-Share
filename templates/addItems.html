@@ -8,12 +8,16 @@
 			width: 45px;
 			margin-left: 5px;
 		}
+		.newItemRow{
+			margin-top: 15px;
+		}
 		#imgSelect{
-			display: block;
-			/*max-width:100%;
+			margin: 0px;
+			/*display: block;
+			max-width:100%;
 			max-height:100%;
 			height: auto;
-			width: auto;*/
+			width: auto;
 			/*width: auto;
 			height: auto;*/
 			position: absolute;
@@ -35,21 +39,44 @@
 {% block content %}
 	<div class="row" style="margin-top: 50px;">
 		<div class="col-xs-12 col-sm-8">
-			<img src="{{imgURL}}" class="img-responsive sizeOfEditedImage" id="imgSelect">
+			<img src="{{imgURL}}" class="sizeOfEditedImage" id="imgSelect">
 		</div>
 		<div class="col-xs-12 col-sm-4">
 	        <div class="panel panel-default">
 	            <div class="panel-heading">Add new item</div>
 	            <div class="panel-body">
 	                <form>
-	                	<input type="hidden" id="imgID" value="{{imgID}}">
+	                	<div class="row newItemRow">
+	                		<div class="col-sm-5">What is it?</div>
+	                		<div class="col-sm-7"><input id="clothingType" type="text" placeholder="a sun dress"></div>
+	                	</div>
+	                	<div class="row newItemRow" >
+	                		<div class="col-sm-5"> Why do you like it?</div>
+	                		<div class="col-sm-7">
+	                			<textarea rows="5" id="description" placeholder="This is my favorite summer clothing. It's great in cool weather :D"></textarea>
+	                		</div>
+	                	</div>
+	                	<div class="row newItemRow">
+	                		<div class="col-sm-5">Where did you buy it from? </div>
+	                		<div class="col-sm-7"><input id="brand" type="text"></div>
+	                	</div>
+	                	<div class="row newItemRow">
+	                		<div class="col-sm-5">How much did it cost? </div>
+	                		<div class="col-sm-7"><b>$</b><input id="price" type="number" value="0"></div>
+	                	</div>
+	                	<div class="row newItemRow">
+	                		<div class="col-sm-12">
+	                			<input class="btn btn-default btn-md addNewItem" type="button" value="Add Clothing">
+	                		</div>
+	                	</div>
+	                	<!-- <input type="hidden" id="imgID" value="{{imgID}}">
 	                    What is it? <input id="clothingType" type="text" placeholder="a sun dress"><br><br>
 	                    Why do you like it?<textarea rows="5" id="description" placeholder="This is my favorite summer clothing. It's great in cool weather :D"></textarea><br><br>
 	                   	Where did you buy it from? <input id="brand" type="text"><br><br>
 	                   	How much did it cost? 
 	                   	&nbsp;<b>$</b><input id="price" type="number" value="0">
 	                   	<br><br>
-	                    <input class="btn btn-default btn-md addNewItem" type="button" value="Add Clothing">
+	                    <input class="btn btn-default btn-md addNewItem" type="button" value="Add Clothing"> -->
 	                </form>
 	            </div>
 	        </div>

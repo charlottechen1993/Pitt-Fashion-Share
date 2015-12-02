@@ -104,6 +104,10 @@
     */
      $scope.addComment = function($event, img_id, comment){
 
+        if(comment=='' || comment==undefined){
+            return;
+        }
+
          $.ajax({
              url: '/comment?image_id='+img_id + '&comment='+comment,
              method: 'POST',

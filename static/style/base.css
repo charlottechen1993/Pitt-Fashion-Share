@@ -1,3 +1,15 @@
+/* when hiding the picture */
+.ng-hide-add         { animation:1.9s lightSpeedOut ease; }
+
+/* when showing the picture */
+.ng-hide-remove      { animation:1.9s flipInX ease; }
+
+.show-fade{
+ -webkit-transition:all linear 0.9s;
+  transition:all linear 0.9s;
+}
+
+
 * {
    /*fixed width and height of divs despite paddings*/
     -moz-box-sizing: border-box;
@@ -95,6 +107,7 @@ body{
 .glyphicon-chevron-left:hover,.glyphicon-chevron-right:hover{
     text-decoration: none;
 }
+
 
 .sizeOfEditedImage{
     width: 700px;
