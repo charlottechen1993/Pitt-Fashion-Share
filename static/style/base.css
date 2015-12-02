@@ -110,7 +110,9 @@ body{
 
 
 .sizeOfEditedImage{
-    width: 700px;
+    width: 700px !important;
+    max-width: 700px !important;
+
 }
 
 div.cmt{

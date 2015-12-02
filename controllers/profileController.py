@@ -26,7 +26,6 @@ class editItems(main.index):
         imgURL = self.request.get('imgURL');
         imgID = self.request.get('imgID');
 
-        print imgURL
 
         user_id = app_global.unicode(self.session.get('user_id'))
         user = app_global.unicode(self.session.get('user'))

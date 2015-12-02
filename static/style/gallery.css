@@ -111,9 +111,18 @@ textarea{
 }
 
 #itemPhoto{
-  margin-top: 20px;
+  margin: 0px; padding: 0px
 }
 
+#itemPopUp{
+  position: absolute; 
+  font-weight: 600;
+  color: #6188FF; 
+  background-color: white;
+  z-index: 10000;
+  display: block;
+  padding: 0px 5px 0px 5px;
+}
 
 .image-panel{
 /*    background-color: black;*/
@@ -181,11 +190,15 @@ h3.photo-title small.photo-time{
 }
 
 .right-panel{
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     background-color: #EBEBEB;
     background-color: #3D3F40;
     height : 100vh !important;
+   /* top: 20px;*/
     max-width: 100%;
+    margin-bottom: 0px;
+    top: 40px;
+    margin-top: -40px;
    
 /*
     position: fixed;

@@ -1,5 +1,5 @@
 <div>       
-    <section id="photos" style="margin-top: 20px;" ng-show="showAllPhotos" class="show-fade">
+    <section id="photos" ng-show="showAllPhotos" class="show-fade">
         <div class="image" ng-repeat="img in images" class="blur" id="[[img.img_id]]Block">
             <figure class="img-cover">
                 <img img_id="[[img.img_id]]" src="[[img.image_url]]">
@@ -36,12 +36,20 @@
         {% include 'imgModal.html' %}
     </section>
 
- 
-
+    <!-- hide border -->
+    <style>
+        .imgareaselect-border4,.imgareaselect-border3,.imgareaselect-border2,.imgareaselect-border1{
+            border: 1px solid white;
+            background: none !important;
+        }
+    </style>
 
     <div class="row center show-fade" id="photo" ng-show="!showAllPhotos" style=" margin-top: 20px; width: 100%;">
-        <div class="col-sm-12">
-              <img class="centerHorizontally sizeOfEditedImage" id="itemPhoto" img_id="[[img.img_id]]" src="[[select_image_url]]">
+        <div class="col-sm-12"> (327,88)
+            <div class="centerHorizontally sizeOfEditedImage" style="position:relative; top: 400px;">
+                <span id="itemPopUp"></span>
+                <img class="sizeOfEditedImage" id="itemPhoto"  src="[[select_image_url]]">
+            </div>
         </div>
     </div>
 

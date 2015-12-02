@@ -5,8 +5,7 @@ $(document).ready(function(){
 
 
     $('#imgSelect').imgAreaSelect({
-        handles: true,
-        aspectRatio: '4:3',
+        handles: true, 
         onSelectEnd: function (img, selection) {
             if (!selection.width || !selection.height) {
                 return;

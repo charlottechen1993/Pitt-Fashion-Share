@@ -13,11 +13,11 @@
 
 {% block content %}
 
-	<div class="row">
+	<div class="row" style="margin-top: 20px;" >
 		<div class="col-xs-12 col-sm-9">
     		{% include "galleryPiece.html" %}
     	</div>
-    	<div class="hidden-xs col-sm-3 right-panel" >
+    	<div class="hidden-xs col-sm-3 right-panel">
                 <div class="row">
                     <div class="col-sm-12">
                        <span class="info">                   
@@ -27,7 +27,7 @@
                                     <th>Brand</th>
                                     <th>Price</th>
                                 </tr>
-                                <tr class="item-row" ng-click="viewItem($event)" ng-repeat="item in items" data-x1="[[item.x1]]" data-x2="[[item.x2]]" data-y1="[[item.y1]]" data-y2="[[item.y2]]" data-width="item.width" data-height="item.height">
+                                <tr class="item-row" ng-click="viewItem($event)" ng-repeat="item in items" data-x1="[[item.x1]]" data-x2="[[item.x2]]" data-y1="[[item.y1]]" data-y2="[[item.y2]]" data-title="[[item.title]]">
                                     <td>[[item.clothingType]]</td>
                                     <td>[[item.brand]]</td>
                                     <td>$[[item.price]]</td>

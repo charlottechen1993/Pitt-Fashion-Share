@@ -215,26 +215,24 @@
 
 
                     for(var i=0; i<data.length; i++){
+                        data[i].title = data[i].clothingType;
+                        // var height = data[i].height;
+                        // var currHeight = $('#itemPhoto').height();
+                        // var currWidth = $('#itemPhoto').width();
 
-                        var height = data[i].height;
-                        var currHeight = $('#itemPhoto').height();
-                        var currWidth = $('#itemPhoto').width();
-
-                        var diffHeight = Math.abs(height-currHeight);
-                        // alert(diffHeight);
-
-                        //alert('current:'+ currHeight + '<br>' + 'before:' + height);
-                        if(currHeight > height){
-                            data[i].x1 =  data[i].x1+diffHeight/2;
-                            data[i].x2 =  data[i].x2+diffHeight/2;
-                            data[i].y1 =  data[i].y1+diffHeight/2;
-                            data[i].y2 =  data[i].y2+diffHeight/2;
-                        }else{       
-                            data[i].x1 =  data[i].x1-diffHeight;
-                            data[i].x2 =  data[i].x2-diffHeight;
-                            data[i].y1 =  data[i].y1-diffHeight;
-                            data[i].y2 =  data[i].y2-diffHeight;
-                        }
+                        // var diffHeight = Math.abs(height-currHeight);
+                     
+                        // if(currHeight > height){
+                        //     data[i].x1 =  data[i].x1+diffHeight/2;
+                        //     data[i].x2 =  data[i].x2+diffHeight/2;
+                        //     data[i].y1 =  data[i].y1+diffHeight/2;
+                        //     data[i].y2 =  data[i].y2+diffHeight/2;
+                        // }else{       
+                        //     data[i].x1 =  data[i].x1-diffHeight;
+                        //     data[i].x2 =  data[i].x2-diffHeight;
+                        //     data[i].y1 =  data[i].y1-diffHeight;
+                        //     data[i].y2 =  data[i].y2-diffHeight;
+                        // }
 
                         $scope.$apply(function(){
                             $scope.items.push(data[i]);
@@ -254,9 +252,13 @@
         var x2 = $(angular.element(item)).attr('data-x2');
         var y1 = $(angular.element(item)).attr('data-y1'); 
         var y2 = $(angular.element(item)).attr('data-y2');
+        var title = $(angular.element(item)).attr('data-title');
 
-             
-         $('#itemPhoto').imgAreaSelect({ x1: x1, y1: y1, x2: x2, y2: y2, aspectRatio: '4:3'});
+        $('#itemPopUp').css('top', (y1-20)+'px');
+        $('#itemPopUp').css('left', x1+'px');
+        $('#itemPopUp').html(title);
+
+        $('#itemPhoto').imgAreaSelect({ x1: x1, y1: y1, x2: x2, y2: y2, movable:false, resizable:false, outerOpacity: 0.4});
      }
 
 
