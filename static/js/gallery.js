@@ -216,6 +216,21 @@
             });
      }
 
+     /*
+        outline item on photo
+     */
+     $scope.viewItem = function($event){
+
+        var item = $event.currentTarget;
+        var x1 = $(angular.element(item)).attr('data-x1'); 
+        var x2 = $(angular.element(item)).attr('data-x2');
+        var y1 = $(angular.element(item)).attr('data-y1'); 
+        var y2 = $(angular.element(item)).attr('data-y2');
+
+             
+         $('#itemPhoto').imgAreaSelect({ x1: x1, y1: y1, x2: x2, y2: y2 });
+     }
+
 
 
 });

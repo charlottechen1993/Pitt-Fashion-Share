@@ -22,7 +22,7 @@
                     <div class="col-sm-12">
                        <span class="info">                   
                            <table class="table table-hover table-clothes">
-                                <tr ng-repeat="item in items" data-x1="[[item.x1]]" data-x2="[[item.x2]]" data-y1="[[item.y1]]" data-y2="[[item.y2]]" data-width="item.width" data-height="item.height">
+                                <tr ng-click="viewItem($event)" ng-repeat="item in items" data-x1="[[item.x1]]" data-x2="[[item.x2]]" data-y1="[[item.y1]]" data-y2="[[item.y2]]" data-width="item.width" data-height="item.height">
                                     <td>[[item.clothingType]]</td>
                                     <td>[[item.brand]]</td>
                                     <td>[[item.price]]</td>

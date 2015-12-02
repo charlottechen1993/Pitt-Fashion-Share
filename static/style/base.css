@@ -12,6 +12,12 @@ body{
     font-weight: 200;
 }
 
+
+.imgareaselect-border4,.imgareaselect-border3,.imgareaselect-border2,.imgareaselect-border1, .borderColor1, borderColor2{
+    border :1px solid #4DD2FF !important;
+}
+
+
 .adore{
     cursor: pointer;
     font-family: 'Poiret One', cursive;
