@@ -26,11 +26,7 @@
 	<div class="col-sm-6">
         <h1 class="text-center" style="color: grey">{{user}}</h1>
         <div class='text-center'>
-            {% if user.profilepic %}
-                <img src="/images/{{user.profilepic}}" id = "propic">
-            {% else %}
-                <img src="/images/profile.jpg" id = "propic">
-            {% endif %} 
+            <img src="{{profilePicURL}}" id = "propic">
         </div>
         <div class='text-center'>
             <br>

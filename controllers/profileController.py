@@ -20,6 +20,17 @@ import json
 
 
 
+class setProfilePic(main.index):
+
+    def post(self):
+        email = str(self.session.get('email'))
+        imgURL = self.request.get('imgURL')
+        userModel.setProfilePic(imgURL, email)
+
+        self.session['imgURL'] = imgURL
+        
+        self.redirect('/profile')
+
 class editItems(main.index):
 
     def post(self):
@@ -158,10 +169,12 @@ class index(main.index):
         
         user_id = app_global.unicode(self.session.get('user_id'))
         user = app_global.unicode(self.session.get('user'))
+        imgURL = app_global.unicode(self.session.get('imgURL'))
 
         params = {
 #            'photos': images,
             #'photos_json': json.dumps(images),
+            'profilePicURL': imgURL,
             'user_id': user_id,
             'page': 'profile',
             'user': user,

@@ -72,7 +72,8 @@ mappings = [
     ('/newUserSuccess', userController.newUserSuccess),
     ('/editItems', profileController.editItems),
     ('/addNewItemHandler', clothController.index),
-    ('/getItems', clothModel.getItems)
+    ('/getItems', clothModel.getItems),
+    ('/setProfilePic', profileController.setProfilePic )
 #    ('/gallery', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]

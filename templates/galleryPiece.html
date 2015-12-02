@@ -14,7 +14,6 @@
                             <span class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored"></span>
                             <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored"></span>
                         {% endif %}
-        
                         <!-- end adored -->
                         <span class="view-image" data-toggle="modal" data-target="#Modal[[img.img_id]]">View</span>
 
@@ -23,6 +22,12 @@
                             <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
                             <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
                             <input class="view-image" type="submit" value="Edit Fashion Item">
+                        </form>
+
+                        <form action="/setProfilePic" method="post" ng-if="img.profilePage">
+                            <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
+                            <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
+                            <input class="view-image" type="submit" value="Set As Profile Pic">
                         </form>
 
                         <input class="view-image" type="button" value="See Clothing Items" ng-click="loadClothingPanel($event, [[img.img_id]], [[img.image_url]])" ng-if="img.galleryPage">

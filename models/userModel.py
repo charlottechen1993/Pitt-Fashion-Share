@@ -12,11 +12,18 @@ class Users(ndb.Model):
     email = ndb.StringProperty()        # unique login credential
     gender = ndb.StringProperty()       # m or f
     description = ndb.StringProperty()
+    imgURL = ndb.StringProperty()
     
     @property
     def pid(self):
         return self.key.id()
 
+
+
+def setProfilePic(imgURL, email):
+    User = Users.query(Users.email == email)
+    User.imgURL = str(imgURL)
+    #User.put()
 
     
 def createNewUser(email, un, pw, gender):

@@ -106,6 +106,7 @@ class userFunctions(main.index):
                     self.session['user'] = str(un),
                     self.session['email'] = str(email),
                     self.session['user_id'] = user_key.id()
+                    self.session['imgURL'] = '/images/profile.jpg'
                     
                     params = {
                         'user': str(un),
@@ -127,6 +128,11 @@ class userFunctions(main.index):
                     self.session['email'] = user[0].email,
                     self.session['user'] = user[0].un,
                     self.session['user_id'] = user[0].user_id
+
+                    if user[0].imgURL:
+                        self.session['imgURL'] = user[0].imgURL
+                    else:
+                        self.session['imgURL'] = '/images/profile.jpg'
                     
                     self.redirect('/profile')
                 else:
