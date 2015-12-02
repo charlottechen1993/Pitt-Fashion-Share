@@ -4,6 +4,10 @@ $(document).ready(function(){
     var width, height;
 
 
+    // load clothing items
+
+
+
     $('#imgSelect').imgAreaSelect({
         handles: true, 
         onSelectEnd: function (img, selection) {

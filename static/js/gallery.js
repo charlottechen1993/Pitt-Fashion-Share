@@ -195,7 +195,6 @@
      */
      $scope.loadClothingPanel = function($event, img_id, img_url){
             var item = $event.currentTarget;
-//            $(angular.element(item)).css('width', '100% !important');
 
             // hide all photos and show the photo clicked
             $scope.showAllPhotos = false;
@@ -216,24 +215,7 @@
 
                     for(var i=0; i<data.length; i++){
                         data[i].title = data[i].clothingType;
-                        // var height = data[i].height;
-                        // var currHeight = $('#itemPhoto').height();
-                        // var currWidth = $('#itemPhoto').width();
-
-                        // var diffHeight = Math.abs(height-currHeight);
-                     
-                        // if(currHeight > height){
-                        //     data[i].x1 =  data[i].x1+diffHeight/2;
-                        //     data[i].x2 =  data[i].x2+diffHeight/2;
-                        //     data[i].y1 =  data[i].y1+diffHeight/2;
-                        //     data[i].y2 =  data[i].y2+diffHeight/2;
-                        // }else{       
-                        //     data[i].x1 =  data[i].x1-diffHeight;
-                        //     data[i].x2 =  data[i].x2-diffHeight;
-                        //     data[i].y1 =  data[i].y1-diffHeight;
-                        //     data[i].y2 =  data[i].y2-diffHeight;
-                        // }
-
+         
                         $scope.$apply(function(){
                             $scope.items.push(data[i]);
                         });
@@ -262,6 +244,17 @@
      }
 
 
+     /*
+        hide image items and show gallery
+     */
+     $scope.showGallery = function(){
+        $('#itemPhoto').imgAreaSelect({
+            hide: true
+        });
+        $('#itemPopUp').html('');
+
+        $scope.showAllPhotos = true;
+     }
 
 });
 

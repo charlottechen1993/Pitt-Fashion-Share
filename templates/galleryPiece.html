@@ -45,8 +45,13 @@
     </style>
 
     <div class="row center show-fade" id="photo" ng-show="!showAllPhotos" style=" margin-top: 20px; width: 100%;">
-        <div class="col-sm-12"> (327,88)
-            <div class="centerHorizontally sizeOfEditedImage" style="position:relative; top: 400px;">
+        <div class="col-sm-12">
+            <h3 style="cursor: pointer;">
+                <a ng-click="showGallery()">Back</a>
+            </h3>
+        </div>
+        <div class="col-sm-12"> 
+            <div class="centerHorizontally sizeOfEditedImage" style="position:absolute;">
                 <span id="itemPopUp"></span>
                 <img class="sizeOfEditedImage" id="itemPhoto"  src="[[select_image_url]]">
             </div>

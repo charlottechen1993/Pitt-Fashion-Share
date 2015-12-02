@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                        <span class="info">                   
-                           <table class="table table-clothes">
+                           <table class="table table-clothes" ng-show="!showAllPhotos">
                                 <tr>
                                     <th>Clothing</th>
                                     <th>Brand</th>
@@ -33,6 +33,8 @@
                                     <td>$[[item.price]]</td>
                                 </tr>
                             </table>
+                            <br>
+                            <p ng-show="showAllPhotos">Hover over an image and click 'See Clothing Items' to view this outfit</p>
                         </span>
                     </div>
                 </div> 
