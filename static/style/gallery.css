@@ -269,10 +269,10 @@ table.table-clothes td:nth-child(1){
     -o-transform: translate(-50%, -0%);
     -ms-transform: translate(-50%, -0%);
     margin-top: 15px;
-    font-size: 15px;
+    font-size: 14px;
     width: 140px;
-    height: 30px;
-    line-height: 30px;
+    height: 25px;
+    line-height: 25px;
     text-align: center;
     cursor: pointer;
 /*    color: #EBB0CF;*/
