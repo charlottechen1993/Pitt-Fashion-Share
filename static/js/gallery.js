@@ -150,7 +150,10 @@
          var item =  $(angular.element($event.currentTarget));
          var url;
 
-         var likeCount = item.prev('p').html();
+         var likeCount = item.prev('p').text();
+         if(!(parseInt(likeCount) >= 0)){
+            likeCount='0';
+         }
          
          
          if(item.hasClass('heart-unfilled'))    // like image

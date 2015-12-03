@@ -198,8 +198,15 @@ h3.photo-title small.photo-time{
    /* top: 20px;*/
     max-width: 100%;
     margin-bottom: 0px;
-    top: 40px;
-    margin-top: -40px;
+    float: left;
+    left: 100%;
+    transform: translate(-100%,-0%);
+    -webkit-transform: translate(-100%,-0%);
+    -moz-transform: translate(-100%,-0%);
+    -o-transform: translate(-100%,-0%);
+    -ms-transform: translate(-100%,-0%);
+/*    top: 40px;
+    margin-top: -40px;*/
    
 /*
     position: fixed;
