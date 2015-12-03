@@ -149,6 +149,8 @@
          
          var item =  $(angular.element($event.currentTarget));
          var url;
+
+         var likeCount = item.prev('p').html();
          
          
          if(item.hasClass('heart-unfilled'))    // like image
@@ -156,11 +158,12 @@
             url = '/addLike?photo_id=' + img_id;
             $(angular.element(item)).removeClass('heart-unfilled'); 
             $(angular.element(item)).addClass('heart-filled'); 
+            item.prev('p').html(parseInt(likeCount)+1);
          }else{                                 // unlike image
             url = '/unlike?photo_id=' + img_id;
             $(angular.element(item)).removeClass('heart-filled'); 
             $(angular.element(item)).addClass('heart-unfilled'); 
-         
+            item.prev('p').html(parseInt(likeCount)-1);
          }
          
          
