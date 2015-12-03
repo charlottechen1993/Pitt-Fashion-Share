@@ -253,6 +253,7 @@
         });
         $('#itemPopUp').html('');
 
+
         $scope.showAllPhotos = true;
      }
 

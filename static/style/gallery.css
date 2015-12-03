@@ -108,6 +108,7 @@ textarea{
     -ms-transform: translate(-50%, -50%);
     width: auto;
     height: auto;
+    z-index: 999;
 }
 
 #itemPhoto{
