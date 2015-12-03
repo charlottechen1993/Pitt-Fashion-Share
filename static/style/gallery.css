@@ -253,6 +253,7 @@ table.table-clothes .item-row:hover{
 
 table.table-clothes th{
   color: #3A8EC7;
+  background-color: #464D4F;
 }
 
 table.table-clothes td:nth-child(1){
