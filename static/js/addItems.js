@@ -39,7 +39,18 @@ $(document).ready(function(){
         var brand = $('#brand').val();
         var price = $('#price').val();
         var imgID = $('#imgID').val();
-
+        
+        
+        if (x1 === undefined || x2 === undefined || y1 === undefined || y2 === undefined) {
+            alert("Please click on the image and select your clothing item.");
+           // alert("x1 = " + x1 + ' and x2 = ' + x2 + ' and y1 = ' + y1 + ' and y2 = ' + y2);
+            return;
+        }
+        
+        // added this in since height and width seemed to be undefined even
+        // when x1, x2, y1, y2 had values
+        width = x2 - x1;
+        height = y2 - y1;
 
         var parameters = 'clothingType=' + clothingType + "&description=" + 
                         description + "&brand=" + brand + "&price=" + price + 
@@ -50,8 +61,19 @@ $(document).ready(function(){
             'url': '/addNewItemHandler?' + parameters,
             'success': function(){
                 alert(clothingType + ' was successfully added!');
+                $('#brand').val("");
+                $('#price').val("");
+                $('#description').val("");
+                $('#clothingType').val("");
+                $('#x1').val(0);
+                $('#y1').val(0);
+                $('#x2').val(0);
+                $('#y2').val(0);
             }
         });
+        
+        
+        
     });
 
 
