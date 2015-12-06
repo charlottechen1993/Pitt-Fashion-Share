@@ -47,6 +47,30 @@ $(document).ready(function(){
             return;
         }
         
+        if (clothingType === "") {
+            alert("Please enter the clothing name/type.");
+            return;
+        }
+        
+        if (description === "") {
+            alert("Please enter why you like the item.");
+            return;
+        }
+        
+        if (brand === "") {
+            alert("Please enter where you got the clothing item from.");
+            return;
+        }
+        
+        if (price === "") {
+            alert("Please enter the price.");
+            return;
+        }
+        
+        
+        
+        
+        
         // added this in since height and width seemed to be undefined even
         // when x1, x2, y1, y2 had values
         width = x2 - x1;
@@ -61,14 +85,7 @@ $(document).ready(function(){
             'url': '/addNewItemHandler?' + parameters,
             'success': function(){
                 alert(clothingType + ' was successfully added!');
-                $('#brand').val("");
-                $('#price').val("");
-                $('#description').val("");
-                $('#clothingType').val("");
-                $('#x1').val(0);
-                $('#y1').val(0);
-                $('#x2').val(0);
-                $('#y2').val(0);
+                location.reload();
             }
         });
         
