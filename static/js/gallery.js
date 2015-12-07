@@ -138,7 +138,7 @@
                  var currentElement =  $(angular.element($event.currentTarget));
                 // $(angular.element(currentElement)).closest('.modal-footer').appendChild("<h1>Hello world</h1>");
                  
-                  $(angular.element(currentElement)).closest('.modal-footer').append(cmtChild);
+                  $(angular.element(currentElement)).closest('.commentSection').append(cmtChild);
                  //var dataID =  $(angular.element(currentElement)).closest('.modal-footer').attr('data-id');
                  //alert(dataID);
                  //alert($(angular.element(currentElement)).closest('.modal-footer').attr('data-id')  );
