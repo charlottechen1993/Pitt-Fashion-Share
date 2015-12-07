@@ -7,7 +7,7 @@
      $scope.items = [];
      $scope.showAllPhotos = true;
      $scope.select_image_url = '';
-     $scope.showAdoredOnly = true;
+     $scope.showAdoredOnly = false;
      
      var page;
      if( $('#profilePage').length > 0)
