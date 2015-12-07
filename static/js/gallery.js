@@ -88,7 +88,7 @@
         populates image gallery with images
      */
      $scope.populateGallery = function(img){
-         alert(img.tags);
+         //alert(img.tags);
         $scope.$apply(function(){
             
             $scope.images.push(img);
@@ -296,6 +296,20 @@
          $scope.showAdoredOnly = true;
          $scope.images = [];
          $scope.reloadImages();
+     }
+     
+      $scope.deletePic = function($event, imgID){
+          
+          $.ajax({
+            url: '/deletePic?imgID=' + imgID,
+            success: function(data){
+                // uncolor heart
+                alert("This picture has been deleted.");
+                $scope.images = [];
+                $scope.reloadImages();
+            }
+        });
+         
      }
      
      $scope.reloadImages = function() {
