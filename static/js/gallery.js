@@ -80,7 +80,7 @@
         }
     });
 
-     
+    
      /*
         populates image gallery with images
      */
