@@ -70,7 +70,7 @@
                     'adored': data[i].adored,
                     'comments': data[i].comments,
                     'total_likes': likes,
-                    'tags': data[i].tags
+                    'tags': data[i].tags,
                     'deleteOption': data[i].deleteOption,
                     'profilePicOption': data[i].profilePicOption,
                 };
