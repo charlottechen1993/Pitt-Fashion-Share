@@ -1,6 +1,6 @@
 
     <div ng-init="loadOption()" ng-show="showCategoryDrop && showAllPhotos" style="margin-top: 15px;">
-        <form class="form-inline">
+        <form class="form-inline" style="margin-left: 10px">
             <label>Filter:</label>
             <select class="form-control" ng-model="selected" ng-options="c for c in categories | orderBy">
                 <option value="" selected>--- default ---</option>
