@@ -64,7 +64,7 @@
         <div class="panel panel-default" ng-controller="profileController" ng-init="loadOption()">
             <div class="panel-heading">Image Upload</div>
             <div class="panel-body">
-                <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
+                <form method="post" enctype="multipart/form-data" id="image_upload" action={{upload_url}}>
                     <div class="row">
                         <div class="col-sm-6">
                             Picture Title:<br>
@@ -79,14 +79,13 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <p>Add Tags (Hold on to Ctrl to select multiple items)</p>
-                            <select multiple class="form-control" name="select-tag">
-                                <option ng-repeat="cat in categories">[[cat]]</option>
-                            </select>
+                            <select multiple="true" class="form-control" ng-model="selected" ng-options="c for c in categories"></select>
+                            <input type="hidden" value="[[selected]]" name="selectedCategories">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <input class="btn btn-default btn-md" type="submit" value="Upload Image">
+                            <input class="btn btn-default btn-md" ng-model="selected" type="submit" value="Upload Image">
                         </div>
                     </div>
                 </form>
@@ -99,8 +98,6 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#home" id="login-tab">Gallery</a></li>
                     <li><a data-toggle="tab" href="#menu1" id="reg-tab">Adored</a></li>
-                   
-                    
                 </ul>
                 
                 <div class="tab-content">

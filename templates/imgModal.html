@@ -26,7 +26,15 @@
          </div>
         </div> <!-- END modal-body -->
         
-        <div class="modal-footer" data-id="asdfasd">     
+        <div class="modal-footer" data-id="asdfasd">   
+            <div>
+                <table class="table">
+                    <tr>
+                        <td><strong>Tabs: </strong></td>
+                        <td ng-repeat="tag in img.tags">[[tag]]</td>
+                    </tr>
+                </table>
+            </div>
             <!-- Can only comment if logged in. !-->
             {% if user_id %}
                 <div class="row cmt">

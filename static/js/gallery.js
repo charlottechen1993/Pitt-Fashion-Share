@@ -1,7 +1,7 @@
 
 
  angularAPP.controller('imgCtrl', function($scope,$http){
-     
+     $scope.tags = [];
      $scope.images = [];
      $scope.comments = [];
      $scope.items = [];
@@ -28,7 +28,9 @@
 
         success: function(data){
             //console.log(data);
-
+           // printJSON(data[0].tags);
+            //printJSON(data[0].tags[0]);
+            
             var page_url = window.location.href;
             var isProfilePage = false, isGalleryPage = false;
             
@@ -50,7 +52,7 @@
            // alert(JSON.stringify(data, null, 2));
             
             for( var i = 0; i < photosLength; i++ ) {
-   
+                $scope.tags = [];
                 var likes;
                 
                 if(data[i].total_likes == 0){
@@ -58,7 +60,6 @@
                 }else{
                     likes = data[i].total_likes;
                 }
-                
                 
                 var img = {
                     'profilePage': isProfilePage,
@@ -68,24 +69,24 @@
                     'title': data[i].title,
                     'adored': data[i].adored,
                     'comments': data[i].comments,
-                    'total_likes': likes
+                    'total_likes': likes,
+                    'tags': data[i].tags
                 };
                 
                 //console.log(img['adored']);
                 $scope.populateGallery(img);
+                
             }
         },
         error: function ( jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
         }
     });
-
-    
      /*
         populates image gallery with images
      */
      $scope.populateGallery = function(img){
-
+         alert(img.tags);
         $scope.$apply(function(){
             
             $scope.images.push(img);
