@@ -203,6 +203,9 @@ class getPhotosJSONHandler(main.index):
             comments = comments.order(-ImageComment.upload_date).fetch()              
             im['comments'] = [c.to_dict() for c in comments]
     
+            if adored is not None and adored == "true" and (str(user_id) == str(images[i].user)):
+                im['deleteOption'] = "active"
+                im['profilePicOption'] = "active"
 
             if im['img_id'] in likedByYou:
                 im['adored'] = True

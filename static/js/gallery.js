@@ -71,6 +71,8 @@
                     'comments': data[i].comments,
                     'total_likes': likes,
                     'tags': data[i].tags
+                    'deleteOption': data[i].deleteOption,
+                    'profilePicOption': data[i].profilePicOption,
                 };
                 
                 //console.log(img['adored']);
@@ -346,6 +348,8 @@
                     'title': data[i].title,
                     'adored': data[i].adored,
                     'comments': data[i].comments,
+                    'deleteOption': data[i].deleteOption,
+                    'profilePicOption': data[i].profilePicOption,
                     'total_likes': likes
                 };
                 
