@@ -22,7 +22,7 @@
                        and html for image modals
     */
     $.ajax({
-        url: '/getPhotosJSON?user_id=' + 1 + '&page=' + page,
+        url: '/getPhotosJSON?user_id=' + 1 + '&page=' + page + '&adored=' + $scope.showAdoredOnly,
         data: {},
         dataType: 'json',
 
@@ -296,9 +296,10 @@
      }
      
      $scope.reloadImages = function() {
-         
+
          $.ajax({
-        url: '/getPhotosJSON?user_id=' + 1 + '&page=' + page,
+           
+        url: '/getPhotosJSON?user_id=' + 1 + '&page=' + page + '&adored=' + $scope.showAdoredOnly,
         data: {},
         dataType: 'json',
 
@@ -347,12 +348,12 @@
                     'total_likes': likes
                 };
                 
-                if ($scope.showAdoredOnly === true && img['adored'] === true) {
-                    $scope.populateGallery(img);
-                }
-                else if ($scope.showAdoredOnly === false) {
-                    $scope.populateGallery(img);
-                }
+               // if ($scope.showAdoredOnly === true && img['adored'] === true) {
+                //    $scope.populateGallery(img);
+                //}
+                //else if ($scope.showAdoredOnly === false) {
+            //        $scope.populateGallery(img);
+              //  }
             }
         },
         error: function ( jqXHR, textStatus, errorThrown) {

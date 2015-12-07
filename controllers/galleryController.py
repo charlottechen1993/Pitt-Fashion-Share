@@ -132,7 +132,7 @@ class index(main.index):
             'types': types,
             'prices': prices,
             'priceOptions': priceOptions,
-            'page':'gallery' 
+            'page':'gallery'
         }
 
  

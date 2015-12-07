@@ -8,7 +8,9 @@
                         <!-- adored : click event in 'gallery.js' attached to 'ng-click' -->
                         <p style="height: auto;color:white; font-size: 20px;"> [[img.total_likes]]</p>
                         {% if user %}
-                            <span class="view-image" ng-click="deletePic($event,[[img.img_id]])">Delete</span>
+                            {% if deleteOption %}
+                                <span class="view-image" ng-click="deletePic($event,[[img.img_id]])">Delete</span>
+                            {% endif %}
                             <span class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="handleLike($event,[[img.img_id]])"></span>
                             <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored" ng-click="handleLike($event,[[img.img_id]])"></span>
                         {% else %}
@@ -18,7 +20,7 @@
                         <!-- end adored -->
                         <span class="view-image" data-toggle="modal" data-target="#Modal[[img.img_id]]">View</span>
 
-                                
+                              
                         <form action="/editItems" method="post" ng-if="img.profilePage">
                             <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
                             <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">

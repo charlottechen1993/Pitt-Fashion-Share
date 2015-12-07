@@ -31,7 +31,6 @@ class Image(ndb.Model):
     clothingType = ndb.StringProperty() # type as in shirt, jeans, etc. 
     uploadedBy = ndb.StringProperty()
     
-    
 class Like(ndb.Model):
     imgID = ndb.StringProperty()
     userID = ndb.StringProperty()
@@ -125,7 +124,7 @@ class getPhotosJSONHandler(main.index):
         #user_id = request.args.get(user_id)
         user_id = app_global.unicode(self.session.get('user_id'))
         profile = self.request.get('page')
-      
+        adored = self.request.get('adored')
 
         if user_id is None:
             user_id = -1
@@ -137,9 +136,11 @@ class getPhotosJSONHandler(main.index):
         else:
             #queryImg = Image.query()
             queryImg = Image.query(Image.user == str(user_id))
+        
         queryImg = queryImg.order(-Image.time_created)
         queryLike = Like.query()            # get likes
         queryComment = ImageComment.query() # get comments
+        
         
         #likedByYou = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
         likes = queryLike.filter(Like.userID == str(user_id)).fetch(projection=[Like.imgID])
@@ -150,6 +151,21 @@ class getPhotosJSONHandler(main.index):
             likedByYou.add(item.imgID)
      
         images = queryImg.fetch()
+        
+        if adored is not None and adored == "true":
+            likes = Like.query(Like.userID == str(user_id))
+            relevantPicIDs = []
+            for instance in likes.fetch():
+                relevantPicIDs.append(int(instance.imgID))
+            queryImg = Image.query().order(-Image.time_created)
+            allPics = queryImg.fetch()
+            images = []
+            for pic in allPics:
+                if pic.key.id() in relevantPicIDs:
+                    images.append(pic)
+            queryLike = Like.query()
+       
+        
         for i in range(0,len(images)):
             im = {}
             #im['categoryID'] = images[i].categoryID
