@@ -125,9 +125,11 @@ body{
     position: relative;
     width: 600px !important;
     max-width: 600px !important;
+}
+
+.leftEditedImage{
     left: 50%;
     margin-left: -300px !important;
-
 }
 
 div.cmt{
