@@ -7,13 +7,14 @@
      $scope.items = [];
      $scope.showAllPhotos = true;
      $scope.select_image_url = '';
-
+     $scope.showAdoredOnly = false;
      
      var page;
      if( $('#profilePage').length > 0)
      {
          page = 'profile';
      }
+     
      
     /*
         Purpose: Get images from server
@@ -26,11 +27,11 @@
         dataType: 'json',
 
         success: function(data){
-            console.log(data);
+            //console.log(data);
 
             var page_url = window.location.href;
             var isProfilePage = false, isGalleryPage = false;
-
+            
             if(page_url.indexOf("profile") > -1){
                 isProfilePage = true;
             }else if(page_url.indexOf("gallery") > -1){
@@ -58,6 +59,7 @@
                     likes = data[i].total_likes;
                 }
                 
+                
                 var img = {
                     'profilePage': isProfilePage,
                     'galleryPage': isGalleryPage,
@@ -69,6 +71,7 @@
                     'total_likes': likes
                 };
                 
+                //console.log(img['adored']);
                 $scope.populateGallery(img);
             }
         },
@@ -84,8 +87,10 @@
      $scope.populateGallery = function(img){
 
         $scope.$apply(function(){
+            
             $scope.images.push(img);
         });
+         
      }
      
      
@@ -274,8 +279,86 @@
         });
         $('#itemPopUp').html('');
 
+     }
+     
+     $scope.populateAll = function() {
+         //console.log("populating all");
+         $scope.showAdoredOnly = false;
+         $scope.images = [];
+         $scope.reloadImages();
+     }
+     
+     $scope.populateAdored = function() {
+         //console.log("populating adored");
+         $scope.showAdoredOnly = true;
+         $scope.images = [];
+         $scope.reloadImages();
+     }
+     
+     $scope.reloadImages = function() {
+         
+         $.ajax({
+        url: '/getPhotosJSON?user_id=' + 1 + '&page=' + page,
+        data: {},
+        dataType: 'json',
 
-        $scope.showAllPhotos = true;
+        success: function(data){
+            //console.log(data);
+
+            var page_url = window.location.href;
+            var isProfilePage = false, isGalleryPage = false;
+            
+            if(page_url.indexOf("profile") > -1){
+                isProfilePage = true;
+            }else if(page_url.indexOf("gallery") > -1){
+                isGalleryPage = true;
+            }
+            
+            var photosLength;   // amount of photos to load
+            
+            // if current page contains '#homeCarousel' then the current page must be the index
+            if( $('#homeCarousel').length > 0 && data.length>=15){
+                photosLength = 15;
+            }else{
+                photosLength = data.length;
+            }
+                        
+           // alert(JSON.stringify(data, null, 2));
+            
+            for( var i = 0; i < photosLength; i++ ) {
+   
+                var likes;
+                
+                if(data[i].total_likes == 0){
+                    likes = '';
+                }else{
+                    likes = data[i].total_likes;
+                }
+                
+                
+                var img = {
+                    'profilePage': isProfilePage,
+                    'galleryPage': isGalleryPage,
+                    'image_url': data[i].image_url,
+                    'img_id': data[i].img_id,
+                    'title': data[i].title,
+                    'adored': data[i].adored,
+                    'comments': data[i].comments,
+                    'total_likes': likes
+                };
+                
+                if ($scope.showAdoredOnly === true && img['adored'] === true) {
+                    $scope.populateGallery(img);
+                }
+                else if ($scope.showAdoredOnly === false) {
+                    $scope.populateGallery(img);
+                }
+            }
+        },
+        error: function ( jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
      }
 
 });
