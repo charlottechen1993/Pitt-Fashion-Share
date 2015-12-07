@@ -187,7 +187,8 @@ class index(main.index):
             'prices': prices,
             'priceOptions': priceOptions,
             'description': description,
-            'gender': gender
+            'gender': gender,
+            'deleteOption': user_id
         }
 
  
