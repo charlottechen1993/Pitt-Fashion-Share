@@ -252,7 +252,7 @@ span.text-content span {
   vertical-align: middle;
 }
 
-table.table-clothes, table.table-clothes tbody{
+table.table-clothes{
 /*   margin-top: 20px;*/
     color: white;
    /* height: 100%;*/
@@ -270,6 +270,10 @@ table.table-clothes th{
   color: #3A8EC7;
   background-color: #464D4F;
   margin: 0px;
+  border-top: none!important;
+  font-size: 16px;
+  font-weight: 600;
+ /* border-bottom: 1px solid white !important;*/
 }
 
 table.table-clothes td{
