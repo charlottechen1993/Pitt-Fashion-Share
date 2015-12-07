@@ -298,6 +298,20 @@
          $scope.reloadImages();
      }
      
+      $scope.deletePic = function($event, imgID){
+          
+          $.ajax({
+            url: '/deletePic?imgID=' + imgID,
+            success: function(data){
+                // uncolor heart
+                alert("This picture has been deleted.");
+                $scope.images = [];
+                $scope.reloadImages();
+            }
+        });
+         
+     }
+     
      $scope.reloadImages = function() {
 
          $.ajax({
