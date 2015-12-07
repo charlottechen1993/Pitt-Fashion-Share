@@ -9,6 +9,10 @@ import main
 import app_global
 from sets import Set
 
+class ImageTag(ndb.Model):
+    imageKey = ndb.StringProperty()
+    tag_name = ndb.StringProperty()
+    
 class ImageComment(ndb.Model):
     userID = ndb.StringProperty()
     imgID = ndb.StringProperty()
@@ -82,7 +86,7 @@ def get_all_comments():
     comments = q.fetch()
     return comments
 
-def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, priceRange, brand, clothingType, username):
+def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, priceRange, brand, clothingType, username, tag_name):
     image = Image()
     image.total = total
     image.categoryID = categoryID
@@ -95,7 +99,19 @@ def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, pric
     image.brand = brand
     image.clothingType = clothingType
     image.uploadedBy = app_global.unicode(username)
-    image.put()
+    key = image.put()
+    
+#    users = ImageTag.query()
+#    for u in users.fetch():
+#        u.key.delete()
+    
+    for element in tag_name:
+        image_tag = ImageTag()
+        image_tag.imageKey = str(key.id())
+        image_tag.tag_name = element
+        image_tag.put()
+
+    
     
 def imagesYouLiked(userID):
     yourLikes = Like.query(Like.userID == userID)
@@ -168,7 +184,14 @@ class getPhotosJSONHandler(main.index):
         
         for i in range(0,len(images)):
             im = {}
-            #im['categoryID'] = images[i].categoryID
+            key = str(images[i].key.id())
+           
+            tagObj = ImageTag.query(ImageTag.imageKey == key).fetch(projection=[ImageTag.tag_name])
+            tag_arr = []
+            for tag in tagObj:
+                tag_arr.append(tag.tag_name)
+            
+            im['tags'] = tag_arr
             im['img_id'] = str(images[i].key.id())
             # im['total'] = images[i].total
             im['title'] = images[i].title
@@ -180,7 +203,9 @@ class getPhotosJSONHandler(main.index):
             comments = comments.order(-ImageComment.upload_date).fetch()              
             im['comments'] = [c.to_dict() for c in comments]
     
-                
+            if adored is not None and adored == "true" and (str(user_id) == str(images[i].user)):
+                im['deleteOption'] = "active"
+                im['profilePicOption'] = "active"
 
             if im['img_id'] in likedByYou:
                 im['adored'] = True

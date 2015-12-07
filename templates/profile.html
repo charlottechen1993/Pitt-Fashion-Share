@@ -30,11 +30,10 @@
         </div>
         <div class='text-center'>
             <br>
-            {% if user.description %}
-                {{user.description}}
-            {% else %}
-<!--					Pas D'description <br><br>-->
-            {% endif %} 
+            <p>{{gender}}</p>
+            <br>
+                {{description}}
+            <br>
             <a class="btn btn-default" href = "/updateprofile" role="button">Edit Profile</a>
         </div>
 <!--
@@ -60,46 +59,35 @@
 		</div>
 -->
 	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-5">
         <br><br>
-        <div class="panel panel-default">
-            <div class="panel-heading">Image Upload</div>
+        <div class="panel panel-default" ng-controller="profileController" ng-init="loadOption()">
+            <div class="panel-heading"><strong>Image Upload</strong></div>
             <div class="panel-body">
-                <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
-                    Picture Title:<br>
-                    <input name="title" type="text"><br><br>
-
-        <!--
-                    Price Range: <br>
-                    <select name="priceRange">
-                        {% for priceOption in priceOptions %}
-                            <option value="{{priceOption}}">{{priceOption}}</option>
-                        {% endfor %}
-                    </select>
-                    <br><br>
-
-                    Type of Clothing: <br>
-                    <select name="clothingType">
-                        {% for type in types %}
-                            <option value="{{type}}">{{type}}</option>
-                        {% endfor %}
-                    </select>
-                    <br><br>
-
-                    Brand: <br>
-                    <select name="brand">
-                        {% for brand in brands %}
-                            <option value="{{brand}}">{{brand}}</option>
-                        {% endfor %}
-                    </select>
-                    <br><br>
-        -->
-
-                    File:<br>
-                    <input name="file" type="file">
-                    <br>
-                    <input class="btn btn-default btn-md" type="submit" value="Upload Image">
-
+                <form method="post" enctype="multipart/form-data" id="image_upload" action={{upload_url}}>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <strong>Picture Title:</strong><br>
+                            <input name="title" type="text"><br><br>
+                        </div>
+                        <div class="col-sm-6">
+                            <strong>File:</strong><br>
+                            <input name="file" type="file">
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p><strong>Add Tags </strong> (Hold on to Ctrl to select multiple tags)</p>
+                            <select multiple="true" class="form-control" ng-model="selected" ng-options="c for c in categories | orderBy" style="height: 130px;"></select>
+                            <input type="hidden" value="[[selected]]" name="selectedCategories">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-sm-12">
+                            <input class="btn btn-default btn-md" ng-model="selected" type="submit" value="Upload Image">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -108,24 +96,25 @@
 	<div class = "row" style="margin-top: 80px;">
         <div class="col-sm-10 col-sm-offset-1">
                 <ul class="nav nav-tabs">
+<!--
+                    <li class="active"><a data-toggle="tab" href="#home" id="login-tab">Gallery</a></li>
+                    <li><a data-toggle="tab" href="#menu1" id="reg-tab">Adored</a></li>
+-->
                     <li class="active"><a data-toggle="tab" href="#home" id="login-tab" ng-click="populateAll();">Gallery</a></li>
-                    <li><a data-toggle="tab" href="#menu1" id="reg-tab" ng-click="populateAdored();">Adored</a></li>
+                    <li><a data-toggle="tab" ng-click="populateAdored();" href="#menu1" id="reg-tab">Adored</a></li>
                    
-                    
                 </ul>
                 
                 <div class="tab-content">
                     <!-- Log In -->
                     <div id="home" class="tab-pane fade in active">
                         <br>
-                       
                         {% include "galleryPiece.html" %}
                     </div>
                     
                     <!-- Register -->
                     <div id="menu1" class="tab-pane fade">
-                       
-                        {% include "galleryPieceAdored.html" %}
+                         {% include "galleryPieceAdored.html" %}
                     </div>
                 </div>
 		</div>

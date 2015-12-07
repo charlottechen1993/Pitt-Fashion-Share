@@ -1,13 +1,14 @@
 
 
  angularAPP.controller('imgCtrl', function($scope,$http){
-     
+     $scope.tags = [];
      $scope.images = [];
      $scope.comments = [];
      $scope.items = [];
      $scope.showAllPhotos = true;
      $scope.select_image_url = '';
      $scope.showAdoredOnly = false;
+     $scope.showCategoryDrop = false;
      
      var page;
      if( $('#profilePage').length > 0)
@@ -28,7 +29,9 @@
 
         success: function(data){
             //console.log(data);
-
+           // printJSON(data[0].tags);
+            //printJSON(data[0].tags[0]);
+            
             var page_url = window.location.href;
             var isProfilePage = false, isGalleryPage = false;
             
@@ -36,6 +39,7 @@
                 isProfilePage = true;
             }else if(page_url.indexOf("gallery") > -1){
                 isGalleryPage = true;
+                $scope.showCategoryDrop = true;
             }
             
             var photosLength;   // amount of photos to load
@@ -50,7 +54,7 @@
            // alert(JSON.stringify(data, null, 2));
             
             for( var i = 0; i < photosLength; i++ ) {
-   
+                $scope.tags = [];
                 var likes;
                 
                 if(data[i].total_likes == 0){
@@ -58,7 +62,6 @@
                 }else{
                     likes = data[i].total_likes;
                 }
-                
                 
                 var img = {
                     'profilePage': isProfilePage,
@@ -68,26 +71,26 @@
                     'title': data[i].title,
                     'adored': data[i].adored,
                     'comments': data[i].comments,
-                    'total_likes': likes
+                    'total_likes': likes,
+                    'tags': data[i].tags,
+                    'deleteOption': data[i].deleteOption,
+                    'profilePicOption': data[i].profilePicOption,
                 };
                 
                 //console.log(img['adored']);
                 $scope.populateGallery(img);
+                
             }
         },
         error: function ( jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
         }
     });
-
-     
      /*
         populates image gallery with images
      */
      $scope.populateGallery = function(img){
-
         $scope.$apply(function(){
-            
             $scope.images.push(img);
         });
          
@@ -295,6 +298,20 @@
          $scope.reloadImages();
      }
      
+      $scope.deletePic = function($event, imgID){
+          
+          $.ajax({
+            url: '/deletePic?imgID=' + imgID,
+            success: function(data){
+                // uncolor heart
+                alert("This picture has been deleted.");
+                $scope.images = [];
+                $scope.reloadImages();
+            }
+        });
+         
+     }
+     
      $scope.reloadImages = function() {
 
          $.ajax({
@@ -345,15 +362,14 @@
                     'title': data[i].title,
                     'adored': data[i].adored,
                     'comments': data[i].comments,
+                    'deleteOption': data[i].deleteOption,
+                    'profilePicOption': data[i].profilePicOption,
                     'total_likes': likes
                 };
                 
-               // if ($scope.showAdoredOnly === true && img['adored'] === true) {
-                //    $scope.populateGallery(img);
-                //}
-                //else if ($scope.showAdoredOnly === false) {
-            //        $scope.populateGallery(img);
-              //  }
+               
+                $scope.populateGallery(img);               
+            
             }
         },
         error: function ( jqXHR, textStatus, errorThrown) {
@@ -361,6 +377,13 @@
         }
     });
      }
+     
+     
+    $scope.categories = [];
+     $scope.loadOption = function(){
+          $scope.categories.push('Chic', 'Finals', 'Parisian', 'Lazy Day', 'Pitt Spirit', 'Cool', 'Elegant', 'Tomboy', 'Metal', 'Bro', 'Halloween', 'Goofy', 'Comfortable', 'High Fashion', 'British', 'Conservative', 'Sexy');
+     }
+     
 
 });
 

@@ -34,6 +34,11 @@ indexes:
   - name: upload_date
     direction: desc
 
+- kind: ImageTag
+  properties:
+  - name: imageKey
+  - name: tag_name
+
 - kind: Like
   properties:
   - name: userID

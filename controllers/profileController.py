@@ -170,6 +170,8 @@ class index(main.index):
         user_id = app_global.unicode(self.session.get('user_id'))
         user = app_global.unicode(self.session.get('user'))
         imgURL = app_global.unicode(self.session.get('imgURL'))
+        description = app_global.unicode(self.session.get('description'))
+        gender = app_global.unicode(self.session.get('gender'))
 
         params = {
 #            'photos': images,
@@ -184,7 +186,9 @@ class index(main.index):
             'types': types,
             'prices': prices,
             'priceOptions': priceOptions,
-            'deleteOption': upload_url
+            'description': description,
+            'gender': gender,
+            'deleteOption': user_id
         }
 
  

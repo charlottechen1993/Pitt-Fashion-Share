@@ -74,7 +74,7 @@ class userFunctions(main.index):
         un = self.request.get('un').strip()         # name, identifier of person
         pw = self.request.get('pw').strip()
         pw2 = self.request.get('pw2').strip()
-        gender = ''
+        gen = self.request.get('gender').strip()
 
         
         if method!='logout' and (email == '' or pw ==''):
@@ -91,11 +91,13 @@ class userFunctions(main.index):
                     message = 'ERROR: Passwords does not match each other'
                     self.redirect('/user?message='+message)
                 else:
-                    user_key = userModel.createNewUser(email, un, pw, gender)
+                    user_key = userModel.createNewUser(email, un, pw, gen)
                     mail.send_mail('admin@pittfashionshare.appspotmail.com', email, 'Registration', 'Thanks for registering with Pitt Fashion Share! Your account is now active.')
                     self.session['user'] = un
                     self.session['user_id'] = user_key.id()
+                    self.session['pass'] = pw
                     self.session['email'] = email
+                    self.session['gender'] = gen
          
                     self.redirect('/newUserSuccess')
 
@@ -128,6 +130,9 @@ class userFunctions(main.index):
                     self.session['email'] = user[0].email,
                     self.session['user'] = user[0].un,
                     self.session['user_id'] = user[0].user_id
+                    self.session['description'] = user[0].description
+                    self.session['gender'] = user[0].gender
+                    self.session['pass'] = user[0].pw
 
                     if user[0].imgURL:
                         self.session['imgURL'] = user[0].imgURL

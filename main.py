@@ -57,6 +57,7 @@ mappings = [
     ('/gallery', galleryController.index),
     ('/profile', profileController.index),
     ('/updateprofile', updateprofileController.index),
+    ('/updateprofileitems', updateprofileController.update),
     ('/user', userController.index),
     ('/userFunctions', userController.userFunctions),
     ('/uploadImage', imageController.uploadImageHandler),

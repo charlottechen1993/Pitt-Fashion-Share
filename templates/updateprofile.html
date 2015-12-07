@@ -2,7 +2,7 @@
 
 
 {% block css %}
-	<link rel="stylesheet" type="text/css" href="/static/style/profile.css">
+	<link rel="stylesheet" type="text/css" href="/static/style/updateprofile.css">
 {% endblock %}
 
 
@@ -14,8 +14,74 @@
 
 {% block content %}
 <div  style="margin-top: 50px">
-    <div class='col-sm-3 col-sm-offset-4'>
-		<form method="post" enctype="multipart/form-data" action="{{upload_url}}">
+    <div class='col-sm-4 col-sm-offset-3'>
+    	<div class="col-md-12"><h3>Update Your Profile</h3>
+          	
+	      <!-- tabs left -->
+	      <div class="tabbable tabs-left">
+	        <ul class="nav nav-tabs">
+	          <li class="active"><a href="#a" data-toggle="tab">Name</a></li>
+	          <li><a href="#b" data-toggle="tab">Password</a></li>
+	          <li><a href="#c" data-toggle="tab">Gender</a></li>
+	          <li><a href="#d" data-toggle="tab">Description</a></li>
+	        </ul>
+	        <div class="tab-content">
+	        	<div class="tab-pane active" id="a">
+	        		<form method="post" enctype="multipart/form-data" action="/updateprofileitems?item=name">
+			       		<br>
+				        Name:<br><br>
+				        <input placeholder="{{user}}" type="text" name="newName"><br><br>
+				        
+				        <button type="submit" class="btn btn-default">Submit</button> 
+					        
+				    </form>
+	     		</div>
+		        <div class="tab-pane" id="b">
+		        	<form method="post" enctype="multipart/form-data" action="/updateprofileitems?item=password">
+			       		<br>
+				        Enter New Password Twice:<br><br>
+
+				        <input type="password" name="newPass1"><br><br>
+				        <input type="password" name="newPass2"><br><br>
+
+				        <button type="submit" class="btn btn-default">Submit</button>
+					        
+				    </form>
+		     	</div>
+	         	<div class="tab-pane" id="c">
+	         		<form method="post" enctype="multipart/form-data" action="/updateprofileitems?item=gender">
+			       		<br>
+				        Gender:<br><br>
+				        <div class="radio"  style="margin-right: 30px;">
+                            <label>
+                                <input type="radio" name="gender" id="optionsRadios1" value="Female" checked>
+                                Female
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender" id="optionsRadios2" value="Male">
+                                Male
+                            </label>
+                        </div>
+					    <button type="submit" class="btn btn-default">Submit</button>  
+				    </form>
+				</div>
+	         	<div class="tab-pane" id="d">
+	         		<form method="post" enctype="multipart/form-data" action="/updateprofileitems?item=description">
+			       		<br>
+				        Description:<br><br>
+				        <input name="des"  type="text" rows="5"><br><br>
+				        <button type="submit" class="btn btn-default">Submit</button>
+					        
+				    </form>
+	         	</div>
+	        </div>
+	      </div>
+	      <!-- /tabs -->
+	      
+	    </div>
+		<!-- <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
        		<br><br>
 	        Name:<br>
 	        <input name="title" placeholder="{{user}}" type="text"><br><br>
@@ -28,7 +94,7 @@
 	        <input name="file" type="file"><br><br><br>
 	        <input class="btn btn-default btn-md" type="submit">
 		        
-	    </form>
+	    </form> -->
 	</div>
 	<div class='col-sm-3'>
 		<br><br>

@@ -62,14 +62,20 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
         upload_files = self.get_uploads()
         blob_info = upload_files[0]
         type = blob_info.content_type
-
+        
+        selected = self.request.get('selectedCategories')
+        
         if type in ['image/jpeg', 'image/png']: 
             title = self.request.get('title')
             user = self.session.get('user_id')
             priceRange = self.request.get('priceRange')
             brand = self.request.get('brand')
             clothingType = self.request.get('clothingType')
-        
+            
+#           for elements in selected:
+            selected = selected[2:-2]
+            tag_name = selected.split('","')
+                
             prices = galleryController.prices
         
             #These things generate a dynamic price menu based on the prices. 
@@ -116,7 +122,7 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
             total = 59
             image_url = images.get_serving_url(blob_info.key())
             username = app_global.unicode(self.session.get('user'))
-            imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, priceRange, brand, clothingType, username)
+            imagesModel.addImage(categoryID, total, title, image_url, user, picPriceMin, picPriceMax, priceRange, brand, clothingType, username, tag_name)
 
         
             self.redirect('/profile')
