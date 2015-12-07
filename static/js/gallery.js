@@ -7,7 +7,7 @@
      $scope.items = [];
      $scope.showAllPhotos = true;
      $scope.select_image_url = '';
-     $scope.showAdoredOnly = false;
+     $scope.showAdoredOnly = true;
      
      var page;
      if( $('#profilePage').length > 0)
@@ -348,12 +348,9 @@
                     'total_likes': likes
                 };
                 
-               // if ($scope.showAdoredOnly === true && img['adored'] === true) {
-                //    $scope.populateGallery(img);
-                //}
-                //else if ($scope.showAdoredOnly === false) {
-            //        $scope.populateGallery(img);
-              //  }
+               
+                $scope.populateGallery(img);               
+            
             }
         },
         error: function ( jqXHR, textStatus, errorThrown) {
