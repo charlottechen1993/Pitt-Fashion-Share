@@ -302,8 +302,15 @@
             success: function(data){
                 // uncolor heart
                 alert("This picture has been deleted.");
-                $scope.images = [];
-                $scope.reloadImages();
+                
+               
+                    if ($scope.images.length > 1) {
+                        $scope.images = [];
+                        $scope.reloadImages();
+                    }
+                    else {
+                        location.reload();
+                    }
             }
         });
          
@@ -319,7 +326,7 @@
 
         success: function(data){
             //console.log(data);
-
+            
             var page_url = window.location.href;
             var isProfilePage = false, isGalleryPage = false;
             
