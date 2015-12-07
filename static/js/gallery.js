@@ -127,25 +127,19 @@
                 var input = document.getElementById("commentInput");
                 input.value = "";
                 
-                 
-                // now append new comment to dom
-                var cmtChild = '<div class="row cmt eq-row">' +
-                                    '<div class="col-sm-3 left-inner-cmt eq-col">' +
-                                        '<p class="center">' + data.user + ' says</p>' + 
-                                   '</div>' +
-                                   '<div class="col-sm-9 right-inner-cmt eq-col">' +
-                                        '<p class="center">' + comment + '</p>' +
-                                   '</div>'+
-                                   '<hr>'
+
+                var cmtChild = '<div class="row cmt" style="width: inherit; margin:0px;">' +
+                                    '<table class="table">' +
+                                        '<tr class="left-inner-cmt"><td>' + data.user + '</td></tr>' +
+                                        '<tr class="right-inner-cmt"><td>' + comment + '</td></tr>' +
+                                    '</table>' +
                                 '</div>';
               
                  var currentElement =  $(angular.element($event.currentTarget));
-                // $(angular.element(currentElement)).closest('.modal-footer').appendChild("<h1>Hello world</h1>");
-                 
-                  $(angular.element(currentElement)).closest('.commentSection').append(cmtChild);
-                 //var dataID =  $(angular.element(currentElement)).closest('.modal-footer').attr('data-id');
-                 //alert(dataID);
-                 //alert($(angular.element(currentElement)).closest('.modal-footer').attr('data-id')  );
+
+            
+                $('#commentSection' + img_id).append(cmtChild);
+
              }
          });
      }

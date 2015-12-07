@@ -93,12 +93,12 @@
                         <input type="text" ng-model="comment" class="commentSub" placeholder="Compliment here" id="commentInput">  
                     </div>
                     <div class="col-sm-12" style="margin-top: 10px; padding:0px;">
-                        <button type="button" class="btn btn-dark pull-left" ng-click="addComment($event,[[img.img_id]], comment)">Comment</button>
+                        <button type="button" class="btn btn-dark pull-left" id="clickAddComment" ng-click="addComment($event,[[img.img_id]], comment)">Comment</button>
                     </div>
                 </div>
                  {% endif %}
                  <div class="row" style="margin-top: 35px;background-color: rgba(255,255,255,.6)">
-                    <div class="col-sm-12 commentSection" style="padding:0px">
+                    <div class="col-sm-12 commentSection" id="commentSection[[img.img_id]]" style="padding:0px">
                         <!-- START cmt -->
                         <div class="row cmt" ng-repeat="c in img.comments" style="border-bottom: 1px solid #A3ABAD; width: inherit; margin:0px;">
                             <table class="table">
