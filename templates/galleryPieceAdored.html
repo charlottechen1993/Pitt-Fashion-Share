@@ -23,13 +23,16 @@
                         <span class="view-image" data-toggle="modal" data-target="#Modal[[img.img_id]]">View</span>
 
                               
-                        <form action="/editItems" method="post" ng-if="img.profilePage">
+                        
+
+                        <div ng-if="[[img.profilePicOption]] == 'active'">
+                            
+                            <form action="/editItems" method="post" ng-if="img.profilePage">
                             <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
                             <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
                             <input class="view-image" type="submit" value="Edit Fashion Item">
                         </form>
-
-                        <div ng-if="[[img.profilePicOption]] == 'active'">
+                            
                             <form action="/setProfilePic" method="post" ng-if="img.profilePage">
                                 <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
                                 <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
