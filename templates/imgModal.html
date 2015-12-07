@@ -2,19 +2,70 @@
 <!-- 
     pop up image modal 
 -->
-            <style>
-                .eq-row {
-                    display: table;
-                }
+<style>
+    .eq-row {
+        display: table;
+    }
+    .btn-xs{
+        margin-right: 5px; 
+        margin-bottom: 5px; 
+        margin-top: 5px;
+        background-color: rgba(119, 119, 119, 0.75);   
+        color: white;
+        border-radius: 0;
+        box-shadow: none;
+        outline: 0 none;
+        border: none;
+    }
+    .btn-xs:focus, 
+    .btn-xs:active, 
+    .btn-xs:hover, 
+    .btn-xs.active, 
+    .btn-xs.active, 
+    .open > .dropdown-toggle.btn-xs{
+        background: rgba(119, 119, 119, 0.90);
+        color: white;
+        box-shadow: none;
+        outline: 0 none;
+        border: none;
+    }
 
-                .eq-row .eq-col {
-                    float: none;
-                    display: table-cell;
-                    vertical-align: top;
-                }
+    .btn-xs:active:focus{
+        background: black;
+        color: white;
+        box-shadow: none;
+        outline: 0 none;
+        border: none;
+    }
+    .eq-row .eq-col {
+        float: none;
+        display: table-cell;
+        vertical-align: top;
+    }
+    .btn-dark{
+        background-color: rgba(0, 0, 0, 0.75);   
+        color: white;
+        border-radius: 0;
+    }
+    .btn-dark:focus, 
+    .btn-dark:active, 
+    .btn-dark:hover, 
+    .btn-dark.active, 
+    .btn-dark.active, 
+    .open > .dropdown-toggle.btn-dark{
+        background: rgba(0, 0, 0, 0.85);
+        color: white;
+        box-shadow: none;
+        outline: 0 none;
+    }
 
-             
-            </style>
+    .btn-dark:active:focus{
+        background: black;
+        color: white;
+        box-shadow: none;
+        outline: 0 none;
+    }
+</style>
 
 
 <div class="modal fade modal-wide" id="Modal[[img.img_id]]" tabindex="-1" role="dialog" aria-labelledby="Modal[[img.img_id]]Label" ng-repeat="img in images"> <!-- START modal -->
@@ -31,12 +82,16 @@
             </div>
             <div class="col-sm-4 eq-col" style="margin-right: 15px; overflow: scroll">
                {% if user_id %}
+                <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+                        <p><strong>Tags: </strong></p>
+                        <button class="btn btn-default btn-xs" ng-repeat="tag in img.tags">[[tag]]</button>
+                </div>
                 <div class="row">
-                    <div class="col-sm-12" style="padding:0px;overflow: hidden">
+                    <div class="col-sm-12" style="padding:0px; overflow: hidden">
                         <input type="text" ng-model="comment" class="commentSub" placeholder="Compliment here" id="commentInput">  
                     </div>
                     <div class="col-sm-12" style="margin-top: 10px; padding:0px;">
-                        <button type="button" class="btn btn-primary pull-left" ng-click="addComment($event,[[img.img_id]], comment)">Comment</button>
+                        <button type="button" class="btn btn-dark pull-left" ng-click="addComment($event,[[img.img_id]], comment)">Comment</button>
                     </div>
                 </div>
                  {% endif %}
@@ -73,7 +128,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <p><strong>Tags: </strong></p>
-                    <button class="btn btn-default" ng-repeat="tag in img.tags">[[tag]]</button>
+                    <p class="bg-info" ng-repeat="tag in img.tags">[[tag]]</p>
                 </div>
             </div>
         </div>  END modal-footer 
