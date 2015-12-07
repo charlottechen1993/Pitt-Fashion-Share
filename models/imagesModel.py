@@ -191,6 +191,7 @@ class getPhotosJSONHandler(main.index):
             for tag in tagObj:
                 tag_arr.append(tag.tag_name)
             
+            im['uploaded_by'] = images[i].uploadedBy
             im['tags'] = tag_arr
             im['img_id'] = str(images[i].key.id())
             # im['total'] = images[i].total

@@ -29,7 +29,7 @@
 
         success: function(data){
             //console.log(data);
-           // printJSON(data[0].tags);
+//            printJSON(data);
             //printJSON(data[0].tags[0]);
             
             var page_url = window.location.href;
@@ -64,6 +64,7 @@
                 }
                 
                 var img = {
+                    'uploaded_by': data[i].uploaded_by,
                     'profilePage': isProfilePage,
                     'galleryPage': isGalleryPage,
                     'image_url': data[i].image_url,

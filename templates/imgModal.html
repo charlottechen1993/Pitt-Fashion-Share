@@ -22,7 +22,7 @@
     <div class="modal-content">                 <!-- START modal-content -->
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">[[img.title]] (Uploaded By: {{user}})</h4>
+            <h4 class="modal-title" id="myModalLabel">[[img.title]](Uploaded By: [[img.uploaded_by]])</h4>
         </div>
         <div class="modal-body">
          <div class="row equal-height-col">
@@ -68,23 +68,16 @@
          </div>
         </div> <!-- END modal-body -->
         
+<!--
         <div class="modal-footer" data-id="asdfasd">   
             <div class="row">
                 <div class="col-sm-6">
-                    <td><strong>Tags: </strong></td>
+                    <p><strong>Tags: </strong></p>
                     <button class="btn btn-default" ng-repeat="tag in img.tags">[[tag]]</button>
                 </div>
-                
-<!--
-                <table class="table">
-                    <tr>
-                        <td><strong>Tags: </strong></td>
-                        <td ng-repeat="tag in img.tags">[[tag]]</td>
-                    </tr>
-                </table>
--->
             </div>
-        </div> <!-- END modal-footer -->
+        </div>  END modal-footer 
+-->
     </div>  <!-- END modal-content -->
   </div>    <!-- END modal-dialog -->
 </div>      <!-- END modal -->
