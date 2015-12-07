@@ -99,21 +99,10 @@
                     <div class="col-sm-12 commentSection" style="padding:0px">
                         <!-- START cmt -->
                         <div class="row cmt" ng-repeat="c in img.comments" style="border-bottom: 1px solid #A3ABAD; width: inherit; margin:0px;">
-
-        <!--                     <div class="col-sm-12 ">
-                                <span class="left-inner-cmt">[[c.uploadedBy]] says</span>
-                       
-                                <span class="right-inner-cmt">[[c.text]]</span> 
-
-                            </div> -->
                             <table class="table">
                                 <tr class="left-inner-cmt"><td>[[c.uploadedBy]]</td></tr>
                                 <tr class="right-inner-cmt"><td>[[c.text]]</td></tr>
                             </table>
-                            <!-- <div class="col-sm-12"><p>[[c.uploadedBy]]</p>
-                            </div>
-                            <div class="col-sm-12"><p>[[c.text]]</p>
-                            </div> -->
                         </div> 
 
                         <!-- END cmt -->  
@@ -122,17 +111,6 @@
             </div>
          </div>
         </div> <!-- END modal-body -->
-        
-<!--
-        <div class="modal-footer" data-id="asdfasd">   
-            <div class="row">
-                <div class="col-sm-6">
-                    <p><strong>Tags: </strong></p>
-                    <p class="bg-info" ng-repeat="tag in img.tags">[[tag]]</p>
-                </div>
-            </div>
-        </div>  END modal-footer 
--->
     </div>  <!-- END modal-content -->
   </div>    <!-- END modal-dialog -->
 </div>      <!-- END modal -->
