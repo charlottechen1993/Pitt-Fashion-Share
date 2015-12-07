@@ -145,6 +145,21 @@
      /*
         like image
      */
+     
+     $scope.deletePic = function($event, img_id) {
+         
+         url = '/deletePic?imgID=' + img_id;
+         console.log('imgID = ' + img_id);
+         $.ajax({
+             url: url,
+            imgID: img_id,
+            success: function(data){
+                alert("You have sucessfully deleted this photo.");
+                location.reload();
+            }
+        });
+     }
+     
      $scope.handleLike = function($event, img_id){
          
          var item =  $(angular.element($event.currentTarget));

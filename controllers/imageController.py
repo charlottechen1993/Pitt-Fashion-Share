@@ -51,6 +51,11 @@ class deleteCommentHandler(main.index):
         if commentKey is not None:
             commentKey.delete()
         self.redirect('/gallery')
+        
+class deletePicHandler(main.index):
+    def get(self):
+        imgID = self.request.get('imgID')
+        imagesModel.deletePic(imgID)
             
 class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
     def post(self):

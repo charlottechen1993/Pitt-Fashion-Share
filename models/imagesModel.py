@@ -45,6 +45,12 @@ def addLike(userID, imgID, username):
     like.uploadedBy = app_global.unicode(username)
     like.put()
     
+def deletePic(imgID):
+    allImages = Image.query().fetch()
+    for pic in allImages:
+        if pic.key.id() == int(imgID):
+            pic.key.delete()
+    
 def deleteLike(user_id, photo_id):
     like = Like.query(Like.userID==str(app_global.unicode(user_id)), Like.imgID==str(photo_id)).fetch(1)
     like[0].key.delete()

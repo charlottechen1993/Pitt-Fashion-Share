@@ -73,7 +73,8 @@ mappings = [
     ('/editItems', profileController.editItems),
     ('/addNewItemHandler', clothController.index),
     ('/getItems', clothModel.getItems),
-    ('/setProfilePic', profileController.setProfilePic )
+    ('/setProfilePic', profileController.setProfilePic ),
+    ('/deletePic', imageController.deletePicHandler)
 #    ('/gallery', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]
