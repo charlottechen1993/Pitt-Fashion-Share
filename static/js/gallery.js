@@ -68,6 +68,8 @@
                     'title': data[i].title,
                     'adored': data[i].adored,
                     'comments': data[i].comments,
+                    'deleteOption': data[i].deleteOption,
+                    'profilePicOption': data[i].profilePicOption,
                     'total_likes': likes
                 };
                 
@@ -345,6 +347,8 @@
                     'title': data[i].title,
                     'adored': data[i].adored,
                     'comments': data[i].comments,
+                    'deleteOption': data[i].deleteOption,
+                    'profilePicOption': data[i].profilePicOption,
                     'total_likes': likes
                 };
                 

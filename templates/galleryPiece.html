@@ -8,9 +8,9 @@
                         <!-- adored : click event in 'gallery.js' attached to 'ng-click' -->
                         <p style="height: auto;color:white; font-size: 20px;"> [[img.total_likes]]</p>
                         {% if user %}
-                            {% if deleteOption %}
-                                <span class="view-image" ng-click="deletePic($event,[[img.img_id]])">Delete</span>
-                            {% endif %}
+                            
+                            <span class="view-image" ng-click="deletePic($event,[[img.img_id]])">Delete</span>
+                            
                             <span class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="handleLike($event,[[img.img_id]])"></span>
                             <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored" ng-click="handleLike($event,[[img.img_id]])"></span>
                         {% else %}
