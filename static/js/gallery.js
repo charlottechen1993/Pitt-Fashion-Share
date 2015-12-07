@@ -8,6 +8,7 @@
      $scope.showAllPhotos = true;
      $scope.select_image_url = '';
      $scope.showAdoredOnly = false;
+     $scope.showCategoryDrop = false;
      
      var page;
      if( $('#profilePage').length > 0)
@@ -38,6 +39,7 @@
                 isProfilePage = true;
             }else if(page_url.indexOf("gallery") > -1){
                 isGalleryPage = true;
+                $scope.showCategoryDrop = true;
             }
             
             var photosLength;   // amount of photos to load
@@ -88,9 +90,7 @@
         populates image gallery with images
      */
      $scope.populateGallery = function(img){
-         alert(img.tags);
         $scope.$apply(function(){
-            
             $scope.images.push(img);
         });
          
@@ -363,6 +363,13 @@
         }
     });
      }
+     
+     
+    $scope.categories = [];
+     $scope.loadOption = function(){
+          $scope.categories.push('Chic', 'Finals', 'Parisian', 'Lazy Day', 'Pitt Spirit', 'Cool', 'Elegant', 'Tomboy', 'Metal', 'Bro', 'Halloween', 'Goofy', 'Comfortable', 'High Fashion', 'British', 'Conservative', 'Sexy');
+     }
+     
 
 });
 
