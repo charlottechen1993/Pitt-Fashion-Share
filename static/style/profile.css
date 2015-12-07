@@ -18,6 +18,10 @@
 	width: 30%;
 /*    height: 50px;*/
 }
+.panel-default > .panel-heading {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+}
 
 .btn-default{
     border-radius: 0;
@@ -25,6 +29,30 @@
     padding-bottom: 8px;
     padding-top: 8px;
 /*    border: none;*/
+}
+.btn-dark{
+    background-color: rgba(0, 0, 0, 0.75);   
+    color: white;
+    border-radius: 0;
+    float: right;
+}
+.btn-dark:focus, 
+.btn-dark:active, 
+.btn-dark:hover, 
+.btn-dark.active, 
+.btn-dark.active, 
+.open > .dropdown-toggle.btn-default{
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.btn-dark:active:focus{
+    background: black;
+    color: white;
+    box-shadow: none;
+    outline: 0 none;
 }
 
 .btn-default:focus, 

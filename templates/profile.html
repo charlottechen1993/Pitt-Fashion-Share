@@ -60,17 +60,17 @@
 -->
 	</div>
 	<div class="col-sm-5">
-        <br><br>
+        <br>
         <div class="panel panel-default" ng-controller="profileController" ng-init="loadOption()">
             <div class="panel-heading"><strong>Image Upload</strong></div>
             <div class="panel-body">
                 <form method="post" enctype="multipart/form-data" id="image_upload" action={{upload_url}}>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <strong>Picture Title:</strong><br>
                             <input name="title" type="text"><br><br>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <strong>File:</strong><br>
                             <input name="file" type="file">
                             <br>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="row" style="margin-top: 10px">
                         <div class="col-sm-12">
-                            <input class="btn btn-default btn-md" ng-model="selected" type="submit" value="Upload Image">
+                            <input class="btn btn-dark btn-md" ng-model="selected" type="submit" value="Upload Image">
                         </div>
                     </div>
                 </form>
