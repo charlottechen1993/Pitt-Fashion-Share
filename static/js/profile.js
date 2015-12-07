@@ -1,10 +1,11 @@
  angularAPP.controller('profileController', function($scope,$http){
      $scope.categories = [];
      $scope.loadOption = function(){
-//          $scope.$apply(function(){
-//            $scope.categories.push(['Chic', 'Funny', 'Finals', 'Lazy', 'Parisian']);
-              $scope.categories.push('Chic');
-//        });
+          $scope.categories.push('Chic', 'Finals', 'Parisian', 'Lazy Day', 'Pitt Spirit', 'Cool', 'Elegant', 'Tomboy', 'Metal', 'Bro', 'Halloween', 'Goofy', 'Comfortable', 'High Fashion', 'British', 'Conservative', 'Sexy');
      }
+     
+//     $scope.submit_photo = function(){
+//         
+//     }
  });
                        

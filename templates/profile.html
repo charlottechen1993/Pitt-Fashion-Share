@@ -30,11 +30,10 @@
         </div>
         <div class='text-center'>
             <br>
-            {% if user.description %}
-                {{user.description}}
-            {% else %}
-<!--					Pas D'description <br><br>-->
-            {% endif %} 
+            <p>{{gender}}</p>
+            <br>
+                {{description}}
+            <br>
             <a class="btn btn-default" href = "/updateprofile" role="button">Edit Profile</a>
         </div>
 <!--
@@ -60,7 +59,7 @@
 		</div>
 -->
 	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-5">
         <br><br>
         <div class="panel panel-default" ng-controller="profileController" ng-init="loadOption()">
             <div class="panel-heading">Image Upload</div>
@@ -79,21 +78,10 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <p>Add Tags</p>
-                                    <select multiple class="form-control">
-                                        <option ng-repeat="cat in categories">[[cat]]</option>
-<!--
-                                        <option>Lazy</option>
-                                        <option>Chic</option>
-                                        <option>Vintage</option>
-                                        <option>Parisian</option>
-                                        <option>Funny</option>
--->
-                                    </select>
-                                </div>
-                            </form>
+                            <p>Add Tags (Hold on to Ctrl to select multiple items)</p>
+                            <select multiple class="form-control" name="select-tag">
+                                <option ng-repeat="cat in categories">[[cat]]</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -101,33 +89,6 @@
                             <input class="btn btn-default btn-md" type="submit" value="Upload Image">
                         </div>
                     </div>
-
-        <!--
-                    Price Range: <br>
-                    <select name="priceRange">
-                        {% for priceOption in priceOptions %}
-                            <option value="{{priceOption}}">{{priceOption}}</option>
-                        {% endfor %}
-                    </select>
-                    <br><br>
-
-                    Type of Clothing: <br>
-                    <select name="clothingType">
-                        {% for type in types %}
-                            <option value="{{type}}">{{type}}</option>
-                        {% endfor %}
-                    </select>
-                    <br><br>
-
-                    Brand: <br>
-                    <select name="brand">
-                        {% for brand in brands %}
-                            <option value="{{brand}}">{{brand}}</option>
-                        {% endfor %}
-                    </select>
-                    <br><br>
-        -->
-
                 </form>
             </div>
         </div>
@@ -136,8 +97,8 @@
 	<div class = "row" style="margin-top: 80px;">
         <div class="col-sm-10 col-sm-offset-1">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home" id="login-tab" ng-click="populateAll();">Gallery</a></li>
-                    <li><a data-toggle="tab" href="#menu1" id="reg-tab" ng-click="populateAdored();">Adored</a></li>
+                    <li class="active"><a data-toggle="tab" href="#home" id="login-tab">Gallery</a></li>
+                    <li><a data-toggle="tab" href="#menu1" id="reg-tab">Adored</a></li>
                    
                     
                 </ul>
@@ -146,14 +107,12 @@
                     <!-- Log In -->
                     <div id="home" class="tab-pane fade in active">
                         <br>
-                       
                         {% include "galleryPiece.html" %}
                     </div>
                     
                     <!-- Register -->
                     <div id="menu1" class="tab-pane fade">
-                       
-                        {% include "galleryPiece.html" %}
+
                     </div>
                 </div>
 		</div>

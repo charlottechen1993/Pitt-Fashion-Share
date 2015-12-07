@@ -69,6 +69,8 @@ class uploadImageHandler(blobstore_handlers.BlobstoreUploadHandler, main.index):
             priceRange = self.request.get('priceRange')
             brand = self.request.get('brand')
             clothingType = self.request.get('clothingType')
+            tags = self.request.get('select-tag')
+            print("******" + tags + "*******")
         
             prices = galleryController.prices
         
