@@ -22,7 +22,7 @@
     <div class="modal-content">                 <!-- START modal-content -->
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">[[img.title]]</h4>
+            <h4 class="modal-title" id="myModalLabel">[[img.title]] (Uploaded By: {{user}})</h4>
         </div>
         <div class="modal-body">
          <div class="row equal-height-col">
@@ -69,36 +69,21 @@
         </div> <!-- END modal-body -->
         
         <div class="modal-footer" data-id="asdfasd">   
-            <!-- 
-<div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <td><strong>Tags: </strong></td>
+                    <button class="btn btn-default" ng-repeat="tag in img.tags">[[tag]]</button>
+                </div>
+                
+<!--
                 <table class="table">
                     <tr>
                         <td><strong>Tags: </strong></td>
                         <td ng-repeat="tag in img.tags">[[tag]]</td>
                     </tr>
                 </table>
+-->
             </div>
-            <!~~ Can only comment if logged in. !~~>
-            {% if user_id %}
-                <div class="row cmt">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-2 left-inner-cmt">
-                    <a ng-click="addComment($event,[[img.img_id]], comment)" class="glyphicon glyphicon-pencil"></a>  
-                </div> 
-                <div class="col-sm-8" style="padding:0px;">
-                    <input type="text" ng-model="comment" class="commentSub" placeholder="Compliment here" id="commentInput">  
-                </div>
-                <div class="col-sm-1"></div>
-                </div>
-            {% endif %}
-            <hr>   
-            
-            <style>
-                .eq-row {
-                    display: table;
-                }
- -->
-
         </div> <!-- END modal-footer -->
     </div>  <!-- END modal-content -->
   </div>    <!-- END modal-dialog -->
