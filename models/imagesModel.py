@@ -252,7 +252,7 @@ class getImagesHandler(main.index):
     #        
         images = queryImg.fetch()
         for i in range(0,len(images)):
-            im = {}
+            im = {}      
             im['categoryID'] = images[i].categoryID
             im['img_id'] = str(images[i].key.id())
             # im['total'] = images[i].total

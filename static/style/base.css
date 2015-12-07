@@ -24,6 +24,15 @@ body{
     font-weight: 200;
 }
 
+.eq-row {
+    display: table;
+}
+
+.eq-row .eq-col {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
 
 .imgareaselect-border4,.imgareaselect-border3,.imgareaselect-border2,.imgareaselect-border1, .borderColor1, borderColor2{
     border :1px solid #4DD2FF !important;
@@ -113,8 +122,11 @@ body{
 
 
 .sizeOfEditedImage{
+    position: relative;
     width: 600px !important;
     max-width: 600px !important;
+    left: 50%;
+    margin-left: -300px !important;
 
 }
 

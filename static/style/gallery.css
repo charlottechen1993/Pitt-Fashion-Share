@@ -1,4 +1,7 @@
 #photos {
+/*    padding: 10px;*/
+    margin-top: 15px;
+    padding: 0px 10px 0px 10px;
     line-height: 0;
     -webkit-column-gap:   4px;
     -moz-column-gap:      4px;
@@ -205,6 +208,7 @@ h3.photo-title small.photo-time{
     -moz-transform: translate(-100%,-0%);
     -o-transform: translate(-100%,-0%);
     -ms-transform: translate(-100%,-0%);
+    position: fixed !important;
 /*    top: 40px;
     margin-top: -40px;*/
    
@@ -248,19 +252,29 @@ span.text-content span {
   vertical-align: middle;
 }
 
-table.table-clothes{
-   margin-top: 20px;
+table.table-clothes, table.table-clothes tbody{
+/*   margin-top: 20px;*/
     color: white;
+   /* height: 100%;*/
+    position: relative;
+    margin: 0px;
+    padding: 0px;
 }
 
 table.table-clothes .item-row:hover{
-  background-color: #8B8C8C;
+/*  background-color: #8B8C8C;*/
   cursor: pointer;
 }
 
 table.table-clothes th{
   color: #3A8EC7;
   background-color: #464D4F;
+  margin: 0px;
+}
+
+table.table-clothes td{
+    background-color: #464D4F;
+    margin: 0px;
 }
 
 table.table-clothes td:nth-child(1){

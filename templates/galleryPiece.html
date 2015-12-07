@@ -1,5 +1,5 @@
-<div ng-init="loadOption()">  
-    <div ng-show="showCategoryDrop && showAllPhotos" style="margin-top: 15px;">
+
+    <div ng-init="loadOption()" ng-show="showCategoryDrop && showAllPhotos" style="margin-top: 15px;">
         <form class="form-inline">
             <label>Filter:</label>
             <select class="form-control" ng-model="selected" ng-options="c for c in categories | orderBy">
@@ -58,20 +58,94 @@
             border: 1px solid white;
             background: none !important;
         }
+
+        .clothes-col{
+            background-color:#464d4f;
+            width: 280px; 
+            height: 100%;
+            position:fixed;
+            left: 100%;
+            margin-left: -280px;
+        }
     </style>
 
-    <div class="row center show-fade" id="photo" ng-show="!showAllPhotos" style=" margin-top: 20px; width: 100%;">
-        <div class="col-sm-12">
+    <script>
+    // set height of image column in table.table-clothes
+        $(document).ready(function(){
+            var width = $('#galleryRow').width();
+            var fixedWidthCol = 280;
+
+            var newWidth = width- fixedWidthCol;
+            $('#singleImageCol').width(newWidth);
+        });
+    </script>
+
+    <div class="row  show-fade" id="photo" ng-show="!showAllPhotos" style="width: inherit; height:inherit; margin:0px !important;padding: 0px !important;">
+
+        <table class="table clothingOuterTable" style="margin:0px;padding:0px">
+            <tr>
+                <td id="singleImageCol">
+                    <h3 style="cursor: pointer;">
+                        <a ng-click="showGallery()">Back</a>
+                    </h3>
+                    <!--  <div class="centerHorizontally sizeOfEditedImage" style="position:absolute;"> -->
+                        <span id="itemPopUp"></span>
+                        <img class="sizeOfEditedImage" id="itemPhoto"  src="[[select_image_url]]">
+                 <!--    </div> -->
+                </td>
+                <td class="clothes-col">
+                   <table class="table table-clothes">
+                        <tr>
+                            <th>Clothing</th>
+                            <th>Brand</th>
+                            <th>Price</th>
+                        </tr>
+                        <tr class="item-row" ng-click="viewItem($event)" ng-repeat="item in items" data-x1="[[item.x1]]" data-x2="[[item.x2]]" data-y1="[[item.y1]]" data-y2="[[item.y2]]" data-title="[[item.title]]">
+                            <td>[[item.clothingType]]</td>
+                            <td>[[item.brand]]</td>
+                            <td>$[[item.price]]</td>
+                        </tr>
+                    </table>
+                    
+                        
+                </td>
+            </tr>
+        </table>
+
+<!--         <div class="col-sm-12">
             <h3 style="cursor: pointer;">
                 <a ng-click="showGallery()">Back</a>
             </h3>
         </div>
-        <div class="col-sm-12"> 
-            <div class="centerHorizontally sizeOfEditedImage" style="position:absolute;">
-                <span id="itemPopUp"></span>
-                <img class="sizeOfEditedImage" id="itemPhoto"  src="[[select_image_url]]">
+        <div class="row">
+            <div class="col-sm-12 col-offset-200" style="border:1px solid red; height: auto"> 
+                <div class="centerHorizontally sizeOfEditedImage" style="position:absolute;">
+                    <span id="itemPopUp"></span>
+                    <img class="sizeOfEditedImage" id="itemPhoto"  src="[[select_image_url]]">
+                </div>
             </div>
-        </div>
+            <div class="col-fixed-200 right-panel">
+                <div class="row">
+                    <div class="col-sm-12">
+                       <span class="info">                   
+                           <table class="table table-clothes">
+                                <tr>
+                                    <th>Clothing</th>
+                                    <th>Brand</th>
+                                    <th>Price</th>
+                                </tr>
+                                <tr class="item-row" ng-click="viewItem($event)" ng-repeat="item in items" data-x1="[[item.x1]]" data-x2="[[item.x2]]" data-y1="[[item.y1]]" data-y2="[[item.y2]]" data-title="[[item.title]]">
+                                    <td>[[item.clothingType]]</td>
+                                    <td>[[item.brand]]</td>
+                                    <td>$[[item.price]]</td>
+                                </tr>
+                            </table>
+                            <br>
+                        </span>
+                    </div>
+                </div> 
+            </div>
+        </div> -->
     </div>
 
 <!--     <section id="photo" ng-show="!showAllPhotos" style="margin-top: 30px; width: 90%; border: 1px solid yellow;">
@@ -79,7 +153,7 @@
         <img class="img-responsive center" style="position: relative; display: block" img_id="[[img.img_id]]" src="[[select_image_url]]">
     </section> -->
 
-</div>
+
 <!-- 
     <div class="image">
         <img width="300" height="285" id="image" src="http://localhost:8080/_ah/img/PRKAHVRJ7BEO3MxMxHm-Cw==" img_id="5348024557502464">
