@@ -34,7 +34,8 @@ def changeName(email, nam):
 def changePass(email, passW):
     print email
     User = Users.query(Users.email == email).get().key.get()
-    User.pw = str(passW)
+    secure_pw = security.generate_password_hash(passW, 'sha1')
+    User.pw = str(secure_pw)
     User.put()
 
 def changeGender(email, gen):
