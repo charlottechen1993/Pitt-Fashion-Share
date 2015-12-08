@@ -67,10 +67,10 @@ table.imgTable td, table.imgTable tr{
                 <img img_id="[[img.img_id]]" src="[[img.image_url]]">
                 <figcaption class="img-text">
                     <div style="margin-top: 10px;" class="centerHorizontally">
-                    <!--   <form name="proPicForm" action="/setProfilePic" method="post" ng-if="img.profilePage">-->
-                     <form name="editForm" action="/editItems" method="post">
+                  
+                     <form id="editForm" name="editForm" action="/editItems" method="post">
                         <table class="imgTable">
-                             <tr class="no-hover" style="width:100%; padding:0px; ">
+                            <tr class="no-hover" style="width:100%; padding:0px; ">
                                 <td colspan="2" style="padding:0px;margin:0px;">
                                     {% if user %}
                                         <span  class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="handleLike($event,[[img.img_id]])"></span>
@@ -82,7 +82,7 @@ table.imgTable td, table.imgTable tr{
                                      <p style="color:white;font-size:14px;line-height:14px;margin-top:1px;height: 14px;">[[img.total_likes]]</p>
                                 </td>
                             </tr>
-                             <tr>
+                            <tr>
                                 <td>
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
@@ -101,7 +101,7 @@ table.imgTable td, table.imgTable tr{
                             </tr>
                              {% endif %}
                              {% if user %}
-                            <tr>
+                            <tr ng-if="img.profilePage">
                                <!--  <form action="/editItems" method="post" ng-if="img.profilePage"> -->
                                 <td>
                                     
@@ -110,16 +110,16 @@ table.imgTable td, table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                    <span onclick="editForm.submit()" class="hoverText">Edit Fashion Item</span>
+                                    <span onclick="document.getElementById('editForm').submit()" class="hoverText">Edit Fashion Item</span>
                                 </td>
                              <!--    </form> -->
                             </tr>
                             {% endif %}
-                    </table>
+                        </table>
                     </form>
-                    <form name="proPicForm" action="/setProfilePic" method="post" ng-if="img.profilePage">
+                    <form id="proPicForm" name="proPicForm" action="/setProfilePic" method="post">
                         <table class="imgTable">
-                            <tr>
+                            <tr ng-if="img.profilePage">
                                 <td>
                                     
                                     <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
@@ -127,57 +127,22 @@ table.imgTable td, table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                      <span onclick="proPicForm.submit()" class="hoverText">Set As Profile Pic</span>
+                                      <span onclick="document.getElementById('proPicForm').submit()" class="hoverText">Set As Profile Pic</span>
                                 </td>
                               
                             </tr>
                          <!--      </form> -->
-                            <tr  ng-if="img.galleryPage">
+                            <tr  ng-if="!img.profilePage" >
                                 <td>
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
                                     <span class="hoverText" type="button" ng-click="loadClothingPanel($event, img.img_id, img.image_url)">See Clothing Items</span>
                                 </td>
-                            </tr>
-
-                                         
+                            </tr>                
                         </table>
                     </form>
-                        <!-- adored : click event in 'gallery.js' attached to 'ng-click' -->
-                    <!--     <p style="height: auto;color:white; font-size: 20px;"> [[img.total_likes]]</p>
-                        {% if user %}
-                            {% if deleteOption %}
-                            <span class="view-image" ng-click="deletePic($event,[[img.img_id]])">Delete</span>
-                            {% endif %}
-                            <span  class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored" ng-click="handleLike($event,[[img.img_id]])"></span>
-                            <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored" ng-click="handleLike($event,[[img.img_id]])"></span>
-                        {% else %}
-                            <span class="glyphicon glyphicon-heart heart-filled" ng-if="img.adored"></span>
-                            <span class="glyphicon glyphicon-heart heart-unfilled" ng-if="!img.adored"></span>
-                        {% endif %}
-                        <br> <br>
-                  
-                        <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
-                        <span data-toggle="modal" data-target="#Modal[[img.img_id]]" style="color:white;font-size:16px;line-height:16px">View</span>
-                         <br> <br>
-                              
-                        <form action="/editItems" method="post" ng-if="img.profilePage">
-                            <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
-                            <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
-                            <input class="view-image" type="submit" value="Edit Fashion Item">
-                        </form>
-
-                        <form action="/setProfilePic" method="post" ng-if="img.profilePage">
-                            <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
-                            <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
-                            <input class="view-image" type="submit" value="Set As Profile Pic">
-                        </form>
-
-                        <input class="view-image" type="button" value="See Clothing Items" ng-click="loadClothingPanel($event, img.img_id, img.image_url)" ng-if="img.galleryPage">
-                                      -->
-                        
-                    </div>
+                    </div>                
                 </figcaption>
             </figure>
         </div>
