@@ -33,18 +33,21 @@ def changeName(email, nam):
 
 def changePass(email, passW):
     print email
-    User = Users.query(Users.email == email)
+    User = Users.query(Users.email == email).get().key.get()
     User.pw = str(passW)
+    User.put()
 
 def changeGender(email, gen):
     print email
-    User = Users.query(Users.email == email)
+    User = Users.query(Users.email == email).get().key.get()
     User.gender = str(gen)
+    User.put()
 
 def changeDescription(email, des):
     print email
-    User = Users.query(Users.email == email)
+    User = Users.query(Users.email == email).get().key.get()
     User.description = str(des)
+    User.put()
 
     
 def createNewUser(email, un, pw, gender):
