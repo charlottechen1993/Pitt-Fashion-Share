@@ -87,7 +87,7 @@ table.imgTable tr{
                 <figcaption class="img-text">
                     <div style="margin-top: 10px;" class="centerHorizontally">
                   
-                     <form id="editForm" name="editForm" action="/editItems" method="post">
+                     <form id="editForm[[img.img_id]]" name="editForm" action="/editItems" method="post">
                         <table class="imgTable">
 
                             <tr class="no-hover" style="width:100%; padding:0px; ">
@@ -130,14 +130,14 @@ table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                    <span onclick="document.getElementById('editForm').submit()" class="hoverText">Edit Fashion</span>
+                                    <span ng-click="submitForm('editForm',[[img.img_id]])" class="hoverText">Edit Fashion</span>
                                 </td>
                              <!--    </form> -->
                             </tr>
                             {% endif %}
                         </table>
                     </form>
-                    <form id="proPicForm" name="proPicForm" action="/setProfilePic" method="post">
+                    <form id="proPicForm[[img.img_id]]" name="proPicForm" action="/setProfilePic" method="post">
                         <table class="imgTable">
                             <tr ng-if="img.profilePage">
                                 <td>
@@ -147,7 +147,8 @@ table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                      <span onclick="document.getElementById('proPicForm').submit()" class="hoverText">Set ProPic</span>
+                                <!--       <span onclick="document.getElementById('proPicForm').submit()" class="hoverText">Set ProPic</span> -->
+                                      <span ng-click="submitForm('proPicForm',[[img.img_id]])" class="hoverText">Set ProPic</span>
                                 </td>
                               
                             </tr>

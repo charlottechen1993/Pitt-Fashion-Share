@@ -26,6 +26,10 @@ class setProfilePic(main.index):
         email = app_global.unicode(str(self.session.get('email')))
         imgURL = self.request.get('imgURL')
 
+        print 'post pic'
+        print email
+        print imgURL
+
         userModel.setProfilePic(imgURL, email)
 
         self.session['imgURL'] = imgURL

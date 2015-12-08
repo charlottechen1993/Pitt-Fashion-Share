@@ -397,22 +397,19 @@
           $scope.categories.push('Chic', 'Finals', 'Parisian', 'Lazy Day', 'Pitt Spirit', 'Cool', 'Elegant', 'Tomboy', 'Metal', 'Bro', 'Halloween', 'Goofy', 'Comfortable', 'High Fashion', 'British', 'Conservative', 'Sexy', 'Exotic', 'Athletic', 'Black & White', 'Cute', 'Casual', 'Vintage', 'Winter', 'Spring', 'Summer', 'Fall', 'Prom', 'Special Occasion', 'Church', 'Warm');
      }
      
+
+    $scope.submitForm= function(form_name,form_id){
+        alert('#'+form_name+form_id);
+        $('#'+form_name+form_id).submit();
+     }
+
+
+
    
 
 });
 
 
-
-    // $(document).ready(function(){
-    //     $('.image').click(function(e){
-    //         alert('hello');
-
-    //         alert(e.target.nodeName);
-    //         if(e.target.nodeName == 'A') return;
-
-    //         // $('#myModal').modal('hide');
-    //     });
-    // });
 
 
 
