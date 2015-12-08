@@ -23,8 +23,9 @@ import json
 class setProfilePic(main.index):
 
     def post(self):
-        email = str(self.session.get('email'))
+        email = app_global.unicode(str(self.session.get('email')))
         imgURL = self.request.get('imgURL')
+
         userModel.setProfilePic(imgURL, email)
 
         self.session['imgURL'] = imgURL

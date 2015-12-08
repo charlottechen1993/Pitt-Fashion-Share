@@ -21,9 +21,10 @@ class Users(ndb.Model):
 
 
 def setProfilePic(imgURL, email):
-    User = Users.query(Users.email == email)
+    print email
+    User = Users.query(Users.email == email).get().key.get()
     User.imgURL = str(imgURL)
-    #User.put()
+    User.put()
 
 def changeName(email, nam):
     print email

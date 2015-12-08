@@ -133,7 +133,8 @@ class userFunctions(main.index):
                     self.session['description'] = user[0].description
                     self.session['gender'] = user[0].gender
                     self.session['pass'] = user[0].pw
-
+                    print 'here'
+                    print user[0].imgURL
                     if user[0].imgURL:
                         self.session['imgURL'] = user[0].imgURL
                     else:
