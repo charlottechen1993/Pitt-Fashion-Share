@@ -243,11 +243,17 @@
                     data = JSON.parse(data);
                     data = data['result'];
 
-                   // printJSON(data);
-
+                    //printJSON(data);
+                    if(data.length == 0){
+                        $scope.$apply(function(){
+                            $scope.items.push([]);
+                        });
+                    }
 
                     for(var i=0; i<data.length; i++){
                         data[i].title = data[i].clothingType;
+
+                        printJSON(data[i]);
          
                         $scope.$apply(function(){
                             $scope.items.push(data[i]);
