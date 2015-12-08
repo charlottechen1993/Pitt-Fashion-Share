@@ -304,16 +304,16 @@
             url: '/deletePic?imgID=' + imgID,
             success: function(data){
                 // uncolor heart
-                alert("This picture has been deleted.");
-                
+               // alert("This picture has been deleted.");
+                window.location.reload();
                
-                    if ($scope.images.length > 1) {
-                        $scope.images = [];
-                        $scope.reloadImages();
-                    }
-                    else {
-                        location.reload();
-                    }
+                    // if ($scope.images.length > 1) {
+                    //     $scope.images = [];
+                    //     $scope.reloadImages();
+                    // }
+                    // else {
+                    //     location.reload();
+                    // }
             }
         });
          
