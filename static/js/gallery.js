@@ -399,7 +399,7 @@
      
 
     $scope.submitForm= function(form_name,form_id){
-        alert('#'+form_name+form_id);
+        //alert('#'+form_name+form_id);
         $('#'+form_name+form_id).submit();
      }
 

@@ -74,8 +74,7 @@ table.imgTable tr{
                 <img img_id="[[img.img_id]]" src="[[img.image_url]]">
                 <figcaption class="img-text">
                     <div style="margin-top: 10px;" class="centerHorizontally">
-                    <!--   <form name="proPicForm" action="/setProfilePic" method="post" ng-if="img.profilePage">-->
-                     <form id="editFormAdored[[img.img_id]]" name="editForm2" action="/editItems" method="post">
+                  
                         <table class="imgTable">
                              <tr class="no-hover" style="width:100%; padding:0px; ">
                                 <td colspan="2" style="padding:0px;margin:0px;">
@@ -89,60 +88,7 @@ table.imgTable tr{
                                      <p style="color:white;font-size:14px;line-height:14px;margin-top:1px;height: 14px;">[[img.total_likes]]</p>
                                 </td>
                             </tr>
-                             {% if deleteOption %}
-                            <tr ng-if="img.profilePage">
-                                <td>
-                                    <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
-                                </td>
-                                <td>
-                                    <span class="hoverText" style="cursor:pointer" ng-click="deletePic($event,[[img.img_id]])">Delete</span>
-                                </td>
-                            </tr>
-                             {% endif %}
-                             {% if user %}
-                            <tr>
-                               <!--  <form action="/editItems" method="post" ng-if="img.profilePage"> -->
-                                <td>
-                                    
-                                    <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
-                                    <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
-                                    <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
-                                </td>
-                                <td>
-                                    <span ng-click="submitForm('editFormAdored',[[img.img_id]])" class="hoverText">Edit Fashion </span>
-                                </td>
-                             <!--    </form> -->
-                            </tr>
-                            {% endif %}
-                    </table>
-                    </form>
-                    <form id="proPicFormAdored[[img.img_id]]" name="proPicForm2" action="/setProfilePic" method="post">
-                        <table class="imgTable">
-                            <tr>
-                                <td>
-                                    
-                                    <input id="imgURL" name="imgURL" type="hidden" value="[[img.image_url]]">
-                                    <input id="imgID" name="imgID" type="hidden" value="[[img.img_id]]">
-                                    <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
-                                </td>
-                                <td>
-                                      <span ng-click="submitForm('proPicFormAdored',[[img.img_id]])" class="hoverText">Set ProPic</span>
-                                </td>
-                              
-                            </tr>
-                         <!--      </form> -->
-                            <tr ng-show="img.galleryPage">
-                                <td>
-                                    <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
-                                </td>
-                                <td>
-                                    <span class="hoverText" type="button" ng-click="loadClothingPanel($event, img.img_id, img.image_url)">See Clothing</span>
-                                </td>
-                            </tr>
-
-                                         
                         </table>
-                    </form>
                         
                     </div>
                 </figcaption>
