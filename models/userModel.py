@@ -27,8 +27,9 @@ def setProfilePic(imgURL, email):
 
 def changeName(email, nam):
     print email
-    User = Users.query(Users.email == email)
+    User = Users.query(Users.email == email).get().key.get()
     User.un = str(nam)
+    User.put()
 
 def changePass(email, passW):
     print email
