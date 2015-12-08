@@ -56,11 +56,13 @@ def deletePic(imgID):
     if cachedPic is not None:
         cachedPic.key.delete()
         logging.debug('Deleted ' + imgID + ' using memcache!')
-    #if continues, memcache didn't have the pic
-    allImages = Image.query().fetch()
-    for pic in allImages:
-        if pic.key.id() == int(imgID):
-            pic.key.delete()
+    else:
+        logging.debug('Was not in memcache.')
+        #memcache didn't have the pic
+        allImages = Image.query().fetch()
+        for pic in allImages:
+            if pic.key.id() == int(imgID):
+                pic.key.delete()
     
 def deleteLike(user_id, photo_id):
     like = Like.query(Like.userID==str(app_global.unicode(user_id)), Like.imgID==str(photo_id)).fetch(1)
