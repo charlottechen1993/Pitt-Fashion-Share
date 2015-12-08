@@ -4,9 +4,12 @@ from google.appengine.api import images
 from google.appengine.api import users
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
+from google.appengine.api.logservice import logservice
+import logging
 import json
 import main
 import app_global
+from google.appengine.api import memcache
 from sets import Set
 
 class ImageTag(ndb.Model):
@@ -49,6 +52,11 @@ def addLike(userID, imgID, username):
     like.put()
     
 def deletePic(imgID):
+    cachedPic = memcache.get(imgID)
+    if cachedPic is not None:
+        cachedPic.key.delete()
+        logging.debug('Deleted ' + imgID + ' using memcache!')
+    #if continues, memcache didn't have the pic
     allImages = Image.query().fetch()
     for pic in allImages:
         if pic.key.id() == int(imgID):
@@ -100,6 +108,8 @@ def addImage(categoryID, total, title, image_url, user, minPrice, maxPrice, pric
     image.clothingType = clothingType
     image.uploadedBy = app_global.unicode(username)
     key = image.put()
+    memcache.add(str(image.key.id()), value=image)
+    logging.debug('Added ' + str(image.key.id()) + ' to the cache')
     
 #    users = ImageTag.query()
 #    for u in users.fetch():
@@ -141,6 +151,7 @@ class getPhotosJSONHandler(main.index):
         user_id = app_global.unicode(self.session.get('user_id'))
         profile = self.request.get('page')
         adored = self.request.get('adored')
+            
 
         if user_id is None:
             user_id = -1
@@ -180,6 +191,7 @@ class getPhotosJSONHandler(main.index):
                 if pic.key.id() in relevantPicIDs:
                     images.append(pic)
             queryLike = Like.query()
+        
        
         
         for i in range(0,len(images)):
@@ -221,9 +233,10 @@ class getPhotosJSONHandler(main.index):
 
             result.append(im)
             
+            
         #return json.dumps(result[0])
         self.response.out.write(json.dumps(result))
-
+        
 
 
 
