@@ -9,6 +9,7 @@
      $scope.select_image_url = '';
      $scope.showAdoredOnly = false;
      $scope.showCategoryDrop = false;
+
      
      var page;
      if( $('#profilePage').length > 0)
@@ -33,16 +34,20 @@
             //printJSON(data[0].tags[0]);
             
             var page_url = window.location.href;
-            var isProfilePage = false, isGalleryPage = false;
+            var isProfilePage = false, isGalleryPage = false, isIndexPage = false;
+
             
             if(page_url.indexOf("profile") > -1){
                 isProfilePage = true;
             }else if(page_url.indexOf("gallery") > -1){
                 isGalleryPage = true;
                 $scope.showCategoryDrop = true;
+            }else{
+                isIndexPage = true;
             }
             
             var photosLength;   // amount of photos to load
+
             
             // if current page contains '#homeCarousel' then the current page must be the index
             if( $('#homeCarousel').length > 0 && data.length>=15){
@@ -67,6 +72,7 @@
                     'uploaded_by': data[i].uploaded_by,
                     'profilePage': isProfilePage,
                     'galleryPage': isGalleryPage,
+                    'indexPage': isIndexPage,
                     'image_url': data[i].image_url,
                     'img_id': data[i].img_id,
                     'title': data[i].title,

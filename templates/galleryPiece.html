@@ -1,5 +1,9 @@
 
 <style>
+.glyphicon-share-alt{
+    min-width: 40px;
+    width: 40px;
+}
 .hoverText{
     color:white;
     font-size:14px;
@@ -7,25 +11,39 @@
     background: none;
     border: 0px solid;
     box-shadow: none;
-    padding: 0px;
+    padding: 0px 10px 0px 10px;
     margin: 0px;
     white-space: nowrap;
-    width: 100%;
+    width: 150px !important;
+   
     height: 30px;
     line-height: 30px;
     text-align: left;
     left:0px;
     position: relative;
     display: inline-block;
-    text-align: center;
+    text-align: left;
+    font-size: .9em;
 }
 table.imgTable td, table.imgTable tr{
     margin: 0px;
     height: auto;
-    width: 40px;
+    width: auto;
+  /*  width: 40px;*/
    /* padding: 5px;*/
 }
 
+/*table.imgTable tr td:nth-child(1){
+    width: 50px !important;
+}*/
+
+table.imgTable{
+    width: 100%;
+}
+table.imgTable tr{
+   
+    /*width: 100px !important;*/
+}
 
 
 #photos table.imgTable tr:hover{
@@ -70,6 +88,7 @@ table.imgTable td, table.imgTable tr{
                   
                      <form id="editForm" name="editForm" action="/editItems" method="post">
                         <table class="imgTable">
+
                             <tr class="no-hover" style="width:100%; padding:0px; ">
                                 <td colspan="2" style="padding:0px;margin:0px;">
                                     {% if user %}
@@ -132,12 +151,12 @@ table.imgTable td, table.imgTable tr{
                               
                             </tr>
                          <!--      </form> -->
-                            <tr  ng-if="!img.profilePage" >
+                            <tr ng-show="!img.profilePage && !img.indexPage" >
                                 <td>
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                    <span class="hoverText" type="button" ng-click="loadClothingPanel($event, img.img_id, img.image_url)">See Clothing Items</span>
+                                    <span class="hoverText"  ng-click="loadClothingPanel($event, img.img_id, img.image_url)">See Clothing </span>
                                 </td>
                             </tr>                
                         </table>
