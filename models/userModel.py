@@ -25,6 +25,26 @@ def setProfilePic(imgURL, email):
     User.imgURL = str(imgURL)
     #User.put()
 
+def changeName(email, nam):
+    print email
+    User = Users.query(Users.email == email)
+    User.un = str(nam)
+
+def changePass(email, passW):
+    print email
+    User = Users.query(Users.email == email)
+    User.pw = str(passW)
+
+def changeGender(email, gen):
+    print email
+    User = Users.query(Users.email == email)
+    User.gender = str(gen)
+
+def changeDescription(email, des):
+    print email
+    User = Users.query(Users.email == email)
+    User.description = str(des)
+
     
 def createNewUser(email, un, pw, gender):
     newUser = Users()
