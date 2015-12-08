@@ -49,6 +49,7 @@
     vertical-align: middle;
     display: inline-block;
     text-align: center;
+    z-index: 2;
 }
 
 .img-cover:before {
@@ -138,6 +139,9 @@ textarea{
     border-top: 1px solid #BABEBF;
     border-bottom: 1px solid #BABEBF;
 }
+
+
+
 .left-panel{
 /*    background-color: rgba(255,255,255,.2);*/
     min-height: 300px;
@@ -310,6 +314,7 @@ table.table-clothes td:nth-child(1){
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    z-index: 100 !important;
 }
 .view-image:hover{
     color: #6F9DDE;

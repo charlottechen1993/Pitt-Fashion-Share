@@ -92,6 +92,7 @@ body{
     cursor: pointer;
     top: 35%;
     font-size: 2em;
+    z-index: 1000;
 }
 
 .heart-filled{

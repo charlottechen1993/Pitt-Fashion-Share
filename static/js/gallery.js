@@ -162,29 +162,32 @@
             }
         });
      }
+
+
      
      $scope.handleLike = function($event, img_id){
          
          var item =  $(angular.element($event.currentTarget));
          var url;
 
-         var likeCount = item.prev('p').text();
+         var likeCount = item.next('p').text();
          if(!(parseInt(likeCount) >= 0)){
             likeCount='0';
          }
          
+
          
          if(item.hasClass('heart-unfilled'))    // like image
          {
             url = '/addLike?photo_id=' + img_id;
             $(angular.element(item)).removeClass('heart-unfilled'); 
             $(angular.element(item)).addClass('heart-filled'); 
-            item.prev('p').html(parseInt(likeCount)+1);
+            item.next('p').html(parseInt(likeCount)+1);
          }else{                                 // unlike image
             url = '/unlike?photo_id=' + img_id;
             $(angular.element(item)).removeClass('heart-filled'); 
             $(angular.element(item)).addClass('heart-unfilled'); 
-            item.prev('p').html(parseInt(likeCount)-1);
+            item.next('p').html(parseInt(likeCount)-1);
          }
          
          
@@ -388,10 +391,22 @@
           $scope.categories.push('Chic', 'Finals', 'Parisian', 'Lazy Day', 'Pitt Spirit', 'Cool', 'Elegant', 'Tomboy', 'Metal', 'Bro', 'Halloween', 'Goofy', 'Comfortable', 'High Fashion', 'British', 'Conservative', 'Sexy');
      }
      
+   
 
 });
 
 
+
+    // $(document).ready(function(){
+    //     $('.image').click(function(e){
+    //         alert('hello');
+
+    //         alert(e.target.nodeName);
+    //         if(e.target.nodeName == 'A') return;
+
+    //         // $('#myModal').modal('hide');
+    //     });
+    // });
 
 
 
