@@ -24,6 +24,7 @@
     display: inline-block;
     text-align: left;
     font-size: .9em;
+    z-index: 10000;
 }
 table.imgTable td, table.imgTable tr{
     margin: 0px;
@@ -80,7 +81,7 @@ table.imgTable tr{
 
 
     <section id="photos" ng-show="showAllPhotos">
-        <div class="image" style="z-index: 0;" ng-repeat="img in images| filter: selected"  class="blur" id="[[img.img_id]]Block">
+        <div class="image" style="z-index: 0;" ng-repeat="img in images| filter: selected||undefined"  class="blur" id="[[img.img_id]]Block">
             <figure class="img-cover">
                 <img img_id="[[img.img_id]]" src="[[img.image_url]]">
                 <figcaption class="img-text">
@@ -129,7 +130,7 @@ table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                    <span onclick="document.getElementById('editForm').submit()" class="hoverText">Edit Fashion Item</span>
+                                    <span onclick="document.getElementById('editForm').submit()" class="hoverText">Edit Fashion</span>
                                 </td>
                              <!--    </form> -->
                             </tr>
@@ -146,7 +147,7 @@ table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                      <span onclick="document.getElementById('proPicForm').submit()" class="hoverText">Set As Profile Pic</span>
+                                      <span onclick="document.getElementById('proPicForm').submit()" class="hoverText">Set ProPic</span>
                                 </td>
                               
                             </tr>

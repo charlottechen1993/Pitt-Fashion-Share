@@ -15,7 +15,6 @@
     margin: 0px;
     white-space: nowrap;
     width: 150px !important;
-   
     height: 30px;
     line-height: 30px;
     text-align: left;
@@ -76,7 +75,7 @@ table.imgTable tr{
                 <figcaption class="img-text">
                     <div style="margin-top: 10px;" class="centerHorizontally">
                     <!--   <form name="proPicForm" action="/setProfilePic" method="post" ng-if="img.profilePage">-->
-                     <form name="editForm2" action="/editItems" method="post">
+                     <form id="editForm2" name="editForm2" action="/editItems" method="post">
                         <table class="imgTable">
                              <tr class="no-hover" style="width:100%; padding:0px; ">
                                 <td colspan="2" style="padding:0px;margin:0px;">
@@ -110,14 +109,14 @@ table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                    <span onclick="editForm2.submit()" class="hoverText">Edit Fashion Item</span>
+                                    <span onclick="document.getElementById('editForm2').submit()" class="hoverText">Edit Fashion </span>
                                 </td>
                              <!--    </form> -->
                             </tr>
                             {% endif %}
                     </table>
                     </form>
-                    <form name="proPicForm2" action="/setProfilePic" method="post">
+                    <form id="proPicForm2" name="proPicForm2" action="/setProfilePic" method="post">
                         <table class="imgTable">
                             <tr>
                                 <td>
@@ -127,7 +126,7 @@ table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                      <span onclick="proPicForm2.submit()" class="hoverText">Set As Profile Pic</span>
+                                      <span onclick="document.getElementById('proPicForm2').submit()" class="hoverText">Set ProPic</span>
                                 </td>
                               
                             </tr>
@@ -137,7 +136,7 @@ table.imgTable tr{
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="font-size: 1.2em;color:white"></span>
                                 </td>
                                 <td>
-                                    <span class="hoverText" type="button" ng-click="loadClothingPanel($event, img.img_id, img.image_url)">See Clothing Items</span>
+                                    <span class="hoverText" type="button" ng-click="loadClothingPanel($event, img.img_id, img.image_url)">See Clothing</span>
                                 </td>
                             </tr>
 
