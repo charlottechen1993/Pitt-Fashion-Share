@@ -46,7 +46,7 @@ class update(main.index):
 
 		else:
 			des = self.request.get('des')
-			userModel.changeGender(email, des)
+			userModel.changeDescription(email, des)
 			self.session['description'] = des
 			self.redirect("/updateprofile")
 
