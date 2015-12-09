@@ -27,18 +27,24 @@ def setProfilePic(imgURL, email):
 
 def changeNPass(email, passW):
     print email
-    User = Users.query(Users.email == email)
-    User.pw = str(passW)
+    user = Users.query(Users.email == email).get()
+    
+    pwEncrypt = security.generate_password_hash(passWord, 'sha1').strip()
+    user.pw = pwEncrypt
+    user.put()
+    
 
 def changeGender(email, gen):
     print email
-    User = Users.query(Users.email == email)
-    User.gender = str(gen)
+    user = Users.query(Users.email == email).get()
+    user.gender = str(gen)
+    user.put()
 
 def changeDescription(email, des):
     print email
-    User = Users.query(Users.email == email)
-    User.description = str(des)
+    user = users.query(Users.email == email).get()
+    user.description = str(des)
+    user.put()
 
 
 
@@ -49,7 +55,7 @@ def changeDescription(email, des):
 def createNewUser(email, un, pw, gender):
     newUser = Users()
     secure_pw = security.generate_password_hash(pw, 'sha1')
-
+    newUser.description = ""
     newUser.email = email
     newUser.un = un
     newUser.pw = secure_pw

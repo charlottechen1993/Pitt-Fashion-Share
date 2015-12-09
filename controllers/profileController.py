@@ -18,8 +18,6 @@ import models.userModel as userModel
 from google.appengine.ext import ndb
 import json
 
-
-
 class setProfilePic(main.index):
 
     def post(self):
@@ -225,6 +223,8 @@ class gallery2(main.index):
         user_id = self.session.get('user_id')
         images = imagesModel.getImages(user_id, restrictionList)
         photosYouLiked = imagesModel.imagesYouLiked(user_id)
+        
+        
         
         params = {
             user_id: user_id,
