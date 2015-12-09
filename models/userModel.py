@@ -52,7 +52,7 @@ def changeDescription(email, des):
     User.put()
 
     
-def createNewUser(email, un, pw, gender, description):
+def createNewUser(email, un, pw, gender):
     newUser = Users()
     secure_pw = security.generate_password_hash(pw, 'sha1')
 
@@ -60,7 +60,6 @@ def createNewUser(email, un, pw, gender, description):
     newUser.un = un
     newUser.pw = secure_pw
     newUser.gender = gender
-    newUser.description = description
     newUser_key = newUser.put()
     return newUser_key
 
