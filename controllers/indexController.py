@@ -13,11 +13,12 @@ class index(main.index):
         params = {
             'page': '',
             'logo':'pitt_logo.png',
-            'photo_name':'photo3.jpg', 
+            'photo_name':'banner1.jpg', 
             'photo_name2':'banner2.jpg',
-            'photo_name3':'banner1.jpg',
+            'photo_name3':'banner4.jpg',
             'user': app_global.unicode(self.session.get('user')),
             'user_id': app_global.unicode(self.session.get('user_id'))
          }
         
         app_global.render_template(self,'index.html', params)
+        

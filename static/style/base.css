@@ -134,11 +134,6 @@ body{
 }
 
 div.cmt{
-/*    text-align: left;*/
-/*    width: 100%;*/
-/*    margin-bottom: 20px;
-    margin-top: 20px;*/
-/*    border-bottom: 1px solid #81888A;*/
     padding: 0px 0px 0px 0px;
 }
 div.cmt:last-child{

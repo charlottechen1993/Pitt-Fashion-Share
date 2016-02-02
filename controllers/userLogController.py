@@ -45,29 +45,6 @@ class newUserSuccess(main.index):
         
 #class userFunctions(webapp2.RequestHandler):
 class userFunctions(main.index):
-    
-#    def get(self):
-#        email = self.request.get('email').strip()   # unique identifier
-#        pw = self.request.get('pw').strip()
-#        time.sleep(5) # delays for 5 seconds
-#        
-#        user = userModel.getUser(email, pw)
-#        
-#                
-#        if len(user) > 0:    # user login success
-#            template = 'profile.html'
-#            message = 'Successfully Logged in as ' + user[0].un
-#                    
-#            self.session['email'] = user[0].email,
-#            self.session['user'] = user[0].un,
-#            self.session['user_id'] = user[0].user_id
-#                    
-#            self.redirect('/profile')
-#        else:
-#            template = 'index.html'
-#            message = 'ERROR: Login Fail!'
-#            self.redirect('/user?message='+message)
-#    
     def post(self):
         method = self.request.get('method')
         email = self.request.get('email').strip()   # unique identifier

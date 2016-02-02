@@ -76,7 +76,7 @@
     <div class="modal-content">                 <!-- START modal-content -->
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">[[img.title]](Uploaded By: [[img.uploaded_by]])</h4>
+            <h4 class="modal-title" id="myModalLabel"><strong>[[img.title]]</strong> (Uploaded By: [[img.uploaded_by]])</h4>
         </div>
         <div class="modal-body">
          <div class="row equal-height-col">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12" style="padding:0px; overflow: hidden">
-                        <input type="text" ng-model="comment" class="commentSub" placeholder="Compliment here" id="commentInput">  
+                        <input type="text" ng-model="comment" class="form-control commentSub" placeholder="Compliment here" id="commentInput">
                     </div>
                     <div class="col-sm-12" style="margin-top: 10px; padding:0px;">
                         <button type="button" class="btn btn-dark pull-left" id="clickAddComment" ng-click="addComment($event,[[img.img_id]], comment)">Comment</button>

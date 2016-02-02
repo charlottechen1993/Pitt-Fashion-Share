@@ -1,5 +1,4 @@
 #photos {
-/*    padding: 10px;*/
     margin-top: 15px;
     padding: 0px 10px 0px 10px;
     line-height: 0;
@@ -152,9 +151,6 @@ textarea{
 .image-panel{ min-height: 300px; overflow: hidden; margin-top: 20px;}
 
 
-
-
-
 .img-block{
     border: 1px solid #DAE1E3;
     border: 1px solid red;
@@ -164,24 +160,10 @@ textarea{
     width: auto;
 }
 .img-block img{
-   position:  absolute;
-
+    position:  absolute;
     display: block;
     z-index: 1;
-
-/*
-    left: 50%;
-    transform: translate(-50%,-0%);
-    -webkit-transform: translate(-50%,-0%);
-    -moz-transform: translate(-50%,-0%);
-    -o-transform: translate(-50%,-0%);
-    -ms-transform: translate(-50%,-0%);
-*/
 }
-/*
-
-.img-block img:hover { opacity: .5; -webkit-filter: grayscale(100%) sepia(100%); }
-*/
 
 .info{
     display: block;
@@ -213,19 +195,6 @@ h3.photo-title small.photo-time{
     -o-transform: translate(-100%,-0%);
     -ms-transform: translate(-100%,-0%);
     position: fixed !important;
-/*    top: 40px;
-    margin-top: -40px;*/
-   
-/*
-    position: fixed;
-    top: 50%;
-    left: 100%;
-    transform: translate(-100%,-50%);
-    -webkit-transform: translate(-100%,-50%);
-    -moz-transform: translate(-100%,-50%);
-    -o-transform: translate(-100%,-50%);
-    -ms-transform: translate(-100%,-50%);
-*/
 }
 
 

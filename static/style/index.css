@@ -5,10 +5,6 @@
     }
 }
 
-p{
-/*    color: rgba(255, 255, 255, 0.5);      */
-}
-
 /* area of top popular outfit*/
 #top_area{
     margin-bottom: 40px !important;
@@ -50,6 +46,86 @@ p{
 
 #carouselButtons {
     top: 50%;
+}
+.btn-lg{
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    width: 70%;
+    border-radius: 0;
+    position: inherit;
+    border: none;
+}
+
+.btn-lg:focus, 
+.btn-lg:active, 
+.btn-lg:hover, 
+.btn-lg.active, 
+.btn-lg.active, 
+.open > .dropdown-toggle.btn-lg{
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.btn-lg:active:focus{
+    background: black;
+    color: white;
+    box-shadow: none;
+    outline: 0 none;
+}
+/*
+.carousel-caption{
+    background-color: rgba(180, 180, 180, 0.8);
+    width: 35%;
+    height: auto;
+    margin-left: -10%;
+    margin-bottom: 3%;
+    padding: 25px;
+    overflow: auto;
+    color: black;
+    text-decoration: none;
+    text-shadow: none;
+}
+*/
+
+.carousel-caption-intro{
+    position: fixed;
+    display: block;
+    background-color: rgba(0,0,0,0.7);
+    border: 0;
+    /* Ensure div is a square */
+    height: 0;
+    width: 35vw;
+    padding-left:;
+    padding-right: 0;
+    padding-top: 30px;
+    padding-bottom: 30%;
+    z-index: 2;
+    /* fix item to be in the absolute middle of viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: none;
+}
+.block-content{
+    text-align: center;
+    display: block;
+    position: fixed;
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+.carousel-caption-intro h2{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+
+#intro-img{
+    opacity: 0;
 }
 
 /* ============================ */
@@ -99,8 +175,22 @@ p{
 /* ======== END FOOTER ======== */
 /* ============================ */
 
+/* when screen is 450px or narrower */
+@media only screen and (max-width: 450px){
+    .carousel-caption-intro{
+        width: 45%;
+        padding-bottom: 35%;
+    }
+}
+
 /* disable vertical line when screen becomes small*/
 @media screen and (max-width: 768px) {
+    .carousel-caption-intro h2{
+        font-size: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
     .hr-v{
         display: none; 
     }
@@ -112,7 +202,6 @@ p{
         margin-top: 27px;   
     }
     .title{
-/*        color: rgba(255, 255, 255, 0.5);   */
         color: #545454;
         font-family: 'Lato', sans-serif;
         font-weight: 300;

@@ -39,6 +39,7 @@ class index(webapp2.RequestHandler):
     
     
 import controllers.indexController as indexController
+import controllers.aboutController as aboutController
 import controllers.galleryController as galleryController
 import controllers.profileController as profileController
 import controllers.updateprofileController as updateprofileController
@@ -75,7 +76,8 @@ mappings = [
     ('/addNewItemHandler', clothController.index),
     ('/getItems', clothModel.getItems),
     ('/setProfilePic', profileController.setProfilePic ),
-    ('/deletePic', imageController.deletePicHandler)
+    ('/deletePic', imageController.deletePicHandler),
+    ('/about', aboutController.index)
 #    ('/gallery', galleryController.gallery2)
 #    ('/userLog', userController.loginPage.show)
 ]
